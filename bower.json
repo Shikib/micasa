@@ -1,0 +1,15 @@
+{
+  "name": "micasa",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/shikib/micasa",
+  "authors": [
+    "Shikib Mehri <mehrishikib@gmail.com>"
+  ],
+  "description": "a real estate web application",
+  "license": "none"
+}
