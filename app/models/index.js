@@ -1,3 +1,4 @@
+/*
 var fs = require('fs'),
   path = require('path'),
   Sequelize = require('sequelize'),
@@ -25,3 +26,5 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+*/
