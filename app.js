@@ -8,11 +8,19 @@ var app = express();
 
 require('./config/express')(app, config);
 
-db.sequelize
-  .sync()
-  .then(function () {
-    app.listen(config.port);
-  }).catch(function (e) {
-    throw new Error(e);
-  });
+var mysql = require('mysql');
+var connection = mysql.createConnection('mysql://root:password@localhost/micasa');
+
+
+/*
+Example query:
+
+connection.query("CREATE TABLE Test (" +
+                "id int," +
+                "name VARCHAR(200))");
+*/
+app.listen(config.port);
+
+
+
 
