@@ -97,7 +97,7 @@ exports.initialize_tables = function() {
                  "agentID smallint," +
                  "sellerPhone char(20)," +
                  "sellerName varchar(20)," +
-                 "PRIMARY KEY (agentID, sellerPhone, sellerName"
+                 "PRIMARY KEY (agentID, sellerPhone, sellerName"+
                  "FOREIGN KEY(sellerPhone, sellerName) references Seller(sellerPhone, sellerName)," +
                  "FOREIGN KEY(agentID) references Agent_Represents(agentID))");
 
