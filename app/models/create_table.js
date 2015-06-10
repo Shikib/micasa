@@ -3,6 +3,27 @@ var mysqlModule = require("../../mysqlModule");
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
 
+    conn.query("drop table Property_HasA_Location;" +
+                 "drop table Agency;" +
+                 "drop table Agent_Represents;" +
+                 "drop table Offer;" +
+                 "drop table Buyer;" +
+                 "drop table Seller;" +
+                 "drop table Accepts;" +
+                 "drop table PurchaseOffer_Makes;" +
+                 "drop table RentalOffer_Makes;" +
+                 "drop table Appointment_View;" +
+                 "drop table Approves;" +
+                 "drop table Rates;" +
+                 "drop table ForRent;" +
+                 "drop table ForSale;" +
+                 "drop table CommercialProperty_ForRent;" +
+                 "drop table CommercialProperty_ForSale;" +
+                 "drop table ResidentialProperty_ForRent;" +
+                 "drop table ResidentialProperty_ForSale;" +
+                 "drop table PostSale;" +
+                 "drop table InterestedIn;");
+
     conn.query("CREATE TABLE Property_HasA_Location (" +
                  "propertyID smallint PRIMARY KEY," +
                  "isFurnished char(1)," +
