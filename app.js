@@ -2,19 +2,13 @@
 var express = require('express'),
   config = require('./config/config'),
   db = require('./app/models');
-
+  create_tables = require('./app/models/create_table.js'); 
+ 
 var app = express();
 
 require('./config/express')(app, config);
 
-var mysqlModule = require("./mysqlModule");
-
-mysqlModule.getConnection(function(err, conn) {
-  conn.query("CREATE TABLE TEST (" +
-        "id int," +
-        "name VARCHAR(200))");
-});
-
+create_tables.initialize_tables();
 
 app.listen(config.port);
 
