@@ -124,13 +124,13 @@ exports.initialize_tables = function() {
                  "hasGarage char(1)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
-    conn.query("CREATE TABLE CommericalProperty_ForRent (" +
+    conn.query("CREATE TABLE CommercialProperty_ForRent (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "storage tinyint," +
                  "offices tinyint," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
-    conn.query("CREATE TABLE CommericalProperty_ForSale (" +
+    conn.query("CREATE TABLE CommercialProperty_ForSale (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "storage tinyint," +
                  "offices tinyint," +
