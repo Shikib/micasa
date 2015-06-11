@@ -2,9 +2,6 @@ var express = require('express'),
   router = express.Router(),
   db = require('../models');
 
-// for UI widget maybe we dont even need keep it here for now.
-var qx = require('qooxdoo')
-
 module.exports = function (app) {
   app.use('/', router);
 };

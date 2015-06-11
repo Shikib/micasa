@@ -16,3 +16,11 @@ exports.getConnection = function(callback) {
     callback(err, conn);
   });
 };
+
+exports.query = function(conn, queryString, callback) {
+  conn.query(queryString, function (err, rows) {
+    if (err) throw err;
+   
+    callback(rows);     
+  });
+};
