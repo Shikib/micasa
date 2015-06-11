@@ -175,7 +175,7 @@ exports.initialize_tables = function() {
 
 
 
-    mysqlModule.query(conn, "SELECT * FROM Agency;", console.log);
+    mysqlModule.query(conn, "SELECT * FROM Agency;");
 
 
   });

@@ -20,7 +20,11 @@ exports.getConnection = function(callback) {
 exports.query = function(conn, queryString, callback) {
   conn.query(queryString, function (err, rows) {
     if (err) throw err;
-   
+    
+    if (callback === undefined) { 
+      callback = console.log;
+    }
+
     callback(rows);     
   });
 };
