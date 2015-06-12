@@ -15,6 +15,34 @@ router.get('/', function (req, res, next) {
 //  });
 });
 
+router.get('/buyer', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('buyer', {
+      title: 'buyer',
+//      articles: articles
+    });
+//  });
+});
+router.get('/agent', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent', {
+      title: 'agent',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/seller', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('seller', {
+      title: 'seller',
+//      articles: articles
+    });
+//  });
+});
+
+
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
