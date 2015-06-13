@@ -21,6 +21,13 @@ router.get('/search', function (req, res, next) {
   });
 });
 
+router.get('/searching', function(req, res, next) {
+  var val = req.query.search;
+  console.log(val);
+
+  res.send("test");
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
