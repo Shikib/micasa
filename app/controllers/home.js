@@ -24,7 +24,7 @@ router.get('/search', function (req, res, next) {
 router.get('/searching', function(req, res, next) {
   var val = req.query.search;
   console.log(val);
-
+  console.log("!!!!!!!!!!!!!!!!!!!!!");
   res.send("test");
 });
 

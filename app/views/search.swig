@@ -17,9 +17,9 @@
  
  <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="images/micasa.png" style = "width:50px;height:50x;"></a>
-     <form>
+     <form id="search-field">
         <div class="input-field">
-          <input id="basic-search" type="search" placeholder="Enter the city that you are interested in..." required>
+          <input id="search" type="search" placeholder="Enter the city that you are interested in..." required>
           <label for="search"><i class="mdi-action-search"></i><label>
         </div>
       </form> 
