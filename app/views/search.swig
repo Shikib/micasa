@@ -28,14 +28,6 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center  blue-grey lighten-1-text">Welcome to micasa</h1>
-      <img src="images/micasa.png" style = "width:50px;height:50x;">
-      <div class="row center">
-        <h5 class="header col s12 light">We can help you buy sell and rent houses</h5>
-      </div>
-
-      <br><br>
-
     </div>
   </div>
 
@@ -43,35 +35,22 @@
   <div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block"><a hef="/seller">
-            <h2 class="center light-blue-text"><i class="mdi-action-home"></i></h2>
-            <h5 class="center">I have a house for sale or rent</h5>
+      <table id="results" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="aptNumber">Apartment Number</th>
+              <th data-field="houseNumber">Building Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+          </tr>
+        </thead>
 
-            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p></a>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-content-add-circle"></i></h2>
-            <h5 class="center">I want to buy a house or rent  </h5>
-
-            <p class="light">We can help you find your dream house and connect you with an agent to tour houses</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-action-assignment-ind"></i></h2>
-            <h5 class="center">Im an agent </h5>
-
-            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</grea>
-          </div>
-        </div>
-      </div>
+        <tbody>
+        </tbody>
+      </table>
 
     </div>
     <br><br>
