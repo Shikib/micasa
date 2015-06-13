@@ -122,8 +122,8 @@ exports.initialize_tables = function() {
 
     conn.query("CREATE TABLE Appointment_View (" +
                  "appointmentID smallint PRIMARY KEY," + 
-                 "appointmentTime timestamp," +
-                 "appDuration integer not null," +
+                 "appointmentDate date," +
+                 "appointmentDuration integer not null," +
                  "propertyID smallint," + 
                  "buyerPhone char(10)," + 
                  "buyerName varchar(20)," + 

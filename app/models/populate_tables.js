@@ -24,7 +24,7 @@ exports.populate_tables = function() {
     		   "(1456, 'Sam Wise', 1115556666, 'sw@Ayy.com',9456, NULL)," +
     		   "(1567, 'Jack Li', 1118889999, 'jl@MAX.com',9567, 2);");
 
-    // All offerIDs start with 2xxx
+    // All purchase offerIDs start with 2xxx, rental offerIDs start with 3xxx
     conn.query("INSERT INTO Offer VALUES (2123, 'I love this house!', '2014-10-11')," +
   			   "(2234, 'When can I move in Kappa', '2014-03-25')," +
   			   "(2345, 'This house has same written all over it', '2014-04-04')," +
@@ -58,8 +58,8 @@ exports.populate_tables = function() {
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '604444555', 'Brando Wison')," +
     		   "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
-    conn.query("INSERT INTO Appointment_View VALUES (123, to_timestamp('2015/06/15 12:00', 'YYYY/MM/DD HH24 MI'), 1, 8123, '6041112222', 'Pinkman Jones')," +
-    		   "(234, to_timestamp('2015/05/14 13:00', 'YYYY/MM/DD HH24 MI'), 2, 8234, '6042223333', 'Markus Lemonis');");
+    conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +
+    		   "(234, '2015/05/14', 2, 8234, '6042223333', 'Markus Lemonis');");
 
     conn.query("INSERT INTO Approves VALUES (123, 1123)," +
     	       "(234, 1345);");
