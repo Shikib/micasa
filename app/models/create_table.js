@@ -3,26 +3,26 @@ var mysqlModule = require("../../mysqlModule");
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
 
-    conn.query("drop table Property_HasA_Location;" +
-                 "drop table Agency;" +
-                 "drop table Agent_Represents;" +
-                 "drop table Offer;" +
-                 "drop table Buyer;" +
-                 "drop table Seller;" +
-                 "drop table Accepts;" +
-                 "drop table PurchaseOffer_Makes;" +
-                 "drop table RentalOffer_Makes;" +
-                 "drop table Appointment_View;" +
-                 "drop table Approves;" +
-                 "drop table Rates;" +
-                 "drop table ForRent;" +
-                 "drop table ForSale;" +
-                 "drop table CommercialProperty_ForRent;" +
-                 "drop table CommercialProperty_ForSale;" +
-                 "drop table ResidentialProperty_ForRent;" +
-                 "drop table ResidentialProperty_ForSale;" +
-                 "drop table PostSale;" +
-                 "drop table InterestedIn;");
+    conn.query("drop table Property_HasA_Location cascade constraints;" +
+                 "drop table Agency cascade constraints;" +
+                 "drop table Agent_Represents cascade constraints;" +
+                 "drop table Offer cascade constraints;" +
+                 "drop table Buyer cascade constraints;" +
+                 "drop table Seller cascade constraints;" +
+                 "drop table Accepts cascade constraints;" +
+                 "drop table PurchaseOffer_Makes cascade constraints;" +
+                 "drop table RentalOffer_Makes cascade constraints;" +
+                 "drop table Appointment_View cascade constraints;" +
+                 "drop table Approves cascade constraints;" +
+                 "drop table Rates cascade constraints;" +
+                 "drop table ForRent cascade constraints;" +
+                 "drop table ForSale cascade constraints;" +
+                 "drop table CommercialProperty_ForRent cascade constraints;" +
+                 "drop table CommercialProperty_ForSale cascade constraints;" +
+                 "drop table ResidentialProperty_ForRent cascade constraints;" +
+                 "drop table ResidentialProperty_ForSale cascade constraints;" +
+                 "drop table PostSale cascade constraints;" +
+                 "drop table InterestedIn cascade constraints;");
 
     conn.query("CREATE TABLE Property_HasA_Location (" +
                  "propertyID smallint PRIMARY KEY," +
@@ -84,7 +84,8 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))");
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
+                 "FOREIGN KEY (offerID) references Offer(offerID))");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +
@@ -128,7 +129,7 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
     conn.query("CREATE TABLE ForSale (" +
-                 "salePrice smallint not null," + 
+                 "salePrice int not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
@@ -172,10 +173,6 @@ exports.initialize_tables = function() {
                  "message varchar(200)," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
-
-
-
-    mysqlModule.query(conn, "SELECT * FROM Agency;");
 
 
   });
