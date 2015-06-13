@@ -15,6 +15,12 @@ router.get('/', function (req, res, next) {
 //  });
 });
 
+router.get('/search', function (req, res, next) {
+  res.render('search', {
+    title: 'Micasa',
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
