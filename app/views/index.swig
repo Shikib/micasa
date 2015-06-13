@@ -16,7 +16,7 @@
 <body>
  
  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="images/micasa.png" style = "width:50px;height:50x;"></a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="/micasa/images/micasa.gif"  alt="micasa" style = "width:50px;height:50x;"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -30,8 +30,9 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center  blue-grey lighten-1-text">Welcome to micasa</h1>
-      <img src="images/micasa.png" style = "width:50px;height:50x;">
+      <h1 class="header center  blue-grey lighten-1 text">Welcome to micasa</h1>
+      <img src="/../images/micasa.gif" alt="micasa" style = "width:50px;height:50x;">
+      <img src="/../micasa.gif" alt="micasa" style = "width:50px;height:50x;">
       <div class="row center">
         <h5 class="header col s12 light">We can help you buy sell and rent houses</h5>
       </div>
@@ -48,11 +49,11 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
-          <div class="icon-block"><a hef="/seller">
+          <div class="icon-block">
             <h2 class="center light-blue-text"><i class="mdi-action-home"></i></h2>
             <h5 class="center">I have a house for sale or rent</h5>
 
-            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p></a>
+            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p>
           </div>
         </div>
 
