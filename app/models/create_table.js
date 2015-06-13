@@ -3,6 +3,29 @@ var mysqlModule = require("../../mysqlModule");
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
 
+    // clear all existing tuples 
+    conn.query("delete from Property_HasA_Location;");
+    conn.query("delete from Agency;");
+    conn.query("delete from Agent_Represents;");
+    conn.query("delete from Offer;");
+    conn.query("delete from Buyer;");
+    conn.query("delete from Seller;");
+    conn.query("delete from Accepts;");
+    conn.query("delete from PurchaseOffer_Makes;");
+    conn.query("delete from RentalOffer_Makes;");
+    conn.query("delete from Appointment_View;");
+    conn.query("delete from Approves;");
+    conn.query("delete from Rates;");
+    conn.query("delete from ForRent;");
+    conn.query("delete from ForSale;");
+    conn.query("delete from CommercialProperty_ForRent;");
+    conn.query("delete from CommercialProperty_ForSale;");
+    conn.query("delete from ResidentialProperty_ForRent;");
+    conn.query("delete from ResidentialProperty_ForSale;");
+    conn.query("delete from PostSale;");
+    conn.query("delete from InterestedIn;");
+
+    // drop all tables
     conn.query("drop table Property_HasA_Location cascade constraints;" +
                  "drop table Agency cascade constraints;" +
                  "drop table Agent_Represents cascade constraints;" +
@@ -25,7 +48,7 @@ exports.initialize_tables = function() {
                  "drop table InterestedIn cascade constraints;");
 
     conn.query("CREATE TABLE Property_HasA_Location (" +
-                 "propertyID smallint PRIMARY KEY," +
+                 "propertyID int PRIMARY KEY," +
                  "isFurnished char(1)," +
                  "age smallint," +
                  "locationID smallint," +
@@ -54,7 +77,7 @@ exports.initialize_tables = function() {
     conn.query("CREATE TABLE Offer (" +
                  "offerID smallint PRIMARY KEY," +
                  "offerMessage varchar(200)," +
-                 "offerDate date not NULL)");
+                 "offerDate date)");
 
     conn.query("CREATE TABLE Buyer (" +
                  "buyerEmail varchar(15)," +
@@ -99,8 +122,8 @@ exports.initialize_tables = function() {
 
     conn.query("CREATE TABLE Appointment_View (" +
                  "appointmentID smallint PRIMARY KEY," + 
-                 "appointmentTime timestamp," +
-                 "appDuration integer not null," +
+                 "appointmentDate date," +
+                 "appointmentDuration integer not null," +
                  "propertyID smallint," + 
                  "buyerPhone char(10)," + 
                  "buyerName varchar(20)," + 
