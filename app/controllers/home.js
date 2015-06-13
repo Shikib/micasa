@@ -41,6 +41,24 @@ router.get('/seller', function (req, res, next) {
 //  });
 });
 
+router.get('/login', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('login', {
+      title: 'login',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/signup', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('signup', {
+      title: 'signup',
+//      articles: articles
+    });
+//  });
+});
+
 
 
 function test(){

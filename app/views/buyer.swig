@@ -1,16 +1,16 @@
 {% extends 'layout.swig' %}
 {% block content%}
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>testing if working</title>
-</head>
-<body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
-</body>
-</html>
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Micasa</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="signup">Sign up</a></li>
+        <li><a href="">!Serach</a></li>
+      </ul>
+    </div>
+  </nav>
+ <h2 class="center teal-text"> <i class="large mdi-social-location-city"></i><br></h2>
+  <h4 class="header center orange-text">Welcome Buyer</h4>
 {% endblock %}

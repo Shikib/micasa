@@ -15,26 +15,25 @@
 {% block content %}
 <body>
  
- <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="/micasa/images/micasa.gif"  alt="micasa" style = "width:50px;height:50x;"></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Micasa</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="signup">Sign up</a></li>
+        <li><a href="">!Serach</a></li>
       </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
   </nav>
+        
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center  blue-grey lighten-1 text">Welcome to micasa</h1>
-      <img src="/../images/micasa.gif" alt="micasa" style = "width:50px;height:50x;">
-      <img src="/../micasa.gif" alt="micasa" style = "width:50px;height:50x;">
+       <h2 class="center teal-text"> <i class="large mdi-social-location-city"></i><br></h2>
+      <h1 class="header center orange-text">Welcome to Micasa</h1>
       <div class="row center">
-        <h5 class="header col s12 light">We can help you buy sell and rent houses</h5>
+
       </div>
 
       <br><br>
@@ -49,8 +48,8 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-action-home"></i></h2>
+          <div class="icon-block"><a href="seller">
+            <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
             <h5 class="center">I have a house for sale or rent</h5>
 
             <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p>
@@ -58,8 +57,8 @@
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-content-add-circle"></i></h2>
+          <div class="icon-block"><a href="buyer">
+            <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
             <h5 class="center">I want to buy a house or rent  </h5>
 
             <p class="light">We can help you find your dream house and connect you with an agent to tour houses</p>
@@ -67,11 +66,11 @@
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-action-assignment-ind"></i></h2>
+          <div class="icon-block"><a href="agent">
+            <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
             <h5 class="center">Im an agent </h5>
 
-            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</grea>
+            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</p>
           </div>
         </div>
       </div>
@@ -84,21 +83,15 @@
     </div>
   </div>
 
-  <footer class="page-footer orange">
+  <footer class="page-footer  grey lighten-4">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="grey-text text-lighten-4">We are a team of UBC students working on this project like it's our full time job. </p>
+          <h5 class="grey-text">About us</h5>
+          <p class="grey-text">We are a team of UBC students working on this project like it's our full time job. </p>
 
 
-       
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3">Micasa</a>
-      </div>
-    </div>
-  </footer>
+
 
 
   <!--  Scripts-->
