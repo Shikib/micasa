@@ -4,7 +4,7 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
         <li><a href="">!Serach</a></li>
