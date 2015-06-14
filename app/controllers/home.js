@@ -20,6 +20,13 @@ router.get('/search', function (req, res, next) {
   });
 });
 
+
+router.get('/advanced_search', function (req, res, next) {
+  res.render('advanced_search', {
+    title: 'Micasa',
+  });
+});
+
 router.get('/searching', function(req, res, next) {
   var val = req.query.search;
   

@@ -20,3 +20,33 @@ $('#search-field').submit(function(ev) {
   });
 });
 
+var commercial;
+var for_rent;
+
+$('#filter-commercial').click(function() {
+  commercial = true;
+  $('#filter-commercial').hide();
+  $('#filter-residential').hide();
+  $('#filter-sale').show();
+  $('#filter-rent').show();
+});
+
+$('#filter-residential').click(function() {
+  commercial = false;
+  $('#filter-commercial').hide();
+  $('#filter-residential').hide();
+  $('#filter-sale').show();
+  $('#filter-rent').show();
+});
+
+$('#filter-rent').click(function() {
+  for_rent = true;
+  $('#filter-sale').hide();
+  $('#filter-rent').hide();
+});
+
+$('#filter-sale').click(function() {
+  for_rent = false;
+  $('#filter-sale').hide();
+  $('#filter-rent').hide();
+});
