@@ -2,27 +2,50 @@ var mysqlModule = require("../../mysqlModule");
 
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
-
-    conn.query("drop table Property_HasA_Location;" +
-                 "drop table Agency;" +
-                 "drop table Agent_Represents;" +
-                 "drop table Offer;" +
-                 "drop table Buyer;" +
-                 "drop table Seller;" +
-                 "drop table Accepts;" +
-                 "drop table PurchaseOffer_Makes;" +
-                 "drop table RentalOffer_Makes;" +
-                 "drop table Appointment_View;" +
-                 "drop table Approves;" +
-                 "drop table Rates;" +
-                 "drop table ForRent;" +
-                 "drop table ForSale;" +
-                 "drop table CommercialProperty_ForRent;" +
-                 "drop table CommercialProperty_ForSale;" +
-                 "drop table ResidentialProperty_ForRent;" +
-                 "drop table ResidentialProperty_ForSale;" +
-                 "drop table PostSale;" +
-                 "drop table InterestedIn;");
+/*
+    // clear all existing tuples 
+    conn.query("delete from Property_HasA_Location;");
+    conn.query("delete from Agency;");
+    conn.query("delete from Agent_Represents;");
+    conn.query("delete from Offer;");
+    conn.query("delete from Buyer;");
+    conn.query("delete from Seller;");
+    conn.query("delete from Accepts;");
+    conn.query("delete from PurchaseOffer_Makes;");
+    conn.query("delete from RentalOffer_Makes;");
+    conn.query("delete from Appointment_View;");
+    conn.query("delete from Approves;");
+    conn.query("delete from Rates;");
+    conn.query("delete from ForRent;");
+    conn.query("delete from ForSale;");
+    conn.query("delete from CommercialProperty_ForRent;");
+    conn.query("delete from CommercialProperty_ForSale;");
+    conn.query("delete from ResidentialProperty_ForRent;");
+    conn.query("delete from ResidentialProperty_ForSale;");
+    conn.query("delete from PostSale;");
+    conn.query("delete from InterestedIn;");
+*/
+    // drop all tables
+    conn.query("drop table Property_HasA_Location cascade constraints;" +
+                 "drop table Agency cascade constraints;" +
+                 "drop table Agent_Represents cascade constraints;" +
+                 "drop table Offer cascade constraints;" +
+                 "drop table Buyer cascade constraints;" +
+                 "drop table Seller cascade constraints;" +
+                 "drop table Accepts cascade constraints;" +
+                 "drop table PurchaseOffer_Makes cascade constraints;" +
+                 "drop table RentalOffer_Makes cascade constraints;" +
+                 "drop table Appointment_View cascade constraints;" +
+                 "drop table Approves cascade constraints;" +
+                 "drop table Rates cascade constraints;" +
+                 "drop table ForRent cascade constraints;" +
+                 "drop table ForSale cascade constraints;" +
+                 "drop table CommercialProperty_ForRent cascade constraints;" +
+                 "drop table CommercialProperty_ForSale cascade constraints;" +
+                 "drop table ResidentialProperty_ForRent cascade constraints;" +
+                 "drop table ResidentialProperty_ForSale cascade constraints;" +
+                 "drop table PostSale cascade constraints;" +
+                 "drop table InterestedIn cascade constraints;");
 
     conn.query("CREATE TABLE Property_HasA_Location (" +
                  "propertyID smallint PRIMARY KEY," +
@@ -173,10 +196,13 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
+<<<<<<< HEAD
 
 
     mysqlModule.query(conn, "SELECT * FROM Agency;");
 
 
+=======
+>>>>>>> feature/search
   });
 };

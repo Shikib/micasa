@@ -17,14 +17,13 @@ exports.getConnection = function(callback) {
   });
 };
 
-exports.query = function(conn, queryString, callback) {
+exports.query = function(conn, queryString, res) {
   conn.query(queryString, function (err, rows) {
     if (err) throw err;
-    
-    if (callback === undefined) { 
-      callback = console.log;
+    console.log(queryString);    
+    if (res === undefined) { 
+      return rows;
     }
-
-    callback(rows);     
+    res.send(rows);     
   });
 };

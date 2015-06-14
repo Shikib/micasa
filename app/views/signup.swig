@@ -15,17 +15,17 @@
 {% block content%}
 
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
-        <li><a href="">!Serach</a></li>
+        <li><a href="search">Serach</a></li>
       </ul>
     </div>
   </nav>
- <h2 class="center teal-text"> <i class="large mdi-social-location-city"></i><br></h2>
+  <br><center><img src="images/micasa.png" style = "width:400px;height:400x;"></center><br>
  <h4 class="header center orange-text">Sign Up</h4><br><br>
   <center>
 <p>  Page not working propely will fix please fill out the following infromation and we will email you a ID that you will use to log in with</p><br>
@@ -80,5 +80,6 @@
     <i class="mdi-content-send right"></i>
   </button>
 </center>
+
 
 {% endblock %}
