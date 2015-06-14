@@ -152,6 +152,25 @@
 
     <div class="row" id="commercial-sale" style="display: none;">
     <form class="col s12">
+      <div class="row">
+        <h5>Location </h5>
+        <div class="input-field col s6">
+          <input id="cs-city" type="text" class="validate">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="cs-province" type="text" class="validate">
+          <label for="province">Province</label>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="cs-country" type="text" class="validate">
+          <label for="country">Country</label>
+        </div>
+      </div>
+
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
@@ -251,6 +270,25 @@
    
     <div class="row" id="commercial-rent" style="display: none;">
     <form class="col s12">
+      <div class="row">
+        <h5>Location </h5>
+        <div class="input-field col s6">
+          <input id="cr-city" type="text" class="validate">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="cr-province" type="text" class="validate">
+          <label for="province">Province</label>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="cr-country" type="text" class="validate">
+          <label for="country">Country</label>
+        </div>
+      </div>
+
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
@@ -360,6 +398,26 @@
 
     <div class="row" id="residential-sale" style="display: none;">
     <form class="col s12">
+      <div class="row">
+        <h5>Location </h5>
+        <div class="input-field col s6">
+          <input id="rs-city" type="text" class="validate">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="rs-province" type="text" class="validate">
+          <label for="province">Province</label>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="rs-country" type="text" class="validate">
+          <label for="country">Country</label>
+        </div>
+      </div>
+
+
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
@@ -448,6 +506,25 @@
 
     <div class="row" id="residential-rent" style="display: none;">
     <form class="col s12">
+      <div class="row">
+        <h5>Location </h5>
+        <div class="input-field col s6">
+          <input id="rr-city" type="text" class="validate">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="rr-province" type="text" class="validate">
+          <label for="province">Province</label>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="rr-country" type="text" class="validate">
+          <label for="country">Country</label>
+        </div>
+      </div>
+
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
