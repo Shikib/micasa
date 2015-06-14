@@ -147,11 +147,9 @@ $('#rs-submit').click(function(ev) {
                     max_age:   $('#rs-max-age').val(),
                     min_space: $('#rs-min-space').val(),
                     max_space: $('#rs-max-space').val(),
-                    min_office: $('#rs-min-office').val(),
-                    max_office: $('#rs-max-office').val(),
-                    min_storage: $('#rs-min-storage').val(),
-                    max_storage: $('#rs-max-storage').val(),
-                    furnishing:  $('#rs-furnishing').val() };
+                    furnishing:  $('#rs-furnishing').val(),
+                    garage:      $('#rs-garage').val(),
+                    garden:      $('#rs-garden').vla() };
   $.get('/advanced_search_rs', parameters, function(data) {
     console.log(data);
     $('#residential-sale').hide();
@@ -184,11 +182,9 @@ $('#rr-submit').click(function(ev) {
                     max_age:   $('#rr-max-age').val(),
                     min_space: $('#rr-min-space').val(),
                     max_space: $('#rr-max-space').val(),
-                    min_office: $('#rr-min-office').val(),
-                    max_office: $('#rr-max-office').val(),
-                    min_storage: $('#rr-min-storage').val(),
-                    max_storage: $('#rr-max-storage').val(),
                     furnishing:  $('#rr-furnishing').val(), 
+                    garage:      $('#rr-garage').val(),
+                    garden:      $('#rr-garden').vla(), 
                     pets:        $('#rr-pets').val() };
   $.get('/advanced_search_rr', parameters, function(data) {
     console.log(data);

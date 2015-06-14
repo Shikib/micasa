@@ -142,6 +142,96 @@ router.get('/advanced_search_cs', function(req, res, next) {
   
 });
 
+
+router.get('/advanced_search_cr', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM CommercialProperty_ForRent c, ForRent r, Property_HasA_Location p " +
+                    "WHERE p.propertyID = c.propertyID AND r.propertyID = p.propertyID" +
+                    " AND r.rentPrice >= " + req.query.min_price + " AND r.rentPrice <= " + req.query.max_price +
+                    " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
+                    " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
+                    " AND c.offices >= " + req.query.min_office + " AND c.offices <= " + req.query.max_office + 
+                    " AND c.storage >= " + req.query.min_storage + " AND c.storage <= " + req.query.max_storage; 
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
+  }
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND r.petsAllowed = '" + req.query.pets + "'";
+  }
+
+  queryString += ";";
+ 
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  }); 
+  
+});
+
+router.get('/advanced_search_rs', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM ResidentialProperty_ForSale r, ForSale s, Property_HasA_Location p " +
+                    "WHERE p.propertyID = r.propertyID AND r.propertyID = s.propertyID" +
+                    " AND s.salePrice >= " + req.query.min_price + " AND s.salePrice <= " + req.query.max_price +
+                    " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
+                    " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space; 
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
+  }
+
+  if (req.query.garage != 'D') {
+    queryString += " AND r.hasGarage = '" + req.query.garage + "'";
+  }
+
+  if (req.query.garden != 'D') {
+    queryString += " AND r.hasGarden = '" + req.query.garden + "'";
+  }
+
+  queryString += ";";
+ 
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  }); 
+  
+});
+
+
+
+router.get('/advanced_search_rr', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM ResidentialProperty_ForRent f, ForRent r, Property_HasA_Location p " +
+                    "WHERE p.propertyID = f.propertyID AND r.propertyID = p.propertyID" +
+                    " AND r.rentPrice >= " + req.query.min_price + " AND r.rentPrice <= " + req.query.max_price +
+                    " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
+                    " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space; 
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
+  }
+
+  if (req.query.garage != 'D') {
+    queryString += " AND f.hasGarage = '" + req.query.garage + "'";
+  }
+
+  if (req.query.garden != 'D') {
+    queryString += " AND f.hasGarden = '" + req.query.garden + "'";
+  }
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND r.petsAllowed = '" + req.query.pets + "'";
+  }
+
+  queryString += ";";
+ 
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  }); 
+  
+});
+
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
