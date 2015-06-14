@@ -15,22 +15,21 @@
 {% block content %}
 <body>
  
- <nav>
-    <div class="nav-wrapper">
+<nav>
+    <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
-        <li><a href="">!Serach</a></li>
+        <li><a href="search">Serach</a></li>
       </ul>
     </div>
   </nav>
         
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-       <h2 class="center teal-text"> <i class="large mdi-social-location-city"></i><br></h2>
+      <br><br><center><img src="images/micasa.png" style = "width:400px;height:400x;"></a></center>
       <h1 class="header center orange-text">Welcome to Micasa</h1>
       <div class="row center">
 

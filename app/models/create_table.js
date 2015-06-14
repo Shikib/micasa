@@ -107,8 +107,7 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
-                 "FOREIGN KEY (offerID) references Offer(offerID))");
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +
@@ -152,7 +151,7 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
     conn.query("CREATE TABLE ForSale (" +
-                 "salePrice int not null," + 
+                 "salePrice smallint not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
@@ -196,7 +195,6 @@ exports.initialize_tables = function() {
                  "message varchar(200)," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
-
 
   });
 };
