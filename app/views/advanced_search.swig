@@ -137,6 +137,10 @@
         </select>
       </div>
 
+      <button id="cs-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="mdi-content-send right"></i>
+      </button>
+
     </form>
   </div> 
 
@@ -243,7 +247,9 @@
         </select>
       </div>
 
-
+      <button id="cr-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="mdi-content-send right"></i>
+      </button>
     </form>
   </div> 
 
@@ -329,6 +335,9 @@
         </select>
       </div>
 
+      <button id="rs-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="mdi-content-send right"></i>
+      </button>
     </form>
   </div> 
 
@@ -424,6 +433,10 @@
           <option value="N">No. I hate pets.</option>
         </select>
       </div>
+
+      <button id="rr-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="mdi-content-send right"></i>
+      </button>
     </form>
   </div> 
 
