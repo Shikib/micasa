@@ -99,3 +99,120 @@ $('#cs-submit').click(function(ev) {
     }
   });
 });
+
+
+$('#cr-submit').click(function(ev) {
+  ev.preventDefault();
+  var parameters = {min_price: $('#cr-min-price').val(),
+                    max_price: $('#cr-max-price').val(),
+                    min_age:   $('#cr-min-age').val(),
+                    max_age:   $('#cr-max-age').val(),
+                    min_space: $('#cr-min-space').val(),
+                    max_space: $('#cr-max-space').val(),
+                    min_office: $('#cr-min-office').val(),
+                    max_office: $('#cr-max-office').val(),
+                    min_storage: $('#cr-min-storage').val(),
+                    max_storage: $('#cr-max-storage').val(),
+                    furnishing:  $('#cr-furnishing').val(), 
+                    pets:        $('#cr-pets').val() };
+  $.get('/advanced_search_cr', parameters, function(data) {
+    console.log(data);
+    $('#commercial-rent').hide();
+    $('#results-table-cr').show();
+    $("#adv-results-cr > tbody").html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].rentPrice + "</td>";
+      rowString += "<td>" + data[i].aptNumber + "</td>";
+      rowString += "<td>" + data[i].houseNumber + "</td>";
+      rowString += "<td>" + data[i].street + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].age + "</td>";
+      rowString += "<td>" + data[i].area + "</td>";
+      rowString += "<td>" + data[i].offices + "</td>";
+      rowString += "<td>" + data[i].storage + "</td>";
+      rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "<td>" + data[i].petsAllowed + "</td>";
+      $("#adv-results-cr > tbody").append(rowString);
+    }
+  });
+});
+
+
+$('#rs-submit').click(function(ev) {
+  ev.preventDefault();
+  var parameters = {min_price: $('#rs-min-price').val(),
+                    max_price: $('#rs-max-price').val(),
+                    min_age:   $('#rs-min-age').val(),
+                    max_age:   $('#rs-max-age').val(),
+                    min_space: $('#rs-min-space').val(),
+                    max_space: $('#rs-max-space').val(),
+                    min_office: $('#rs-min-office').val(),
+                    max_office: $('#rs-max-office').val(),
+                    min_storage: $('#rs-min-storage').val(),
+                    max_storage: $('#rs-max-storage').val(),
+                    furnishing:  $('#rs-furnishing').val() };
+  $.get('/advanced_search_rs', parameters, function(data) {
+    console.log(data);
+    $('#residential-sale').hide();
+    $('#results-table-rs').show();
+    $("#adv-results-rs > tbody").html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].salePrice + "</td>";
+      rowString += "<td>" + data[i].aptNumber + "</td>";
+      rowString += "<td>" + data[i].houseNumber + "</td>";
+      rowString += "<td>" + data[i].street + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].age + "</td>";
+      rowString += "<td>" + data[i].area + "</td>";
+      rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "<td>" + data[i].hasGarage + "</td>";
+      rowString += "<td>" + data[i].hasGarden + "</td>";
+      $("#adv-results-rs > tbody").append(rowString);
+    }
+  });
+});
+
+
+
+$('#rr-submit').click(function(ev) {
+  ev.preventDefault();
+  var parameters = {min_price: $('#rr-min-price').val(),
+                    max_price: $('#rr-max-price').val(),
+                    min_age:   $('#rr-min-age').val(),
+                    max_age:   $('#rr-max-age').val(),
+                    min_space: $('#rr-min-space').val(),
+                    max_space: $('#rr-max-space').val(),
+                    min_office: $('#rr-min-office').val(),
+                    max_office: $('#rr-max-office').val(),
+                    min_storage: $('#rr-min-storage').val(),
+                    max_storage: $('#rr-max-storage').val(),
+                    furnishing:  $('#rr-furnishing').val(), 
+                    pets:        $('#rr-pets').val() };
+  $.get('/advanced_search_rr', parameters, function(data) {
+    console.log(data);
+    $('#residential-rent').hide();
+    $('#results-table-rr').show();
+    $("#adv-results-rr > tbody").html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].rentPrice + "</td>";
+      rowString += "<td>" + data[i].aptNumber + "</td>";
+      rowString += "<td>" + data[i].houseNumber + "</td>";
+      rowString += "<td>" + data[i].street + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].age + "</td>";
+      rowString += "<td>" + data[i].area + "</td>";
+      rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "<td>" + data[i].hasGarage + "</td>";
+      rowString += "<td>" + data[i].hasGarden + "</td>";
+      rowString += "<td>" + data[i].petsAllowed + "</td>";
+      $("#adv-results-cr > tbody").append(rowString);
+    }
+  });
+});
+
+
+
