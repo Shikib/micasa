@@ -67,7 +67,10 @@ $('#filter-sale').click(function() {
 
 $('#cs-submit').click(function(ev) {
   ev.preventDefault();
-  var parameters = {min_price: $('#cs-min-price').val(),
+  var parameters = {city:      $('#cs-city').val(),
+                    province:  $('#cs-province').val(),
+                    country:   $('#cs-country').val(),
+                    min_price: $('#cs-min-price').val(),
                     max_price: $('#cs-max-price').val(),
                     min_age:   $('#cs-min-age').val(),
                     max_age:   $('#cs-max-age').val(),
@@ -103,7 +106,10 @@ $('#cs-submit').click(function(ev) {
 
 $('#cr-submit').click(function(ev) {
   ev.preventDefault();
-  var parameters = {min_price: $('#cr-min-price').val(),
+  var parameters = {city:      $('#cr-city').val(),
+                    province:  $('#cr-province').val(),
+                    country:   $('#cr-country').val(),
+                    min_price: $('#cr-min-price').val(),
                     max_price: $('#cr-max-price').val(),
                     min_age:   $('#cr-min-age').val(),
                     max_age:   $('#cr-max-age').val(),
@@ -141,7 +147,10 @@ $('#cr-submit').click(function(ev) {
 
 $('#rs-submit').click(function(ev) {
   ev.preventDefault();
-  var parameters = {min_price: $('#rs-min-price').val(),
+  var parameters = {city:      $('#rs-city').val(),
+                    province:  $('#rs-province').val(),
+                    country:   $('#rs-country').val(),
+                    min_price: $('#rs-min-price').val(),
                     max_price: $('#rs-max-price').val(),
                     min_age:   $('#rs-min-age').val(),
                     max_age:   $('#rs-max-age').val(),
@@ -176,7 +185,10 @@ $('#rs-submit').click(function(ev) {
 
 $('#rr-submit').click(function(ev) {
   ev.preventDefault();
-  var parameters = {min_price: $('#rr-min-price').val(),
+  var parameters = {city:      $('#rr-city').val(),
+                    province:  $('#rr-province').val(),
+                    country:   $('#rr-country').val(),
+                    min_price: $('#rr-min-price').val(),
                     max_price: $('#rr-max-price').val(),
                     min_age:   $('#rr-min-age').val(),
                     max_age:   $('#rr-max-age').val(),
