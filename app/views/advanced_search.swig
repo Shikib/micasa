@@ -46,6 +46,35 @@
       <a id="filter-sale" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud left"></i>For Sale</a>
       <a id="filter-rent" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud right"></i>For Rent</a>
 
+
+      <div id='results-table-cs' class="section" style="display: none;">
+
+        <table id="adv-results-cs" class="bordered striped hoverable responsive-table">
+          <thead>
+            <tr>
+              <th data-field="price">Price (Thousands)</th>
+              <th data-field="aptNumber">Apartment Number</th>
+              <th data-field="houseNumber">Building Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="offices">Office Count</th>
+              <th data-field="storage">Storage Space (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
+
+
+
+
+
     <div class="row" id="commercial-sale" style="display: none;">
     <form class="col s12">
       <div class="row"> 

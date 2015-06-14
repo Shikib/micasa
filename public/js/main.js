@@ -67,30 +67,35 @@ $('#filter-sale').click(function() {
 
 $('#cs-submit').click(function(ev) {
   ev.preventDefault();
-  var parameters = {min-price: $('#cs-min-price').val(),
-                    max-price: $('#cs-max-price').val(),
-                    min-age:   $('#cs-min-age').val(),
-                    max-age:   $('#cs-max-age').val(),
-                    min-space: $('#cs-min-space').val(),
-                    max-space: $('#cs-max-space').val(),
-                    min-office: $('#cs-min-office').val(),
-                    max-office: $('#cs-max-office').val(),
-                    min-storage: $('#cs-min-storage').val(),
-                    max-storage: $('#cs-max-storage').val(),
+  var parameters = {min_price: $('#cs-min-price').val(),
+                    max_price: $('#cs-max-price').val(),
+                    min_age:   $('#cs-min-age').val(),
+                    max_age:   $('#cs-max-age').val(),
+                    min_space: $('#cs-min-space').val(),
+                    max_space: $('#cs-max-space').val(),
+                    min_office: $('#cs-min-office').val(),
+                    max_office: $('#cs-max-office').val(),
+                    min_storage: $('#cs-min-storage').val(),
+                    max_storage: $('#cs-max-storage').val(),
                     furnishing:  $('#cs-furnishing').val() };
   $.get('/advanced_search_cs', parameters, function(data) {
     console.log(data);
-    $("#results > tbody").html("");
+    $('#commercial-sale').hide();
+    $('#results-table-cs').show();
+    $("#adv-results-cs > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
+      rowString += "<td>" + data[i].salePrice + "</td>";
       rowString += "<td>" + data[i].aptNumber + "</td>";
       rowString += "<td>" + data[i].houseNumber + "</td>";
       rowString += "<td>" + data[i].street + "</td>";
       rowString += "<td>" + data[i].city + "</td>";
       rowString += "<td>" + data[i].age + "</td>";
       rowString += "<td>" + data[i].area + "</td>";
+      rowString += "<td>" + data[i].offices + "</td>";
+      rowString += "<td>" + data[i].storage + "</td>";
       rowString += "<td>" + data[i].isFurnished + "</td>";
-      $("#results > tbody").append(rowString);
+      $("#adv-results-cs > tbody").append(rowString);
     }
   });
 });
