@@ -196,13 +196,5 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
-<<<<<<< HEAD
-
-
-    mysqlModule.query(conn, "SELECT * FROM Agency;");
-
-
-=======
->>>>>>> feature/search
   });
 };
