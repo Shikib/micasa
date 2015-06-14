@@ -124,6 +124,8 @@ router.get('/advanced_search_cs', function(req, res, next) {
   var queryString = "SELECT * " +
                     "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
                     "WHERE p.propertyID = c.propertyID AND s.propertyID = p.propertyID" +
+                    " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
+                    "' AND p.country = '" + req.query.country + "'" +
                     " AND s.salePrice >= " + req.query.min_price + " AND s.salePrice <= " + req.query.max_price +
                     " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
@@ -147,6 +149,8 @@ router.get('/advanced_search_cr', function(req, res, next) {
   var queryString = "SELECT * " +
                     "FROM CommercialProperty_ForRent c, ForRent r, Property_HasA_Location p " +
                     "WHERE p.propertyID = c.propertyID AND r.propertyID = p.propertyID" +
+                    " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
+                    "' AND p.country = '" + req.query.country + "'" +
                     " AND r.rentPrice >= " + req.query.min_price + " AND r.rentPrice <= " + req.query.max_price +
                     " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
@@ -173,6 +177,8 @@ router.get('/advanced_search_rs', function(req, res, next) {
   var queryString = "SELECT * " +
                     "FROM ResidentialProperty_ForSale r, ForSale s, Property_HasA_Location p " +
                     "WHERE p.propertyID = r.propertyID AND r.propertyID = s.propertyID" +
+                    " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
+                    "' AND p.country = '" + req.query.country + "'" +
                     " AND s.salePrice >= " + req.query.min_price + " AND s.salePrice <= " + req.query.max_price +
                     " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space; 
@@ -203,6 +209,8 @@ router.get('/advanced_search_rr', function(req, res, next) {
   var queryString = "SELECT * " +
                     "FROM ResidentialProperty_ForRent f, ForRent r, Property_HasA_Location p " +
                     "WHERE p.propertyID = f.propertyID AND r.propertyID = p.propertyID" +
+                    " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
+                    "' AND p.country = '" + req.query.country + "'" +
                     " AND r.rentPrice >= " + req.query.min_price + " AND r.rentPrice <= " + req.query.max_price +
                     " AND p.age >= " + req.query.min_age + " AND p.age <= " + req.query.max_age +
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space; 
