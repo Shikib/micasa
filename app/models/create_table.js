@@ -2,7 +2,7 @@ var mysqlModule = require("../../mysqlModule");
 
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
-
+/*
     // clear all existing tuples 
     conn.query("delete from Property_HasA_Location;");
     conn.query("delete from Agency;");
@@ -24,7 +24,7 @@ exports.initialize_tables = function() {
     conn.query("delete from ResidentialProperty_ForSale;");
     conn.query("delete from PostSale;");
     conn.query("delete from InterestedIn;");
-
+*/
     // drop all tables
     conn.query("drop table Property_HasA_Location cascade constraints;" +
                  "drop table Agency cascade constraints;" +

@@ -2,8 +2,8 @@
 var express = require('express'),
   config = require('./config/config'),
   db = require('./app/models');
-  create_tables = require('./app/models/create_table.js'); 
-  populate_tables = require('./app/models/populate_tables.js'); 
+var create_tables = require('./app/models/create_table.js'); 
+var populate_tables = require('./app/models/populate_tables.js'); 
 var app = express();
 
 require('./config/express')(app, config);
