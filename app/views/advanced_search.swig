@@ -46,7 +46,101 @@
       <a id="filter-sale" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud left"></i>For Sale</a>
       <a id="filter-rent" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud right"></i>For Rent</a>
 
+    <div class="row" id="commercial-sale" style="display: none;">
+    <form class="col s12">
+      <div class="row"> 
+        <h5>Minimum Price (Thousands)</h5>
+        <p class="range-field">
+          <input type="range" id="min-price" min="0" max="10000" />
+        </p>
+      </div>
 
+      <div class="row"> 
+        <h5>Maximum Price (Thousands)</h5>
+        <p class="range-field">
+          <input type="range" id="max-price" min="0" max="10000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Property Age</h5>
+        <p class="range-field">
+          <input type="range" id="min-age" min="0" max="100" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Property Age</h5>
+        <p class="range-field">
+          <input type="range" id="max-age" min="0" max="100" />
+        </p>
+      </div>
+   
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Floor Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="min-space" min="0" max="10000" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Floor Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="max-space" min="0" max="10000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Office Count</h5>
+        <p class="range-field">
+          <input type="range" id="min-office" min="0" max="1000" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Office Count</h5>
+        <p class="range-field">
+          <input type="range" id="max-office" min="0" max="1000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Storage Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="min-storage" min="0" max="1000" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Storage Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="max-storage" min="0" max="1000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <h5>Furnishing Required</h5>  
+        <select>
+          <option value="D">Doesn't Matter</option>
+          <option value="Y">Yes it must be furnished</option>
+          <option value="N">No I hate furniture</option>
+        </select>
+      </div>
+
+    </form>
+  </div> 
+
+   
 
     </div>
     <br><br>
