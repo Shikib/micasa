@@ -47,10 +47,19 @@ $('#filter-rent').click(function() {
   for_rent = true;
   $('#filter-sale').hide();
   $('#filter-rent').hide();
+  if (commercial)
+    $('#commercial-rent').show();
+  else
+    $('#residential-rent').show();
+   
 });
 
 $('#filter-sale').click(function() {
   for_rent = false;
   $('#filter-sale').hide();
   $('#filter-rent').hide();
+  if (commercial)
+    $('#commercial-sale').show();
+  else
+    $('#residential-sale').show();
 });
