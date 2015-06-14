@@ -68,14 +68,25 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
+
 router.get('/buyer', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('buyer', {
       title: 'buyer',
-//      articles: articles
     });
-//  });
-});
+
+    var bp = "6042223333"; 
+    var bn = "Markus Lemonis";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
+                              "' AND  p.propertyID = o.propertyID;",
+                       res);
+
+    }); 
+   });
 router.get('/agent', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('agent', {
