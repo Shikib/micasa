@@ -69,7 +69,7 @@ exports.initialize_tables = function() {
                  "agentID smallint PRIMARY KEY," +
                  "agentName varchar(20)," +
                  "agentPhone char(10)," +
-                 "agentEmail varchar(25)," +
+                 "agentEmail varchar(15)," +
                  "agencyID smallint," +
                  "agentRating integer," +
                  "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID))");                  
@@ -80,13 +80,13 @@ exports.initialize_tables = function() {
                  "offerDate date)");
 
     conn.query("CREATE TABLE Buyer (" +
-                 "buyerEmail varchar(25)," +
+                 "buyerEmail varchar(15)," +
                  "buyerPhone char(10) not NULL," +
                  "buyerName varchar(20) not NULL," +
                  "PRIMARY KEY (buyerPhone, buyerName))");
 
     conn.query("CREATE TABLE Seller (" +
-                 "sellerEmail varchar(25)," +
+                 "sellerEmail varchar(15)," +
                  "sellerPhone char(10) not NULL," +
                  "sellerName varchar(20) not NULL," +
                  "PRIMARY KEY (sellerPhone, sellerName))");
