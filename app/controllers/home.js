@@ -70,9 +70,6 @@ router.get('/searching', function(req, res, next) {
 
 
 router.get('/buyer', function (req, res, next) {
-    res.render('buyer', {
-      title: 'buyer',
-    });
 
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
@@ -86,6 +83,9 @@ router.get('/buyer', function (req, res, next) {
                        res);
 
     }); 
+      res.render('buyer', {
+      title: 'buyer',
+    });
    });
 router.get('/agent', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
