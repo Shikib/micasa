@@ -73,7 +73,82 @@
 
 
 
+      <div id='results-table-cr' class="section" style="display: none;">
 
+        <table id="adv-results-cr" class="bordered striped hoverable responsive-table">
+          <thead>
+            <tr>
+              <th data-field="price">Monthly Rent</th>
+              <th data-field="aptNumber">Apartment Number</th>
+              <th data-field="houseNumber">Building Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="offices">Office Count</th>
+              <th data-field="storage">Storage Space (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="petsAllowed">Pets Allowed?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
+
+
+
+      <div id='results-table-rs' class="section" style="display: none;">
+
+        <table id="adv-results-rs" class="bordered striped hoverable responsive-table">
+          <thead>
+            <tr>
+              <th data-field="price">Price (Thousands)</th>
+              <th data-field="aptNumber">Apartment Number</th>
+              <th data-field="houseNumber">Building Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="hasGarage">Has Garage?</th>
+              <th data-field="hasGarden">Has Garden?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
+
+
+      <div id='results-table-rr' class="section" style="display: none;">
+
+        <table id="adv-results-rr" class="bordered striped hoverable responsive-table">
+          <thead>
+            <tr>
+              <th data-field="price">Monthly Rent</th>
+              <th data-field="aptNumber">Apartment Number</th>
+              <th data-field="houseNumber">Building Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="hasGarage">Has Garage?</th>
+              <th data-field="hasGarden">Has Garden?</th>
+              <th data-field="petsAllowed">Pets Allowed?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
 
     <div class="row" id="commercial-sale" style="display: none;">
     <form class="col s12">
