@@ -155,14 +155,14 @@
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="cs-min-price" min="0" max="10000" />
+          <input type="range" id="cs-min-price" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="cs-max-price" min="0" max="10000" />
+          <input type="range" id="cs-max-price" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -171,14 +171,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="cs-min-age" min="0" max="100" />
+          <input type="range" id="cs-min-age" value="0" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="cs-max-age" min="0" max="100" />
+          <input type="range" id="cs-max-age" value="100" min="0" max="100" />
         </p>
       </div>
    
@@ -187,14 +187,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cs-min-space" min="0" max="10000" />
+          <input type="range" id="cs-min-space" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cs-max-space" min="0" max="10000" />
+          <input type="range" id="cs-max-space" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -203,14 +203,14 @@
       <div class="row"> 
         <h5>Minimum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="cs-min-office" min="0" max="1000" />
+          <input type="range" id="cs-min-office" value="0" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="cs-max-office" min="0" max="1000" />
+          <input type="range" id="cs-max-office" value="1000" min="0" max="1000" />
         </p>
       </div>
 
@@ -219,14 +219,14 @@
       <div class="row"> 
         <h5>Minimum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cs-min-storage" min="0" max="1000" />
+          <input type="range" id="cs-min-storage" value="0" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cs-max-storage" min="0" max="1000" />
+          <input type="range" id="cs-max-storage" value="1000" min="0" max="1000" />
         </p>
       </div>
 
@@ -254,14 +254,14 @@
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="cr-min-price" min="0" max="10000" />
+          <input type="range" id="cr-min-price" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="cr-max-price" min="0" max="10000" />
+          <input type="range" id="cr-max-price" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -270,14 +270,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="cr-min-age" min="0" max="100" />
+          <input type="range" id="cr-min-age" value="0" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="cr-max-age" min="0" max="100" />
+          <input type="range" id="cr-max-age" value="100" min="0" max="100" />
         </p>
       </div>
    
@@ -286,14 +286,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cr-min-space" min="0" max="10000" />
+          <input type="range" id="cr-min-space" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cr-max-space" min="0" max="10000" />
+          <input type="range" id="cr-max-space" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -302,14 +302,14 @@
       <div class="row"> 
         <h5>Minimum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="cr-min-office" min="0" max="1000" />
+          <input type="range" id="cr-min-office" value="0" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="cr-max-office" min="0" max="1000" />
+          <input type="range" id="cr-max-office" value="1000" min="0" max="1000" />
         </p>
       </div>
 
@@ -318,14 +318,14 @@
       <div class="row"> 
         <h5>Minimum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cr-min-storage" min="0" max="1000" />
+          <input type="range" id="cr-min-storage" value="0" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="cr-max-storage" min="0" max="1000" />
+          <input type="range" id="cr-max-storage" value="1000" min="0" max="1000" />
         </p>
       </div>
 
@@ -363,14 +363,14 @@
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="rs-min-price" min="0" max="10000" />
+          <input type="range" id="rs-min-price" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="rs-max-price" min="0" max="10000" />
+          <input type="range" id="rs-max-price" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -379,14 +379,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="rs-min-age" min="0" max="100" />
+          <input type="range" id="rs-min-age" value="0" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="rs-max-age" min="0" max="100" />
+          <input type="range" id="rs-max-age" value="100" min="0" max="100" />
         </p>
       </div>
    
@@ -395,14 +395,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="rs-min-space" min="0" max="10000" />
+          <input type="range" id="rs-min-space" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="rs-max-space" min="0" max="10000" />
+          <input type="range" id="rs-max-space" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -451,14 +451,14 @@
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="rr-min-price" min="0" max="10000" />
+          <input type="range" id="rr-min-price" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="rr-max-price" min="0" max="10000" />
+          <input type="range" id="rr-max-price" value="10000" min="0" max="10000" />
         </p>
       </div>
 
@@ -467,14 +467,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="rr-min-age" min="0" max="100" />
+          <input type="range" id="rr-min-age" value="0" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="rr-max-age" min="0" max="100" />
+          <input type="range" id="rr-max-age" value="100" min="0" max="100" />
         </p>
       </div>
    
@@ -483,14 +483,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="rr-min-space" min="0" max="10000" />
+          <input type="range" id="rr-min-space" value="0" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="rr-max-space" min="0" max="10000" />
+          <input type="range" id="rr-max-space" value="10000" min="0" max="10000" />
         </p>
       </div>
 
