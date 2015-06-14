@@ -149,7 +149,7 @@ $('#rs-submit').click(function(ev) {
                     max_space: $('#rs-max-space').val(),
                     furnishing:  $('#rs-furnishing').val(),
                     garage:      $('#rs-garage').val(),
-                    garden:      $('#rs-garden').vla() };
+                    garden:      $('#rs-garden').val() };
   $.get('/advanced_search_rs', parameters, function(data) {
     console.log(data);
     $('#residential-sale').hide();
@@ -184,7 +184,7 @@ $('#rr-submit').click(function(ev) {
                     max_space: $('#rr-max-space').val(),
                     furnishing:  $('#rr-furnishing').val(), 
                     garage:      $('#rr-garage').val(),
-                    garden:      $('#rr-garden').vla(), 
+                    garden:      $('#rr-garden').val(), 
                     pets:        $('#rr-pets').val() };
   $.get('/advanced_search_rr', parameters, function(data) {
     console.log(data);
