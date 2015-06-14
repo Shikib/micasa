@@ -7,83 +7,77 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('index', {
       title: 'Micasa',
-//      articles: articles
     });
-//  });
 });
 
 router.get('/buyer', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('buyer', {
       title: 'buyer',
-//      articles: articles
     });
-//  });
 });
+
 router.get('/agent', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent', {
       title: 'agent',
-//      articles: articles
     });
-//  });
-});
-
-router.get('/seller', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('seller', {
-      title: 'seller',
-//      articles: articles
-    });
-//  });
-});
-
-router.get('/login', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('login', {
-      title: 'login',
-//      articles: articles
-    });
-//  });
-});
-
-router.get('/signup', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('signup', {
-      title: 'signup',
-//      articles: articles
-    });
-//  });
 });
 
 router.get('/agent_offers', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_offers', {
       title: 'agent_offers',
-//      articles: articles
     });
-//  });
 });
 
 router.get('/agent_interest', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_interest', {
       title: 'agent_interest',
-//      articles: articles
     });
-//  });
+});
+
+router.get('/agent_interest_get', function (req, res, next) {
+/*    
+    var aID = "1123";
+    
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM InterestedIn i, PostSale p " +
+                              "WHERE i.propertyID=p.propertyID AND p.agentID = " + aID + ";",
+                        res);
+    });
+*/
+
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM InterestedIn i, PostSale p " +
+                              "WHERE i.propertyID=p.propertyID;",
+                        res);
+    });
 });
 
 router.get('/agent_appointments', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_appointments', {
       title: 'agent_appointments',
-//      articles: articles
     });
-//  });
+});
+
+router.get('/seller', function (req, res, next) {
+    res.render('seller', {
+      title: 'seller',
+    });
+});
+
+router.get('/login', function (req, res, next) {
+    res.render('login', {
+      title: 'login',
+    });
+});
+
+router.get('/signup', function (req, res, next) {
+    res.render('signup', {
+      title: 'signup',
+    });
 });
 
 function test(){
