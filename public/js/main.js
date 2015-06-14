@@ -201,7 +201,6 @@ $('#rr-submit').click(function(ev) {
       rowString += "<td>" + data[i].age + "</td>";
       rowString += "<td>" + data[i].area + "</td>";
       rowString += "<td>" + data[i].isFurnished + "</td>";
-      rowString += "<td>" + data[i].isFurnished + "</td>";
       rowString += "<td>" + data[i].hasGarage + "</td>";
       rowString += "<td>" + data[i].hasGarden + "</td>";
       rowString += "<td>" + data[i].petsAllowed + "</td>";
