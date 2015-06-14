@@ -333,6 +333,99 @@
   </div> 
 
 
+    <div class="row" id="residential-rent" style="display: none;">
+    <form class="col s12">
+      <div class="row"> 
+        <h5>Minimum Monthly Rent</h5>
+        <p class="range-field">
+          <input type="range" id="min-price" min="0" max="10000" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Monthly Rent</h5>
+        <p class="range-field">
+          <input type="range" id="max-price" min="0" max="10000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Property Age</h5>
+        <p class="range-field">
+          <input type="range" id="min-age" min="0" max="100" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Property Age</h5>
+        <p class="range-field">
+          <input type="range" id="max-age" min="0" max="100" />
+        </p>
+      </div>
+   
+      <br><br>
+
+      <div class="row"> 
+        <h5>Minimum Floor Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="min-space" min="0" max="10000" />
+        </p>
+      </div>
+
+      <div class="row"> 
+        <h5>Maximum Floor Space (sq. metres)</h5>
+        <p class="range-field">
+          <input type="range" id="max-space" min="0" max="10000" />
+        </p>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <h5>Furnishing Required</h5>  
+        <select>
+          <option value="D">Doesn't Matter</option>
+          <option value="Y">Yes it must be furnished</option>
+          <option value="N">No I hate furniture</option>
+        </select>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <h5>Garage Required</h5>  
+        <select>
+          <option value="D">Doesn't Matter</option>
+          <option value="Y">Yes I need a garage</option>
+          <option value="N">No I hate cars</option>
+        </select>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <h5>Garden required</h5>  
+        <select>
+          <option value="D">Doesn't Matter</option>
+          <option value="Y">Yes. Gardening is my favourite pastime</option>
+          <option value="N">No I hate nature</option>
+        </select>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <h5>Pets Must Be Allowed</h5>  
+        <select>
+          <option value="D">Doesn't Matter</option>
+          <option value="Y">Yes. Pets are a necessity.</option>
+          <option value="N">No. I hate pets.</option>
+        </select>
+      </div>
+    </form>
+  </div> 
 
     </div>
 
