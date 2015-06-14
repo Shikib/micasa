@@ -51,14 +51,14 @@
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="min-price" min="0" max="10000" />
+          <input type="range" id="cs-min-price" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="max-price" min="0" max="10000" />
+          <input type="range" id="cs-max-price" min="0" max="10000" />
         </p>
       </div>
 
@@ -67,14 +67,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="min-age" min="0" max="100" />
+          <input type="range" id="cs-min-age" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="max-age" min="0" max="100" />
+          <input type="range" id="cs-max-age" min="0" max="100" />
         </p>
       </div>
    
@@ -83,14 +83,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-space" min="0" max="10000" />
+          <input type="range" id="cs-min-space" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-space" min="0" max="10000" />
+          <input type="range" id="cs-max-space" min="0" max="10000" />
         </p>
       </div>
 
@@ -99,14 +99,14 @@
       <div class="row"> 
         <h5>Minimum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="min-office" min="0" max="1000" />
+          <input type="range" id="cs-min-office" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="max-office" min="0" max="1000" />
+          <input type="range" id="cs-max-office" min="0" max="1000" />
         </p>
       </div>
 
@@ -115,14 +115,14 @@
       <div class="row"> 
         <h5>Minimum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-storage" min="0" max="1000" />
+          <input type="range" id="cs-min-storage" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-storage" min="0" max="1000" />
+          <input type="range" id="cs-max-storage" min="0" max="1000" />
         </p>
       </div>
 
@@ -130,7 +130,7 @@
 
       <div class="row">
         <h5>Furnishing Required</h5>  
-        <select>
+        <select id="cs-furnishing">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes it must be furnished</option>
           <option value="N">No I hate furniture</option>
@@ -146,14 +146,14 @@
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="min-price" min="0" max="10000" />
+          <input type="range" id="cr-min-price" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="max-price" min="0" max="10000" />
+          <input type="range" id="cr-max-price" min="0" max="10000" />
         </p>
       </div>
 
@@ -162,14 +162,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="min-age" min="0" max="100" />
+          <input type="range" id="cr-min-age" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="max-age" min="0" max="100" />
+          <input type="range" id="cr-max-age" min="0" max="100" />
         </p>
       </div>
    
@@ -178,14 +178,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-space" min="0" max="10000" />
+          <input type="range" id="cr-min-space" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-space" min="0" max="10000" />
+          <input type="range" id="cr-max-space" min="0" max="10000" />
         </p>
       </div>
 
@@ -194,14 +194,14 @@
       <div class="row"> 
         <h5>Minimum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="min-office" min="0" max="1000" />
+          <input type="range" id="cr-min-office" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Office Count</h5>
         <p class="range-field">
-          <input type="range" id="max-office" min="0" max="1000" />
+          <input type="range" id="cr-max-office" min="0" max="1000" />
         </p>
       </div>
 
@@ -210,14 +210,14 @@
       <div class="row"> 
         <h5>Minimum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-storage" min="0" max="1000" />
+          <input type="range" id="cr-min-storage" min="0" max="1000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Storage Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-storage" min="0" max="1000" />
+          <input type="range" id="cr-max-storage" min="0" max="1000" />
         </p>
       </div>
 
@@ -225,7 +225,7 @@
 
       <div class="row">
         <h5>Furnishing Required</h5>  
-        <select>
+        <select id="cr-furnishing">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes it must be furnished</option>
           <option value="N">No I hate furniture</option>
@@ -236,7 +236,7 @@
 
       <div class="row">
         <h5>Pets Must Be Allowed</h5>  
-        <select>
+        <select id="cr-pets">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes. Pets are a necessity.</option>
           <option value="N">No. I hate pets.</option>
@@ -253,14 +253,14 @@
       <div class="row"> 
         <h5>Minimum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="min-price" min="0" max="10000" />
+          <input type="range" id="rs-min-price" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Price (Thousands)</h5>
         <p class="range-field">
-          <input type="range" id="max-price" min="0" max="10000" />
+          <input type="range" id="rs-max-price" min="0" max="10000" />
         </p>
       </div>
 
@@ -269,14 +269,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="min-age" min="0" max="100" />
+          <input type="range" id="rs-min-age" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="max-age" min="0" max="100" />
+          <input type="range" id="rs-max-age" min="0" max="100" />
         </p>
       </div>
    
@@ -285,14 +285,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-space" min="0" max="10000" />
+          <input type="range" id="rs-min-space" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-space" min="0" max="10000" />
+          <input type="range" id="rs-max-space" min="0" max="10000" />
         </p>
       </div>
 
@@ -300,7 +300,7 @@
 
       <div class="row">
         <h5>Furnishing Required</h5>  
-        <select>
+        <select id="rs-furnishing">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes it must be furnished</option>
           <option value="N">No I hate furniture</option>
@@ -311,7 +311,7 @@
 
       <div class="row">
         <h5>Garage Required</h5>  
-        <select>
+        <select id="rs-garage">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes I need a garage</option>
           <option value="N">No I hate cars</option>
@@ -322,7 +322,7 @@
 
       <div class="row">
         <h5>Garden required</h5>  
-        <select>
+        <select id="rs-garden">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes. Gardening is my favourite pastime</option>
           <option value="N">No I hate nature</option>
@@ -338,14 +338,14 @@
       <div class="row"> 
         <h5>Minimum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="min-price" min="0" max="10000" />
+          <input type="range" id="rr-min-price" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Monthly Rent</h5>
         <p class="range-field">
-          <input type="range" id="max-price" min="0" max="10000" />
+          <input type="range" id="rr-max-price" min="0" max="10000" />
         </p>
       </div>
 
@@ -354,14 +354,14 @@
       <div class="row"> 
         <h5>Minimum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="min-age" min="0" max="100" />
+          <input type="range" id="rr-min-age" min="0" max="100" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Property Age</h5>
         <p class="range-field">
-          <input type="range" id="max-age" min="0" max="100" />
+          <input type="range" id="rr-max-age" min="0" max="100" />
         </p>
       </div>
    
@@ -370,14 +370,14 @@
       <div class="row"> 
         <h5>Minimum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="min-space" min="0" max="10000" />
+          <input type="range" id="rr-min-space" min="0" max="10000" />
         </p>
       </div>
 
       <div class="row"> 
         <h5>Maximum Floor Space (sq. metres)</h5>
         <p class="range-field">
-          <input type="range" id="max-space" min="0" max="10000" />
+          <input type="range" id="rr-max-space" min="0" max="10000" />
         </p>
       </div>
 
@@ -385,7 +385,7 @@
 
       <div class="row">
         <h5>Furnishing Required</h5>  
-        <select>
+        <select id="rr-furnishing">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes it must be furnished</option>
           <option value="N">No I hate furniture</option>
@@ -396,7 +396,7 @@
 
       <div class="row">
         <h5>Garage Required</h5>  
-        <select>
+        <select id="rr-garage">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes I need a garage</option>
           <option value="N">No I hate cars</option>
@@ -407,7 +407,7 @@
 
       <div class="row">
         <h5>Garden required</h5>  
-        <select>
+        <select id="rr-garden">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes. Gardening is my favourite pastime</option>
           <option value="N">No I hate nature</option>
@@ -418,7 +418,7 @@
 
       <div class="row">
         <h5>Pets Must Be Allowed</h5>  
-        <select>
+        <select id="rr-pets">
           <option value="D">Doesn't Matter</option>
           <option value="Y">Yes. Pets are a necessity.</option>
           <option value="N">No. I hate pets.</option>
