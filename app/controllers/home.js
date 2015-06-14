@@ -69,24 +69,32 @@ router.get('/searching', function(req, res, next) {
 });
 
 
-router.get('/buyer', function (req, res, next) {
+router.get('/buyerload', function (req, res, next) {
 
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT * " +
-                              "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p " +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumer, p.street, p.city, p.age.,p.are,p.isfurnished, op.offerDate, o.purchaseAmount" +
+                              "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
-                              "' AND  p.propertyID = o.propertyID;",
+                              "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
                        res);
 
     }); 
-      res.render('buyer', {
-      title: 'buyer',
-    });
    });
+
+router.get('/buyer', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('buyer', {
+      title: 'buyer',
+//      articles: articles
+    });
+//  });
+});
+
+
 router.get('/agent', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('agent', {

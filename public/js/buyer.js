@@ -1,9 +1,9 @@
-$('#search-field').submit(function(ev) {
-  ev.preventDefault();
+$(window).load(function()) {
   console.log("1");
-  var parameters = {search: $('#search').val() };
+  var parameters = {};
   console.log(parameters);
-  $.get('/searching', parameters, function(data) {
+  $.get('/buyerload', parameters, function(data) {
     console.log(data);
   });
 });
+
