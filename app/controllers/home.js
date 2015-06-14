@@ -120,6 +120,27 @@ router.get('/signup', function (req, res, next) {
 });
 
 
+router.get('/advanced_search_cs', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
+                    "WHERE p.propertyID = c.propertyID AND s.propertyID = p.propertyID" +
+                    " AND s.price >= " + req.query.min-price + " AND s.price <= " + req.query.max-price +
+                    " AND p.age >= " + req.query.min-age + " AND p.age <= " + req.query.max-age +
+                    " AND p.area >= " + req.query.min-space + " AND p.area <= " + req.query.max-space +
+                    " AND c.offices >= " + req.query.min-office + " AND c.offices <= " + req.query.max-office + 
+                    " AND c.storage >= " + req.query.min-storage + " AND c.storage <= " + req.query.max-storage; 
+
+  if (req.query.furnishing != 'D') {
+    queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
+  }
+
+  queryString += ";";
+ 
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  }); 
+  
+});
 
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
