@@ -20,7 +20,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
-        <li><a href="search">Serach</a></li>
+        <li><a href="search">Search</a></li>
       </ul>
     </div>
   </nav>
@@ -28,7 +28,7 @@
   <h4 class="header center orange-text">Welcome Buyer</h4></center>
 <br><br>
 <h5 align="left" class="header center teal-text">Your Purchase Offer</h6>
- <table id="purchaseoffer" class="bordered striped hoverable responsive-table">
+ <table id="purchaseoffer" class="bordered hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="propertyID">PropertyID</th>

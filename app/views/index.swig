@@ -22,7 +22,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
-        <li><a href="search">Serach</a></li>
+        <li><a href="search">Search</a></li>
       </ul>
     </div>
   </nav>

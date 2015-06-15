@@ -171,6 +171,15 @@ router.get('/agent_interest', function (req, res, next) {
     });
 //  });
 });
+router.get('/appointment', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('appointment', {
+      title: 'appointment',
+//      articles: articles
+    });
+//  });
+});
+
 
 
 router.get('/advanced_search_cs', function(req, res, next) {
