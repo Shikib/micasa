@@ -406,7 +406,19 @@ router.get('/create_new_buyer', function(req, res, next) {
     res.send(0);
   });
 });
-
+router.get('/create_new_app', function(req, res, next){
+  var appQueryString = "INSERT INTO appointment_view"+
+                            "VALUES ('" + req.query.appid+"',"+
+                                    +"'"+ req.query.appdate+"',"+
+                                    +"'"+ req.query.appduration+"',"+
+                                    +"'"+ req.query.propertyID+"',"+
+                                    +"'"+ req.query.buyername+"',"+
+                                    +"'"+ req.query.buyerphone+"');";
+mysqlModule.getConnection(function(err,conn){
+  conn.query(conn, appQueryString);
+  res.send(0);
+});
+});
 
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));

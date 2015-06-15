@@ -37,27 +37,47 @@
           <input id="buyername" type="text" class="validate">
           <label for="buyername">Buyer name</label>
         </div>
+
         <div class="input-field col s6">
           <i class="mdi-communication-phone prefix"></i>
-          <input id="buyertelephone" type="tel" class="validate">
-          <label for="buyertelephone">Telephone</label>
- </div>
+          <input id="buyerphone" type="tel" class="validate">
+          <label for="buyerphone">Telephone</label>
+        </div>
+
           <div class="input-field col s6">
           <i class="mdi-action-home prefix"></i>
-          <input id="mdi-action-home" type="int" class="validate">
-          <label for="mdi-action-home">Property ID</label>
-
+          <input id="propertyID" type="text" class="validate">
+          <label for="propertyID">Property ID</label>
         </div>
+
+           <div class="input-field col s6">
+          <i class ="mdi-action-perm-contact-cal prefix"></i>
+          <input id="appdate" type="date" class="datepicker">
+          <label for="appdate">Appointment Date</label>
+        </div>
+
+          <div class="input-field col s6">
+          <i class="mdi-device-access-time prefix"></i>
+          <input id="appduration" type="text" class="validate">
+          <label for="appduration">Appointment Duration</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="mdi-action-assignment-turned-in prefix"></i>
+          <input id="appID" type="text" class="validate">
+          <label for="appID">Appointment ID</label>
+        </div>
+
       </div>
     </form>
   </div>
         
-<h46 class="header center orange-text">Pick a date </h6></center>
-  <input type="date" class="datepicker">
 
-  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+  <button id="app-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="mdi-content-send right"></i>
   </button>
+
+    <input type="date" class="datepicker">
         
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
