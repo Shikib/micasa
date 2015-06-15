@@ -2,7 +2,7 @@ var mysqlModule = require("../../mysqlModule");
 
 exports.initialize_tables = function() {
   mysqlModule.getConnection(function(err, conn) {
-
+/*
     // clear all existing tuples 
     conn.query("delete from Property_HasA_Location;");
     conn.query("delete from Agency;");
@@ -24,7 +24,7 @@ exports.initialize_tables = function() {
     conn.query("delete from ResidentialProperty_ForSale;");
     conn.query("delete from PostSale;");
     conn.query("delete from InterestedIn;");
-
+*/
     // drop all tables
     conn.query("drop table Property_HasA_Location cascade constraints;" +
                  "drop table Agency cascade constraints;" +
@@ -48,7 +48,7 @@ exports.initialize_tables = function() {
                  "drop table InterestedIn cascade constraints;");
 
     conn.query("CREATE TABLE Property_HasA_Location (" +
-                 "propertyID int PRIMARY KEY," +
+                 "propertyID smallint PRIMARY KEY," +
                  "isFurnished char(1)," +
                  "age smallint," +
                  "locationID smallint," +
@@ -59,6 +59,10 @@ exports.initialize_tables = function() {
                  "country char(20)," +
                  "city char(20)," +
                  "province char(20))");
+
+    conn.query("CREATE TABLE Account (" +
+               "uname varchar(20) PRIMARY KEY," +
+               "password varchar(20) not NULL)");
 
     conn.query("CREATE TABLE Agency (" +
                  "name varchar(20)," +
@@ -72,23 +76,29 @@ exports.initialize_tables = function() {
                  "agentEmail varchar(15)," +
                  "agencyID smallint," +
                  "agentRating integer," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID))");                  
 
     conn.query("CREATE TABLE Offer (" +
                  "offerID smallint PRIMARY KEY," +
                  "offerMessage varchar(200)," +
-                 "offerDate date)");
+                 "offerDate date not NULL)");
 
     conn.query("CREATE TABLE Buyer (" +
                  "buyerEmail varchar(15)," +
                  "buyerPhone char(10) not NULL," +
                  "buyerName varchar(20) not NULL," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "PRIMARY KEY (buyerPhone, buyerName))");
 
     conn.query("CREATE TABLE Seller (" +
                  "sellerEmail varchar(15)," +
                  "sellerPhone char(10) not NULL," +
                  "sellerName varchar(20) not NULL," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "PRIMARY KEY (sellerPhone, sellerName))");
 
 
@@ -107,8 +117,7 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
-                 "FOREIGN KEY (offerID) references Offer(offerID))");
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +
@@ -152,7 +161,7 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
     conn.query("CREATE TABLE ForSale (" +
-                 "salePrice int not null," + 
+                 "salePrice smallint not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
@@ -196,7 +205,6 @@ exports.initialize_tables = function() {
                  "message varchar(200)," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
-
 
   });
 };
