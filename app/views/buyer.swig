@@ -39,7 +39,7 @@
               <th data-field="area">Area (sq. metres)</th>
               <th data-field="isFurnished">Is Furnished?</th>
               <th data-field="offerDate">OfferDate</th>
-              <th data-field="purcaseAmount">Offer Amout</th>
+              <th data-field="purcaseAmount">Offer Amount</th>
           </tr>
         </thead>
 
