@@ -138,6 +138,24 @@ router.get('/signup', function (req, res, next) {
 //  });
 });
 
+router.get('/agent_offers', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_offers', {
+      title: 'agent_offers',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/agent_interest', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_interest', {
+      title: 'agent_interest',
+//      articles: articles
+    });
+//  });
+});
+
 
 router.get('/advanced_search_cs', function(req, res, next) {
   var queryString = "SELECT * " +
@@ -258,6 +276,14 @@ router.get('/advanced_search_rr', function(req, res, next) {
   
 });
 
+router.get('/agent_appointments', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_appointments', {
+      title: 'agent_appointments',
+//      articles: articles
+    });
+//  });
+});
 
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
