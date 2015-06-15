@@ -84,7 +84,8 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))");
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))" +
+                 "FOREIGN KEY (offerID) references Offer(offerID))");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +

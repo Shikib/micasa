@@ -1,5 +1,19 @@
 {% extends 'layout.swig' %}
+
 {% block content%}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Micasa</title>
+
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+{% endblock %}
+
+{% block content %}
+
 <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo right">Micasa</a>
@@ -22,36 +36,22 @@
       </div>
     </div>
   </div>
-  
-{% endblock %}
 
-{% block content%}
 <body>
-
-<nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="images/micasa.png" style = "width:50px;height:50x;"></a>
-    </div>
-  </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-    </div>
-  </div>
-
 
   <div class="container">
     <div class="section">
 
-      <table id="results" class="bordered striped hoverable responsive-table">
+      <table id="purchaseresults" class="bordered hoverable responsive-table">
         <thead>
           <tr>
-              <th data-field="aptNumber">Apartment Number</th>
-              <th data-field="houseNumber">Building Number</th>
-              <th data-field="street">Street</th>
-              <th data-field="city">City</th>
-              <th data-field="age">Age (years)</th>
-              <th data-field="area">Area (sq. metres)</th>
-              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="offerID">Offer ID</th>
+              <th data-field="propertyID">Property ID</th>
+              <th data-field="purchaseAmount">Purchase Amount</th>
+              <th data-field="buyerName">Buyer Name</th>
+              <th data-field="buyerPhone">Buyer Phone</th>
+              <th data-field="offerDate">Offer Date</th>
+              <th data-field="offerMessage">Offer Message</th>
           </tr>
         </thead>
 
@@ -67,14 +67,6 @@
     </div>
   </div>
 
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="grey-text text-lighten-4">We are a team of UBC students working on this project like it's our full time job. </p>
-
-
        
     <div class="footer-copyright">
       <div class="container">
@@ -87,9 +79,7 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
-  <script src="materialize/js/init.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/agent_get_interested.js"></script>
+  <script src="js/agent_get_purchaseoffers.js"></script>
   </body>
 {% endblock %}
-+</html>
+</html>

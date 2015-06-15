@@ -9,9 +9,7 @@ var pool = mysql.createPool({
 
 exports.getConnection = function(callback) {
   pool.getConnection(function(err, conn) {
-    console.log("test3");
     if (err) {
-      console.log("!!!!error " + err);
       return callback(err);
     }
     callback(err, conn);
@@ -25,7 +23,6 @@ exports.query = function(conn, queryString, res) {
     if (res === undefined) { 
       return rows;
     }
-    console.log(queryString);
     res.send(rows);     
   });
 };
