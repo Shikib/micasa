@@ -262,8 +262,6 @@ router.get('/get_all_agentID', function(req, res, next) {
 });
 
 router.get('/create_new_agent', function(req, res, next) {
-  console.log("test!!!!!!!!!!!!!!!!!");
-  console.log(req.query);
   var agentQueryString = "INSERT INTO Agent_Represents " +
                     "VALUES (" + req.query.agentID + ", " 
                          + "'" + req.query.name + "', " 
@@ -277,14 +275,11 @@ router.get('/create_new_agent', function(req, res, next) {
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
-  console.log(agentQueryString);
-  console.log(accountQueryString);
   mysqlModule.getConnection(function(err, conn) {
-    console.log(agentQueryString);
-    console.log(accountQueryString);
-
     conn.query(conn, agentQueryString);
-    conn.query(conn, accountQueryString, res);
+    conn.query(conn, accountQueryString);
+    
+    res.send(0);
   });
 });
 
