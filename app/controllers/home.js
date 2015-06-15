@@ -1,6 +1,7 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
+var mysqlModule = require('../../mysqlModule');
 
 module.exports = function (app) {
   app.use('/', router);
@@ -37,9 +38,7 @@ router.get('/agent_interest', function (req, res, next) {
 });
 
 router.get('/agent_interest_get', function (req, res, next) {
-    console.log("test");
     mysqlModule.getConnection(function(err,conn) {
-      if (err) throw err;
       mysqlModule.query(conn, "SELECT * " +
                               "FROM InterestedIn i, PostSale p " +
                               "WHERE i.propertyID=p.propertyID;",
