@@ -10,9 +10,6 @@ exports.populate_tables = function() {
                "(8456, 'N', 10, 7456, 396, 1000, '6456','Highland Blvd', 'Canadia', 'Vancouveria', 'BC')," +
                "(8567, NULL, NULL, 7567, NULL, 5000, '6567', 'Mansion Way', 'Amurnica', 'Seattlilia', 'WA');");
 
-<<<<<<< HEAD
-    conn.query("select * from Property_HasA_Location;");
-=======
     conn.query("INSERT INTO Account VALUES ('ahuang', 'rarestpepes69')," +
     		   "('katherinelab', 'katherineisbeautiful')," +
     		   "('bakedjoe', 'omg11iamsobaked')," +
@@ -29,7 +26,7 @@ exports.populate_tables = function() {
     		   "('liam', 'l14mismyname')," +
     		   "('jonesbob', 'notbobjones');");
 
->>>>>>> feature/accounts
+
     // All agencyIDs start with 9xxx
     conn.query("INSERT INTO Agency VALUES ('RealRealEstate', 8, 9123)," +
     		   "('The Wayne Bros', 5, 9234)," +
