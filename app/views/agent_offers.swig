@@ -66,7 +66,7 @@
           <tr>
               <th data-field="offerID">Offer ID</th>
               <th data-field="propertyID">Property ID</th>
-              <th data-field="rentalAmount">Purchase Amount</th>
+              <th data-field="rentAmount">Rent Amount</th>
               <th data-field="buyerName">Buyer Name</th>
               <th data-field="buyerPhone">Buyer Phone</th>
               <th data-field="offerDate">Offer Date</th>
