@@ -32,7 +32,7 @@
 <a id="seller-button" class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>Seller</a>
 <a id="buyer-button" class="waves-effect waves-light btn-large"><i class="mdi-file-cloud right"></i>Buyer</a>
 
-<div class="row">
+<div id="agent-signup" class="row" style="display: none;">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
@@ -49,7 +49,7 @@
 
     <div class="input-field col s12">
       <i class="mdi-social-domain prefix"></i>
-      <select>
+      <select id="agency">
         <option value="null" selected>None</option>
       </select>
       <label>Agency</label>
@@ -71,13 +71,58 @@
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-action-lock prefix"></i>
+        <input id="agent-password" type="password" class="validate">
+        <label for="agent-password">Password</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="mdi-action-lock-outline prefix"></i>
+        <input id="agent-confirm-password" type="password" class="validate">
+        <label for="agent-confirm-password">Confirm Password</label>
+      </div>
+    </div>
+
+  </form>
+</div> 
+
+
+<div id="default-signup" class="row" style="display: none;">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="mdi-action-account-circle prefix"></i>
+        <input id="name" type="text" class="validate" />
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="mdi-communication-phone prefix"></i>
+        <input id="phone" type="tel" class="validate" />
+        <label for="phone">Phone</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="mdi-communication-email prefix"></i>
+        <input id="email" type="email" class="validate" />
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="mdi-social-person prefix"></i>
+        <input id="uname" type="text" class="validate" />
+        <label for="uname">Username</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="mdi-action-lock prefix"></i>
         <input id="password" type="password" class="validate">
         <label for="password">Password</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-action-lock-outline prefix"></i>
-        <input id="password" type="password" class="validate">
-        <label for="password">Confirm Password</label>
+        <input id="confirm-password" type="password" class="validate">
+        <label for="confirm-password">Confirm Password</label>
       </div>
     </div>
 
