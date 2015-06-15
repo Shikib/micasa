@@ -221,5 +221,27 @@ $('#rr-submit').click(function(ev) {
   });
 });
 
+$('#agent-button').click(function() {
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#agent-signup').show();
+});
 
+var sellerPressed;
 
+$('#seller-button').click(function() {
+  sellerPressed = true;
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#default-signup').show();
+});
+
+$('#buyer-button').click(function() {
+  sellerPressed = false;
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#default-signup').show();
+});
