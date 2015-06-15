@@ -29,6 +29,7 @@ exports.populate_tables = function() {
   			   "(2234, 'When can I move in Kappa', '2014-03-25')," +
   			   "(2345, 'This house has same written all over it', '2014-04-04')," +
    			   "(3123, NULL, '2014-12-25')," +
+               "(3143, NULL, '2014-12-25')," +
 	    	   "(3234, 'Its ok', '2014-01-01');");
 
     // ALL BUYERS HAVE BUY IN THEIR EMAIL AS WELL AS A PHONE NUMBER STARTING WITH 604
@@ -56,6 +57,7 @@ exports.populate_tables = function() {
     		   "(2345, 2000000, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '604444555', 'Brando Wison')," +
+               "(3143, 1000, 8234, '6042223333', 'Markus Lemonis'),"+
     		   "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
     conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +

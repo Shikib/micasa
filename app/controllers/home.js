@@ -76,7 +76,7 @@ router.get('/searching', function(req, res, next) {
 });
 
 
-router.get('/buyerload', function (req, res, next) {
+router.get('/buyerloadPurchase', function (req, res, next) {
 
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
@@ -84,6 +84,22 @@ router.get('/buyerload', function (req, res, next) {
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
+                              "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
+                       res);
+
+    }); 
+   });
+
+router.get('/buyerloadRent', function (req, res, next) {
+
+    var bp = "6042223333"; 
+    var bn = "Markus Lemonis";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +
+                              "FROM Buyer b, rentalOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
                               "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
