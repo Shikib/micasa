@@ -25,7 +25,7 @@
       </ul>
     </div>
   </nav>
-  <br><center><img src="images/micasa.png" style = "width:400px;height:400x;"></center><br>
+  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"></center><br>
  <h4 class="header center orange-text">Sign Up</h4><br><br>
   <center>
 <p>  Page not working propely will fix please fill out the following infromation and we will email you a ID that you will use to log in with</p><br>
