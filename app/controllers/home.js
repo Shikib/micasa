@@ -158,6 +158,20 @@ router.get('/agent_interest_get', function (req, res, next) {
     });
 });
 
+router.get('/agent_appointments', function (req, res, next) {
+    res.render('agent_appointments', {
+      title: 'agent_appointments',
+    });
+});
+
+router.get('/agent_appointments_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Appointment_View a, PostSale p " +
+                              "WHERE a.propertyID=p.propertyID;",
+                        res);
+    });
+});
 
 router.get('/advanced_search_cs', function(req, res, next) {
   var queryString = "SELECT * " +
