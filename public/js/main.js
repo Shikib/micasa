@@ -221,5 +221,102 @@ $('#rr-submit').click(function(ev) {
   });
 });
 
+$('#agent-button').click(function() {
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#agent-signup').show();
+});
+
+var sellerPressed;
+
+$('#seller-button').click(function() {
+  sellerPressed = true;
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#default-signup').show();
+});
+
+$('#buyer-button').click(function() {
+  sellerPressed = false;
+  $('#agent-button').hide();
+  $('#seller-button').hide();
+  $('#buyer-button').hide();
+  $('#default-signup').show();
+});
+
+$('#agent-signup-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#agent-password').val() != $('#agent-confirm-password').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#agent-password').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else {
+    var parameters = {uname: $('#agent-uname').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        var agentID = Math.floor(Math.random() * 32767);
+        $.get('/get_all_agentID', {}, function(data) {
+          while (data.indexOf(agentID) > -1)
+            agentID = Math.floor(Math.random() * 32767);
+
+          parameters = {uname: $('#agent-uname').val(),
+                        name:  $('#agent-name').val(),
+                        agentID: agentID,
+                        agency: $('#agency').val(),
+                        email:  $('#agent-email').val(),
+                        phone:  $('#agent-phone').val(),
+                        password: $('#agent-password').val()};
+          console.log(parameters);  
+          $.get('/create_new_agent', parameters, function(data) {
+          });   
+        });
+
+      } 
+
+    });
+  }  
+});
 
 
+$('#signup-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#password').val() != $('#confirm-password').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#password').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else {
+    var parameters = {uname: $('#uname').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        parameters = {uname: $('#uname').val(),
+                      name:  $('#name').val(),
+                      email:  $('#email').val(),
+                      phone:  $('#phone').val(),
+                      password: $('#password').val()};
+        console.log(parameters);  
+        if (sellerPressed) {
+          $.get('/create_new_seller', parameters, function(data) {
+          });
+        }
+        else {
+          $.get('create_new_buyer', parameters, function(data) {
+          });
+        }   
+
+      } 
+
+    });
+  }  
+
+
+});
