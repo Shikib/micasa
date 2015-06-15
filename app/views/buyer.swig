@@ -52,7 +52,7 @@
         <div class="col s12 m4">
           <div class="icon-block"><a href="makeofferrental">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">New rentaloffer</h5>
+            <h5 class="center">New rental offer</h5>
 
             <p class="light">Click on the icon to make a new rental offer</p>
           </div>
