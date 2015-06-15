@@ -24,7 +24,7 @@ exports.query = function(conn, queryString, res) {
     if (res === undefined) { 
       return rows;
     }
-
+    console.log(queryString);
     res.send(rows);     
   });
 };

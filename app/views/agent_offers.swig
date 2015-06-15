@@ -89,6 +89,7 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/agent_get_interested.js"></script>
   </body>
 {% endblock %}
 +</html>

@@ -37,18 +37,9 @@ router.get('/agent_interest', function (req, res, next) {
 });
 
 router.get('/agent_interest_get', function (req, res, next) {
-/*    
-    var aID = "1123";
-    
+    console.log("test");
     mysqlModule.getConnection(function(err,conn) {
-      mysqlModule.query(conn, "SELECT * " +
-                              "FROM InterestedIn i, PostSale p " +
-                              "WHERE i.propertyID=p.propertyID AND p.agentID = " + aID + ";",
-                        res);
-    });
-*/
-
-    mysqlModule.getConnection(function(err,conn) {
+      if (err) throw err;
       mysqlModule.query(conn, "SELECT * " +
                               "FROM InterestedIn i, PostSale p " +
                               "WHERE i.propertyID=p.propertyID;",
