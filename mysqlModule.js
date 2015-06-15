@@ -19,7 +19,11 @@ exports.getConnection = function(callback) {
 exports.query = function(conn, queryString, res) {
   conn.query(queryString, function (err, rows) {
     if (err) throw err;
+<<<<<<< HEAD
     
+=======
+    console.log(queryString);    
+>>>>>>> feature/seller
     if (res === undefined) { 
       return rows;
     }

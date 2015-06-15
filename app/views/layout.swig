@@ -10,6 +10,9 @@
   {% endif %}
 </head>
 <body>
-  {% block content %}{% endblock %}
+  {% block content %}
+
+
+  {% endblock %}
 </body>
 </html>
