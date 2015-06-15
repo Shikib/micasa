@@ -28,7 +28,7 @@
   <h4 class="header center orange-text">Welcome Buyer</h4></center>
 <br><br>
 <h5 align="left" class="header center teal-text">Your Purchase Offer</h6>
- <table id="results" class="bordered striped hoverable responsive-table">
+ <table id="purchaseoffer" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="propertyID">PropertyID</th>

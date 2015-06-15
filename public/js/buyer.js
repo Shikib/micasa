@@ -7,7 +7,7 @@ $(window).load(function() {
   var parameters = {};
   $.get('/buyerload', parameters, function(data) {
   	console.log(data);
-  	$("#results > tbody").html("");
+  	$("#purchaseoffer > tbody").html("");
   	for (var i in data) {
   	  var rowString = "<tr>";
       rowString += "<td>" + data[i].PropertyID + "</td>";
@@ -19,7 +19,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].isFurnished + "</td>";
       rowString += "<td>" + data[i].OfferDate+ "</td>";
       rowString += "<td>" + data[i].purchaseAmount + "</td>";
-      $("#results > tbody").append(rowString);
+      $("#purchaseoffer > tbody").append(rowString);
     }
   });
 });
