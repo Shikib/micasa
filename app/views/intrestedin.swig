@@ -28,9 +28,9 @@
       <div class="container">
 
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
-  <h4 class="header center orange-text">Appointment</h4></center>
+  <h4 class="header center orange-text">Interested in </h4></center>
   <div class="row">
-    <form class="col s12">
+    <form id ="form" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <i class="mdi-action-account-circle prefix"></i>
@@ -50,38 +50,34 @@
           <label for="propertyID">Property ID</label>
         </div>
 
-           <div class="input-field col s6">
-          <i class ="mdi-action-perm-contact-cal prefix"></i>
-          <input id="appdate" type="date" class="datepicker">
-          <label for="appdate">Appointment Date</label>
+         <div class="row">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="mdi-action-question-answer prefix"></i>
+          <textarea id="message" class="materialize-textarea"></textarea>
+          <label for="message">Message</label>
         </div>
+      </div>
+  </div>
 
-          <div class="input-field col s6">
-          <i class="mdi-device-access-time prefix"></i>
-          <input id="appduration" type="text" class="validate">
-          <label for="appduration">Appointment Duration</label>
-        </div>
-
-        <div class="input-field col s6">
-          <i class="mdi-action-assignment-turned-in prefix"></i>
-          <input id="appID" type="text" class="validate">
-          <label for="appID">Appointment ID</label>
-        </div>
 
       </div>
     </form>
   </div>
         
 
-  <button id="app-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+  <button id="in-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="mdi-content-send right"></i>
   </button>
+
+
+        
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
-  <script src="js/appointment.js"></script>
+  <script src="js/intrestedin.js"></script>
 <br><br>
  </div>
     </body>

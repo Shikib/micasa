@@ -28,7 +28,7 @@
       <div class="container">
 
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
-  <h4 class="header center orange-text">Appointment</h4></center>
+  <h4 class="header center orange-text">Make Offer</h4></center>
   <div class="row">
     <form class="col s12">
       <div class="row">

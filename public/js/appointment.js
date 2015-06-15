@@ -17,3 +17,4 @@ $('#app-submit').click(function(ev) {
           $.get('/create_new_app', parameters, function(data)
 
   }  
+
