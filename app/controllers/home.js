@@ -240,6 +240,17 @@ router.get('/advanced_search_rr', function(req, res, next) {
 });
 
 
+
+router.get('/check_uname_availability', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Account " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();

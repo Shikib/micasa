@@ -81,6 +81,10 @@
       </div>
     </div>
 
+    <button id="agent-signup-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="mdi-content-send right"></i>
+    </button>
+
   </form>
 </div> 
 
@@ -126,6 +130,9 @@
       </div>
     </div>
 
+    <button id="signup-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="mdi-content-send right"></i>
+    </button>
   </form>
 </div> 
 
