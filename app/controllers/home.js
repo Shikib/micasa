@@ -251,6 +251,43 @@ router.get('/check_uname_availability', function(req, res, next) {
   });
 });
 
+
+router.get('/get_all_agentID', function(req, res, next) {
+  var queryString = "SELECT agentID " +
+                    "FROM Agent_Represents;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/create_new_agent', function(req, res, next) {
+  console.log("test!!!!!!!!!!!!!!!!!");
+  console.log(req.query);
+  var agentQueryString = "INSERT INTO Agent_Represents " +
+                    "VALUES (" + req.query.agentID + ", " 
+                         + "'" + req.query.name + "', " 
+                         + "'" + req.query.phone + "', "
+                         + "'" + req.query.email + "', "
+                               + req.query.agency + ", "  
+                               + "null" 
+                         + "'" + req.query.uname + "';";
+  
+  var accountQueryString = "INSERT INTO Account " + 
+                           "VALUES ('" + req.query.uname + "', " +
+                                   "'" + req.query.password + "');";
+
+  console.log(agentQueryString);
+  console.log(accountQueryString);
+  mysqlModule.getConnection(function(err, conn) {
+    console.log(agentQueryString);
+    console.log(accountQueryString);
+
+    conn.query(conn, agentQueryString);
+    conn.query(conn, accountQueryString, res);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();

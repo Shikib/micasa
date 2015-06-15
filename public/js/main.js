@@ -257,24 +257,25 @@ $('#agent-signup-submit').click(function(ev) {
   else {
     var parameters = {uname: $('#agent-uname').val() };
     $.get('/check_uname_availability', parameters, function(data) {
-      if (!data.empty())
+      if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
-        var agentID = Math.random() * 32767;
-        $.get('/get_all_agentIDs', {}, function(data) {
+        var agentID = Math.floor(Math.random() * 32767);
+        $.get('/get_all_agentID', {}, function(data) {
           while (data.indexOf(agentID) > -1)
-            agentID = Math.random() * 32767;
+            agentID = Math.floor(Math.random() * 32767);
 
-            parameters = {uname: $('#agent-uname').val(),
-                          name:  $('#agent-name').val(),
-                          agency: $('#agency').val(),
-                          email:  $('#agent-email').val(),
-                          phone:  $('#agent-phone').val(),
-                          password: $('agent-password').val()};
-            
-            $.get('/create_new_agent', {}, function(data) {
-              console.log(data); 
-            });   
+          parameters = {uname: $('#agent-uname').val(),
+                        name:  $('#agent-name').val(),
+                        agentID: agentID,
+                        agency: $('#agency').val(),
+                        email:  $('#agent-email').val(),
+                        phone:  $('#agent-phone').val(),
+                        password: $('#agent-password').val()};
+          console.log(parameters);  
+          $.get('/create_new_agent', parameters, function(data) {
+            console.log(data); 
+          });   
         });
 
       } 
