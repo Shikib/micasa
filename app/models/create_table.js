@@ -60,6 +60,10 @@ exports.initialize_tables = function() {
                  "city char(20)," +
                  "province char(20))");
 
+    conn.query("CREATE TABLE Account (" +
+               "uname varchar(20) PRIMARY KEY," +
+               "password varchar(20) not NULL)");
+
     conn.query("CREATE TABLE Agency (" +
                  "name varchar(20)," +
                  "agencyRating tinyint," +
@@ -72,6 +76,8 @@ exports.initialize_tables = function() {
                  "agentEmail varchar(15)," +
                  "agencyID smallint," +
                  "agentRating integer," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID))");                  
 
     conn.query("CREATE TABLE Offer (" +
@@ -83,12 +89,16 @@ exports.initialize_tables = function() {
                  "buyerEmail varchar(15)," +
                  "buyerPhone char(10) not NULL," +
                  "buyerName varchar(20) not NULL," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "PRIMARY KEY (buyerPhone, buyerName))");
 
     conn.query("CREATE TABLE Seller (" +
                  "sellerEmail varchar(15)," +
                  "sellerPhone char(10) not NULL," +
                  "sellerName varchar(20) not NULL," +
+                 "uname       varchar(20) not NULL," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)," +
                  "PRIMARY KEY (sellerPhone, sellerName))");
 
 
@@ -196,13 +206,5 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
-<<<<<<< HEAD
-
-
-    mysqlModule.query(conn, "SELECT * FROM Agency;");
-
-
-=======
->>>>>>> feature/search
   });
 };
