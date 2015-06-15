@@ -82,7 +82,7 @@ router.get('/buyerload', function (req, res, next) {
     var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumer, p.street, p.city, p.age.,p.are,p.isfurnished, op.offerDate, o.purchaseAmount" +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
