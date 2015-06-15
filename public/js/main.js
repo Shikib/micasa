@@ -274,9 +274,46 @@ $('#agent-signup-submit').click(function(ev) {
                         password: $('#agent-password').val()};
           console.log(parameters);  
           $.get('/create_new_agent', parameters, function(data) {
-            console.log(data); 
           });   
         });
+
+      } 
+
+    });
+  }  
+});
+
+
+$('#signup-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#password').val() != $('#confirm-password').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#password').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else {
+    var parameters = {uname: $('#uname').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        parameters = {uname: $('#agent-uname').val(),
+                      name:  $('#agent-name').val(),
+                      agentID: agentID,
+                      agency: $('#agency').val(),
+                      email:  $('#agent-email').val(),
+                      phone:  $('#agent-phone').val(),
+                      password: $('#agent-password').val()};
+        console.log(parameters);  
+        if (sellerPressed) {
+          $.get('/create_new_seller', parameters, function(data) {
+          });
+        }
+        else {
+          $.get('create_new_buyer', parameters, function(data) {
+          });
+        }   
 
       } 
 
