@@ -161,7 +161,7 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
     conn.query("CREATE TABLE ForSale (" +
-                 "salePrice smallint not null," + 
+                 "salePrice int not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 

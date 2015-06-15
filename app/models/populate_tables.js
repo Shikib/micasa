@@ -75,7 +75,7 @@ exports.populate_tables = function() {
     		   "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis')," +
     		   "(2345, 2000000, 8345, '6043334444', 'Angel Qin');");
 
-    conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '604444555', 'Brando Wison')," +
+    conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '6044445555', 'Brando Wison')," +
     		   "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
     conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +
@@ -103,7 +103,7 @@ exports.populate_tables = function() {
 
     conn.query("INSERT INTO CommercialProperty_ForRent VALUES (8567, 10, 10);");
 
-    conn.query("INSERT INTO CommercialProperty_ForSale VALUES (8345, 200, 200);");
+    conn.query("INSERT INTO CommercialProperty_ForSale VALUES (8345, 50, 50);");
 
     conn.query("INSERT INTO PostSale VALUES (8123, 'Mary Lamb', '7781112222', 1123)," +
     		   "(8234, 'Bill Jones', '7782223333', 1234)," +

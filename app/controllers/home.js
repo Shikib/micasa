@@ -75,6 +75,20 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
+router.get('/sellerload', function (req, res, next) {
+
+    var sp = "7783334444"; 
+    var sn = "Justin Timb";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice, fs.salePrice " +
+                              "FROM Seller s, Property_HasA_Location p, Agent_Represents ar, ForSale fs, ForRent fr, PostSale ps " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn  +
+                              "' AND  p.propertyID = fr.propertyID OR p.propertyID = fs.propertyID AND op.offerID = o.offerID ",
+                       res);
+
+    }); 
+   });
 
 router.get('/buyerload', function (req, res, next) {
 

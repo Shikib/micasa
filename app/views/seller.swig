@@ -1,4 +1,17 @@
 {% extends 'layout.swig' %}
+
+{% block content%}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Micasa</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+{% endblock %}
+
 {% block content%}
 <nav>
     <div class="nav-wrapper teal">
@@ -11,7 +24,33 @@
       </ul>
     </div>
   </nav>
+ <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
+  <h4 class="header center orange-text">Welcome Seller!</h4></center>
+<br><br>
+<h5 align="left" class="header center teal-text">Your Properties for Sales/Rent</h6>
+ <table id="postsale" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="propertyID">PropertyID</th>
+              <th data-field="houseNumber">House Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="agentID">Agent</th>
+              <th data-field="rentPrice">rentPrice</th>
+              <th data-field="rentPrice">rentPrice</th>
+          </tr>
+        </thead>
 
-  <br> <center><img src="images/micasa.png" style = "width:300px;height:300x;"></center><br>
- <h4 class="header center orange-text">Welcome Seller </h4>
+        <tbody>
+        </tbody>
+      </table>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="materialize/js/materialize.js"></script>
+  <script src="materialize/js/init.js"></script>
+  <script src="js/seller.js"></script>
 {% endblock %}
