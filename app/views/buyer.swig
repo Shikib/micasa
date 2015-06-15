@@ -1,4 +1,17 @@
 {% extends 'layout.swig' %}
+
+{% block content%}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Micasa</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+{% endblock %}
+
 {% block content%}
 <nav>
     <div class="nav-wrapper teal">
@@ -18,15 +31,15 @@
  <table id="results" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
-              <th data-field="p.propertyID">PropertyID</th>
-              <th data-field="p.houseNumber">Building Number</th>
-              <th data-field="p.street">Street</th>
-              <th data-field="p.city">City</th>
-              <th data-field="p.age">Age (years)</th>
-              <th data-field="p.area">Area (sq. metres)</th>
-              <th data-field="p.isFurnished">Is Furnished?</th>
-              <th data-field="op.offerDate">OfferDate</th>
-              <th data-field="o.purcaseAmount">Offer Amout</th>
+              <th data-field="propertyID">PropertyID</th>
+              <th data-field="houseNumber">House Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="offerDate">OfferDate</th>
+              <th data-field="purcaseAmount">Offer Amout</th>
           </tr>
         </thead>
 

@@ -22,10 +22,11 @@
         <li><a href="/">Home</a></li>
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
-        <li><a href="search">Serach</a></li>
+        <li><a href="search">Search</a></li>
       </ul>
     </div>
   </nav>
+  <br> <center><img src="images/micasa.png" style = "width:300px;height:300x;"></center><br>
         
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
@@ -38,7 +39,7 @@
 
   <div class="container">
     <div class="section">
-
+<center>
       <a id="filter-commercial" class="waves-effect waves-light btn-large" style="display: visible;"><i class="mdi-file-cloud left"></i>Commercial</a>
       <a id="filter-residential" class="waves-effect waves-light btn-large" style="display: visible;"><i class="mdi-file-cloud right"></i>Residential</a>
      
@@ -46,7 +47,7 @@
       <a id="filter-sale" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud left"></i>For Sale</a>
       <a id="filter-rent" class="waves-effect waves-light btn-large" style="display: none;"><i class="mdi-file-cloud right"></i>For Rent</a>
 
-
+</center>
       <div id='results-table-cs' class="section" style="display: none;">
 
         <table id="adv-results-cs" class="bordered striped hoverable responsive-table">
