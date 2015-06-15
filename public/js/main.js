@@ -298,13 +298,11 @@ $('#signup-submit').click(function(ev) {
       if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
-        parameters = {uname: $('#agent-uname').val(),
-                      name:  $('#agent-name').val(),
-                      agentID: agentID,
-                      agency: $('#agency').val(),
-                      email:  $('#agent-email').val(),
-                      phone:  $('#agent-phone').val(),
-                      password: $('#agent-password').val()};
+        parameters = {uname: $('#uname').val(),
+                      name:  $('#name').val(),
+                      email:  $('#email').val(),
+                      phone:  $('#phone').val(),
+                      password: $('#password').val()};
         console.log(parameters);  
         if (sellerPressed) {
           $.get('/create_new_seller', parameters, function(data) {
