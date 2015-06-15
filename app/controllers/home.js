@@ -40,6 +40,15 @@ router.get('/agent_purchaseoffers_get', function (req, res, next) {
     });
 });
 
+router.get('/agent_rentaloffers_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Offer o, RentalOffer_Makes ro " +
+                              "WHERE o.offerID=ro.offerID;",
+                        res);
+    });
+});
+
 router.get('/agent_interest', function (req, res, next) {
     res.render('agent_interest', {
       title: 'agent_interest',

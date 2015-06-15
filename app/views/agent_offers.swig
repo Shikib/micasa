@@ -42,12 +42,31 @@
   <div class="container">
     <div class="section">
 
+        <h5 class="header center orange-text">Purchase Offers</h5>
       <table id="purchaseresults" class="bordered hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="offerID">Offer ID</th>
               <th data-field="propertyID">Property ID</th>
               <th data-field="purchaseAmount">Purchase Amount</th>
+              <th data-field="buyerName">Buyer Name</th>
+              <th data-field="buyerPhone">Buyer Phone</th>
+              <th data-field="offerDate">Offer Date</th>
+              <th data-field="offerMessage">Offer Message</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+      <br> 
+        <h5 class="header center orange-text">Rental Offers</h5>
+      <table id="rentalresults" class="bordered hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="offerID">Offer ID</th>
+              <th data-field="propertyID">Property ID</th>
+              <th data-field="rentalAmount">Purchase Amount</th>
               <th data-field="buyerName">Buyer Name</th>
               <th data-field="buyerPhone">Buyer Phone</th>
               <th data-field="offerDate">Offer Date</th>
@@ -80,6 +99,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
   <script src="js/agent_get_purchaseoffers.js"></script>
+  <script src="js/agent_get_rentaloffers.js"></script>
   </body>
 {% endblock %}
 </html>
