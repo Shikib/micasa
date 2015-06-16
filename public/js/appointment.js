@@ -1,17 +1,12 @@
-$('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-
 
 
 $('#app-submit').click(function(ev) {
   $('#app-submit').hide();
   ev.preventDefault();
-  var appID = Math.floor(Math.random() * 327637);
+  var appID = Math.floor(Math.random() * 32);
         $.get('/get_all_appID', {}, function(data) {
           while (data.indexOf(appID) > -1)
-            appID = Math.floor(Math.random() * 32767);
+            appID = Math.floor(Math.random() * 32);
         });
 
         parameters = { buyername: $('#buyername').val(),

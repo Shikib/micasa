@@ -85,8 +85,8 @@
               <th data-field="houseNumber">House Number</th>
               <th data-field="street">Street</th>
               <th data-field="city">City</th>
-              <th data-field="appTime">Appointment Time</th>
-              <th data-field="appDur">Appointment Duration</th>
+              <th data-field="appointmentTime">Appointment Time</th>
+              <th data-field="appDuration">Appointment Duration</th>
           </tr>
         </thead>
         <tbody>

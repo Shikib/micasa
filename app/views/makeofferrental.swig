@@ -57,8 +57,8 @@
         </div>
         <div class="input-field col s6">
           <i class ="mdi-action-perm-contact-cal prefix"></i>
-          <input id="offerdate" type="date" class="datepicker">
-          <label for="offerdate">Offer Date</label>
+          <input id="offerdate" type="text" class="validate">
+          <label for="offerdate">Offer Date please input as yyyy/mm/dd</label>
         </div>
 
         <div class="row">

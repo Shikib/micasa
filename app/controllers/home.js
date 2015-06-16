@@ -621,16 +621,16 @@ router.get('/check_login', function(req, res, next) {
 });
 router.get('/create_new_app', function(req, res, next){
   var appQueryString = "INSERT INTO appointment_view"+
-                            "VALUES ('" + req.query.appId+"',"+
-                                    +"'"+ req.query.appdate+"',"+
-                                    +"'"+ req.query.appduration+"',"+
-                                    +"'"+ req.query.propertyID+"',"+
-                                    +"'"+ req.query.buyername+"',"+
-                                    +"'"+ req.query.buyerphone+"');";
-mysqlModule.getConnection(function(err,conn){
-  conn.query(conn, appQueryString);
-  res.send(0);
-});
+                            " VALUES (" + req.query.appID+","+
+                                      "'" + req.query.appdate+"',"+
+                                     req.query.appduration+","+
+                                    req.query.propertyID+","+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.buyername+"');";
+console.log(appQueryString);
+  mysqlModule.getConnection(function(err,conn){
+    mysqlModule.query(conn, appQueryString, res);
+  });
 });
 
 router.get('/create_new_interestedIn', function(req, res, next){
@@ -645,23 +645,31 @@ router.get('/create_new_interestedIn', function(req, res, next){
   });
 });
 
-router.get('/create_new_rental_offer', function(req, res, next){
-  var rentQueryString = "INSERT INTO  RentalOffer_Makes"+
-                            "VALUES ('" + req.query.offerID+"',"+
-                                    +"'"+ req.query.amount+"',"+
-                                     +"'"+ req.query.propertyID+"',"+
-                                      +"'"+ req.query.buyerphone+"',"+
-                                    +"'"+ req.query.buyername +"');";
-var offerQueryString = "INSERT INTO  RentalOffer_Makes"+
-                            "VALUES ('" + req.query.offerID+"',"+
-                                    +"'"+ req.query.message+"',"+
-                                    +"'"+ req.query.offerdate+"');";
+router.get('/create_new_offer', function(req, res, next){
+var offerQueryString = "INSERT INTO Offer"+
+                            " VALUES (" + req.query.offerID+","+
+                                     "'"+ req.query.message+"',"+
+                                     "'"+ req.query.offerdate+"');";
+
+console.log(offerQueryString);
 mysqlModule.getConnection(function(err,conn){
-  conn.query(conn, rentQueryString);
-  res.send(0);
-});
+    mysqlModule.query(conn, offerQueryString, res);
+  });
 });
 
+router.get('/create_new_rental_offer', function(req, res, next){
+  var rentQueryString = "INSERT INTO  RentalOffer_Makes"+
+                            " VALUES (" + req.query.offerID+","+
+                                          req.query.amount+","+
+                                          req.query.propertyID+","+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.buyername +"');";
+
+console.log(rentQueryString);
+mysqlModule.getConnection(function(err,conn){
+    mysqlModule.query(conn, rentQueryString, res);
+  });
+});
 
 
 router.get('/login_buyer', function(req, res, next) {

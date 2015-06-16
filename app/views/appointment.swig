@@ -54,14 +54,14 @@
 
            <div class="input-field col s6">
           <i class ="mdi-action-perm-contact-cal prefix"></i>
-          <input id="appdate" type="date" class="datepicker">
-          <label for="appdate">Appointment Date</label>
+          <input id="appdate" type="text" class="validate">
+          <label for="appdate">Appointment Date enter as format yyyy/mm/dd</label>
         </div>
 
           <div class="input-field col s6">
           <i class="mdi-device-access-time prefix"></i>
           <input id= "appduration" type="text" class="validate">
-          <label for="appduration">Appointment Duration</label>
+          <label for="appduration">Appointment Duration enter # of hours</label>
         </div>
 
       </div>
