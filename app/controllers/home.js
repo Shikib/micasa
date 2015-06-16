@@ -459,10 +459,10 @@ router.get('/create_new_interestedIn', function(req, res, next){
                                     +"'"+ req.query.buyername+"',"+
                                     +"'"+ req.query.buyerphone+"',"+
                                     +"'"+ req.query.message+"');";
-mysqlModule.getConnection(function(err,conn){
-  conn.query(conn, msgQueryString);
-  res.send(0);
-});
+  mysqlModule.getConnection(function(err,conn){
+    conn.query(conn, msgQueryString);
+    res.send(0);
+  });
 });
 
 router.get('/create_new_rental_offer', function(req, res, next){
