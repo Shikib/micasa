@@ -82,7 +82,7 @@ router.get('/buyerload', function (req, res, next) {
     var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumer, p.street, p.city, p.age.,p.are,p.isfurnished, op.offerDate, o.purchaseAmount" +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
@@ -133,6 +133,24 @@ router.get('/signup', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('signup', {
       title: 'signup',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/agent_offers', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_offers', {
+      title: 'agent_offers',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/agent_interest', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_interest', {
+      title: 'agent_interest',
 //      articles: articles
     });
 //  });
@@ -258,6 +276,146 @@ router.get('/advanced_search_rr', function(req, res, next) {
   
 });
 
+router.get('/agent_appointments', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_appointments', {
+      title: 'agent_appointments',
+//      articles: articles
+    });
+//  });
+});
+
+
+router.get('/check_uname_availability', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Account " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/get_all_agentID', function(req, res, next) {
+  var queryString = "SELECT agentID " +
+                    "FROM Agent_Represents;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/create_new_account', function(req, res, next) {
+  var accountQueryString = "INSERT INTO Account " + 
+                           "VALUES ('" + req.query.uname + "', " +
+                                   "'" + req.query.password + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, accountQueryString, res);
+  });
+});
+
+router.get('/create_new_agent', function(req, res, next) {
+  var agentQueryString = "INSERT INTO Agent_Represents " +
+                    "VALUES (" + req.query.agentID + ", " 
+                         + "'" + req.query.name + "', " 
+                         + "'" + req.query.phone + "', "
+                         + "'" + req.query.email + "', "
+                               + req.query.agency + ", "  
+                               + "null, " 
+                         + "'" + req.query.uname + "');";
+  
+  console.log(agentQueryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, agentQueryString, res);
+  });
+});
+
+
+router.get('/create_new_seller', function(req, res, next) {
+  var sellerQueryString = "INSERT INTO Seller " +
+                          "VALUES ('" + req.query.email + "', " 
+                                + "'" + req.query.phone + "', "
+                                + "'" + req.query.name + "', "
+                                + "'" + req.query.uname + "');";
+  
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, sellerQueryString, res);
+  });
+});
+
+
+router.get('/create_new_buyer', function(req, res, next) {
+  var buyerQueryString = "INSERT INTO Buyer " +
+                         "VALUES ('" + req.query.email + "', " 
+                               + "'" + req.query.phone + "', "
+                               + "'" + req.query.name + "', "
+                               + "'" + req.query.uname + "');";
+  
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, buyerQueryString, res);
+  });
+});
+
+
+router.get('/check_login', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Account " +
+                    "WHERE uname = '" + req.query.uname + "' AND " +
+                       "password = '" + req.query.password + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/login_buyer', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Buyer " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+
+router.get('/login_seller', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Seller " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+
+
+router.get('/login_agent', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Agent_Represents " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+router.get('/agency_list', function(req, res, next) {
+  var queryString = "SELECT * " + 
+                    "FROM Agency;"
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
 
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
