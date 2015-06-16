@@ -16,6 +16,6 @@ $('#rental-offer-submit').click(function(ev) {
                       offerID: offerID};
         console.log(parameters);   
         $.get('/create_new_offer', parameters, function(data){});
-          $.get('/create_new_rental_offer', parameters, function(data){});
+         // $.get('/create_new_rental_offer', parameters, function(data){});
  //$('#form').hide();
   })
