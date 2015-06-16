@@ -3,7 +3,7 @@ var express = require('express'),
   db = require('../models');
 
 var mysqlModule = require('../../mysqlModule');
-
+var loginModule = require('../../loginModule');
 module.exports = function (app) {
   app.use('/', router);
 };
@@ -415,6 +415,18 @@ router.get('/agency_list', function(req, res, next) {
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
+});
+
+router.get('/login_user', function(req, res, next) {
+  loginModule.login(req.query.type, req.query.data, res);  
+});
+
+router.get('/logout', function(req, res, next) {
+  loginModule.logout(res);  
+});
+
+router.get('/login_info', function(req, res, next) {
+  loginModule.get_logged_in(res);  
 });
 
 function test(){
