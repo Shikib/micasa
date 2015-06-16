@@ -561,7 +561,6 @@ router.get('/create_new_rental_offer', function(req, res, next){
                                     "'"+ req.query.buyername +"');";
 
 console.log(rentQueryString);
-console.log(offerQueryString);
 mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, rentQueryString, res);
   });
