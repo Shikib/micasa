@@ -108,8 +108,8 @@ router.get('/buyerloadPurchase', function (req, res, next) {
 
 router.get('/buyerloadRent', function (req, res, next) {
 
-    var bp = "6042223333"; 
-    var bn = "Markus Lemonis";
+    var bp = "6044445555"; 
+    var bn = "Brando Wison";
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +

@@ -81,7 +81,7 @@
       </table>
 
       <br><br><h5 align="left" class="header center teal-text">Your Rental Offer</h6>
- <table id="rentoffer" class="bordered striped hoverable responsive-table">
+ <table id="rentoffer" class="bordered hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="propertyID">PropertyID</th>
@@ -92,7 +92,7 @@
               <th data-field="area">Area (sq. metres)</th>
               <th data-field="isFurnished">Is Furnished?</th>
               <th data-field="offerDate">OfferDate</th>
-              <th data-field="purcaseAmount">Offer Amout</th>
+              <th data-field="rentAmount">Rental Amount</th>
           </tr>
         </thead>
 
