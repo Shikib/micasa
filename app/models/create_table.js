@@ -128,9 +128,9 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
-
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE)");  
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE, " +
+                 "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)"); 
 
     conn.query("CREATE TABLE Appointment_View (" +
                  "appointmentID smallint PRIMARY KEY," + 
