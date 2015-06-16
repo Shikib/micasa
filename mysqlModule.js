@@ -10,7 +10,6 @@ var pool = mysql.createPool({
 exports.getConnection = function(callback) {
   pool.getConnection(function(err, conn) {
     if (err) {
-      console.log("!!!!error " + err);
       return callback(err);
     }
     callback(err, conn);
@@ -20,7 +19,7 @@ exports.getConnection = function(callback) {
 exports.query = function(conn, queryString, res) {
   conn.query(queryString, function (err, rows) {
     if (err) throw err;
-    console.log(queryString);    
+
     if (res === undefined) { 
       return rows;
     }
