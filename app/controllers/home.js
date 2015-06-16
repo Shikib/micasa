@@ -441,7 +441,7 @@ router.get('/create_new_buyer', function(req, res, next) {
 });
 router.get('/create_new_app', function(req, res, next){
   var appQueryString = "INSERT INTO appointment_view"+
-                            "VALUES ('" + req.query.appid+"',"+
+                            "VALUES ('" + req.query.appId+"',"+
                                     +"'"+ req.query.appdate+"',"+
                                     +"'"+ req.query.appduration+"',"+
                                     +"'"+ req.query.propertyID+"',"+
