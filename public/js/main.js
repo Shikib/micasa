@@ -344,6 +344,11 @@ $('#signup-submit').click(function(ev) {
   }  
 });
 
+var logged_in = false;
+// 0 for agent, 1 for seller, 2 for buyer
+var logged_in_type;
+var login;
+
 $('#login-submit').click(function(ev) {
   ev.preventDefault();
   var parameters = {uname: $('#uname').val(),
@@ -355,17 +360,23 @@ $('#login-submit').click(function(ev) {
     else {
       $.get('/login_buyer', parameters, function(data) {
         if (data.length != 0) {
-          console.log('buyer');
+          logged_in = true;
+          logged_in_type = 2;
+          login = data[0];
         }
         else {
           $.get('/login_seller', parameters, function(data) {
             if (data.length != 0) {
-              console.log('seller');              
+              logged_in = true;
+              logged_in_type = 1;
+              login = data[0];
             }
             else {          
               $.get('/login_agent', parameters, function(data) {
                 if (data.length != 0) {
-                  console.log('agent');
+                  logged_in = true;
+                  logged_in_type = 0;
+                  login = data[0];
                 }
                 else {
                   Materialize.toast('Login error. Try signing up again', 4000);
