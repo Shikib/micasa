@@ -363,6 +363,22 @@ router.get('/viewoffer', function (req, res, next) {
 //  });
 });
 
+router.get('/rateagent', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('rateagent', {
+      title: 'rateagent',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/rateagentGet', function (req, res, next){
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT * from Agent_Represents" ,
+                       res);
+
+    }); 
+   });
 
 router.get('/viewoffersSale', function (req, res, next) {
 

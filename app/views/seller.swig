@@ -24,6 +24,8 @@
       </ul>
     </div>
   </nav>
+   <body>
+      <div class="container">
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
@@ -39,17 +41,17 @@
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block"><a href="forsalewithoutagent">
+          <div class="icon-block"><a href="postproperty">
             <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
-            <h5 class="center">Post sale without help from an agent</h5>
+            <h5 class="center">Post your property</h5>
 
           </div>
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block"><a href="forsalewithagent">
+          <div class="icon-block"><a href="rateagent">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">Need help? Post sale with help from an agent</h5>
+            <h5 class="center">Pleasant experience? Rate your agent!</h5>
 
           </div>
         </div>
