@@ -27,7 +27,7 @@
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
-<h5 align="left" class="header center teal-text">Your Properties for Sales/Rent</h6>
+<h5 align="left" class="header center teal-text">Your Properties for Sale</h6>
  <table id="postsale" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -39,7 +39,25 @@
               <th data-field="area">Area (sq. metres)</th>
               <th data-field="isFurnished">Is Furnished?</th>
               <th data-field="agentID">Agent</th>
-              <th data-field="rentPrice">rentPrice</th>
+              <th data-field="salePrice">salePrice</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+  <h5 align="left" class="header center teal-text">Your Properties for Rent</h6>
+ <table id="postrent" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="propertyID">PropertyID</th>
+              <th data-field="houseNumber">House Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="age">Age (years)</th>
+              <th data-field="area">Area (sq. metres)</th>
+              <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="agentID">Agent</th>
               <th data-field="rentPrice">rentPrice</th>
           </tr>
         </thead>

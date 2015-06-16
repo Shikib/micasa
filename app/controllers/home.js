@@ -81,10 +81,27 @@ router.get('/sellerload', function (req, res, next) {
     var sn = "Justin Timb";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice, fs.salePrice " +
-                              "FROM Seller s, Property_HasA_Location p, Agent_Represents ar, ForSale fs, ForRent fr, PostSale ps " +
-                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn  +
-                              "' AND  p.propertyID = fr.propertyID OR p.propertyID = fs.propertyID AND op.offerID = o.offerID ",
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fs.salePrice " + 
+                              "FROM Seller s, Property_HasA_Location p, Agent_Represents ar, ForSale fs, PostSale ps " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND fs.propertyID = ps.propertyID AND p.propertyID = ps.propertyID AND ar.agentID = ps.agentID ",
+                       res);
+
+    }); 
+   });
+
+router.get('/sellerload', function (req, res, next) {
+
+    var sp = "7784445555"; 
+    var sn = "Liam Neeson";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice " + 
+                              "FROM Seller s, Property_HasA_Location p, Agent_Represents ar, ForRent fr, PostSale ps " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND fr.propertyID = ps.propertyID AND p.propertyID = ps.propertyID AND ar.agentID = ps.agentID ",
                        res);
 
     }); 
