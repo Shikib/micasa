@@ -75,6 +75,7 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
+
 router.get('/sellerload', function (req, res, next) {
 
     var sp = "7783334444"; 
@@ -107,8 +108,7 @@ router.get('/sellerload', function (req, res, next) {
     }); 
    });
 
-router.get('/buyerload', function (req, res, next) {
-
+router.get('/buyerloadPurchase', function (req, res, next) {
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
 
@@ -122,6 +122,23 @@ router.get('/buyerload', function (req, res, next) {
 
     }); 
    });
+
+router.get('/buyerloadRent', function (req, res, next) {
+
+    var bp = "6044445555"; 
+    var bn = "Brando Wison";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +
+                              "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
+                              "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
+                       res);
+
+    }); 
+   });
+
 
 router.get('/buyer', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
@@ -186,6 +203,17 @@ router.get('/agent_interest', function (req, res, next) {
     });
 //  });
 });
+
+router.get('/appointment', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('appointment', {
+      title: 'appointment',
+//      articles: articles
+    });
+//  });
+});
+
+
 
 
 router.get('/advanced_search_cs', function(req, res, next) {
@@ -316,6 +344,33 @@ router.get('/agent_appointments', function (req, res, next) {
 //  });
 });
 
+router.get('/interested_in', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('interestedin', {
+      title: 'interestedin',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/makeofferpurchase', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('makeofferpurchase', {
+      title: 'makeofferpurchase',
+//      articles: articles
+    });
+//  });
+});
+
+
+router.get('/makeofferrental', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('makeofferrental', {
+      title: 'makeofferrental',
+//      articles: articles
+    });
+//  });
+});
 
 router.get('/check_uname_availability', function(req, res, next) {
   var queryString = "SELECT * " +
@@ -336,6 +391,14 @@ router.get('/get_all_agentID', function(req, res, next) {
     mysqlModule.query(conn, queryString, res);
   });
 });
+router.get('/get_all_offerID', function(req, res, next) {
+  var queryString = "SELECT offerID " +
+                    "FROM offer;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
 
 router.get('/create_new_agent', function(req, res, next) {
   var agentQueryString = "INSERT INTO Agent_Represents " +
@@ -345,15 +408,15 @@ router.get('/create_new_agent', function(req, res, next) {
                          + "'" + req.query.email + "', "
                                + req.query.agency + ", "  
                                + "null" 
-                         + "'" + req.query.uname + "');";
+                         + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, agentQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -365,15 +428,15 @@ router.get('/create_new_seller', function(req, res, next) {
                           "VALUES ('" + req.query.email + "', " 
                                 + "'" + req.query.phone + "', "
                                 + "'" + req.query.name + "', "
-                                + "'" + req.query.uname + "');";
+                                + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, sellerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -385,19 +448,65 @@ router.get('/create_new_buyer', function(req, res, next) {
                          "VALUES ('" + req.query.email + "', " 
                                + "'" + req.query.phone + "', "
                                + "'" + req.query.name + "', "
-                               + "'" + req.query.uname + "');";
+                               + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, buyerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
 });
+router.get('/create_new_app', function(req, res, next){
+  var appQueryString = "INSERT INTO appointment_view"+
+                            "VALUES ('" + req.query.appId+"',"+
+                                    +"'"+ req.query.appdate+"',"+
+                                    +"'"+ req.query.appduration+"',"+
+                                    +"'"+ req.query.propertyID+"',"+
+                                    +"'"+ req.query.buyername+"',"+
+                                    +"'"+ req.query.buyerphone+"');";
+mysqlModule.getConnection(function(err,conn){
+  conn.query(conn, appQueryString);
+  res.send(0);
+});
+});
+
+router.get('/create_new_interestedIn', function(req, res, next){
+  var msgQueryString = "INSERT INTO InterestedIn "+
+                            "VALUES ('" + req.query.propertyId+"',"+
+                                    +"'"+ req.query.buyername+"',"+
+                                    +"'"+ req.query.buyerphone+"',"+
+                                    +"'"+ req.query.message+"');";
+  mysqlModule.getConnection(function(err,conn){
+    conn.query(conn, msgQueryString);
+    res.send(0);
+  });
+});
+
+router.get('/create_new_rental_offer', function(req, res, next){
+  var rentQueryString = "INSERT INTO  RentalOffer_Makes"+
+                            "VALUES ('" + req.query.offerID+"',"+
+                                    +"'"+ req.query.amount+"',"+
+                                     +"'"+ req.query.propertyID+"',"+
+                                      +"'"+ req.query.buyerphone+"',"+
+                                    +"'"+ req.query.buyername +"');";
+var offerQueryString = "INSERT INTO  RentalOffer_Makes"+
+                            "VALUES ('" + req.query.offerID+"',"+
+                                    +"'"+ req.query.message+"',"+
+                                    +"'"+ req.query.offerdate+"');";
+mysqlModule.getConnection(function(err,conn){
+  conn.query(conn, rentQueryString);
+  res.send(0);
+});
+});
+
+
+
+
 
 
 function test(){

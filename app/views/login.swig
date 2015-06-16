@@ -1,5 +1,6 @@
 {% extends 'layout.swig' %}
 {% block content%}
+<body>
 <nav>
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
@@ -15,21 +16,37 @@
  <h4 class="header center orange-text">Login </h4>
 <br>
  
-<center>
- <div class="row">
-    <form class="col s6">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="ID" type="text" class="validate">
-          <label for="ID">!ID </label>
-        </div>
+<div id="login" class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="mdi-social-person prefix"></i>
+        <input id="uname" type="text" class="validate" />
+        <label for="uname">Username</label>
       </div>
-    </form>
-  </div>
+    </div>
 
-  <button class="btn waves-effect waves-light" type="submit" name="action">!Submit
-    <i class="mdi-content-send right"></i>
-  </button>
-</center>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="mdi-action-lock prefix"></i>
+        <input id="password" type="password" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
 
+    <button id="login-submit" class="btn waves-effect waves-light" type="submit" name="action">Login
+      <i class="mdi-content-send right"></i>
+    </button>
+
+
+  </form>
+</div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="materialize/js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
 {% endblock %}

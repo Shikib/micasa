@@ -288,7 +288,7 @@ $('#signup-submit').click(function(ev) {
   ev.preventDefault();
   if ($('#password').val() != $('#confirm-password').val()) {
     Materialize.toast('Passwords must match', 4000);
-  }
+  }˜
   else if ($('#password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
   }
@@ -309,7 +309,7 @@ $('#signup-submit').click(function(ev) {
           });
         }
         else {
-          $.get('create_new_buyer', parameters, function(data) {
+          $.get('/create_new_buyer', parameters, function(data) {
           });
         }   
 
@@ -317,6 +317,18 @@ $('#signup-submit').click(function(ev) {
 
     });
   }  
+});
 
+$('#login-submit').click(function(ev) {
+  ev.preventDefault();
+  var parameters = {uname: $('#uname').val(),
+                    password: $('#password').val()};
+  $.get('/check_login', parameters, function(data) {
+    if (data.length == 0)
+      Materialize.toast('Login info', 4000);
+    else {
+      
+    }    
+  }); 
 
 });
