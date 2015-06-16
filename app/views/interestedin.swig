@@ -65,10 +65,7 @@
     </form>
   </div>
         
-
-  <button id="in-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="mdi-content-send right"></i>
-  </button>
+<a id ="in-submit" class="btn" onclick="Materialize.toast('Your intrested in has been submitted ', 4000)">Submit</a>
 
 
         

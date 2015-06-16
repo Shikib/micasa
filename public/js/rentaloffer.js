@@ -5,13 +5,13 @@
       
 
 $('#rental-offer-submit').click(function(ev) {
-  $(#'rental-offer-submit').hide();
+  $('#rental-offer-submit').hide();
   ev.preventDefault();
   var offerID = Math.floor(Math.random() * 327637);
         $.get('/get_all_offerID', {}, function(data) {
           while (data.indexOf(offerID) > -1)
             offerID = Math.floor(Math.random() * 32767);
-        }
+        });
 
         parameters = { buyername: $('#buyername').val(),
                       buyerphone:  $('#buyerphone').val(),
@@ -21,6 +21,6 @@ $('#rental-offer-submit').click(function(ev) {
                       offerdate:  $('#offerdate').val(),
                       offerID: offerID};
         console.log(parameters);  
-          $.get('/create_new_rental_offer', parameters, function(data)
-
-  }  
+          $.get('/create_new_rental_offer', parameters, function(data){});
+ $('#form').hide();
+  })

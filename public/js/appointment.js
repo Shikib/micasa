@@ -6,6 +6,8 @@ $('.datepicker').pickadate({
 
 
 $('#app-submit').click(function(ev) {
+  $('#app-submit').hide();
+  console.log("aabcc");
   ev.preventDefault();
         parameters = { buyername: $('#buyername').val(),
                       buyerphone:  $('#buyerphone').val(),
@@ -16,5 +18,6 @@ $('#app-submit').click(function(ev) {
         console.log(parameters);  
           $.get('/create_new_app', parameters, function(data){
 });
-  }  
+           $('#form').hide();
+  })
 
