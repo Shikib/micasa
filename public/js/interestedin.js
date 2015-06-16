@@ -1,4 +1,4 @@
-$('#in-submit').click(function(ev) 
+$('#in-submit').click(function(ev) {
     $('#in-submit').hide();
     console.log("aabcc");
     ev.preventDefault();
@@ -11,4 +11,4 @@ $('#in-submit').click(function(ev)
 
     });
  
-}  
+})
