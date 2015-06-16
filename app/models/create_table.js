@@ -27,6 +27,7 @@ exports.initialize_tables = function() {
 */
     // drop all tables
     conn.query("drop table Property_HasA_Location cascade constraints;" +
+                 "drop table Account cascade constraints;" +
                  "drop table Agency cascade constraints;" +
                  "drop table Agent_Represents cascade constraints;" +
                  "drop table Offer cascade constraints;" +
@@ -116,7 +117,6 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
-
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE, " +
                  "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)");
@@ -284,8 +284,9 @@ exports.initialize_tables = function() {
                "(3236, 1407, 8556, '6042223333', 'Markus Lemonis')"+
                "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
-    conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +
-               "(234, '2015/05/14', 2, 8234, '6042223333', 'Markus Lemonis');");
+    conn.query("INSERT INTO Appointment_View VALUES (123, '2015-06-15', 1, 8123, '6041112222', 'Pinkman Jones')," +
+               "(234, '2015-05-14', 2, 8234, '6042223333', 'Markus Lemonis')," +
+               "(345, '2015-07-02', 4, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO Approves VALUES (123, 1123)," +
                "(234, 1345);");
