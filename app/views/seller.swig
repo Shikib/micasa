@@ -59,7 +59,7 @@
       </div>
 
 <h5 align="left" class="header center teal-text">Your Properties for Sale</h6>
- <table id="postsale" class="bordered striped hoverable responsive-table">
+ <table id="forsale" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="propertyID">PropertyID</th>
@@ -79,7 +79,7 @@
       </table>
 
   <h5 align="left" class="header center teal-text">Your Properties for Rent</h6>
- <table id="postrent" class="bordered striped hoverable responsive-table">
+ <table id="forrent" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="propertyID">PropertyID</th>
