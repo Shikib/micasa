@@ -324,7 +324,7 @@ router.get('/create_new_agent', function(req, res, next) {
                          + "'" + req.query.email + "', "
                                + req.query.agency + ", "  
                                + "null" 
-                         + "'" + req.query.uname + "';";
+                         + "'" + req.query.uname + "');";
   
 
   mysqlModule.getConnection(function(err, conn) {
@@ -348,15 +348,15 @@ router.get('/create_new_seller', function(req, res, next) {
 
 
 router.get('/create_new_buyer', function(req, res, next) {
-  var buyerQueryString = "INSERT INTO Seller " +
+  var buyerQueryString = "INSERT INTO Buyer " +
                          "VALUES ('" + req.query.email + "', " 
                                + "'" + req.query.phone + "', "
                                + "'" + req.query.name + "', "
-                               + "'" + req.query.uname + "';";
+                               + "'" + req.query.uname + "');";
   
 
   mysqlModule.getConnection(function(err, conn) {
-    mysqlModule.query(conn, sellerQueryString, res);
+    mysqlModule.query(conn, buyerQueryString, res);
   });
 });
 
@@ -368,8 +368,7 @@ router.get('/check_login', function(req, res, next) {
                        "password = '" + req.query.passowrd + "';";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, queryString);
-    res.send(0);
+    mysqlModule.query(conn, queryString, res);
   });
 });
 
