@@ -1,8 +1,8 @@
 $(window).load(function() {
   var parameters = {};
-  $.get('/agent_appointments_get', parameters, function(data) {
+  $.get('/agent_not_approved_appointments_get', parameters, function(data) {
     console.log(data);
-    $("#results > tbody").html("");
+    $("#notapproved > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
       rowString += "<td>" + data[i].appointmentID + "</td>";
@@ -11,7 +11,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].buyerName + "</td>";
       rowString += "<td>" + data[i].appointmentTime + "</td>";
       rowString += "<td>" + data[i].appDuration + "</td>";
-      $("#results > tbody").append(rowString);
+      $("#notapproved > tbody").append(rowString);
     }
   });
 });

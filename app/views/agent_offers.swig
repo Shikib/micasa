@@ -42,7 +42,7 @@
   <div class="container">
     <div class="section">
 
-        <h5 class="header center orange-text">Purchase Offers</h5>
+      <h5 class="header center orange-text">Purchase Offers</h5>
       <table id="purchaseresults" class="bordered hoverable responsive-table">
         <thead>
           <tr>
@@ -60,7 +60,7 @@
         </tbody>
       </table>
       <br> 
-        <h5 class="header center orange-text">Rental Offers</h5>
+      <h5 class="header center orange-text">Rental Offers</h5>
       <table id="rentalresults" class="bordered hoverable responsive-table">
         <thead>
           <tr>
