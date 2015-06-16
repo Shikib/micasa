@@ -42,7 +42,25 @@
   <div class="container">
     <div class="section">
 
-      <table id="results" class="bordered hoverable responsive-table">
+      <h5 class="header center orange-text">Not Approved Appointments</h5>
+      <table id="notapproved" class="bordered hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="appointmentID">Appointment ID</th>
+              <th data-field="propertyID">Property ID</th>
+              <th data-field="buyerPhone">Buyer Phone</th>
+              <th data-field="buyerName">Buyer Name</th>
+              <th data-field="appointmentTime">Appointment Time</th>
+              <th data-field="appDuration">Appointment Duration</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+      <br>
+      <h5 class="header center orange-text">Approved Appointments</h5>
+      <table id="approved" class="bordered hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="appointmentID">Appointment ID</th>
@@ -78,7 +96,8 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
-  <script src="js/agent_get_appointments.js"></script>
+  <script src="js/agent_get_not_approved_appointments.js"></script>
+  <script src="js/agent_get_approved_appointments.js"></script>
   </body>
 {% endblock %}
 </html>
