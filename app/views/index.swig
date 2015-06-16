@@ -20,7 +20,7 @@
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-      {% if check_login() %}
+      {% if !check_login() %}
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
       {% else %}
