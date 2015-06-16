@@ -18,9 +18,7 @@
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
       <div class="row center">
-      <br><br>
       </div>
     </div>
   </div>
