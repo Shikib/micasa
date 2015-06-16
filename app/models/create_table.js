@@ -26,6 +26,9 @@ exports.initialize_tables = function() {
     conn.query("delete from InterestedIn;");
 */
     // drop all tables
+    conn.query("drop database micasa; ");
+    conn.query("create database micasa;");
+    conn.query("use micasa;")
     conn.query("drop table Property_HasA_Location cascade constraints;" +
                  "drop table Agency cascade constraints;" +
                  "drop table Agent_Represents cascade constraints;" +
@@ -275,13 +278,10 @@ exports.initialize_tables = function() {
                "(3234, '7785556666', 'Bob Jones');");
 
     conn.query("INSERT INTO PurchaseOffer_Makes VALUES (2123, 500000, 8123, '6041112222', 'Pinkman Jones')," +
-               "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis')," +
-               "(2235, 1033040, 8345, '6042223333', 'Markus Lemonis')," +
+               "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis'),"+
                "(2345, 2000000, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '6044445555', 'Brando Wison')," +
-               "(3235, 1400, 8567, '6042223333', 'Markus Lemonis')"+
-               "(3236, 1407, 8556, '6042223333', 'Markus Lemonis')"+
                "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
     conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +
