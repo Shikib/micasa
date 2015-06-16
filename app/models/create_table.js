@@ -116,9 +116,11 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
+
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE, " +
                  "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)");
+
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +
@@ -126,9 +128,9 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
+
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE)");  
-
 
     conn.query("CREATE TABLE Appointment_View (" +
                  "appointmentID smallint PRIMARY KEY," + 
@@ -200,7 +202,7 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
 
     conn.query("CREATE TABLE InterestedIn (" +
-                 "propertyID smallint PRIMARY KEY," +
+                 "propertyID smallint not null, " +
                  "buyerName varchar(20) not null," +
                  "buyerPhone char(10) not null," +
                  "message varchar(200)," +
@@ -274,9 +276,12 @@ exports.initialize_tables = function() {
 
     conn.query("INSERT INTO PurchaseOffer_Makes VALUES (2123, 500000, 8123, '6041112222', 'Pinkman Jones')," +
                "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis')," +
+               "(2235, 1033040, 8345, '6042223333', 'Markus Lemonis')," +
                "(2345, 2000000, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '6044445555', 'Brando Wison')," +
+               "(3235, 1400, 8567, '6042223333', 'Markus Lemonis')"+
+               "(3236, 1407, 8556, '6042223333', 'Markus Lemonis')"+
                "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
     conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +

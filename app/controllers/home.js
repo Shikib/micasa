@@ -1,6 +1,7 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
+var mysqlModule = require('../../mysqlModule');
 
 var mysqlModule = require('../../mysqlModule');
 
@@ -139,69 +140,62 @@ router.get('/buyerloadRent', function (req, res, next) {
     }); 
    });
 
+router.get('/buyerloadApp', function (req, res, next) {
+
+    var bp = "6042223333"; 
+    var bn = "Markus Lemonis";
+
+     mysqlModule.getConnection(function(err, conn) {
+       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
+                              "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
+                              "' AND p.propertyID = op.propertyID ",
+                       res);
+
+    }); 
+   });
 
 router.get('/buyer', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('buyer', {
       title: 'buyer',
-//      articles: articles
     });
-//  });
 });
-
 
 router.get('/agent', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent', {
       title: 'agent',
-//      articles: articles
     });
-//  });
-});
-
-router.get('/seller', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('seller', {
-      title: 'seller',
-//      articles: articles
-    });
-//  });
-});
-
-router.get('/login', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('login', {
-      title: 'login',
-//      articles: articles
-    });
-//  });
-});
-
-router.get('/signup', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('signup', {
-      title: 'signup',
-//      articles: articles
-    });
-//  });
 });
 
 router.get('/agent_offers', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_offers', {
       title: 'agent_offers',
-//      articles: articles
     });
-//  });
+});
+
+router.get('/agent_purchaseoffers_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Offer o, PurchaseOffer_Makes po " +
+                              "WHERE o.offerID=po.offerID;",
+                        res);
+    });
+});
+
+router.get('/agent_rentaloffers_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Offer o, RentalOffer_Makes ro " +
+                              "WHERE o.offerID=ro.offerID;",
+                        res);
+    });
 });
 
 router.get('/agent_interest', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_interest', {
       title: 'agent_interest',
-//      articles: articles
     });
-//  });
 });
 
 router.get('/appointment', function (req, res, next) {
@@ -213,8 +207,29 @@ router.get('/appointment', function (req, res, next) {
 //  });
 });
 
+router.get('/agent_interest_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM InterestedIn i, PostSale p " +
+                              "WHERE i.propertyID=p.propertyID;",
+                        res);
+    });
+});
 
+router.get('/agent_appointments', function (req, res, next) {
+    res.render('agent_appointments', {
+      title: 'agent_appointments',
+    });
+});
 
+router.get('/agent_appointments_get', function (req, res, next) {
+    mysqlModule.getConnection(function(err,conn) {
+      mysqlModule.query(conn, "SELECT * " +
+                              "FROM Appointment_View a, PostSale p " +
+                              "WHERE a.propertyID=p.propertyID;",
+                        res);
+    });
+});
 
 router.get('/advanced_search_cs', function(req, res, next) {
   var queryString = "SELECT * " +
@@ -336,12 +351,27 @@ router.get('/advanced_search_rr', function(req, res, next) {
 });
 
 router.get('/agent_appointments', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
     res.render('agent_appointments', {
       title: 'agent_appointments',
-//      articles: articles
     });
-//  });
+});
+
+router.get('/seller', function (req, res, next) {
+    res.render('seller', {
+      title: 'seller',
+    });
+});
+
+router.get('/login', function (req, res, next) {
+    res.render('login', {
+      title: 'login',
+    });
+});
+
+router.get('/signup', function (req, res, next) {
+    res.render('signup', {
+      title: 'signup',
+    });
 });
 
 
@@ -467,6 +497,25 @@ router.get('/get_all_offerID', function(req, res, next) {
   });
 });
 
+router.get('/get_all_appID', function(req, res, next) {
+  var queryString = "SELECT appointmentID " +
+                    "FROM appointment_view;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/get_all_propertyID', function(req, res, next) {
+  var queryString = "SELECT propertyID " +
+                    "FROM Property_HasA_Location;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
 router.get('/create_new_account', function(req, res, next) {
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
@@ -548,13 +597,13 @@ mysqlModule.getConnection(function(err,conn){
 
 router.get('/create_new_interestedIn', function(req, res, next){
   var msgQueryString = "INSERT INTO InterestedIn "+
-                            "VALUES ('" + req.query.propertyId+"',"+
-                                    +"'"+ req.query.buyername+"',"+
-                                    +"'"+ req.query.buyerphone+"',"+
-                                    +"'"+ req.query.message+"');";
+                            "VALUES (" + req.query.propertyID+","+
+                                    "'"+ req.query.buyername+"',"+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.message+"');";
+  console.log(msgQueryString);
   mysqlModule.getConnection(function(err,conn){
-    conn.query(conn, msgQueryString);
-    res.send(0);
+    mysqlModule.query(conn, msgQueryString, res);
   });
 });
 

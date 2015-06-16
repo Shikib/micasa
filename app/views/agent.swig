@@ -18,9 +18,7 @@
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
       <div class="row center">
-      <br><br>
       </div>
     </div>
   </div>
@@ -43,16 +41,16 @@
             <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
             <h5 class="center">I want to view expressions of interest</h5>
 
-            <p class="light">Click on the icon to view the expressions of interest.</p>
+            <p class="light">Click on the icon to view expressions of interest.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block"><a href="agent_appointments">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">I want to approve viewing appointments.</h5>
+            <h5 class="center">I want to view and approve viewing appointments.</h5>
 
-            <p class="light">Click on the icon to approve viewing appointments.</p>
+            <p class="light">Click on the icon to view, and approve viewing appointments.</p>
           </div>
         </div>
       </div>
@@ -61,5 +59,13 @@
 
     </div>
   </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3">Micasa</a>
+      </div>
+    </div>
+  </footer>
+
 
 {% endblock %}

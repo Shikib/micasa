@@ -38,7 +38,7 @@
 <br><br>
 
 
-<h5 align="left" class="header center teal-text">Your Purchase Offer</h6>
+<h5 align="left" class="header center teal-text">Your Purchase Offer</h5>
  <table id="purchaseoffer" class="bordered hoverable responsive-table">
         <thead>
           <tr>
@@ -53,12 +53,11 @@
               <th data-field="purcaseAmount">Offer Amount</th>
           </tr>
         </thead>
-
         <tbody>
         </tbody>
       </table>
 
-      <br><br><h5 align="left" class="header center teal-text">Your Rental Offer</h6>
+     <br><br><h5 align="left" class="header center teal-text">Your Rental Offer</h5>
  <table id="rentoffer" class="bordered hoverable responsive-table">
         <thead>
           <tr>
@@ -73,7 +72,23 @@
               <th data-field="rentAmount">Rental Amount</th>
           </tr>
         </thead>
+        <tbody>
+        </tbody>
+      </table>
 
+
+<br><br><h5 align="left" class="header center teal-text">Your Appointment</h5>
+ <table id="app" class="bordered hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="propertyID">PropertyID</th>
+              <th data-field="houseNumber">House Number</th>
+              <th data-field="street">Street</th>
+              <th data-field="city">City</th>
+              <th data-field="appTime">Appointment Time</th>
+              <th data-field="appDur">Appointment Duration</th>
+          </tr>
+        </thead>
         <tbody>
         </tbody>
       </table>
