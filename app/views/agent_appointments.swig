@@ -59,6 +59,14 @@
         </tbody>
       </table>
       <br>
+
+      <h5 class="header center orange-text">Approve an Appointment</h5>
+     <form id="approve-field">
+        <div class="input-field">
+          <input id="approve" type="search" placeholder="Input the appointmentID you want to approve, press enter, then refresh the page" required>
+        </div>
+      </form> 
+
       <h5 class="header center orange-text">Approved Appointments</h5>
       <table id="approved" class="bordered hoverable responsive-table">
         <thead>
@@ -98,6 +106,7 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="js/agent_get_not_approved_appointments.js"></script>
   <script src="js/agent_get_approved_appointments.js"></script>
+  <script src='js/agent_approve_appointment.js'></script>
   </body>
 {% endblock %}
 </html>

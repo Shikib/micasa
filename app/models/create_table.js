@@ -281,9 +281,9 @@ exports.initialize_tables = function() {
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '6044445555', 'Brando Wison')," +
                "(3234, 1500, 8567, '6045556666', 'Hartof Lion');");
 
-    conn.query("INSERT INTO Appointment_View VALUES (123, '2015/06/15', 1, 8123, '6041112222', 'Pinkman Jones')," +
-               "(234, '2015/05/14', 2, 8234, '6042223333', 'Markus Lemonis')," +
-               "(345, '2015/07/02', 4, 8345, '6043334444', 'Angel Qin');");
+    conn.query("INSERT INTO Appointment_View VALUES (123, '2015-06-15', 1, 8123, '6041112222', 'Pinkman Jones')," +
+               "(234, '2015-05-14', 2, 8234, '6042223333', 'Markus Lemonis')," +
+               "(345, '2015-07-02', 4, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO Approves VALUES (123, 1123)," +
                "(234, 1345);");
