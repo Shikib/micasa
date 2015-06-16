@@ -306,6 +306,16 @@ router.get('/get_all_agentID', function(req, res, next) {
   });
 });
 
+router.get('/create_new_account', function(req, res, next) {
+  var accountQueryString = "INSERT INTO Account " + 
+                           "VALUES ('" + req.query.uname + "', " +
+                                   "'" + req.query.password + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, accountQueryString, res);
+  });
+});
+
 router.get('/create_new_agent', function(req, res, next) {
   var agentQueryString = "INSERT INTO Agent_Represents " +
                     "VALUES (" + req.query.agentID + ", " 
@@ -316,15 +326,9 @@ router.get('/create_new_agent', function(req, res, next) {
                                + "null" 
                          + "'" + req.query.uname + "';";
   
-  var accountQueryString = "INSERT INTO Account " + 
-                           "VALUES ('" + req.query.uname + "', " +
-                                   "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, agentQueryString);
-    conn.query(conn, accountQueryString);
-    
-    res.send(0);
+    mysqlModule.query(conn, agentQueryString, res);
   });
 });
 
@@ -334,17 +338,11 @@ router.get('/create_new_seller', function(req, res, next) {
                           "VALUES ('" + req.query.email + "', " 
                                 + "'" + req.query.phone + "', "
                                 + "'" + req.query.name + "', "
-                                + "'" + req.query.uname + "';";
+                                + "'" + req.query.uname + "');";
   
-  var accountQueryString = "INSERT INTO Account " + 
-                           "VALUES ('" + req.query.uname + "', " +
-                                   "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, sellerQueryString);
-    conn.query(conn, accountQueryString);
-    
-    res.send(0);
+    mysqlModule.query(conn, sellerQueryString, res);
   });
 });
 
@@ -356,15 +354,9 @@ router.get('/create_new_buyer', function(req, res, next) {
                                + "'" + req.query.name + "', "
                                + "'" + req.query.uname + "';";
   
-  var accountQueryString = "INSERT INTO Account " + 
-                           "VALUES ('" + req.query.uname + "', " +
-                                   "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, buyerQueryString);
-    conn.query(conn, accountQueryString);
-    
-    res.send(0);
+    mysqlModule.query(conn, sellerQueryString, res);
   });
 });
 

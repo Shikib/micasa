@@ -304,15 +304,18 @@ $('#signup-submit').click(function(ev) {
                       phone:  $('#phone').val(),
                       password: $('#password').val()};
         console.log(parameters);  
-        if (sellerPressed) {
-          $.get('/create_new_seller', parameters, function(data) {
-          });
-        }
-        else {
-          $.get('/create_new_buyer', parameters, function(data) {
-          });
-        }   
-
+        $.get('/create_new_account', parameters, function(data) {
+          if (sellerPressed) {
+            $.get('/create_new_seller', parameters, function(data) {
+              console.log(data);
+            });
+          } 
+          else {
+            $.get('/create_new_buyer', parameters, function(data) {
+              console.log(data);
+            });
+          }   
+        });  
       } 
 
     });
@@ -327,7 +330,21 @@ $('#login-submit').click(function(ev) {
     if (data.length == 0)
       Materialize.toast('Login info is invalid', 4000);
     else {
-      console.log("logged in");  
+      $.get('/login_buyer', parameters, function(data) {
+        if (data.length != 0) {
+
+        }
+        else {
+          $.get('/login_seller', parameters, function(data) {
+            if (data.length != 0) {
+
+            }
+            else {
+             
+            }
+          });
+        }
+      });
     }    
   }); 
 
