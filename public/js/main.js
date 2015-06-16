@@ -7,6 +7,15 @@ $(document).ready(function() {
     });
 });
 
+function check_login() {
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      return logged_in;
+    });
+}
+
 $('#search-field').submit(function(ev) {
   ev.preventDefault();
   var parameters = {search: $('#search').val() };
