@@ -201,10 +201,11 @@ exports.initialize_tables = function() {
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 
     conn.query("CREATE TABLE InterestedIn (" +
-                 "propertyID smallint PRIMARY KEY," +
+                 "propertyID smallint not null, " +
                  "buyerName varchar(20) not null," +
                  "buyerPhone char(10) not null," +
                  "message varchar(200)," +
+                 "PRIMARY KEY (propertyID, buyerPhone, buyerName),"+
                  "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID))");
 

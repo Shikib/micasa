@@ -8,6 +8,7 @@ $(window).load(function() {
   var parameters = {};
   $.get('/buyerloadPurchase', parameters, function(data) {
   	console.log(data);
+    console.log("purchase runs");
   	$("#purchaseoffer > tbody").html("");
   	for (var i in data) {
   	  var rowString = "<tr>";
@@ -29,6 +30,7 @@ $(window).load(function() {
   var parameters = {};
   $.get('/buyerloadRent', parameters, function(data) {
     console.log(data);
+    console.log("rent runs");
     $("#rentoffer > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -43,6 +45,29 @@ $(window).load(function() {
       rowString += "<td>" + data[i].rentAmount + "</td>";
 
       $("#rentoffer > tbody").append(rowString);
+
+    }
+  });
+});
+
+
+
+$(window).load(function() {
+  var parameters = {};
+  $.get('/buyerloadApp', parameters, function(data) {
+    console.log(data);
+    console.log("app runs");
+    $("#app> tbody").html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].propertyID + "</td>";
+      rowString += "<td>" + data[i].houseNumber + "</td>";
+      rowString += "<td>" + data[i].street + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].appTime+ "</td>";
+      rowString += "<td>" + data[i].appDur + "</td>";
+
+      $("#app > tbody").append(rowString);
 
     }
   });

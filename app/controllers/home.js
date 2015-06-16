@@ -140,6 +140,21 @@ router.get('/buyerloadRent', function (req, res, next) {
     }); 
    });
 
+router.get('/buyerloadApp', function (req, res, next) {
+
+    var bp = "6042223333"; 
+    var bn = "Markus Lemonis";
+
+     mysqlModule.getConnection(function(err, conn) {
+       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
+                              "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
+                              "' AND p.propertyID = op.propertyID ",
+                       res);
+
+    }); 
+   });
 
 router.get('/buyer', function (req, res, next) {
     res.render('buyer', {
@@ -515,13 +530,13 @@ mysqlModule.getConnection(function(err,conn){
 
 router.get('/create_new_interestedIn', function(req, res, next){
   var msgQueryString = "INSERT INTO InterestedIn "+
-                            "VALUES ('" + req.query.propertyId+"',"+
-                                    +"'"+ req.query.buyername+"',"+
-                                    +"'"+ req.query.buyerphone+"',"+
-                                    +"'"+ req.query.message+"');";
+                            "VALUES (" + req.query.propertyID+","+
+                                    "'"+ req.query.buyername+"',"+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.message+"');";
+  console.log(msgQueryString);
   mysqlModule.getConnection(function(err,conn){
-    conn.query(conn, msgQueryString);
-    res.send(0);
+    mysqlModule.query(conn, msgQueryString, res);
   });
 });
 

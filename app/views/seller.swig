@@ -24,6 +24,8 @@
       </ul>
     </div>
   </nav>
+  <body>
+      <div class="container">
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
