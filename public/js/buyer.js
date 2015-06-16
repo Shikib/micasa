@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
     $('select').material_select();
+    $(".dropdown-button").dropdown();
 });
 
 $(window).load(function() {
