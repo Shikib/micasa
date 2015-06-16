@@ -325,9 +325,9 @@ $('#login-submit').click(function(ev) {
                     password: $('#password').val()};
   $.get('/check_login', parameters, function(data) {
     if (data.length == 0)
-      Materialize.toast('Login info', 4000);
+      Materialize.toast('Login info is invalid', 4000);
     else {
-      
+      console.log("logged in");  
     }    
   }); 
 

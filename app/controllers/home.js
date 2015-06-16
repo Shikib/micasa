@@ -369,6 +369,17 @@ router.get('/create_new_buyer', function(req, res, next) {
 });
 
 
+router.get('/check_login', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Accounts " +
+                    "WHERE uname = '" + req.query.uname + "' AND " +
+                       "password = '" + req.query.passowrd + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    conn.query(conn, queryString);
+    res.send(0);
+  });
+});
 
 
 function test(){
