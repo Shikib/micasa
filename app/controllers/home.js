@@ -325,8 +325,8 @@ router.get('/agent_appointments', function (req, res, next) {
 });
 router.get('/interested_in', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
-    res.render('intrestedin', {
-      title: 'intrestedin',
+    res.render('interestedin', {
+      title: 'interestedin',
 //      articles: articles
     });
 //  });
@@ -453,11 +453,11 @@ mysqlModule.getConnection(function(err,conn){
 });
 });
 
-router.get('/create_new_msg', function(req, res, next){
+router.get('/create_new_interestedIn', function(req, res, next){
   var msgQueryString = "INSERT INTO InterestedIn "+
-                            "VALUES ('" + req.query.propertyDd+"',"+
+                            "VALUES ('" + req.query.propertyId+"',"+
                                     +"'"+ req.query.buyername+"',"+
-                                     +"'"+ req.query.buyerphone+"',"+
+                                    +"'"+ req.query.buyerphone+"',"+
                                     +"'"+ req.query.message+"');";
 mysqlModule.getConnection(function(err,conn){
   conn.query(conn, msgQueryString);
