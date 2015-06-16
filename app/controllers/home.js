@@ -113,7 +113,7 @@ router.get('/buyerloadRent', function (req, res, next) {
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +
-                              "FROM Buyer b, rentalOffer_Makes o, Property_HasA_Location p, Offer op " +
+                              "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
                               "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
