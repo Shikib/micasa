@@ -117,7 +117,8 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
                  "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName))" +
+
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName), " +
                  "FOREIGN KEY (offerID) references Offer(offerID))");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
@@ -248,7 +249,7 @@ exports.initialize_tables = function() {
                "(1567, 'Jack Li', 1118889999, 'jl@MAX.com',9567, 10, 'jackli');");
 
     // All purchase offerIDs start with 2xxx, rental offerIDs start with 3xxx
-    conn.query("INSERT INTO Offer VALUES (2123, 'I love this house!', '2014-10-11')," +
+    conn.query("INSERT INTO Offer VALUES (2123, 'I love this house! Today will be the day that I finally purchase my dream house lmao', '2014-10-11')," +
                "(2234, 'When can I move in Kappa', '2014-03-25')," +
                "(2345, 'This house has same written all over it', '2014-04-04')," +
                "(3123, NULL, '2014-12-25')," +
