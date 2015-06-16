@@ -75,6 +75,7 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
+<<<<<<< HEAD
 router.get('/sellerload', function (req, res, next) {
 
     var sp = "7783334444"; 
@@ -91,7 +92,6 @@ router.get('/sellerload', function (req, res, next) {
    });
 
 router.get('/buyerloadPurchase', function (req, res, next) {
-
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
 
@@ -121,6 +121,7 @@ router.get('/buyerloadRent', function (req, res, next) {
 
     }); 
    });
+
 
 router.get('/buyer', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
@@ -185,6 +186,7 @@ router.get('/agent_interest', function (req, res, next) {
     });
 //  });
 });
+
 router.get('/appointment', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('appointment', {
@@ -193,6 +195,7 @@ router.get('/appointment', function (req, res, next) {
     });
 //  });
 });
+
 
 
 
@@ -323,6 +326,7 @@ router.get('/agent_appointments', function (req, res, next) {
     });
 //  });
 });
+
 router.get('/interested_in', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('interestedin', {
@@ -340,6 +344,7 @@ router.get('/makeofferpurchase', function (req, res, next) {
     });
 //  });
 });
+
 
 router.get('/makeofferrental', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
@@ -386,15 +391,15 @@ router.get('/create_new_agent', function(req, res, next) {
                          + "'" + req.query.email + "', "
                                + req.query.agency + ", "  
                                + "null" 
-                         + "'" + req.query.uname + "');";
+                         + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, agentQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -406,15 +411,15 @@ router.get('/create_new_seller', function(req, res, next) {
                           "VALUES ('" + req.query.email + "', " 
                                 + "'" + req.query.phone + "', "
                                 + "'" + req.query.name + "', "
-                                + "'" + req.query.uname + "');";
+                                + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, sellerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -426,15 +431,15 @@ router.get('/create_new_buyer', function(req, res, next) {
                          "VALUES ('" + req.query.email + "', " 
                                + "'" + req.query.phone + "', "
                                + "'" + req.query.name + "', "
-                               + "'" + req.query.uname + "');";
+                               + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, buyerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -481,6 +486,8 @@ mysqlModule.getConnection(function(err,conn){
   res.send(0);
 });
 });
+
+
 
 
 
