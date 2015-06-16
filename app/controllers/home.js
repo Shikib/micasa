@@ -75,7 +75,7 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
-<<<<<<< HEAD
+
 router.get('/sellerload', function (req, res, next) {
 
     var sp = "7783334444"; 
