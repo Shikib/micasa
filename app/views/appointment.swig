@@ -46,7 +46,7 @@
 
           <div class="input-field col s6">
           <i class="mdi-action-home prefix"></i>
-          <input id="propertyID" type="text" class="validate">
+          <input id= "propertyID" type="text" class="validate">
           <label for="propertyID">Property ID</label>
         </div>
 
@@ -58,7 +58,7 @@
 
           <div class="input-field col s6">
           <i class="mdi-device-access-time prefix"></i>
-          <input id="appduration" type="text" class="validate">
+          <input id= "appduration" type="text" class="validate">
           <label for="appduration">Appointment Duration</label>
         </div>
 
