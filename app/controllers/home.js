@@ -75,6 +75,23 @@ router.get('/searching', function(req, res, next) {
    }
 });
 
+
+router.get('/buyerload', function (req, res, next) {
+
+    var bp = "6042223333"; 
+    var bn = "Markus Lemonis";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
+                              "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
+                              "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
+                              "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
+                              "' AND  p.propertyID = o.propertyID  AND op.offerID = o.offerID ",
+                       res);
+
+    }); 
+   });
+
 router.get('/buyer', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('buyer', {
@@ -83,6 +100,8 @@ router.get('/buyer', function (req, res, next) {
     });
 //  });
 });
+
+
 router.get('/agent', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('agent', {
@@ -114,6 +133,24 @@ router.get('/signup', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('signup', {
       title: 'signup',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/agent_offers', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_offers', {
+      title: 'agent_offers',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/agent_interest', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_interest', {
+      title: 'agent_interest',
 //      articles: articles
     });
 //  });
@@ -239,6 +276,14 @@ router.get('/advanced_search_rr', function(req, res, next) {
   
 });
 
+router.get('/agent_appointments', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('agent_appointments', {
+      title: 'agent_appointments',
+//      articles: articles
+    });
+//  });
+});
 
 
 router.get('/check_uname_availability', function(req, res, next) {
@@ -269,15 +314,15 @@ router.get('/create_new_agent', function(req, res, next) {
                          + "'" + req.query.email + "', "
                                + req.query.agency + ", "  
                                + "null" 
-                         + "'" + req.query.uname + "');";
+                         + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, agentQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -289,15 +334,15 @@ router.get('/create_new_seller', function(req, res, next) {
                           "VALUES ('" + req.query.email + "', " 
                                 + "'" + req.query.phone + "', "
                                 + "'" + req.query.name + "', "
-                                + "'" + req.query.uname + "');";
+                                + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, sellerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
@@ -309,19 +354,21 @@ router.get('/create_new_buyer', function(req, res, next) {
                          "VALUES ('" + req.query.email + "', " 
                                + "'" + req.query.phone + "', "
                                + "'" + req.query.name + "', "
-                               + "'" + req.query.uname + "');";
+                               + "'" + req.query.uname + "';";
   
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +
                                    "'" + req.query.password + "');";
 
   mysqlModule.getConnection(function(err, conn) {
-    conn.query(conn, accountQueryString);
     conn.query(conn, buyerQueryString);
+    conn.query(conn, accountQueryString);
     
     res.send(0);
   });
 });
+
+
 
 
 function test(){
