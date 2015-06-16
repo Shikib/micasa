@@ -10,5 +10,5 @@ $('#in-submit').click(function(ev) {
     $.get('/create_new_interestedIn', parameters, function(data) {
 
     });
- 
+  $('#form').hide();
 })

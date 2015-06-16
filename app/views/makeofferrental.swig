@@ -30,7 +30,7 @@
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Make Rental Offer </h4></center>
   <div class="row">
-    <form class="col s12">
+    <form id="form" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <i class="mdi-action-account-circle prefix"></i>
@@ -73,10 +73,8 @@
     </form>
   </div>
         
+<a id ="rental-offer-submit" class="btn" onclick="Materialize.toast('Your rental offer has been submitted thanks!', 4000)">Submit</a>
 
-  <button id="rental-offer-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="mdi-content-send right"></i>
-  </button>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

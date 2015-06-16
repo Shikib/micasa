@@ -13,6 +13,12 @@
 {% endblock %}
 
 {% block content%}
+  <ul id="buyeractions" class="dropdown-content">
+  <li><a href="interested_in">New Interested In</a></li>
+  <li><a href="makeofferpurchase">New Purchase Offer</a></li>
+  <li><a href="makeofferrental">New Rental offer</a></li>
+  <li><a href="appointment">New Appointment</a></li>
+</ul>
 <nav>
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
@@ -21,7 +27,8 @@
         <li><a href="login">Login</a></li>
         <li><a href="signup">Sign up</a></li>
         <li><a href="search">Search</a></li>
-      </ul>
+        <li><a class="dropdown-button" href="#!" data-activates="buyeractions">Buyer Actions<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      
     </div>
   </nav>
     <body>
@@ -29,35 +36,6 @@
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Buyer</h4></center>
 <br><br>
- <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block"><a href="interested_in">
-            <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
-            <h5 class="center">See anything intersting?</h5>
-
-            <p class="light">Click on the icon to make a new interested in request</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block"><a href="makeofferpurchase">
-            <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
-            <h5 class="center">New purchase offer   </h5>
-
-            <p class="light">click on the icon to make a new purchase offer</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block"><a href="makeofferrental">
-            <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">New rental offer</h5>
-
-            <p class="light">Click on the icon to make a new rental offer</p>
-          </div>
-        </div>
-      </div>
 
 
 <h5 align="left" class="header center teal-text">Your Purchase Offer</h6>
