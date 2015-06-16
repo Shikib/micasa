@@ -226,6 +226,15 @@ $('#agent-button').click(function() {
   $('#seller-button').hide();
   $('#buyer-button').hide();
   $('#agent-signup').show();
+  $.get('/agency_list', {}, function(data) {
+    for (var i in data) {
+      var optionString = "<option value='" + data[i].agencyID +
+                         "'>" + data[i].name + "</option>";
+      $('#agency').append(optionString); 
+    }
+    $('#agency').material_select();
+  });
+
 });
 
 var sellerPressed;
@@ -253,6 +262,12 @@ $('#agent-signup-submit').click(function(ev) {
   }
   else if ($('#agent-password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
     var parameters = {uname: $('#agent-uname').val() };
@@ -292,6 +307,12 @@ $('#signup-submit').click(function(ev) {
   }
   else if ($('#password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
     var parameters = {uname: $('#uname').val() };
@@ -358,3 +379,4 @@ $('#login-submit').click(function(ev) {
   }); 
 
 });
+

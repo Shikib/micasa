@@ -408,6 +408,15 @@ router.get('/login_agent', function(req, res, next) {
 
 });
 
+router.get('/agency_list', function(req, res, next) {
+  var queryString = "SELECT * " + 
+                    "FROM Agency;"
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
