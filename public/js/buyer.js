@@ -56,7 +56,6 @@ $(window).load(function() {
   var parameters = {};
   $.get('/buyerloadApp', parameters, function(data) {
     console.log(data);
-    console.log("app runs");
     $("#app> tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -64,9 +63,9 @@ $(window).load(function() {
       rowString += "<td>" + data[i].houseNumber + "</td>";
       rowString += "<td>" + data[i].street + "</td>";
       rowString += "<td>" + data[i].city + "</td>";
-      rowString += "<td>" + data[i].appTime+ "</td>";
-      rowString += "<td>" + data[i].appDur + "</td>";
-
+      rowString += "<td>" + data[i].appointmentTime+ "</td>";
+      rowString += "<td>" + data[i].appDuration + "</td>";
+      
       $("#app > tbody").append(rowString);
 
     }
