@@ -76,7 +76,7 @@ router.get('/searching', function(req, res, next) {
 });
 
 
-router.get('/sellerload', function (req, res, next) {
+router.get('/sellerloadPurchase', function (req, res, next) {
 
     var sp = "7783334444"; 
     var sn = "Justin Timb";
@@ -92,7 +92,7 @@ router.get('/sellerload', function (req, res, next) {
     }); 
    });
 
-router.get('/sellerload', function (req, res, next) {
+router.get('/sellerloadRent', function (req, res, next) {
 
     var sp = "7784445555"; 
     var sn = "Liam Neeson";

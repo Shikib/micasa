@@ -5,9 +5,9 @@ $(document).ready(function() {
 
 $(window).load(function() {
   var parameters = {};
-  $.get('/sellerload', parameters, function(data) {
+  $.get('/sellerloadPurchase', parameters, function(data) {
   	console.log(data);
-  	$("#postsale > tbody").html("");
+  	$("#forsale > tbody").html("");
   	for (var i in data) {
   	  var rowString = "<tr>";
       rowString += "<td>" + data[i].propertyID + "</td>";
@@ -19,15 +19,16 @@ $(window).load(function() {
       rowString += "<td>" + data[i].isFurnished + "</td>";
       rowString += "<td>" + data[i].agentID+ "</td>";
       rowString += "<td>" + data[i].salePrice + "</td>";
-      $("#postsale > tbody").append(rowString);
+      $("#forsale > tbody").append(rowString);
     }
   });
 });
+
 $(window).load(function() {
   var parameters = {};
-  $.get('/sellerload', parameters, function(data) {
+  $.get('/sellerloadRent', parameters, function(data) {
     console.log(data);
-    $("#postrent > tbody").html("");
+    $("#forrent > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
       rowString += "<td>" + data[i].propertyID + "</td>";
@@ -39,7 +40,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].isFurnished + "</td>";
       rowString += "<td>" + data[i].agentID+ "</td>";
       rowString += "<td>" + data[i].rentPrice + "</td>";
-      $("#postrent > tbody").append(rowString);
+      $("#forrent > tbody").append(rowString);
     }
   });
 });

@@ -27,6 +27,37 @@
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
+
+<!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block"><a href="interested_in">
+            <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
+            <h5 class="center">See anything intersting?</h5>
+
+            <p class="light">Click on the icon to make a new interested in request</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block"><a href="makeofferpurchase">
+            <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
+            <h5 class="center">Post a property for purchase</h5>
+
+            <p class="light">click on the icon to make a new purchase offer</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block"><a href="makeofferrental">
+            <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
+            <h5 class="center">New rental offer</h5>
+
+            <p class="light">Post a property for rent</p>
+          </div>
+        </div>
+      </div>
+
 <h5 align="left" class="header center teal-text">Your Properties for Sale</h6>
  <table id="postsale" class="bordered striped hoverable responsive-table">
         <thead>
@@ -46,6 +77,7 @@
         <tbody>
         </tbody>
       </table>
+
   <h5 align="left" class="header center teal-text">Your Properties for Rent</h6>
  <table id="postrent" class="bordered striped hoverable responsive-table">
         <thead>
