@@ -14,7 +14,7 @@ $('#app-submit').click(function(ev) {
                       appduration:  $('#appduration').val(),
                       appID: $('#appID').val()};
         console.log(parameters);  
-          $.get('/create_new_app', parameters, function(data)
-
+          $.get('/create_new_app', parameters, function(data){
+});
   }  
 
