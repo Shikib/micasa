@@ -383,6 +383,25 @@ router.get('/get_all_offerID', function(req, res, next) {
   });
 });
 
+router.get('/get_all_appID', function(req, res, next) {
+  var queryString = "SELECT appointmentID " +
+                    "FROM appointment_view;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/get_all_propertyID', function(req, res, next) {
+  var queryString = "SELECT propertyID " +
+                    "FROM Property_HasA_Location;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
 router.get('/create_new_account', function(req, res, next) {
   var accountQueryString = "INSERT INTO Account " + 
                            "VALUES ('" + req.query.uname + "', " +

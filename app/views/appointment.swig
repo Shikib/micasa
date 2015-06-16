@@ -64,12 +64,6 @@
           <label for="appduration">Appointment Duration</label>
         </div>
 
-        <div class="input-field col s6">
-          <i class="mdi-action-assignment-turned-in prefix"></i>
-          <input id="appID" type="text" class="validate">
-          <label for="appID">Appointment ID</label>
-        </div>
-
       </div>
     </form>
   </div>

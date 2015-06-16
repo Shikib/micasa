@@ -65,7 +65,7 @@
     </form>
   </div>
         
-<a id ="in-submit" class="btn" onclick="Materialize.toast('Your intrested in has been submitted ', 4000)">Submit</a>
+<a id ="in-submit" class="btn" onclick="Materialize.toast('Your interested in has been submitted ', 4000)">Submit</a>
 
 
         
