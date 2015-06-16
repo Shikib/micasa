@@ -273,7 +273,8 @@ $('#agent-signup-submit').click(function(ev) {
                         phone:  $('#agent-phone').val(),
                         password: $('#agent-password').val()};
           console.log(parameters);  
-          $.get('/create_new_agent', parameters, function(data) {
+          $.get('/create_new_account', parameters, function(data) {
+            $.get('/create_new_agent', parameters, function (data) {});
           });   
         });
 
@@ -327,20 +328,28 @@ $('#login-submit').click(function(ev) {
   var parameters = {uname: $('#uname').val(),
                     password: $('#password').val()};
   $.get('/check_login', parameters, function(data) {
-    if (data.length == 0)
+    if (data.length == 0) {
       Materialize.toast('Login info is invalid', 4000);
+    }
     else {
       $.get('/login_buyer', parameters, function(data) {
         if (data.length != 0) {
-
+          console.log('buyer');
         }
         else {
           $.get('/login_seller', parameters, function(data) {
             if (data.length != 0) {
-
+              console.log('seller');              
             }
-            else {
-             
+            else {          
+              $.get('/login_agent', parameters, function(data) {
+                if (data.length != 0) {
+                  console.log('agent');
+                }
+                else {
+                  Materialize.toast('Login error. Try signing up again', 4000);
+                }
+              });
             }
           });
         }

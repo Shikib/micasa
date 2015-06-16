@@ -323,10 +323,10 @@ router.get('/create_new_agent', function(req, res, next) {
                          + "'" + req.query.phone + "', "
                          + "'" + req.query.email + "', "
                                + req.query.agency + ", "  
-                               + "null" 
+                               + "null, " 
                          + "'" + req.query.uname + "');";
   
-
+  console.log(agentQueryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, agentQueryString, res);
   });
@@ -363,15 +363,50 @@ router.get('/create_new_buyer', function(req, res, next) {
 
 router.get('/check_login', function(req, res, next) {
   var queryString = "SELECT * " +
-                    "FROM Accounts " +
+                    "FROM Account " +
                     "WHERE uname = '" + req.query.uname + "' AND " +
-                       "password = '" + req.query.passowrd + "';";
+                       "password = '" + req.query.password + "';";
 
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
 });
 
+router.get('/login_buyer', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Buyer " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+
+router.get('/login_seller', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Seller " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+
+
+router.get('/login_agent', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Agent_Represents " +
+                    "WHERE uname = '" + req.query.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
 
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
