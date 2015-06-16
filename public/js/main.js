@@ -4,17 +4,12 @@ $(document).ready(function() {
       logged_in = data.logged_in;
       logged_in_type = data.type;
       login = data.info;
+      if (!logged_in) {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
     });
 });
-
-function check_login() {
-    $.get('login_info', {}, function (data) {
-      logged_in = data.logged_in;
-      logged_in_type = data.type;
-      login = data.info;
-      return logged_in;
-    });
-}
 
 $('#search-field').submit(function(ev) {
   ev.preventDefault();
