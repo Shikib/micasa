@@ -344,6 +344,7 @@ router.get('/agent_appointments', function (req, res, next) {
 //  });
 });
 
+
 router.get('/interested_in', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('interestedin', {
@@ -352,6 +353,56 @@ router.get('/interested_in', function (req, res, next) {
     });
 //  });
 });
+
+router.get('/viewoffer', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('viewoffer', {
+      title: 'viewoffer',
+//      articles: articles
+    });
+//  });
+});
+
+
+router.get('/viewoffersSale', function (req, res, next) {
+
+    var sp = "7781112222"; 
+    var sn = "Mary Lamb";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
+                              "FROM Property_HasA_Location p, ForSale fs, PurchaseOffer_Makes pom, Offer o, PostSale ps, Seller s, Buyer b " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND b.buyerPhone = pom.buyerphone AND b.buyerName = pom.buyerName " +
+                              " AND fs.propertyID = pom.propertyID AND ps.propertyID = pom.propertyID AND ps.propertyID = p.propertyID " +
+                              " AND o.offerID = pom.offerID ",
+                       res);
+
+    }); 
+   });
+
+router.get('/viewoffersRent', function (req, res, next) {
+
+    var sp = "7784445555"; 
+    var sn = "Liam Neeson";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
+                              "FROM Property_HasA_Location p, ForRent fr, RentalOffer_Makes rom, Offer o, PostSale ps, Seller s, Buyer b " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND b.buyerPhone = rom.buyerPhone AND b.buyerName = rom.buyerName " +
+                              " AND fr.propertyID = rom.propertyID AND ps.propertyID = rom.propertyID AND ps.propertyID = p.propertyID " +
+                              " AND o.offerID = rom.offerID ",
+                       res);
+
+    }); 
+   });
+
+
+
+
 
 router.get('/makeofferpurchase', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
