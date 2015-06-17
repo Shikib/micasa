@@ -764,6 +764,23 @@ console.log(queryString);
   });
 });
 
+router.get('/check_offerID', function(req, res, next) {
+  var queryString =  "(select offerID from offer WHERE offerID = " + req.query.offerID +");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/appointmentID', function(req, res, next) {
+  var queryString =  "(select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appointmentID +");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
 
 
 router.get('/login_buyer', function(req, res, next) {
