@@ -299,6 +299,7 @@ $('#agent-signup-submit').click(function(ev) {
           console.log(parameters);  
           $.get('/create_new_account', parameters, function(data) {
             $.get('/create_new_agent', parameters, function (data) {});
+              location.href = "/login";
           });   
         });
 
@@ -338,12 +339,12 @@ $('#signup-submit').click(function(ev) {
         $.get('/create_new_account', parameters, function(data) {
           if (sellerPressed) {
             $.get('/create_new_seller', parameters, function(data) {
-              console.log(data);
+              location.href = "/login";
             });
           } 
           else {
             $.get('/create_new_buyer', parameters, function(data) {
-              console.log(data);
+              location.href = "/login";
             });
           }   
         });  
@@ -372,7 +373,9 @@ $('#login-submit').click(function(ev) {
           logged_in = true;
           logged_in_type = 2;
           login = data[0];
-          $.get('login_user', {type: logged_in_type, data: data[0]});
+          $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+            location.href = "/";
+          });
         }
         else {
           $.get('/login_seller', parameters, function(data) {
@@ -381,7 +384,9 @@ $('#login-submit').click(function(ev) {
               logged_in = true;
               logged_in_type = 1;
               login = data[0];
-              $.get('login_user', {type: logged_in_type, data: data[0]});
+              $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+                location.href = "/";
+              });
             }
             else {          
               $.get('/login_agent', parameters, function(data) {
@@ -389,7 +394,9 @@ $('#login-submit').click(function(ev) {
                   logged_in = true;
                   logged_in_type = 0;
                   login = data[0];
-                  $.get('login_user', {type: logged_in_type, data: data[0]});
+                  $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+                    location.href = "/";
+                  });
                 }
                 else {
                   Materialize.toast('Login error. Try signing up again', 4000);
