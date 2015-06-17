@@ -965,6 +965,7 @@ router.get('/bw_cities', function(req, res, next) {
                   "GROUP BY agencyID;";
 
   mysqlModule.getConnection(function(err, conn) {
+    console.log(queryString);
     mysqlModule.query(conn, queryString, res);
   });
 });
@@ -985,6 +986,7 @@ router.get('/bw_agencies', function(req, res, next) {
                    "GROUP BY agencyID, city, province, country) as Temp " +
                   "GROUP BY city, province, country;";
   mysqlModule.getConnection(function(err, conn) {
+    console.log(queryString);
     mysqlModule.query(conn, queryString, res);
   });
 });

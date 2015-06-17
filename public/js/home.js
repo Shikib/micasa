@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#rs-ordered-price > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].City + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
       rowString += "<td>" + data[i].avgPrice + "</td>";
       rowString += "</tr>";
       $('#rs-ordered-price > tbody').append(rowString);
@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#rs-mm-price > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].City + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
       rowString += "<td>" + data[i].maxPrice + "</td>";
       rowString += "<td>" + data[i].minPrice + "</td>";
       rowString += "<td>" + data[i].count + "</td>";

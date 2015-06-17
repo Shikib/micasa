@@ -109,7 +109,7 @@
               <th data-field="city">City</th>
               <th data-field="province">Province</th>
               <th data-field="country">Country</th>
-              <th data-field="agencyName>Agency Name</th>
+              <th data-field="agencyName">Agency Name</th>
               <th data-field="count">Property Count</th>
           </tr>
         </thead>
