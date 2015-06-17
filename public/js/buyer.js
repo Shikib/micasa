@@ -8,8 +8,6 @@ $(window).load(function() {
   var parameters = {login: login};
   console.log("purchase runs");
   $.get('/buyerloadPurchase', parameters, function(data) {
-  	console.log(data);
-    console.log("purchase runs");
     $("#purchaseoffer > tbody").html("");
     for (var i in data) {
      var rowString = "<tr>";
@@ -32,7 +30,6 @@ $(window).load(function() {
   var parameters = {login: login};
   console.log("rent runs");
   $.get('/buyerloadRent', parameters, function(data) {
-    console.log(data);
     $("#rentoffer > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -57,7 +54,6 @@ $(window).load(function() {
   var parameters = {login: login};
   console.log("app runs");
   $.get('/buyerloadApp', parameters, function(data) {
-    console.log(data);
     $("#app> tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
