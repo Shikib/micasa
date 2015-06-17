@@ -445,7 +445,7 @@ $('#cs-post').click(function (ev) {
     Materialize.toast("Floor Space must be a number", 4000);
   else if (isNaN(temp = Number($('#cs-storage').val())) || temp > 255)
     Materialize.toast("Storage Space must be a number", 4000);
-  else if (isNaN(temp = Number($('#cs-offices').val())) || temp > 255)
+  else if (isNaN(temp = Number($('#cs-office').val())) || temp > 255)
     Materialize.toast("Office Count must be a number", 4000);
   else
     temp = false;
@@ -503,7 +503,7 @@ $('#cr-post').click(function (ev) {
     Materialize.toast("Floor Space must be a number", 4000);
   else if (isNaN(temp = Number($('#cr-storage').val())) || temp > 255)
     Materialize.toast("Storage Space must be a number", 4000);
-  else if (isNaN(temp = Number($('#cr-offices').val())) || temp > 255)
+  else if (isNaN(temp = Number($('#cr-office').val())) || temp > 255)
     Materialize.toast("Office Count must be a number", 4000);
   else
     temp = false;

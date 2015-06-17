@@ -871,7 +871,7 @@ router.get('/post_sale', function(req, res, next) {
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
-
+});
 
 
 router.get('/login_user', function(req, res, next) {
