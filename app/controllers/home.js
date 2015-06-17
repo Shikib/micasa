@@ -783,7 +783,7 @@ router.get('/post_cr', function(req, res, next) {
   var queryString = "INSERT INTO CommercialProperty_ForRent VALUES ( " +
                     req.query.propertyID + ", " +  
                     req.query.storage + ", " +
-                    req.query.offices + ");";
+                    req.query.office + ");";
 
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);

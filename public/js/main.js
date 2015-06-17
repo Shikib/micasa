@@ -483,13 +483,25 @@ $('#cr-post').click(function (ev) {
                     office: $('#cr-office').val(),
                     storage: $('#cr-storage').val(),
                     furnishing: $('#cr-furnishing').val(),
-                    pets: $('#cr-pets').val(),
                     sellerName: login.sellerName,
-                    sellerPhoner: login.sellerPhone};
-  $.get('/post_property', parameters, function(data) {
-    $.get('/post_fs', parameters, function (data) {
- 
-    });
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fr', parameters, function(data) {
+          $.get('/post_cr', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
   });
 });
 
