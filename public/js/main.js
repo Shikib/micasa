@@ -446,14 +446,14 @@ $('#cs-post').click(function (ev) {
                     storage: $('#cs-storage').val(),
                     furnishing: $('#cs-furnishing').val(),
                     sellerName: login.sellerName,
-                    sellerPhoner: login.sellerPhone};
+                    sellerPhone: login.sellerPhone};
   $.get('/all_propertyID', {}, function(data) {
     parameters.propertyID = Math.floor(Math.random() * 32767); 
-    while (data.indexOf(agentID) > -1)
+    while (data.indexOf(parameters.propertyID) > -1)
       parameters.propertyID = Math.floor(Math.random() * 32767);
       
     $.get('/get_all_agentID', {}, function(data) {
-      parameters.agentID = data[Math.floor(Math.radom() * data.length)];
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
       $.get('/post_property', parameters, function(data) {
         $.get('/post_fs', parameters, function(data) {
           $.get('/post_cs', parameters, function(data) {

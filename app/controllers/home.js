@@ -1,7 +1,6 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
-var mysqlModule = require('../../mysqlModule');
 
 var mysqlModule = require('../../mysqlModule');
 var loginModule = require('../../loginModule');
@@ -726,32 +725,25 @@ router.get('/login_agent', function(req, res, next) {
 
 });
 
-<<<<<<< HEAD
 router.get('/post_property', function(req, res, next) {
   var queryString = "INSERT INTO Property_HasA_Location VALUES ( "
                   + req.query.propertyID + ", " +
-              "'" + req.query.isFurnished + "', " +
+              "'" + req.query.furnishing + "', " +
                     req.query.age + ", " +
                     "null" + ", " +
-                    req.query.aptNumber + ", " +
-                    req.query.area + ", " +
-              "'" + req.query.houseNumber + "'," + 
+                    req.query.aptNum + ", " +
+                    req.query.space + ", " +
+              "'" + req.query.houseNum + "'," + 
               "'" + req.query.street + "', " +
               "'" + req.query.country + "', " +
               "'" + req.query.city + "', " +
               "'" + req.query.province + "');";
-=======
-router.get('/agency_list', function(req, res, next) {
-  var queryString = "SELECT * " + 
-                    "FROM Agency;"
->>>>>>> develop
-
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
 });
 
-<<<<<<< HEAD
+
 router.get('/post_fs', function(req, res, next) {
   var queryString = "INSERT INTO ForSale VALUES ( " +
                     req.query.price + ", " +
@@ -779,7 +771,7 @@ router.get('/post_cs', function(req, res, next) {
   var queryString = "INSERT INTO CommercialProperty_ForSale VALUES ( " +
                     req.query.propertyID + ", " +  
                     req.query.storage + ", " +
-                    req.query.offices + ");";
+                    req.query.office + ");";
 
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
@@ -826,8 +818,9 @@ router.get('/post_rr', function(req, res, next) {
 
 router.get('/all_propertyID', function(req, res, next) {
   var queryString = "SELECT propertyID FROM Property_HasA_Location;";
+
   mysqlModule.getConnection(function(err, conn) {
-    mysqlModule.query(queryString);
+    mysqlModule.query(conn, queryString, res);
   });
 });
 
@@ -835,13 +828,16 @@ router.get('/post_sale', function(req, res, next) {
   var queryString = "INSERT INTO PostSale VALUES (" +
                     req.query.propertyID + ", " +
               "'" + req.query.sellerName + "'," +
-              "'" + req.query.sellerPhone + "', " +
+              "'" + req.query.sellerPhone + "', " 
                   + req.query.agentID + ");";
 
+  console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
-    mysqlModule.query(queryString);
+    mysqlModule.query(conn, queryString, res);
   });
-=======
+});
+
+
 router.get('/login_user', function(req, res, next) {
   loginModule.login(req.query.type, req.query.data, res);  
 });
@@ -852,7 +848,6 @@ router.get('/logout', function(req, res, next) {
 
 router.get('/login_info', function(req, res, next) {
   loginModule.get_logged_in(res);  
->>>>>>> develop
 });
 
 function test(){
