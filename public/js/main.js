@@ -363,7 +363,20 @@ $('#login-submit').click(function(ev) {
 
 $('#cs-select').click(function(ev) {
   ev.preventDefault();
-  console.log("test");
   $('#select-type').hide(); 
+});
 
+
+$('#cr-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide(); 
+});
+
+$('#rs-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide(); 
+});
+$('#rr-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide(); 
 });
