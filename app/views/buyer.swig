@@ -120,6 +120,7 @@
       <i class="mdi-content-send right"></i>
     </button>
   </form>
+</body>
 </div> 
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -181,15 +181,15 @@ console.log(bn);
 console.log(bp);
     //var bp = "6042223333"; 
     //var bn = "Markus Lemonis";
-
-     mysqlModule.getConnection(function(err, conn) {
-       mysqlModule.query(conn, "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city,op.appointmentID, op.appointmentTime, op.appDuration " +
+var queryString = "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city,op.appointmentID, op.appointmentTime, op.appDuration " +
                               "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
-                              "' AND p.propertyID = op.propertyID ",
+                              "' AND p.propertyID = op.propertyID "
+     mysqlModule.getConnection(function(err, conn) {
+       mysqlModule.query(conn, queryString,
                        res);
-
+console.log(queryString);
     }); 
    });
 
