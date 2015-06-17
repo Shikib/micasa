@@ -432,6 +432,26 @@ $('#rr-select').click(function(ev) {
 
 $('#cs-post').click(function (ev) {
   ev.preventDefault();
+  var temp;
+  if (isNaN(temp = Number($('#cs-aptNumber').val())) || temp > 32767)
+    Materialize.toast("Apt. No. must be a number", 4000);
+  else if ($('#cs-houseNumber').val().length > 6)
+    Materialize.tosat("House Number cannot be larger than 6 characters", 4000);
+  else if (isNaN(temp = Number($('#cs-price').val())))
+    Materialize.toast("Price must be a number", 4000);
+  else if (isNaN(temp = Number($('#cs-age').val())) || temp > 32767)
+    Materialize.toast("Property Age must be a number", 4000);
+  else if (isNaN(temp = Number($('#cs-space').val())) || temp > 32767)
+    Materialize.toast("Floor Space must be a number", 4000);
+  else if (isNaN(temp = Number($('#cs-storage').val())) || temp > 255)
+    Materialize.toast("Storage Space must be a number", 4000);
+  else if (isNaN(temp = Number($('#cs-offices').val())) || temp > 255)
+    Materialize.toast("Office Count must be a number", 4000);
+  else
+    temp = false;
+
+  if (temp != false) return;
+
   $('#cs-post').hide();
   var parameters = {aptNum: $('#cs-aptNumber').val(),
                     houseNum: $('#cs-houseNumber').val(),
@@ -470,6 +490,26 @@ $('#cs-post').click(function (ev) {
 
 $('#cr-post').click(function (ev) {
   ev.preventDefault();
+  var temp;
+  if (isNaN(temp = Number($('#cr-aptNumber').val())) || temp > 32767)
+    Materialize.toast("Apt. No. must be a number", 4000);
+  else if ($('#cr-houseNumber').val().length > 6)
+    Materialize.tosat("House Number cannot be larger than 6 characters", 4000);
+  else if (isNaN(temp = Number($('#cr-price').val())))
+    Materialize.toast("Price must be a number", 4000);
+  else if (isNaN(temp = Number($('#cr-age').val())) || temp > 32767)
+    Materialize.toast("Property Age must be a number", 4000);
+  else if (isNaN(temp = Number($('#cr-space').val())) || temp > 32767)
+    Materialize.toast("Floor Space must be a number", 4000);
+  else if (isNaN(temp = Number($('#cr-storage').val())) || temp > 255)
+    Materialize.toast("Storage Space must be a number", 4000);
+  else if (isNaN(temp = Number($('#cr-offices').val())) || temp > 255)
+    Materialize.toast("Office Count must be a number", 4000);
+  else
+    temp = false;
+
+  if (temp != false) return;
+
   $('#cr-post').hide();
   var parameters = {aptNum: $('#cr-aptNumber').val(),
                     houseNum: $('#cr-houseNumber').val(),
@@ -507,6 +547,22 @@ $('#cr-post').click(function (ev) {
 
 $('#rs-post').click(function (ev) {
   ev.preventDefault();
+  var temp;
+  if (isNaN(temp = Number($('#rs-aptNumber').val())) || temp > 32767)
+    Materialize.toast("Apt. No. must be a number", 4000);
+  else if ($('#rs-houseNumber').val().length > 6)
+    Materialize.tosat("House Number cannot be larger than 6 characters", 4000);
+  else if (isNaN(temp = Number($('#rs-price').val())))
+    Materialize.toast("Price must be a number", 4000);
+  else if (isNaN(temp = Number($('#rs-age').val())) || temp > 32767)
+    Materialize.toast("Property Age must be a number", 4000);
+  else if (isNaN(temp = Number($('#rs-space').val())) || temp > 32767)
+    Materialize.toast("Floor Space must be a number", 4000);
+  else
+    temp = false;
+
+  if (temp != false) return;
+
   $('#rs-post').hide();
   var parameters = {aptNum: $('#rs-aptNumber').val(),
                     houseNum: $('#rs-houseNumber').val(),
@@ -544,6 +600,22 @@ $('#rs-post').click(function (ev) {
 
 $('#rr-post').click(function (ev) {
   ev.preventDefault();
+  var temp;
+  if (isNaN(temp = Number($('#rr-aptNumber').val())) || temp > 32767)
+    Materialize.toast("Apt. No. must be a number", 4000);
+  else if ($('#rr-houseNumber').val().length > 6)
+    Materialize.tosat("House Number cannot be larger than 6 characters", 4000);
+  else if (isNaN(temp = Number($('#rr-price').val())))
+    Materialize.toast("Price must be a number", 4000);
+  else if (isNaN(temp = Number($('#rr-age').val())) || temp > 32767)
+    Materialize.toast("Property Age must be a number", 4000);
+  else if (isNaN(temp = Number($('#rr-space').val())) || temp > 32767)
+    Materialize.toast("Floor Space must be a number", 4000);
+  else
+    temp = false;
+
+  if (temp != false) return;
+
   $('#rr-post').hide();
   var parameters = {aptNum: $('#rr-aptNumber').val(),
                     houseNum: $('#rr-houseNumber').val(),
