@@ -108,23 +108,33 @@ router.get('/sellerloadRent', function (req, res, next) {
     }); 
    });
 
-router.get('/postpropertySale', function (req, res, next) {
-  res.render('postpropertySale', {
+router.get('/commercialforsale', function (req, res, next) {
+  res.render('commercialforsale', {
     title: 'Micasa',
   });
 });
 
-router.get('/postpropertyRent', function (req, res, next) {
-  res.render('postpropertyRent', {
+router.get('/commercialforrent', function (req, res, next) {
+  res.render('commercialforrent', {
     title: 'Micasa',
   });
 });
+
 
 router.get('/postproperty', function (req, res, next) {
   res.render('postproperty', {
     title: 'Micasa',
   });
 });
+
+router.get('/residentialforsale', function (req, res, next) {
+  res.render('residentialforsale', {
+    title: 'Micasa',
+  });
+});
+
+
+
 
 router.get('/buyerloadPurchase', function (req, res, next) {
     var bp = "6042223333"; 
