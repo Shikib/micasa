@@ -365,6 +365,17 @@ router.get('/create_new_buyer', function(req, res, next) {
   });
 });
 
+router.get('/delete_account', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var buyerQueryString = "DELETE " +
+                         "FROM Account " +
+                         "WHERE uname='" + uName + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, buyerQueryString, res);
+  });
+});
 
 router.get('/check_login', function(req, res, next) {
   var queryString = "SELECT * " +

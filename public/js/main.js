@@ -8,6 +8,10 @@ $(document).ready(function() {
         $('.nlog').show();
         $('.ylog').hide();
       }
+      if (logged_in) {
+        $('.ylog').show();
+        $('.nlog').hide();
+      }
       if (logged_in_type == "0") {
         $('.agento').show();
         $('.defo').hide();
@@ -338,6 +342,53 @@ $('#agent-signup-submit').click(function(ev) {
   }  
 });
 
+$('#agent-update-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#agent-update-password').val() != $('#agent-update-confirm-password').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#agent-update-password').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#agent-update-name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#agent-update-phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
+  }
+  else {
+    var parameters = {uname: $('#agent-update-uname').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        var agentID = Math.floor(Math.random() * 32767);
+        $.get('/get_all_agentID', {}, function(data) {
+          while (data.indexOf(agentID) > -1)
+            agentID = Math.floor(Math.random() * 32767);
+
+          parameters = {uname: $('#agent-update-uname').val(),
+                        name:  $('#agent-update-name').val(),
+                        agentID: agentID,
+                        agency: $('#agency-update').val(),
+                        email:  $('#agent-update-email').val(),
+                        phone:  $('#agent-update-phone').val(),
+                        password: $('#agent-update-password').val()};
+          accountParameters = {login: login};
+          console.log(parameters);  
+          $.get('/create_new_account', parameters, function(data) {
+            $.get('/create_new_agent', parameters, function (data) {});
+              location.href = "/login";
+          });
+          $.get('/delete_account', accountParameters, function(data) {});
+          Materialize.toast('Successfully updated account', 4000);
+        });
+
+      } 
+
+    });
+  }  
+});
 
 $('#signup-submit').click(function(ev) {
   ev.preventDefault();
@@ -381,6 +432,62 @@ $('#signup-submit').click(function(ev) {
 
     });
   }  
+});
+
+$('#update-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#password-submit').val() != $('#confirm-password-submit').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#password-submit').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name-submit').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone-submit').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
+  }
+  else {
+    var parameters = {uname: $('#uname-submit').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        parameters = {uname: $('#uname-submit').val(),
+                      name:  $('#name-submit').val(),
+                      email:  $('#email-submit').val(),
+                      phone:  $('#phone-submit').val(),
+                      password: $('#password-submit').val()};
+        accountParameters = {login: login};
+        console.log(parameters);  
+        $.get('/create_new_account', parameters, function(data) {
+          if (sellerPressed) {
+            $.get('/create_new_seller', parameters, function(data) {
+              location.href = "/login";
+            });
+          } 
+          else {
+            $.get('/create_new_buyer', parameters, function(data) {
+              location.href = "/login";
+            });
+          }   
+        });
+        $.get('/delete_account', accountParameters, function(data) {}); 
+        Materialize.toast('Successfully updated account', 4000);
+      } 
+
+    });
+  }  
+});
+
+$('#delete-account').click(function(ev) {
+  ev.preventDefault();
+  parameters = {};
+  accountParameters = {login: login};
+  $.get('/delete_account', parameters, function(data) {});
+  $.get('/logout', parameters, function(data) {});
+  Materialize.toast('Successfully deleted account', 4000);
 });
 
 var logged_in = false;

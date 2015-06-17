@@ -62,7 +62,8 @@ exports.initialize_tables = function() {
 
     conn.query("CREATE TABLE Account (" +
                "uname varchar(20) PRIMARY KEY," +
-               "password varchar(20) not NULL)");
+               "password varchar(20) not NULL," +
+               "ON DELETE CASCADE)");
 
     conn.query("CREATE TABLE Agency (" +
                  "name varchar(20)," +
@@ -78,7 +79,8 @@ exports.initialize_tables = function() {
                  "agentRating integer," +
                  "uname       varchar(20) not NULL," +
                  "FOREIGN KEY (uname) REFERENCES Account(uname)," +
-                 "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID))");                  
+                 "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID)," +
+                 "ON DELETE CASCADE)");                  
 
     conn.query("CREATE TABLE Offer (" +
                  "offerID smallint PRIMARY KEY," +
@@ -91,7 +93,8 @@ exports.initialize_tables = function() {
                  "buyerName varchar(20) not NULL," +
                  "uname       varchar(20) not NULL," +
                  "FOREIGN KEY (uname) REFERENCES Account(uname)," +
-                 "PRIMARY KEY (buyerPhone, buyerName))");
+                 "PRIMARY KEY (buyerPhone, buyerName)," +
+                 "ON DELETE CASCADE)");   
 
     conn.query("CREATE TABLE Seller (" +
                  "sellerEmail varchar(15)," +
@@ -99,7 +102,8 @@ exports.initialize_tables = function() {
                  "sellerName varchar(20) not NULL," +
                  "uname       varchar(20) not NULL," +
                  "FOREIGN KEY (uname) REFERENCES Account(uname)," +
-                 "PRIMARY KEY (sellerPhone, sellerName))");
+                 "PRIMARY KEY (sellerPhone, sellerName)," +
+                 "ON DELETE CASCADE)");
 
 
     conn.query("CREATE TABLE Accepts (" +

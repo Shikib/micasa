@@ -41,24 +41,26 @@
     </div>
   </div>
 
+  <h5 class="center">Update your info by filling out the blanks and pressing update, or delete your account with the delete button (WARNING: Delete is permanent).</h5>
+
 <div id="agent-update" class="row ylog agento" style="display: none;">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-action-account-circle prefix"></i>
-        <input id="agent-name" type="text" class="validate" />
-        <label for="agent-name">Name</label>
+        <input id="agent-update-name" type="text" class="validate" />
+        <label for="agent-update-name">Name</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-communication-phone prefix"></i>
-        <input id="agent-phone" type="tel" class="validate" />
-        <label for="agent-phone">Phone</label>
+        <input id="agent-update-phone" type="tel" class="validate" />
+        <label for="agent-update-phone">Phone</label>
       </div>
     </div>
 
     <div class="input-field col s12">
       <i class="mdi-social-domain prefix"></i>
-      <select id="agency">
+      <select id="agency-update">
         <option value="null" selected>None</option>
       </select>
       <label>Agency</label>
@@ -67,30 +69,30 @@
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-communication-email prefix"></i>
-        <input id="agent-email" type="email" class="validate" />
-        <label for="agent-email">Email</label>
+        <input id="agent-update-email" type="email" class="validate" />
+        <label for="agent-update-email">Email</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-social-person prefix"></i>
-        <input id="agent-uname" type="text" class="validate" />
-        <label for="agent-uname">Username</label>
+        <input id="agent-update-uname" type="text" class="validate" />
+        <label for="agent-update-uname">Username</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-action-lock prefix"></i>
-        <input id="agent-password" type="password" class="validate">
-        <label for="agent-password">Password</label>
+        <input id="agent-update-password" type="password" class="validate">
+        <label for="agent-update-password">Password</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-action-lock-outline prefix"></i>
-        <input id="agent-confirm-password" type="password" class="validate">
-        <label for="agent-confirm-password">Confirm Password</label>
+        <input id="agent-update-confirm-password" type="password" class="validate">
+        <label for="agent-update-confirm-password">Confirm Password</label>
       </div>
     </div>
 
-    <button id="agent-signup-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <button id="agent-update-submit" class="btn waves-effect waves-light" type="submit" name="action">Update
       <i class="mdi-content-send right"></i>
     </button>
 
@@ -102,50 +104,55 @@
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-action-account-circle prefix"></i>
-        <input id="name" type="text" class="validate" />
-        <label for="name">Name</label>
+        <input id="name-update" type="text" class="validate" />
+        <label for="name-update">Name</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-communication-phone prefix"></i>
-        <input id="phone" type="tel" class="validate" />
-        <label for="phone">Phone</label>
+        <input id="phone-update" type="tel" class="validate" />
+        <label for="phone-update">Phone</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-communication-email prefix"></i>
-        <input id="email" type="email" class="validate" />
-        <label for="email">Email</label>
+        <input id="email-update" type="email" class="validate" />
+        <label for="email-update">Email</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-social-person prefix"></i>
-        <input id="uname" type="text" class="validate" />
-        <label for="uname">Username</label>
+        <input id="uname-update" type="text" class="validate" />
+        <label for="uname-update">Username</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s6">
         <i class="mdi-action-lock prefix"></i>
-        <input id="password" type="password" class="validate">
-        <label for="password">Password</label>
+        <input id="password-update" type="password" class="validate">
+        <label for="password-update">Password</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-action-lock-outline prefix"></i>
-        <input id="confirm-password" type="password" class="validate">
-        <label for="confirm-password">Confirm Password</label>
+        <input id="confirm-password-update" type="password" class="validate">
+        <label for="confirm-password-update">Confirm Password</label>
       </div>
     </div>
 
-    <button id="signup-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <button id="update-submit" class="btn waves-effect waves-light" type="submit" name="action">Update
       <i class="mdi-content-send right"></i>
     </button>
+
+
   </form>
 </div>
 
-
-
+<div class="ylog">
+  <button id="delete-account" class="btn waves-effect waves-light" type="submit" name="action">Delete Account
+    <i class="mdi-content-send right"></i>
+  </button>
+</div>
 
    <br><br>
 
