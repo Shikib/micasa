@@ -520,12 +520,25 @@ $('#rs-post').click(function (ev) {
                     office: $('#rs-office').val(),
                     storage: $('#rs-storage').val(),
                     furnishing: $('#rs-furnishing').val(),
-                    garden: $('#rs-furnishing').val(),
-                    garage: $('#rs-furnishing').val(),
                     sellerName: login.sellerName,
-                    sellerPhoner: login.sellerPhone};
-  $.get('/post_rs', parameters, function(data) {
-    Materialize.toast('WAITING FOR JACK', 4000);
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fs', parameters, function(data) {
+          $.get('/post_rs', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
   });
 });
 
@@ -544,12 +557,24 @@ $('#rr-post').click(function (ev) {
                     office: $('#rr-office').val(),
                     storage: $('#rr-storage').val(),
                     furnishing: $('#rr-furnishing').val(),
-                    garden: $('#rr-furnishing').val(),
-                    garage: $('#rr-furnishing').val(),
-                    pets: $('#rr-pets').val(),
                     sellerName: login.sellerName,
-                    sellerPhoner: login.sellerPhone};
-  $.get('/post_rr', parameters, function(data) {
-    Materialize.toast('WAITING FOR JACK', 4000);
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fr', parameters, function(data) {
+          $.get('/post_rr', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
   });
 });
