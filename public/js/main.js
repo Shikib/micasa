@@ -9,6 +9,28 @@ $(document).ready(function() {
         $('.nlog').show();
         $('.ylog').hide();
       }
+      if (logged_in) {
+        $('.ylog').show();
+        $('.nlog').hide();
+      }
+      if (logged_in_type == "0") {
+        $('.agento').show();
+        $('.defo').hide();
+        $('.sellero').hide();
+        $('.buyero').hide();
+      }
+      else if (logged_in_type == "1") {
+        $('.agento').hide();
+        $('.defo').show();
+        $('.sellero').show();
+        $('.buyero').hide();
+      }  
+      else if (logged_in_type == "2") {
+        $('.agento').hide();
+        $('.defo').show();
+        $('.sellero').hide();
+        $('.buyero').show();
+      }  
     });
 });
 
@@ -247,6 +269,17 @@ $('#agent-button').click(function() {
 
 });
 
+$('agent-update').load(function() {
+  $.get('/agency_list', {}, function(data) {
+    for (var i in data) {
+      var optionString = "<option value='" + data[i].agencyID +
+                         "'>" + data[i].name + "</option>";
+      $('#agency').append(optionString); 
+    }
+    $('#agency').material_select();
+  });
+});
+
 var sellerPressed;
 
 $('#seller-button').click(function() {
@@ -300,6 +333,7 @@ $('#agent-signup-submit').click(function(ev) {
           console.log(parameters);  
           $.get('/create_new_account', parameters, function(data) {
             $.get('/create_new_agent', parameters, function (data) {});
+              location.href = "/login";
           });   
         });
 
@@ -309,6 +343,52 @@ $('#agent-signup-submit').click(function(ev) {
   }  
 });
 
+$('#agent-update-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#agent-update-password').val() != $('#agent-update-confirm-password').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#agent-update-password').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#agent-update-name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#agent-update-phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
+  }
+  else {
+    var parameters = {uname: $('#agent-update-uname').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        var agentID = Math.floor(Math.random() * 32767);
+        $.get('/get_all_agentID', {}, function(data) {
+          while (data.indexOf(agentID) > -1)
+            agentID = Math.floor(Math.random() * 32767);
+
+          parameters = {uname: $('#agent-update-uname').val(),
+                        name:  $('#agent-update-name').val(),
+                        agentID: agentID,
+                        agency: $('#agency-update').val(),
+                        email:  $('#agent-update-email').val(),
+                        phone:  $('#agent-update-phone').val(),
+                        password: $('#agent-update-password').val(),
+                        login: login};
+          console.log(parameters);  
+          $.get('/update_account', parameters, function(data) {
+            $.get('/update_agent', parameters, function (data) {});
+              location.href = "/login";
+          });
+          Materialize.toast('Successfully updated account', 4000);
+        });
+
+      } 
+
+    });
+  }  
+});
 
 $('#signup-submit').click(function(ev) {
   ev.preventDefault();
@@ -339,12 +419,12 @@ $('#signup-submit').click(function(ev) {
         $.get('/create_new_account', parameters, function(data) {
           if (sellerPressed) {
             $.get('/create_new_seller', parameters, function(data) {
-              console.log(data);
+              location.href = "/login";
             });
           } 
           else {
             $.get('/create_new_buyer', parameters, function(data) {
-              console.log(data);
+              location.href = "/login";
             });
           }   
         });  
@@ -352,6 +432,61 @@ $('#signup-submit').click(function(ev) {
 
     });
   }  
+});
+
+$('#update-submit').click(function(ev) {
+  ev.preventDefault();
+  if ($('#password-submit').val() != $('#confirm-password-submit').val()) {
+    Materialize.toast('Passwords must match', 4000);
+  }
+  else if ($('#password-submit').val().length < 6) {
+    Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name-submit').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone-submit').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
+  }
+  else {
+    var parameters = {uname: $('#uname-submit').val() };
+    $.get('/check_uname_availability', parameters, function(data) {
+      if (data.length != 0)
+        Materialize.toast('Username is already in use', 4000);
+      else {
+        parameters = {uname: $('#uname-submit').val(),
+                      name:  $('#name-submit').val(),
+                      email:  $('#email-submit').val(),
+                      phone:  $('#phone-submit').val(),
+                      password: $('#password-submit').val(),
+                      login: login};
+        console.log(parameters);  
+        $.get('/update_account', parameters, function(data) {
+          if (sellerPressed) {
+            $.get('/update_seller', parameters, function(data) {
+              location.href = "/login";
+            });
+          } 
+          else {
+            $.get('/update_buyer', parameters, function(data) {
+              location.href = "/login";
+            });
+          }   
+        });
+        Materialize.toast('Successfully updated account', 4000);
+      } 
+
+    });
+  }  
+});
+
+$('#delete-account').click(function(ev) {
+  ev.preventDefault();
+  parameters = {};
+  accountParameters = {login: login};
+  $.get('/delete_account', accountParameters, function(data) {});
+  $.get('/logout', parameters, function(data) {});
+  Materialize.toast('Successfully deleted account', 4000);
 });
 
 var logged_in = false;
@@ -373,7 +508,9 @@ $('#login-submit').click(function(ev) {
           logged_in = true;
           logged_in_type = 2;
           login = data[0];
-          $.get('login_user', {type: logged_in_type, data: data[0]});
+          $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+            location.href = "/";
+          });
         }
         else {
           $.get('/login_seller', parameters, function(data) {
@@ -382,7 +519,9 @@ $('#login-submit').click(function(ev) {
               logged_in = true;
               logged_in_type = 1;
               login = data[0];
-              $.get('login_user', {type: logged_in_type, data: data[0]});
+              $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+                location.href = "/";
+              });
             }
             else {          
               $.get('/login_agent', parameters, function(data) {
@@ -390,7 +529,9 @@ $('#login-submit').click(function(ev) {
                   logged_in = true;
                   logged_in_type = 0;
                   login = data[0];
-                  $.get('login_user', {type: logged_in_type, data: data[0]});
+                  $.get('login_user', {type: logged_in_type, data: data[0]}, function() {
+                    location.href = "/";
+                  });
                 }
                 else {
                   Materialize.toast('Login error. Try signing up again', 4000);

@@ -81,8 +81,14 @@ exports.initialize_tables = function() {
                  "agencyID smallint," +
                  "agentRating integer," +
                  "uname       varchar(20) not NULL," +
-                 "FOREIGN KEY (uname) REFERENCES Account(uname) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID) ON UPDATE CASCADE)");                  
+
+                 "FOREIGN KEY (agencyID) REFERENCES Agency(agencyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE Offer (" +
                  "offerID smallint PRIMARY KEY," +
@@ -94,24 +100,34 @@ exports.initialize_tables = function() {
                  "buyerPhone char(10) not NULL," +
                  "buyerName varchar(20) not NULL," +
                  "uname       varchar(20) not NULL," +
-                 "FOREIGN KEY (uname) REFERENCES Account(uname) ON UPDATE CASCADE," +
-                 "PRIMARY KEY (buyerPhone, buyerName))");
+                 "PRIMARY KEY (buyerPhone, buyerName)," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE Seller (" +
                  "sellerEmail varchar(15)," +
                  "sellerPhone char(10) not NULL," +
                  "sellerName varchar(20) not NULL," +
                  "uname       varchar(20) not NULL," +
-                 "FOREIGN KEY (uname) REFERENCES Account(uname) ON UPDATE CASCADE," +
-                 "PRIMARY KEY (sellerPhone, sellerName))");
+                 "PRIMARY KEY (sellerPhone, sellerName)," +
+                 "FOREIGN KEY (uname) REFERENCES Account(uname)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
 
     conn.query("CREATE TABLE Accepts (" +
                  "offerID smallint PRIMARY KEY," +
                  "sellerPhone char(10)," +
                  "sellerName varchar(20)," +
-                 "FOREIGN KEY (sellerPhone, sellerName) references Seller(sellerPhone, sellerName) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (sellerPhone, sellerName) references Seller(sellerPhone, sellerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (offerID) references Offer(offerID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
 
 
     conn.query("CREATE TABLE PurchaseOffer_Makes (" +
@@ -120,10 +136,15 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE, " +
-                 "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)");
-
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (offerID) references Offer(offerID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
 
     conn.query("CREATE TABLE RentalOffer_Makes (" +
                  "offerID smallint PRIMARY KEY," +
@@ -131,9 +152,16 @@ exports.initialize_tables = function() {
                  "propertyID smallint," +
                  "buyerPhone char(10)," +
                  "buyerName varchar(20)," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE, " +
-                 "FOREIGN KEY (offerID) references Offer(offerID) ON UPDATE CASCADE)"); 
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (offerID) references Offer(offerID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE Appointment_View (" +
                  "appointmentID smallint PRIMARY KEY," + 
@@ -142,14 +170,24 @@ exports.initialize_tables = function() {
                  "propertyID smallint," + 
                  "buyerPhone char(10)," + 
                  "buyerName varchar(20)," + 
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE)");        
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");      
+
 
     conn.query("CREATE TABLE Approves (" +
                  "appointmentID smallint PRIMARY KEY," + 
                  "agentID smallint," +
-                 "FOREIGN KEY (appointmentID) references Appointment_View(appointmentID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (agentID) references Agent_Represents(agentID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (appointmentID) references Appointment_View(appointmentID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (agentID) references Agent_Represents(agentID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE Rates (" +
                  "sellerRating smallint," + 
@@ -157,60 +195,94 @@ exports.initialize_tables = function() {
                  "sellerPhone char(10)," +
                  "sellerName varchar(20)," +
                  "PRIMARY KEY (agentID, sellerPhone, sellerName),"+
-                 "FOREIGN KEY (sellerPhone, sellerName) references Seller(sellerPhone, sellerName) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (agentID) references Agent_Represents(agentID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (sellerPhone, sellerName) references Seller(sellerPhone, sellerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (agentID) references Agent_Represents(agentID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE ForRent (" +
                  "rentPrice smallint not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
                  "petsAllowed char(1)," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE ForSale (" +
                  "salePrice int not null," + 
                  "propertyID smallint not null PRIMARY KEY," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE ResidentialProperty_ForRent (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "hasGarden char(1)," +
                  "hasGarage char(1)," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
 
     conn.query("CREATE TABLE ResidentialProperty_ForSale (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "hasGarden char(1)," +
                  "hasGarage char(1)," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE CommercialProperty_ForRent (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "storage tinyint," +
                  "offices tinyint," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE CommercialProperty_ForSale (" +
                  "propertyID smallint not null PRIMARY KEY," +
                  "storage tinyint," +
                  "offices tinyint," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE PostSale (" +
                  "propertyID smallint PRIMARY KEY," +
                  "sellerName varchar(20) not null," +
                  "sellerPhone char(10) not null," +
                  "agentID smallint not null," +
-                 "FOREIGN KEY(sellerPhone, sellerName) references Seller(sellerPhone, sellerName) ON UPDATE CASCADE," +
-                 "FOREIGN KEY(agentID) references Agent_Represents(agentID) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY(sellerPhone, sellerName) references Seller(sellerPhone, sellerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY(agentID) references Agent_Represents(agentID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
     conn.query("CREATE TABLE InterestedIn (" +
                  "propertyID smallint not null, " +
                  "buyerName varchar(20) not null," +
                  "buyerPhone char(10) not null," +
                  "message varchar(200)," +
-                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName) ON UPDATE CASCADE," +
-                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID) ON UPDATE CASCADE)");
+                 "FOREIGN KEY (buyerPhone, buyerName) references Buyer(buyerPhone, buyerName)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE," +
+                 "FOREIGN KEY (propertyID) references Property_HasA_Location(propertyID)" +
+                 "ON UPDATE CASCADE " +
+                 "ON DELETE CASCADE)");
+
 
       // All propertyIDs start with an 8xxx
     conn.query("INSERT INTO Property_HasA_Location VALUES (8123, 'Y', 5, 7123, NULL, 2000, '6123', 'Fake Street', 'Canadia', 'Vancouveria', 'BC')," +
@@ -251,7 +323,7 @@ exports.initialize_tables = function() {
                "(1567, 'Jack Li', 1118889999, 'jl@MAX.com',9567, 10, 'jackli');");
 
     // All purchase offerIDs start with 2xxx, rental offerIDs start with 3xxx
-    conn.query("INSERT INTO Offer VALUES (2123, 'I love this house! Today will be the day that I finally purchase my dream house lmao', '2014-10-11')," +
+    conn.query("INSERT INTO Offer VALUES (2123, 'I love this house!', '2014-10-11')," +
                "(2234, 'When can I move in Kappa', '2014-03-25')," +
                "(2345, 'This house has same written all over it', '2014-04-04')," +
                "(3123, NULL, '2014-12-25')," +
@@ -278,7 +350,7 @@ exports.initialize_tables = function() {
                "(3234, '7785556666', 'Bob Jones');");
 
     conn.query("INSERT INTO PurchaseOffer_Makes VALUES (2123, 500000, 8123, '6041112222', 'Pinkman Jones')," +
-               "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis'),"+
+               "(2234, 1000000, 8234, '6042223333', 'Markus Lemonis')," +
                "(2345, 2000000, 8345, '6043334444', 'Angel Qin');");
 
     conn.query("INSERT INTO RentalOffer_Makes VALUES (3123, 1000, 8456, '6044445555', 'Brando Wison')," +
