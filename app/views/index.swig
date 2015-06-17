@@ -56,6 +56,7 @@
         </tbody>
       </table>
     
+      <br><br>       
 
       <table id="rs-mm-price" class="bordered striped hoverable responsive-table">
         <thead>
@@ -63,13 +64,43 @@
               <th data-field="city">City</th>
               <th data-field="max-price">Max Home Price (Thousands)</th>
               <th data-field="min-price">Min Home Price (Thousands)</th>
-              <td data-field="house-count">Number of Properties</th>
+              <th data-field="house-count">Number of Properties</th>
           </tr>
         </thead>
 
         <tbody>
         </tbody>
       </table>
+      
+      <br><br>       
+
+      <table id="diverse-agency-list" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="agemcy-name">Agency Name</th>
+              <th data-field="agency-rating">Agency Rating</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+
+      <br><br>       
+
+      <table id="popular-city-list" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="city">City</th>
+              <th data-field="province">Province</th>
+              <th data-field="country">Country</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+
     </div>
 
     <div class="section nlog" style="display: none;">

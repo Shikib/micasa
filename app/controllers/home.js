@@ -900,8 +900,8 @@ router.get('/rs_ordered_price', function(req, res, next) {
 });
 
 
-router.get('/rs_max_price', function(req, res, next) {
-  var queryString = "SELECT City, MAX(salePrice) as maxPrice "
+router.get('/rs_mm_price', function(req, res, next) {
+  var queryString = "SELECT City, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
                   + "GROUP BY City " 
@@ -913,17 +913,44 @@ router.get('/rs_max_price', function(req, res, next) {
   });
 });
 
-router.get('/rs_min_price', function(req, res, next) {
-  var queryString = "SELECT City, MIN(salePrice) as minPrice, COUNT(*) as count "
-                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
-                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
-                  + "GROUP BY City " 
-                  + "ORDER BY City;";
+router.get('/diverse_agencies', function(req, res, next) {
+  var queryString = "SELECT a.name, a.agencyRating " +
+                    "FROM Agency a " +
+                    "WHERE NOT EXISTS (" +
+                      "SELECT City " +
+                      "FROM Property_HasA_Location p2 " +
+                      "WHERE NOT EXISTS "  +
+                        "(SELECT City " +
+                        "FROM Agent_Represents g, Property_HasA_Location p, ForSale f " +
+                        "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                        "f.propertyID = p.propertyID AND p2.city = p.city));" + 
 
   console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
+});
+
+router.get('/popular_cities', function(req, res, next) {
+  var queryString = "SELECT city, province, country " +
+                    "FROM Property_HasA_Location p " +
+                    "WHERE NOT EXISTS (" +
+                      "SELECT agencyID " +
+                      "FROM Agency a2 " +
+                      "WHERE NOT EXISTS "
+                          "(SELECT agencyID " +
+                          "FROM Agent_Represents g, Agency a, ForSale f, Property_HasA_Location p2 " +
+                          "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND f.propertyD = p2.propertyID AND "
+                          "p2.city = p1.city AND p2.province = p1.province AND p2.country = p1.country AND a2.agencyID = a.agencyID));";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/best_city', function(req, res, next) {
+//  var queryString = "SELECT 
 });
 
 function test(){
