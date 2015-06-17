@@ -290,7 +290,7 @@ $('#signup-submit').click(function(ev) {
   ev.preventDefault();
   if ($('#password').val() != $('#confirm-password').val()) {
     Materialize.toast('Passwords must match', 4000);
-  }˜
+  }
   else if ($('#password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
   }
@@ -357,5 +357,13 @@ $('#login-submit').click(function(ev) {
       });
     }    
   }); 
+
+});
+
+
+$('#cs-select').click(function(ev) {
+  ev.preventDefault();
+  console.log("test");
+  $('#select-type').hide(); 
 
 });

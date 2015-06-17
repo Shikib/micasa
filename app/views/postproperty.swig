@@ -25,36 +25,50 @@
     </div>
   </nav>
 
-  <body>
-
-      <div class="container">
-
- <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
-  <h4 class="header center orange-text">Welcome Seller!</h4></center>
-<br><br>
-
 <!--   Icon Section   -->
+<body>
+  <div class="container" id="select-type">
+    <div class="col s12 m4">
+      <div class="icon-block"><a href="seller">
+        <h2 class="center teal-text"><i class="mdi-navigation-arrow-back"></i></h2></a>
+        <h5 class="center">Back to Seller</h5>
+      </div>
+     </div>
+
+     <div class="row">
+       <div class="col s12 m4">
+         <div class="icon-block"><a id="cs-select" href="#">
+           <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
+           <h5 class="center">Post your Commercial Property for Sale</h5>
+         </div>
+       </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block"><a id="cr-select" href="#">
+            <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
+            <h5 class="center">Post your Commercial Property for Rent</h5>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col s12 m4">
-          <div class="icon-block"><a href="viewoffer">
+          <div class="icon-block"><a id="rs-select" href="#">
             <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
-            <h5 class="center">Post a property for SALE</h5>
+            <h5 class="center">Post your Residential Property for Sale</h5>
 
           </div>
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block"><a href="postproperty">
-            <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
-            <h5 class="center">Post a property for RENT</h5>
+          <div class="icon-block"><a id="rr-select" href="#">
+            <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
+            <h5 class="center">Post your Residential Property for Rent</h5>
 
           </div>
         </div>
-
-  <body>
-
-      <div class="container">
-
+      </div>
+    </div>
 
 
 
@@ -63,4 +77,7 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/postproperty.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
 {% endblock %}

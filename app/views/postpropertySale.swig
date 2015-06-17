@@ -32,32 +32,27 @@
 
 
 <!--   Icon Section   -->
-  <body>
+<body>
+  <div class="container">
+    <div class="col s12 m4">
+      <div class="icon-block"><a href="seller">
+        <h2 class="center teal-text"><i class="mdi-navigation-arrow-back"></i></h2></a>
+        <h5 class="center">Back to Seller</h5>
+      </div>
+     </div>
 
-      <div class="container">
-        <div class="col s12 m4">
-          <div class="icon-block"><a href="seller">
-            <h2 class="center teal-text"><i class="mdi-navigation-arrow-back"></i></h2></a>
-            <h5 class="center">Back to Seller</h5>
-
-          </div>
-        </div>
-
-    <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block"><a href="commercialforsale">
-            <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
-            <h5 class="center">Post your Commercial Property for Sale</h5>
-
-          </div>
-        </div>
-
-    <div class="row">
+     <div class="row">
+       <div class="col s12 m4">
+         <div class="icon-block"><a href="commercialforsale">
+           <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
+           <h5 class="center">Post your Commercial Property for Sale</h5>
+         </div>
+       </div>
+       
         <div class="col s12 m4">
           <div class="icon-block"><a href="commercialforrent">
             <h2 class="center teal-text"><i class="mdi-communication-business"></i></h2></a>
             <h5 class="center">Post your Commercial Property for Rent</h5>
-
           </div>
         </div>
       </div>
@@ -79,11 +74,12 @@
           </div>
         </div>
       </div>
-
+    </div>  
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/postproperty.js"></script>
+</body>
 {% endblock %}

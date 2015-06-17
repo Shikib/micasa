@@ -122,7 +122,7 @@ router.get('/postpropertyRent', function (req, res, next) {
 });
 
 router.get('/postproperty', function (req, res, next) {
-  res.render('postpropertySale', {
+  res.render('postproperty', {
     title: 'Micasa',
   });
 });
