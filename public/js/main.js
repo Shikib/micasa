@@ -357,8 +357,8 @@ $('#agent-update-submit').click(function(ev) {
     Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
-    var parameters = {uname: $('#agent-update-uname').val() };
-    $.get('/check_uname_availability', parameters, function(data) {
+    var parameters = {uname: $('#agent-update-uname').val(), login: login };
+    $.get('/check_update_uname_availability', parameters, function(data) {
       if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
@@ -448,8 +448,8 @@ $('#update-submit').click(function(ev) {
     Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
-    var parameters = {uname: $('#uname-update').val() };
-    $.get('/check_uname_availability', parameters, function(data) {
+    var parameters = {uname: $('#uname-update').val(), login: login };
+    $.get('/check_update_uname_availability', parameters, function(data) {
       if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
@@ -484,8 +484,11 @@ $('#delete-account').click(function(ev) {
   parameters = {};
   accountParameters = {login: login};
   $.get('/delete_account', accountParameters, function(data) {});
-  $.get('/logout', parameters, function(data) {});
-  Materialize.toast('Successfully deleted account', 4000);
+  $.get('/logout', parameters, function(data) {
+    logged_in = false;
+    login = undefined;
+    location.href = "/";
+  });
 });
 
 var logged_in = false;
