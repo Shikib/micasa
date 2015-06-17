@@ -358,8 +358,8 @@ $('#agent-update-submit').click(function(ev) {
     Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
-    var parameters = {uname: $('#agent-update-uname').val() };
-    $.get('/check_uname_availability', parameters, function(data) {
+    var parameters = {uname: $('#agent-update-uname').val(), login: login };
+    $.get('/check_update_uname_availability', parameters, function(data) {
       if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
@@ -436,37 +436,37 @@ $('#signup-submit').click(function(ev) {
 
 $('#update-submit').click(function(ev) {
   ev.preventDefault();
-  if ($('#password-submit').val() != $('#confirm-password-submit').val()) {
+  if ($('#password-update').val() != $('#confirm-password-update').val()) {
     Materialize.toast('Passwords must match', 4000);
   }
-  else if ($('#password-submit').val().length < 6) {
+  else if ($('#password-update').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
   }
-  else if ($('#name-submit').val() == "") {
+  else if ($('#name-update').val() == "") {
     Materialize.toast('Name field cannot be empty', 4000);
   }
-  else if ($('#phone-submit').val() == "") {
+  else if ($('#phone-update').val() == "") {
     Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
-    var parameters = {uname: $('#uname-submit').val() };
-    $.get('/check_uname_availability', parameters, function(data) {
+    var parameters = {uname: $('#uname-update').val(), login: login };
+    $.get('/check_update_uname_availability', parameters, function(data) {
       if (data.length != 0)
         Materialize.toast('Username is already in use', 4000);
       else {
-        parameters = {uname: $('#uname-submit').val(),
-                      name:  $('#name-submit').val(),
-                      email:  $('#email-submit').val(),
-                      phone:  $('#phone-submit').val(),
-                      password: $('#password-submit').val(),
+        parameters = {uname: $('#uname-update').val(),
+                      name:  $('#name-update').val(),
+                      email:  $('#email-update').val(),
+                      phone:  $('#phone-update').val(),
+                      password: $('#password-update').val(),
                       login: login};
         console.log(parameters);  
         $.get('/update_account', parameters, function(data) {
-          if (sellerPressed) {
+          if (login.logged_in_type==1) {
             $.get('/update_seller', parameters, function(data) {
               location.href = "/login";
             });
-          } 
+          }
           else {
             $.get('/update_buyer', parameters, function(data) {
               location.href = "/login";
@@ -485,8 +485,11 @@ $('#delete-account').click(function(ev) {
   parameters = {};
   accountParameters = {login: login};
   $.get('/delete_account', accountParameters, function(data) {});
-  $.get('/logout', parameters, function(data) {});
-  Materialize.toast('Successfully deleted account', 4000);
+  $.get('/logout', parameters, function(data) {
+    logged_in = false;
+    login = undefined;
+    location.href = "/";
+  });
 });
 
 var logged_in = false;

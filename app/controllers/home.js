@@ -579,6 +579,16 @@ router.get('/check_uname_availability', function(req, res, next) {
   });
 });
 
+router.get('/check_update_uname_availability', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Account " +
+                    "WHERE uname = '" + req.query.uname + "' " +
+                    "AND uname<>'" + req.query.login.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
 
 router.get('/get_all_agentID', function(req, res, next) {
   var queryString = "SELECT agentID " +
@@ -730,12 +740,12 @@ router.get('/update_buyer', function(req, res, next) {
 router.get('/delete_account', function(req, res, next) {
   var uName = req.query.login.uname;
 
-  var buyerQueryString = "DELETE " +
+  var deleteQueryString = "DELETE " +
                          "FROM Account " +
                          "WHERE uname='" + uName + "';";
 
   mysqlModule.getConnection(function(err, conn) {
-    mysqlModule.query(conn, buyerQueryString, res);
+    mysqlModule.query(conn, deleteQueryString, res);
   });
 });
 
