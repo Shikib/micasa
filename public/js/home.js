@@ -23,6 +23,7 @@ $(document).ready(function() {
          rowString += "<td>" + data[i].City + "</td>";
          rowString += "<td>" + data2[i].maxPrice + "</td>";
          rowString += "<td>" + data[i].minPrice + "</td>";
+         rowString += "<td>" + data[i].count + "</td>";
          rowString += "</tr>";
          $('#rs-mm-price > tbody').append(rowString);
        }

@@ -63,6 +63,7 @@
               <th data-field="city">City</th>
               <th data-field="max-price">Max Home Price (Thousands)</th>
               <th data-field="min-price">Min Home Price (Thousands)</th>
+              <td data-field="house-count">Number of Properties</th>
           </tr>
         </thead>
 
