@@ -142,9 +142,10 @@ router.get('/residentialforsale', function (req, res, next) {
 
 
 router.get('/buyerloadPurchase', function (req, res, next) {
-    var bp = "6042223333"; 
-    var bn = "Markus Lemonis";
-
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
@@ -158,9 +159,10 @@ router.get('/buyerloadPurchase', function (req, res, next) {
 
 router.get('/buyerloadRent', function (req, res, next) {
 
-    var bp = "6044445555"; 
-    var bn = "Brando Wison";
-
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.rentAmount,o.offerID " +
                               "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
@@ -173,12 +175,15 @@ router.get('/buyerloadRent', function (req, res, next) {
    });
 
 router.get('/buyerloadApp', function (req, res, next) {
-
-    var bp = "6042223333"; 
-    var bn = "Markus Lemonis";
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
+    //var bp = "6042223333"; 
+    //var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-       mysqlModule.query(conn, "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
+       mysqlModule.query(conn, "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city,op.appointmentID, op.appointmentTime, op.appDuration " +
                               "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
@@ -854,7 +859,7 @@ console.log(queryString);
 });
 
 router.get('/check_propertyID', function(req, res, next) {
-  var queryString =  "(select propertyID from Property_HasA_Location WHERE propertyID = " + req.query.propertyID +");";
+  var queryString =  "select propertyID from Property_HasA_Location WHERE propertyID = " + req.query.propertyID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
@@ -863,7 +868,7 @@ console.log(queryString);
 });
 
 router.get('/check_offerID', function(req, res, next) {
-  var queryString =  "(select offerID from offer WHERE offerID = " + req.query.offerID +");";
+  var queryString =  "select offerID from offer WHERE offerID = " + req.query.offerID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
@@ -871,8 +876,8 @@ console.log(queryString);
   });
 });
 
-router.get('/appointmentID', function(req, res, next) {
-  var queryString =  "(select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appointmentID +");";
+router.get('/check_appointmentID', function(req, res, next) {
+  var queryString =  "select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
@@ -881,7 +886,16 @@ console.log(queryString);
 });
 
 router.get('/delete_from_offer', function(req, res, next) {
-  var queryString =  "(delete from offer WHERE offerID= " + req.query.offerID +");";
+  var queryString =  "delete from offer WHERE offerID= " + req.query.offerID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/delete_from_ Appointment_View', function(req, res, next) {
+  var queryString =  "delete from offer WHERE offerID= " + req.query.appID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
