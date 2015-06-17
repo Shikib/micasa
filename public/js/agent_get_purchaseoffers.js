@@ -1,9 +1,14 @@
-$(window).load(function() {
-  var parameters = {};
-  $.get('/agent_purchaseoffers_get', parameters, function(data) {
-    console.log(data);
-    $("#purchaseresults > tbody").html("");
-    for (var i in data) {
+$(document).ready(function() {
+    $('select').material_select();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      var parameters = {login: login};
+      $.get('/agent_purchaseoffers_get', parameters, function(data) {
+      console.log(data);
+      $("#purchaseresults > tbody").html("");
+      for (var i in data) {
       var rowString = "<tr>";
       rowString += "<td>" + data[i].offerID + "</td>";
       rowString += "<td>" + data[i].propertyID + "</td>";
@@ -13,6 +18,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].offerDate + "</td>";
       rowString += "<td>" + data[i].offerMessage + "</td>";
       $("#purchaseresults > tbody").append(rowString);
-    }
+      }
+    });
   });
 });

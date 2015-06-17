@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 $('#approve-field').submit(function(ev) {
   ev.preventDefault();
-  var parameters = {appID: $('#approve').val() };
+  var parameters = {appID: $('#approve').val(), login: login };
 
   if (parameters.appID > 32767 || parameters.appID < -32768) {
   	Materialize.toast('Please enter a valid appointmentID', 4000);
