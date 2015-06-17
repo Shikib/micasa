@@ -1,6 +1,15 @@
 
 $(document).ready(function() {
     $('select').material_select();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      if (!logged_in) {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+    });
 });
 
 $('#search-field').submit(function(ev) {
@@ -227,6 +236,15 @@ $('#agent-button').click(function() {
   $('#seller-button').hide();
   $('#buyer-button').hide();
   $('#agent-signup').show();
+  $.get('/agency_list', {}, function(data) {
+    for (var i in data) {
+      var optionString = "<option value='" + data[i].agencyID +
+                         "'>" + data[i].name + "</option>";
+      $('#agency').append(optionString); 
+    }
+    $('#agency').material_select();
+  });
+
 });
 
 var sellerPressed;
@@ -254,6 +272,12 @@ $('#agent-signup-submit').click(function(ev) {
   }
   else if ($('#agent-password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
     var parameters = {uname: $('#agent-uname').val() };
@@ -294,6 +318,12 @@ $('#signup-submit').click(function(ev) {
   else if ($('#password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
   }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
+  }
   else {
     var parameters = {uname: $('#uname').val() };
     $.get('/check_uname_availability', parameters, function(data) {
@@ -324,6 +354,11 @@ $('#signup-submit').click(function(ev) {
   }  
 });
 
+var logged_in = false;
+// 0 for agent, 1 for seller, 2 for buyer
+var logged_in_type;
+var login;
+
 $('#login-submit').click(function(ev) {
   ev.preventDefault();
   var parameters = {uname: $('#uname').val(),
@@ -335,17 +370,27 @@ $('#login-submit').click(function(ev) {
     else {
       $.get('/login_buyer', parameters, function(data) {
         if (data.length != 0) {
-          console.log('buyer');
+          logged_in = true;
+          logged_in_type = 2;
+          login = data[0];
+          $.get('login_user', {type: logged_in_type, data: data[0]});
         }
         else {
           $.get('/login_seller', parameters, function(data) {
             if (data.length != 0) {
-              console.log('seller');              
+              console.log(data);
+              logged_in = true;
+              logged_in_type = 1;
+              login = data[0];
+              $.get('login_user', {type: logged_in_type, data: data[0]});
             }
             else {          
               $.get('/login_agent', parameters, function(data) {
                 if (data.length != 0) {
-                  console.log('agent');
+                  logged_in = true;
+                  logged_in_type = 0;
+                  login = data[0];
+                  $.get('login_user', {type: logged_in_type, data: data[0]});
                 }
                 else {
                   Materialize.toast('Login error. Try signing up again', 4000);
