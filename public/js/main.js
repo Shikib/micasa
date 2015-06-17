@@ -384,3 +384,86 @@ $('#rr-select').click(function(ev) {
   $('#select-type').hide();
   $('#residential-rent').show();
 });
+
+$('#cs-post').click(function (ev) {
+  ev.preventDefault();
+  $('#cs-post').hide();
+  var parameters = {city: $('#cs-city').val(),
+                    province: $('#cs-province').val(),
+                    country: $('#cs-country').val(),
+                    price: $('#cs-price').val(),
+                    age: $('#cs-age').val(),
+                    space: $('#cs-space').val(),
+                    office: $('#cs-office').val(),
+                    storage: $('#cs-storage').val(),
+                    furnishing: $('#cs-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhoner: login.sellerPhone};
+  $.get('/post_cs', parameters, function(data) {
+    Materialize.toast('WAITING FOR JACK', 4000);
+  });
+});
+
+
+$('#cr-post').click(function (ev) {
+  ev.preventDefault();
+  $('#cr-post').hide();
+  var parameters = {city: $('#cr-city').val(),
+                    province: $('#cr-province').val(),
+                    country: $('#cr-country').val(),
+                    price: $('#cr-price').val(),
+                    age: $('#cr-age').val(),
+                    space: $('#cr-space').val(),
+                    office: $('#cr-office').val(),
+                    storage: $('#cr-storage').val(),
+                    furnishing: $('#cr-furnishing').val(),
+                    pets: $('#cr-pets').val(),
+                    sellerName: login.sellerName,
+                    sellerPhoner: login.sellerPhone};
+  $.get('/post_cr', parameters, function(data) {
+    Materialize.toast('WAITING FOR JACK', 4000);
+  });
+});
+
+$('#rs-post').click(function (ev) {
+  ev.preventDefault();
+  $('#rs-post').hide();
+  var parameters = {city: $('#rs-city').val(),
+                    province: $('#rs-province').val(),
+                    country: $('#rs-country').val(),
+                    price: $('#rs-price').val(),
+                    age: $('#rs-age').val(),
+                    space: $('#rs-space').val(),
+                    office: $('#rs-office').val(),
+                    storage: $('#rs-storage').val(),
+                    furnishing: $('#rs-furnishing').val(),
+                    garden: $('#rs-furnishing').val(),
+                    garage: $('#rs-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhoner: login.sellerPhone};
+  $.get('/post_rs', parameters, function(data) {
+    Materialize.toast('WAITING FOR JACK', 4000);
+  });
+});
+
+$('#rr-post').click(function (ev) {
+  ev.preventDefault();
+  $('#rr-post').hide();
+  var parameters = {city: $('#rr-city').val(),
+                    province: $('#rr-province').val(),
+                    country: $('#rr-country').val(),
+                    price: $('#rr-price').val(),
+                    age: $('#rr-age').val(),
+                    space: $('#rr-space').val(),
+                    office: $('#rr-office').val(),
+                    storage: $('#rr-storage').val(),
+                    furnishing: $('#rr-furnishing').val(),
+                    garden: $('#rr-furnishing').val(),
+                    garage: $('#rr-furnishing').val(),
+                    pets: $('#rr-pets').val(),
+                    sellerName: login.sellerName,
+                    sellerPhoner: login.sellerPhone};
+  $.get('/post_rr', parameters, function(data) {
+    Materialize.toast('WAITING FOR JACK', 4000);
+  });
+});
