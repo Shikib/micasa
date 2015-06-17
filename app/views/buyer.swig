@@ -49,6 +49,7 @@
               <th data-field="age">Age (years)</th>
               <th data-field="area">Area (sq. metres)</th>
               <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="offerID">offerID</th>
               <th data-field="offerDate">OfferDate</th>
               <th data-field="purcaseAmount">Offer Amount</th>
           </tr>
@@ -68,6 +69,7 @@
               <th data-field="age">Age (years)</th>
               <th data-field="area">Area (sq. metres)</th>
               <th data-field="isFurnished">Is Furnished?</th>
+              <th data-field="offerID">offerID</th>
               <th data-field="offerDate">OfferDate</th>
               <th data-field="rentAmount">Rental Amount</th>
           </tr>

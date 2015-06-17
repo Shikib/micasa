@@ -114,7 +114,7 @@ router.get('/buyerloadPurchase', function (req, res, next) {
     var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
@@ -130,7 +130,7 @@ router.get('/buyerloadRent', function (req, res, next) {
     var bn = "Brando Wison";
 
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.rentAmount,o.offerID " +
                               "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
@@ -654,6 +654,15 @@ console.log(queryString);
 
 router.get('/check_purchase_propertyID', function(req, res, next) {
   var queryString =  "(select propertyID from CommercialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_propertyID', function(req, res, next) {
+  var queryString =  "(select propertyID from Property_HasA_Location WHERE propertyID = " + req.query.propertyID +");";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {

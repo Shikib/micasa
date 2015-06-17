@@ -9,7 +9,7 @@ $('#purchase-offer-submit').click(function(ev) {
   var parID = {propertyID: $('#propertyID').val()};
   $.get('/check_purchase_propertyID', parID, function(data) {
     if (data.length == 0) {
-      Materialize.toast('the property ID you submitted is not a valid rental property', 4000);
+      Materialize.toast('the property ID you submitted is not a valid for sale property', 4000);
     }else {
       parameters = { buyername: $('#buyername').val(),
       buyerphone:  $('#buyerphone').val(),
@@ -18,6 +18,7 @@ $('#purchase-offer-submit').click(function(ev) {
       message:  $('#message').val(),
       offerdate:  $('#offerdate').val(),
       offerID: oID};
+  
       console.log(parameters);  
       $.get('/create_new_offer', parameters, function(data){});
       $.get('/create_new_purchase_offer', parameters, function(data){});

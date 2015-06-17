@@ -19,6 +19,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].age + "</td>";
       rowString += "<td>" + data[i].area + "</td>";
       rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "<td>" + data[i].offerID + "</td>";
       rowString += "<td>" + data[i].offerDate+ "</td>";
       rowString += "<td>" + data[i].purchaseAmount + "</td>";
       $("#purchaseoffer > tbody").append(rowString);
@@ -41,6 +42,7 @@ $(window).load(function() {
       rowString += "<td>" + data[i].age + "</td>";
       rowString += "<td>" + data[i].area + "</td>";
       rowString += "<td>" + data[i].isFurnished + "</td>";
+       rowString += "<td>" + data[i].offerID + "</td>";
       rowString += "<td>" + data[i].offerDate+ "</td>";
       rowString += "<td>" + data[i].rentAmount + "</td>";
 
