@@ -1,4 +1,5 @@
 {% extends 'layout.swig' %}
+
 {% block content%}
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -11,28 +12,36 @@
 </head>
 {% endblock %}
 
-
-{% block content%}
+{% block content %}
 <body>
+ 
 <nav>
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-        <li><a href="login">Login</a></li>
-        <li><a href="signup">Sign up</a></li>
+        <li class="nlog" style="display: none;" ><a href="login">Login</a></li>
+        <li class="nlog" style="display: none;"><a href="signup">Sign up</a></li>
+        <li class="ylog" ><a href="/" id="logout">Logout</a></li>
         <li><a href="search">Serach</a></li>
       </ul>
     </div>
-</nav>
-<br>
+  </nav>
+        
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br><center><img src="images/micasa.png" style = "width:400px;height:400x;"></a></center>
+      <h1 class="header center orange-text">Welcome to Micasa</h1>
+      <div class="row center">
 
+      </div>
 
-<a id="agent-button" class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>Agent</a>
-<a id="seller-button" class="waves-effect waves-light btn-large"><i class="mdi-file-cloud left"></i>Seller</a>
-<a id="buyer-button" class="waves-effect waves-light btn-large"><i class="mdi-file-cloud right"></i>Buyer</a>
+      <br><br>
 
-<div id="agent-signup" class="row" style="display: none;">
+    </div>
+  </div>
+
+<div id="agent-update" class="row ylog agento" style="display: none;">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
@@ -53,7 +62,7 @@
         <option value="null" selected>None</option>
       </select>
       <label>Agency</label>
-    </div> 
+    </div>
 
     <div class="row">
       <div class="input-field col s6">
@@ -86,10 +95,9 @@
     </button>
 
   </form>
-</div> 
+</div>
 
-
-<div id="default-signup" class="row">
+<div id="default-update" class="row ylog defo" style="display: none;">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
@@ -134,15 +142,35 @@
       <i class="mdi-content-send right"></i>
     </button>
   </form>
-</div> 
+</div>
 
 
-<br><br><br><br><br>
+
+
+   <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer  grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="grey-text">About us</h5>
+          <p class="grey-text">We are a team of UBC students working on this project like it's our full time job. </p>
+
+
+
+
+
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
   <script src="js/init.js"></script>
   <script src="js/main.js"></script>
 
-</body>
+  </body>
 {% endblock %}
+</html>

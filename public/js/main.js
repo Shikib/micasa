@@ -8,6 +8,24 @@ $(document).ready(function() {
         $('.nlog').show();
         $('.ylog').hide();
       }
+      if (logged_in_type == "0") {
+        $('.agento').show();
+        $('.defo').hide();
+        $('.sellero').hide();
+        $('.buyero').hide();
+      }
+      else if (logged_in_type == "1") {
+        $('.agento').hide();
+        $('.defo').show();
+        $('.sellero').show();
+        $('.buyero').hide();
+      }  
+      else if (logged_in_type == "2") {
+        $('.agento').hide();
+        $('.defo').show();
+        $('.sellero').hide();
+        $('.buyero').show();
+      }  
     });
 });
 
@@ -244,6 +262,17 @@ $('#agent-button').click(function() {
     $('#agency').material_select();
   });
 
+});
+
+$('agent-update').load(function() {
+  $.get('/agency_list', {}, function(data) {
+    for (var i in data) {
+      var optionString = "<option value='" + data[i].agencyID +
+                         "'>" + data[i].name + "</option>";
+      $('#agency').append(optionString); 
+    }
+    $('#agency').material_select();
+  });
 });
 
 var sellerPressed;

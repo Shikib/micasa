@@ -20,6 +20,11 @@ router.get('/search', function (req, res, next) {
   });
 });
 
+router.get('/profile', function(req, res, next) {
+  res.render('profile', {
+    title: 'Profile',
+  });
+});
 
 router.get('/advanced_search', function (req, res, next) {
   res.render('advanced_search', {
