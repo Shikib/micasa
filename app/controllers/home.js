@@ -807,6 +807,15 @@ console.log(queryString);
   });
 });
 
+router.get('/delete_from_offer', function(req, res, next) {
+  var queryString =  "(delete from offer WHERE offerID= " + req.query.offerID +");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 
 router.get('/login_buyer', function(req, res, next) {
   var queryString = "SELECT * " +
@@ -955,6 +964,7 @@ router.get('/post_sale', function(req, res, next) {
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
+});
 
 
 

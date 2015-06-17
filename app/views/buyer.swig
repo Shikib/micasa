@@ -37,8 +37,6 @@
   <h4 class="header center orange-text">Welcome Buyer</h4></center>
 <br><br>
 
-
-
 <h5 align="left" class="header center teal-text">Your Purchase Offer</h5>
  <table id="purchaseoffer" class="bordered hoverable responsive-table">
         <thead>
@@ -80,14 +78,6 @@
       </table>
 
 
-  <br><br><h5 class="header center teal-text">Delete an Appointment</h5>
-     <form id="delete-app-field">
-        <div class="input-field">
-          <input id="approve" type="search" placeholder="Input the appointmentID you want to delete" required>
-        </div>
-      </form> 
-
-
 <h5 align="left" class="header center teal-text">Your Appointments</h5>
  <table id="app" class="bordered hoverable responsive-table">
         <thead>
@@ -104,6 +94,33 @@
         <tbody>
         </tbody>
       </table>
+
+
+<br><br><h5 class="header center teal-text">Delete an Offer</h5>
+     <form id="delete-offer-field">
+        <div class="input-field col s12">
+          <input id="delete-offerID" type="text" placeholder="Input the offerID you want to delete" required>
+        </div>
+      </form> 
+
+ <br><br><h5 class="header center teal-text">Delete an Appointment</h5>
+     <form id="delete-app-field">
+        <div class="input-field col s12">
+          <input id="delete-appID" type="text" placeholder="Input the appointmentID you want to delete" required>
+        </div>
+      </form> 
+
+        <button id="offer-submit" class="btn waves-effect waves-light" type="submit" name="action">Delete Offer
+      <i class="mdi-content-send right"></i>
+    </button>
+  </form><br>
+</div> 
+ <button id="app-submit" class="btn waves-effect waves-light" type="submit" name="action">Delete Appointment
+      <i class="mdi-content-send right"></i>
+    </button>
+  </form>
+</div> 
+
 
 
   <!--  Scripts-->
