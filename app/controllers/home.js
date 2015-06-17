@@ -321,6 +321,19 @@ router.get('/create_new_account', function(req, res, next) {
   });
 });
 
+router.get('/update_account', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var accountQueryString = "UPDATE Account " + 
+                           "SET uname='" + req.query.uname + "', " +
+                           "password='" + req.query.password + "' " +
+                           "WHERE uname='" + uName + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, accountQueryString, res);
+  });
+});
+
 router.get('/create_new_agent', function(req, res, next) {
   var agentQueryString = "INSERT INTO Agent_Represents " +
                     "VALUES (" + req.query.agentID + ", " 
@@ -337,6 +350,22 @@ router.get('/create_new_agent', function(req, res, next) {
   });
 });
 
+router.get('/update_agent', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var agentQueryString = "UPDATE Agent_Represents " +
+                         "SET agentName='" + req.query.name + "', " +
+                         "agentPhone='" + req.query.phone + "', " +
+                         "agentEmail='" + req.query.email + "', " +
+                         "agencyID='" + req.query.agency + ", " +
+                         "uname=''" + req.query.uname + "' " +
+                         "WHERE uname='" + uName + "';";
+  
+  console.log(agentQueryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, agentQueryString, res);
+  });
+});
 
 router.get('/create_new_seller', function(req, res, next) {
   var sellerQueryString = "INSERT INTO Seller " +
@@ -345,7 +374,21 @@ router.get('/create_new_seller', function(req, res, next) {
                                 + "'" + req.query.name + "', "
                                 + "'" + req.query.uname + "');";
   
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, sellerQueryString, res);
+  });
+});
 
+router.get('/update_seller', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var sellerQueryString = "UPDATE Seller " +
+                          "SET sellerEmail='" + req.query.email + "', " +
+                          "sellerPhone='" + req.query.phone + "', " +
+                          "sellerName='" + req.query.name + "', " +
+                          "uname=''" + req.query.uname + "' " +
+                          "WHERE uname='" + uName + "';";
+  
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, sellerQueryString, res);
   });
@@ -359,7 +402,21 @@ router.get('/create_new_buyer', function(req, res, next) {
                                + "'" + req.query.name + "', "
                                + "'" + req.query.uname + "');";
   
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, buyerQueryString, res);
+  });
+});
 
+router.get('/update_buyer', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var buyerQueryString = "UPDATE Buyer " +
+                          "SET buyerEmail='" + req.query.email + "', " +
+                          "buyerPhone='" + req.query.phone + "', " +
+                          "buyerName='" + req.query.name + "', " +
+                          "uname=''" + req.query.uname + "' " +
+                          "WHERE uname='" + uName + "';";
+  
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, buyerQueryString, res);
   });

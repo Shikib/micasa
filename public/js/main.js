@@ -373,14 +373,13 @@ $('#agent-update-submit').click(function(ev) {
                         agency: $('#agency-update').val(),
                         email:  $('#agent-update-email').val(),
                         phone:  $('#agent-update-phone').val(),
-                        password: $('#agent-update-password').val()};
-          accountParameters = {login: login};
+                        password: $('#agent-update-password').val(),
+                        login: login};
           console.log(parameters);  
           $.get('/update_account', parameters, function(data) {
-            $.get('/create_new_agent', parameters, function (data) {});
+            $.get('/update_agent', parameters, function (data) {});
               location.href = "/login";
           });
-          $.get('/delete_account', accountParameters, function(data) {});
           Materialize.toast('Successfully updated account', 4000);
         });
 
@@ -458,22 +457,21 @@ $('#update-submit').click(function(ev) {
                       name:  $('#name-submit').val(),
                       email:  $('#email-submit').val(),
                       phone:  $('#phone-submit').val(),
-                      password: $('#password-submit').val()};
-        accountParameters = {login: login};
+                      password: $('#password-submit').val(),
+                      login: login};
         console.log(parameters);  
-        $.get('/create_new_account', parameters, function(data) {
+        $.get('/update_account', parameters, function(data) {
           if (sellerPressed) {
-            $.get('/create_new_seller', parameters, function(data) {
+            $.get('/update_seller', parameters, function(data) {
               location.href = "/login";
             });
           } 
           else {
-            $.get('/create_new_buyer', parameters, function(data) {
+            $.get('/update_buyer', parameters, function(data) {
               location.href = "/login";
             });
           }   
         });
-        $.get('/delete_account', accountParameters, function(data) {}); 
         Materialize.toast('Successfully updated account', 4000);
       } 
 
