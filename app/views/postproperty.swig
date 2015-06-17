@@ -74,6 +74,22 @@
     <form class="col s12">
       <div class="row">
         <h5>Location </h5>
+        <div class="input-field col s3">
+          <input id="cs-aptNumber" type="text" class="validate">
+          <label for="cs-aptNumber">Apt. No.</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="cs-houseNumber" type="text" class="validate">
+          <label for="cs-houseNumber">House Number</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="cs-street" type="text" class="validate">
+          <label for="cs-street">Street</label>
+        </div>
+      </div>  
+
+
+      <div class="row">
         <div class="input-field col s6">
           <input id="cs-city" type="text" class="validate">
           <label for="city">City</label>
@@ -139,6 +155,21 @@
     <form class="col s12">
       <div class="row">
         <h5>Location </h5>
+        <div class="input-field col s3">
+          <input id="cr-aptNumber" type="text" class="validate">
+          <label for="cr-aptNumber">Apt. No.</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="cr-houseNumber" type="text" class="validate">
+          <label for="cr-houseNumber">House Number</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="cr-street" type="text" class="validate">
+          <label for="cr-street">Street</label>
+        </div>
+      </div>  
+      
+      <div class="row">
         <div class="input-field col s6">
           <input id="cr-city" type="text" class="validate">
           <label for="city">City</label>
@@ -213,7 +244,22 @@
     <form class="col s12">
       <div class="row">
         <h5>Location </h5>
-        <div class="input-field col s6">
+        <div class="input-field col s3">
+          <input id="rs-aptNumber" type="text" class="validate">
+          <label for="rs-aptNumber">Apt. No.</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="rs-houseNumber" type="text" class="validate">
+          <label for="rs-houseNumber">House Number</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="rs-street" type="text" class="validate">
+          <label for="rs-street">Street</label>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="input-field col s">
           <input id="rs-city" type="text" class="validate">
           <label for="city">City</label>
         </div>
@@ -285,6 +331,21 @@
     <form class="col s12">
       <div class="row">
         <h5>Location </h5>
+        <div class="input-field col s3">
+          <input id="rr-aptNumber" type="text" class="validate">
+          <label for="rr-aptNumber">Apt. No.</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="rr-houseNumber" type="text" class="validate">
+          <label for="rr-houseNumber">House Number</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="rr-street" type="text" class="validate">
+          <label for="rr-street">Street</label>
+        </div>
+      </div>  
+
+      <div class="row">
         <div class="input-field col s6">
           <input id="rr-city" type="text" class="validate">
           <label for="city">City</label>

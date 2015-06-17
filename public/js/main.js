@@ -388,7 +388,10 @@ $('#rr-select').click(function(ev) {
 $('#cs-post').click(function (ev) {
   ev.preventDefault();
   $('#cs-post').hide();
-  var parameters = {city: $('#cs-city').val(),
+  var parameters = {aptNum: $('#cs-aptNumber').val(),
+                    houseNum: $('#cs-houseNumber').val(),
+                    street: $('#cs-street').val(),
+                    city: $('#cs-city').val(),
                     province: $('#cs-province').val(),
                     country: $('#cs-country').val(),
                     price: $('#cs-price').val(),
@@ -399,8 +402,23 @@ $('#cs-post').click(function (ev) {
                     furnishing: $('#cs-furnishing').val(),
                     sellerName: login.sellerName,
                     sellerPhoner: login.sellerPhone};
-  $.get('/post_cs', parameters, function(data) {
-    Materialize.toast('WAITING FOR JACK', 4000);
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(agentID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.radom() * data.length)];
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fs', parameters, function(data) {
+          $.get('/post_cs', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
   });
 });
 
@@ -408,7 +426,10 @@ $('#cs-post').click(function (ev) {
 $('#cr-post').click(function (ev) {
   ev.preventDefault();
   $('#cr-post').hide();
-  var parameters = {city: $('#cr-city').val(),
+  var parameters = {aptNum: $('#cr-aptNumber').val(),
+                    houseNum: $('#cr-houseNumber').val(),
+                    street: $('#cr-street').val(),
+                    city: $('#cr-city').val(),
                     province: $('#cr-province').val(),
                     country: $('#cr-country').val(),
                     price: $('#cr-price').val(),
@@ -420,15 +441,20 @@ $('#cr-post').click(function (ev) {
                     pets: $('#cr-pets').val(),
                     sellerName: login.sellerName,
                     sellerPhoner: login.sellerPhone};
-  $.get('/post_cr', parameters, function(data) {
-    Materialize.toast('WAITING FOR JACK', 4000);
+  $.get('/post_property', parameters, function(data) {
+    $.get('/post_fs', parameters, function (data) {
+ 
+    });
   });
 });
 
 $('#rs-post').click(function (ev) {
   ev.preventDefault();
   $('#rs-post').hide();
-  var parameters = {city: $('#rs-city').val(),
+  var parameters = {aptNum: $('#rs-aptNumber').val(),
+                    houseNum: $('#rs-houseNumber').val(),
+                    street: $('#rs-street').val(),
+                    city: $('#rs-city').val(),
                     province: $('#rs-province').val(),
                     country: $('#rs-country').val(),
                     price: $('#rs-price').val(),
@@ -449,7 +475,10 @@ $('#rs-post').click(function (ev) {
 $('#rr-post').click(function (ev) {
   ev.preventDefault();
   $('#rr-post').hide();
-  var parameters = {city: $('#rr-city').val(),
+  var parameters = {aptNum: $('#rr-aptNumber').val(),
+                    houseNum: $('#rr-houseNumber').val(),
+                    street: $('#rr-street').val(),
+                    city: $('#rr-city').val(),
                     province: $('#rr-province').val(),
                     country: $('#rr-country').val(),
                     price: $('#rr-price').val(),

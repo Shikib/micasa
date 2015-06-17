@@ -726,6 +726,116 @@ router.get('/login_agent', function(req, res, next) {
 
 });
 
+router.get('/post_property', function(req, res, next) {
+  var queryString = "INSERT INTO Property_HasA_Location VALUES ( "
+                  + req.query.propertyID + ", " +
+              "'" + req.query.isFurnished + "', " +
+                    req.query.age + ", " +
+                    "null" + ", " +
+                    req.query.aptNumber + ", " +
+                    req.query.area + ", " +
+              "'" + req.query.houseNumber + "'," + 
+              "'" + req.query.street + "', " +
+              "'" + req.query.country + "', " +
+              "'" + req.query.city + "', " +
+              "'" + req.query.province + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/post_fs', function(req, res, next) {
+  var queryString = "INSERT INTO ForSale VALUES ( " +
+                    req.query.price + ", " +
+                    req.query.propertyID + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_fr', function(req, res, next) {
+  var queryString = "INSERT INTO ForRent VALUES ( " +
+                    req.query.price + ", " +
+                    req.query.propertyID + ", " + 
+              "'" + req.query.pets + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_cs', function(req, res, next) {
+  var queryString = "INSERT INTO CommercialProperty_ForSale VALUES ( " +
+                    req.query.propertyID + ", " +  
+                    req.query.storage + ", " +
+                    req.query.offices + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_cr', function(req, res, next) {
+  var queryString = "INSERT INTO CommercialProperty_ForRent VALUES ( " +
+                    req.query.propertyID + ", " +  
+                    req.query.storage + ", " +
+                    req.query.offices + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+
+router.get('/post_rs', function(req, res, next) {
+  var queryString = "INSERT INTO ResidentialProperty_ForSale VALUES ( " +
+                    req.query.propertyID + ", " +  
+              "'" + req.query.garden + "', " +
+              "'" + req.query.garage + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_rr', function(req, res, next) {
+  var queryString = "INSERT INTO ResidentialProperty_ForRent VALUES ( " +
+                    req.query.propertyID + ", " +  
+              "'" + req.query.garden + "', " +
+              "'" + req.query.garage + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/all_propertyID', function(req, res, next) {
+  var queryString = "SELECT propertyID FROM Property_HasA_Location;";
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(queryString);
+  });
+});
+
+router.get('/post_sale', function(req, res, next) {
+  var queryString = "INSERT INTO PostSale VALUES (" +
+                    req.query.propertyID + ", " +
+              "'" + req.query.sellerName + "'," +
+              "'" + req.query.sellerPhone + "', " +
+                  + req.query.agentID + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(queryString);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
