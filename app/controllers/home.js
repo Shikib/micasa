@@ -773,11 +773,7 @@ router.get('/post_property', function(req, res, next) {
               "'" + req.query.country + "', " +
               "'" + req.query.city + "', " +
               "'" + req.query.province + "');";
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin/feature/seller
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -875,10 +871,7 @@ router.get('/post_sale', function(req, res, next) {
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
-<<<<<<< HEAD
 
-=======
-});
 
 
 router.get('/login_user', function(req, res, next) {
@@ -891,7 +884,6 @@ router.get('/logout', function(req, res, next) {
 
 router.get('/login_info', function(req, res, next) {
   loginModule.get_logged_in(res);  
->>>>>>> origin/feature/seller
 });
 
 function test(){
