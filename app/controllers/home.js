@@ -652,6 +652,15 @@ console.log(queryString);
   });
 });
 
+router.get('/check_purchase_propertyID', function(req, res, next) {
+  var queryString =  "(select propertyID from CommercialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 
 
 router.get('/login_buyer', function(req, res, next) {
