@@ -128,8 +128,9 @@ router.get('/agent_offers', function (req, res, next) {
 router.get('/agent_purchaseoffers_get', function (req, res, next) {
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
-                              "FROM Offer o, PurchaseOffer_Makes po " +
-                              "WHERE o.offerID=po.offerID;",
+                              "FROM Offer o, PurchaseOffer_Makes m, PostSale p " +
+                              "WHERE o.offerID=m.offerID AND m.propertyID=p.propertyID " +
+                              "AND p.agentID=" + login.agentID + ";",
                         res);
     });
 });
@@ -137,8 +138,9 @@ router.get('/agent_purchaseoffers_get', function (req, res, next) {
 router.get('/agent_rentaloffers_get', function (req, res, next) {
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
-                              "FROM Offer o, RentalOffer_Makes ro " +
-                              "WHERE o.offerID=ro.offerID;",
+                              "FROM Offer o, RentalOffer_Makes m, PostSale p " +
+                              "WHERE o.offerID=m.offerID AND m.propertyID=p.propertyID " +
+                              "AND p.agentID=" + login.agentID + ";",
                         res);
     });
 });
@@ -153,7 +155,8 @@ router.get('/agent_interest_get', function (req, res, next) {
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
                               "FROM InterestedIn i, PostSale p " +
-                              "WHERE i.propertyID=p.propertyID;",
+                              "WHERE i.propertyID=p.propertyID " +
+                              "AND p.agentID=" + login.agentID + ";",
                         res);
     });
 });
@@ -169,10 +172,12 @@ router.get('/agent_not_approved_appointments_get', function (req, res, next) {
       mysqlModule.query(conn, "SELECT appointmentID, a.propertyID, buyerPhone, buyerName, appointmentTime, appDuration " +
                               "FROM Appointment_View a, PostSale p " +
                               "WHERE a.propertyID=p.propertyID " +
+                              "AND p.agentID=" + login.agentID + " " +
                               "AND a.propertyID NOT IN " +
                               "(SELECT v.propertyID " +
                               "FROM Approves a, Appointment_View v " +
-                              "WHERE a.appointmentID=v.appointmentID);",
+                              "WHERE a.appointmentID=v.appointmentID " +
+                              "AND a.agentID=" + login.agentID + ");",
                         res);
     });
 });
@@ -181,7 +186,8 @@ router.get('/agent_approved_appointments_get', function (req, res, next) {
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
                               "FROM Approves a, Appointment_View v " +
-                              "WHERE a.appointmentID=v.appointmentID;",
+                              "WHERE a.appointmentID=v.appointmentID " +
+                              "AND a.agentID=" + login.agentID + ");",
                         res);
     });
 });
@@ -191,10 +197,12 @@ router.get('/agent_not_approved_appointmentID', function(req, res, next) {
       mysqlModule.query(conn, "SELECT appointmentID " + 
                               "FROM Appointment_View a, PostSale p " +
                               "WHERE a.propertyID=p.propertyID " +
+                              "AND p.agentID=" + login.agentID + " " +
                               "AND a.propertyID NOT IN " +
                               "(SELECT v.propertyID " +
                               "FROM Approves a, Appointment_View v " +
-                              "WHERE a.appointmentID=v.appointmentID);",
+                              "WHERE a.appointmentID=v.appointmentID " +
+                              "AND a.agentID=" + login.agentID + ");",
                         res);
     });
 });
@@ -206,7 +214,7 @@ router.get('/agent_appointment_approve', function(req, res, next) {
 
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, "INSERT INTO Approves VALUES (" + 
-                            val + ", 1123);",
+                            val + ", " + login.agentID + ");",
                       res);
     });
 });

@@ -1,7 +1,8 @@
 {% extends 'layout.swig' %}
 
 {% block content%}
-<nav>
+  <body>
+  <nav>
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -66,6 +67,6 @@
       </div>
     </div>
   </footer>
-
+</body>
 
 {% endblock %}
