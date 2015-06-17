@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <h5 class="center">Update your info by filling out the blanks and pressing update, or delete your account with the delete button (WARNING: Delete is permanent).</h5>
+  <h5 class="center">Update your info by filling out the blanks and pressing update, or PERMANENTLY delete your account with the delete button.</h5>
 
 <div id="agent-update" class="row ylog agento" style="display: none;">
   <form class="col s12">
