@@ -59,7 +59,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $.get('/bw_agencies', {}, function(data) {
+  $.get('/bw_agencies', {best: true}, function(data) {
     console.log(data);
     $('#bw-agency-list > tbody').html("");
     for (var i in data) {
@@ -78,7 +78,8 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-  $.get('/bw_cities', {}, function(data) {
+  $.get('/bw_cities', {best: true}, function(data) {
+    console.log("test");
     console.log(data);
     $('#bw-city-list > tbody').html("");
     for (var i in data) {

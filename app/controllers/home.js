@@ -949,8 +949,44 @@ router.get('/popular_cities', function(req, res, next) {
   });
 });
 
-router.get('/best_city', function(req, res, next) {
-//  var queryString = "SELECT 
+router.get('/bw_cities', function(req, res, next) {
+  var queryString = "SELECT name, city, province, country, ";
+  if (req.query.best)
+    queryString += "MAX(count) as count ";
+  else
+    queryString += "MIN(count) as count ";
+
+  queryString += "FROM " +
+                   "(SELECT name, a.agencyID, city, province, country, COUNT(*) as count " +
+                   "FROM Agency a, Agent_Represents g, PostSale f, Property_HasA_Location p " +
+                   "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                   "f.propertyID = p.propertyID " +
+                   "GROUP BY agencyID, city, province, country) as Temp " +
+                  "GROUP BY agencyID;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/bw_agencies', function(req, res, next) {
+  var queryString = "SELECT name, city, province, country, ";
+  if (req.query.best)
+    queryString += "MAX(count) as count ";
+  else
+    queryString += "MIN(count) as count ";
+
+  queryString += "FROM " +
+                   "(SELECT name, a.agencyID, city, province, country, COUNT(*) as count " +
+                   "FROM Agency a, Agent_Represents g, PostSale f, Property_HasA_Location p " +
+                   "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                   "f.propertyID = p.propertyID " +
+                   "GROUP BY agencyID, city, province, country) as Temp " +
+                  "GROUP BY city, province, country;";
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
 });
 
 function test(){
