@@ -173,7 +173,7 @@ router.get('/buyerloadApp', function (req, res, next) {
     var bn = "Markus Lemonis";
 
      mysqlModule.getConnection(function(err, conn) {
-       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
+       mysqlModule.query(conn, "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
                               "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
@@ -270,6 +270,31 @@ router.get('/agent_approved_appointments_get', function (req, res, next) {
                         res);
     });
 });
+
+router.get('/buyer_not_approved_appointmentID', function(req, res, next) {
+    mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT appointmentID " + 
+                              "FROM Appointment_View a, PostSale p " +
+                              "WHERE a.propertyID=p.propertyID " +
+                              "AND a.propertyID NOT IN " +
+                              "(SELECT v.propertyID " +
+                              "FROM Approves a, Appointment_View v " +
+                              "WHERE a.appointmentID=v.appointmentID);",
+                        res);
+    });
+});
+
+router.get('/buyer_appointment_approve', function(req, res, next) {
+  var val = req.query.appID;
+
+  console.log(val);
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, "DELETE FROM Offer WHERE offerID =" + val +");",  
+                      res);
+    });
+});
+
 
 router.get('/agent_not_approved_appointmentID', function(req, res, next) {
     mysqlModule.getConnection(function(err, conn) {
@@ -832,6 +857,7 @@ router.get('/post_property', function(req, res, next) {
               "'" + req.query.country + "', " +
               "'" + req.query.city + "', " +
               "'" + req.query.province + "');";
+
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -929,7 +955,7 @@ router.get('/post_sale', function(req, res, next) {
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
-});
+
 
 
 router.get('/login_user', function(req, res, next) {
