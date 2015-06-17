@@ -886,12 +886,39 @@ router.get('/login_info', function(req, res, next) {
   loginModule.get_logged_in(res);  
 });
 
-router.get('/cs_ordered_price', function(req, res, next) {
+router.get('/rs_ordered_price', function(req, res, next) {
   var queryString = "SELECT City, AVG(salePrice) as avgPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
                   + "GROUP BY City " 
                   + "ORDER BY avgPrice;";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/rs_max_price', function(req, res, next) {
+  var queryString = "SELECT City, MAX(salePrice) as maxPrice "
+                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
+                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
+                  + "GROUP BY City " 
+                  + "ORDER BY City;";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/rs_min_price', function(req, res, next) {
+  var queryString = "SELECT City, MIN(salePrice) as minPrice "
+                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
+                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
+                  + "GROUP BY City " 
+                  + "ORDER BY City;";
 
   console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {

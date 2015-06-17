@@ -16,18 +16,7 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
-  $.get('/cs_ordered_price', {}, function(data) {
-    $('#cs-ordered-price > tbody').html("");
-    for (var i in data) {
-      var rowString = "<tr>";
-      rowString += "<td>" + data[i].City + "</td>";
-      rowString += "<td>" + data[i].avgPrice + "</td>";
-      rowString += "</tr>";
-      $('#cs-ordered-price > tbody').append(rowString);
-    }
-  });
-});
+
 
 $('#search-field').submit(function(ev) {
   ev.preventDefault();

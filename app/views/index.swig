@@ -44,7 +44,7 @@
 
   <div class="container">
     <div class="section ylog">
-      <table id="cs-ordered-price" class="bordered striped hoverable responsive-table">
+      <table id="rs-ordered-price" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
               <th data-field="city">City</th>
@@ -57,6 +57,18 @@
       </table>
     
 
+      <table id="rs-mm-price" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="city">City</th>
+              <th data-field="max-price">Max Home Price (Thousands)</th>
+              <th data-field="min-price">Min Home Price (Thousands)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
     </div>
 
     <div class="section nlog" style="display: none;">
@@ -115,6 +127,7 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="js/init.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
 
   </body>
 {% endblock %}
