@@ -101,6 +101,39 @@
         </tbody>
       </table>
 
+      <br><br>       
+
+      <table id="bw-agency-list" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="city">City</th>
+              <th data-field="province">Province</th>
+              <th data-field="country">Country</th>
+              <th data-field="agencyName>Agency Name</th>
+              <th data-field="count">Property Count</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+
+      <br><br>       
+
+      <table id="bw-city-list" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="agencyName">Agency Name </th>
+              <th data-field="city">City</th>
+              <th data-field="province">Province</th>
+              <th data-field="country">Country</th>
+              <th data-field="count">Property Count</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
     </div>
 
     <div class="section nlog" style="display: none;">

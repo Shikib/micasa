@@ -54,6 +54,42 @@ $(document).ready(function() {
       rowString += "<td>" + data[i].country + "</td>";
       rowString += "</tr>";
       $('#popular-city-list > tbody').append(rowString);
+    } 
+  });
+});
+
+$(document).ready(function() {
+  $.get('/bw_agencies', {}, function(data) {
+    console.log(data);
+    $('#bw-agency-list > tbody').html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].province + "</td>";
+      rowString += "<td>" + data[i].country + "</td>";
+      rowString += "<td>" + data[i].name + "</td>";
+      rowString += "<td>" + data[i].count + "</td>";	
+      rowString += "</tr>";
+      $('#bw-agency-list > tbody').append(rowString);
+    }
+ 
+  });
+});
+
+
+$(document).ready(function() {
+  $.get('/bw_cities', {}, function(data) {
+    console.log(data);
+    $('#bw-city-list > tbody').html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].name + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].province + "</td>";
+      rowString += "<td>" + data[i].country + "</td>";
+      rowString += "<td>" + data[i].count + "</td>";	
+      rowString += "</tr>";
+      $('#bw-city-list > tbody').append(rowString);
     }
  
   });
