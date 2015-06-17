@@ -604,6 +604,55 @@ mysqlModule.getConnection(function(err,conn){
   });
 });
 
+router.get('/create_new_purchase_offer', function(req, res, next){
+  var rentQueryString = "INSERT INTO  purchaseOffer_Makes"+
+                            " VALUES (" + req.query.offerID+","+
+                                          req.query.amount+","+
+                                          req.query.propertyID+","+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.buyername +"');";
+
+console.log(rentQueryString);
+mysqlModule.getConnection(function(err,conn){
+    mysqlModule.query(conn, rentQueryString, res);
+  });
+});
+
+router.get('/get_all_for_sale', function(req, res, next) {
+  var queryString = "(select propertyID from CommercialProperty_ForSale) union (select propertyID from ResidentialProperty_ForSale);";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+router.get('/get_all_for_rent', function(req, res, next) {
+  var queryString = "(select propertyID from CommercialProperty_ForRent) union (select propertyID from ResidentialProperty_ForRent);";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+});
+
+router.get('/get_all_propertyID', function(req, res, next) {
+  var queryString = "(select propertyID from Property_HasA_Location;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+});
+
+router.get('/check_rent_propertyID', function(req, res, next) {
+  var queryString =  "(select propertyID from CommercialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
 
 router.get('/login_buyer', function(req, res, next) {
   var queryString = "SELECT * " +
