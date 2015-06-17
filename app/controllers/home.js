@@ -1,10 +1,9 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
-var mysqlModule = require('../../mysqlModule');
 
 var mysqlModule = require('../../mysqlModule');
-
+var loginModule = require('../../loginModule');
 module.exports = function (app) {
   app.use('/', router);
 };
@@ -108,6 +107,34 @@ router.get('/sellerloadRent', function (req, res, next) {
 
     }); 
    });
+
+router.get('/commercialforsale', function (req, res, next) {
+  res.render('commercialforsale', {
+    title: 'Micasa',
+  });
+});
+
+router.get('/commercialforrent', function (req, res, next) {
+  res.render('commercialforrent', {
+    title: 'Micasa',
+  });
+});
+
+
+router.get('/postproperty', function (req, res, next) {
+  res.render('postproperty', {
+    title: 'Micasa',
+  });
+});
+
+router.get('/residentialforsale', function (req, res, next) {
+  res.render('residentialforsale', {
+    title: 'Micasa',
+  });
+});
+
+
+
 
 router.get('/buyerloadPurchase', function (req, res, next) {
     var bp = "6042223333"; 
@@ -412,6 +439,7 @@ router.get('/signup', function (req, res, next) {
     });
 });
 
+
 router.get('/interested_in', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
     res.render('interestedin', {
@@ -420,6 +448,72 @@ router.get('/interested_in', function (req, res, next) {
     });
 //  });
 });
+
+router.get('/viewoffer', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('viewoffer', {
+      title: 'viewoffer',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/rateagent', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('rateagent', {
+      title: 'rateagent',
+//      articles: articles
+    });
+//  });
+});
+
+router.get('/rateagentGet', function (req, res, next){
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT * from Agent_Represents" ,
+                       res);
+
+    }); 
+   });
+
+router.get('/viewoffersSale', function (req, res, next) {
+
+    var sp = "7781112222"; 
+    var sn = "Mary Lamb";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
+                              "FROM Property_HasA_Location p, ForSale fs, PurchaseOffer_Makes pom, Offer o, PostSale ps, Seller s, Buyer b " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND b.buyerPhone = pom.buyerphone AND b.buyerName = pom.buyerName " +
+                              " AND fs.propertyID = pom.propertyID AND ps.propertyID = pom.propertyID AND ps.propertyID = p.propertyID " +
+                              " AND o.offerID = pom.offerID ",
+                       res);
+
+    }); 
+   });
+
+router.get('/viewoffersRent', function (req, res, next) {
+
+    var sp = "7784445555"; 
+    var sn = "Liam Neeson";
+
+     mysqlModule.getConnection(function(err, conn) {
+      mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
+                              "FROM Property_HasA_Location p, ForRent fr, RentalOffer_Makes rom, Offer o, PostSale ps, Seller s, Buyer b " +
+                              "WHERE s.sellerPhone = '" + sp + "' AND s.sellerName='"+ sn +
+                              "' AND ps.sellerPhone = '" + sp + "' AND ps.sellerName='"+ sn +
+                              "' AND b.buyerPhone = rom.buyerPhone AND b.buyerName = rom.buyerName " +
+                              " AND fr.propertyID = rom.propertyID AND ps.propertyID = rom.propertyID AND ps.propertyID = p.propertyID " +
+                              " AND o.offerID = rom.offerID ",
+                       res);
+
+    }); 
+   });
+
+
+
+
 
 router.get('/makeofferpurchase', function (req, res, next) {
 //  db.Article.findAll().then(function (articles) {
@@ -706,6 +800,131 @@ router.get('/login_agent', function(req, res, next) {
     mysqlModule.query(conn, queryString, res);
   });             
 
+});
+
+router.get('/post_property', function(req, res, next) {
+  var queryString = "INSERT INTO Property_HasA_Location VALUES ( "
+                  + req.query.propertyID + ", " +
+              "'" + req.query.furnishing + "', " +
+                    req.query.age + ", " +
+                    "null" + ", " +
+                    req.query.aptNum + ", " +
+                    req.query.space + ", " +
+              "'" + req.query.houseNum + "'," + 
+              "'" + req.query.street + "', " +
+              "'" + req.query.country + "', " +
+              "'" + req.query.city + "', " +
+              "'" + req.query.province + "');";
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/post_fs', function(req, res, next) {
+  var queryString = "INSERT INTO ForSale VALUES ( " +
+                    req.query.price + ", " +
+                    req.query.propertyID + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_fr', function(req, res, next) {
+  var queryString = "INSERT INTO ForRent VALUES ( " +
+                    req.query.price + ", " +
+                    req.query.propertyID + ", " + 
+              "'" + req.query.pets + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_cs', function(req, res, next) {
+  var queryString = "INSERT INTO CommercialProperty_ForSale VALUES ( " +
+                    req.query.propertyID + ", " +  
+                    req.query.storage + ", " +
+                    req.query.office + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_cr', function(req, res, next) {
+  var queryString = "INSERT INTO CommercialProperty_ForRent VALUES ( " +
+                    req.query.propertyID + ", " +  
+                    req.query.storage + ", " +
+                    req.query.office + ");";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+
+router.get('/post_rs', function(req, res, next) {
+  var queryString = "INSERT INTO ResidentialProperty_ForSale VALUES ( " +
+                    req.query.propertyID + ", " +  
+              "'" + req.query.garden + "', " +
+              "'" + req.query.garage + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/post_rr', function(req, res, next) {
+  var queryString = "INSERT INTO ResidentialProperty_ForRent VALUES ( " +
+                    req.query.propertyID + ", " +  
+              "'" + req.query.garden + "', " +
+              "'" + req.query.garage + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+ 
+});
+
+router.get('/all_propertyID', function(req, res, next) {
+  var queryString = "SELECT propertyID FROM Property_HasA_Location;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/post_sale', function(req, res, next) {
+  var queryString = "INSERT INTO PostSale VALUES (" +
+                    req.query.propertyID + ", " +
+              "'" + req.query.sellerName + "'," +
+              "'" + req.query.sellerPhone + "', " 
+                  + req.query.agentID + ");";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/login_user', function(req, res, next) {
+  loginModule.login(req.query.type, req.query.data, res);  
+});
+
+router.get('/logout', function(req, res, next) {
+  loginModule.logout(res);  
+});
+
+router.get('/login_info', function(req, res, next) {
+  loginModule.get_logged_in(res);  
 });
 
 function test(){

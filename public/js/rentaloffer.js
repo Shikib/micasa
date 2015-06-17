@@ -28,3 +28,4 @@ $('#rental-offer-submit').click(function(ev) {
     }
   });
 })
+

@@ -1,6 +1,15 @@
 
 $(document).ready(function() {
     $('select').material_select();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      if (!logged_in) {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+    });
 });
 
 $('#search-field').submit(function(ev) {
@@ -227,6 +236,15 @@ $('#agent-button').click(function() {
   $('#seller-button').hide();
   $('#buyer-button').hide();
   $('#agent-signup').show();
+  $.get('/agency_list', {}, function(data) {
+    for (var i in data) {
+      var optionString = "<option value='" + data[i].agencyID +
+                         "'>" + data[i].name + "</option>";
+      $('#agency').append(optionString); 
+    }
+    $('#agency').material_select();
+  });
+
 });
 
 var sellerPressed;
@@ -254,6 +272,12 @@ $('#agent-signup-submit').click(function(ev) {
   }
   else if ($('#agent-password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
     var parameters = {uname: $('#agent-uname').val() };
@@ -290,9 +314,15 @@ $('#signup-submit').click(function(ev) {
   ev.preventDefault();
   if ($('#password').val() != $('#confirm-password').val()) {
     Materialize.toast('Passwords must match', 4000);
-  }˜
+  }
   else if ($('#password').val().length < 6) {
     Materialize.toast('Password must be at least 6 characters', 4000);
+  }
+  else if ($('#name').val() == "") {
+    Materialize.toast('Name field cannot be empty', 4000);
+  }
+  else if ($('#phone').val() == "") {
+    Materialize.toast('Phone field cannot be empty', 4000);
   }
   else {
     var parameters = {uname: $('#uname').val() };
@@ -324,6 +354,11 @@ $('#signup-submit').click(function(ev) {
   }  
 });
 
+var logged_in = false;
+// 0 for agent, 1 for seller, 2 for buyer
+var logged_in_type;
+var login;
+
 $('#login-submit').click(function(ev) {
   ev.preventDefault();
   var parameters = {uname: $('#uname').val(),
@@ -335,17 +370,27 @@ $('#login-submit').click(function(ev) {
     else {
       $.get('/login_buyer', parameters, function(data) {
         if (data.length != 0) {
-          console.log('buyer');
+          logged_in = true;
+          logged_in_type = 2;
+          login = data[0];
+          $.get('login_user', {type: logged_in_type, data: data[0]});
         }
         else {
           $.get('/login_seller', parameters, function(data) {
             if (data.length != 0) {
-              console.log('seller');              
+              console.log(data);
+              logged_in = true;
+              logged_in_type = 1;
+              login = data[0];
+              $.get('login_user', {type: logged_in_type, data: data[0]});
             }
             else {          
               $.get('/login_agent', parameters, function(data) {
                 if (data.length != 0) {
-                  console.log('agent');
+                  logged_in = true;
+                  logged_in_type = 0;
+                  login = data[0];
+                  $.get('login_user', {type: logged_in_type, data: data[0]});
                 }
                 else {
                   Materialize.toast('Login error. Try signing up again', 4000);
@@ -358,4 +403,178 @@ $('#login-submit').click(function(ev) {
     }    
   }); 
 
+});
+
+
+$('#cs-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide();
+  $('#commercial-sale').show(); 
+});
+
+
+$('#cr-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide();
+  $('#commercial-rent').show(); 
+});
+
+$('#rs-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide();
+  $('#residential-sale').show(); 
+});
+$('#rr-select').click(function(ev) {
+  ev.preventDefault();
+  $('#select-type').hide();
+  $('#residential-rent').show();
+});
+
+$('#cs-post').click(function (ev) {
+  ev.preventDefault();
+  $('#cs-post').hide();
+  var parameters = {aptNum: $('#cs-aptNumber').val(),
+                    houseNum: $('#cs-houseNumber').val(),
+                    street: $('#cs-street').val(),
+                    city: $('#cs-city').val(),
+                    province: $('#cs-province').val(),
+                    country: $('#cs-country').val(),
+                    price: $('#cs-price').val(),
+                    age: $('#cs-age').val(),
+                    space: $('#cs-space').val(),
+                    office: $('#cs-office').val(),
+                    storage: $('#cs-storage').val(),
+                    furnishing: $('#cs-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fs', parameters, function(data) {
+          $.get('/post_cs', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
+  });
+});
+
+
+$('#cr-post').click(function (ev) {
+  ev.preventDefault();
+  $('#cr-post').hide();
+  var parameters = {aptNum: $('#cr-aptNumber').val(),
+                    houseNum: $('#cr-houseNumber').val(),
+                    street: $('#cr-street').val(),
+                    city: $('#cr-city').val(),
+                    province: $('#cr-province').val(),
+                    country: $('#cr-country').val(),
+                    price: $('#cr-price').val(),
+                    age: $('#cr-age').val(),
+                    space: $('#cr-space').val(),
+                    office: $('#cr-office').val(),
+                    storage: $('#cr-storage').val(),
+                    furnishing: $('#cr-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fr', parameters, function(data) {
+          $.get('/post_cr', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
+  });
+});
+
+$('#rs-post').click(function (ev) {
+  ev.preventDefault();
+  $('#rs-post').hide();
+  var parameters = {aptNum: $('#rs-aptNumber').val(),
+                    houseNum: $('#rs-houseNumber').val(),
+                    street: $('#rs-street').val(),
+                    city: $('#rs-city').val(),
+                    province: $('#rs-province').val(),
+                    country: $('#rs-country').val(),
+                    price: $('#rs-price').val(),
+                    age: $('#rs-age').val(),
+                    space: $('#rs-space').val(),
+                    office: $('#rs-office').val(),
+                    storage: $('#rs-storage').val(),
+                    furnishing: $('#rs-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fs', parameters, function(data) {
+          $.get('/post_rs', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
+  });
+});
+
+$('#rr-post').click(function (ev) {
+  ev.preventDefault();
+  $('#rr-post').hide();
+  var parameters = {aptNum: $('#rr-aptNumber').val(),
+                    houseNum: $('#rr-houseNumber').val(),
+                    street: $('#rr-street').val(),
+                    city: $('#rr-city').val(),
+                    province: $('#rr-province').val(),
+                    country: $('#rr-country').val(),
+                    price: $('#rr-price').val(),
+                    age: $('#rr-age').val(),
+                    space: $('#rr-space').val(),
+                    office: $('#rr-office').val(),
+                    storage: $('#rr-storage').val(),
+                    furnishing: $('#rr-furnishing').val(),
+                    sellerName: login.sellerName,
+                    sellerPhone: login.sellerPhone};
+  $.get('/all_propertyID', {}, function(data) {
+    parameters.propertyID = Math.floor(Math.random() * 32767); 
+    while (data.indexOf(parameters.propertyID) > -1)
+      parameters.propertyID = Math.floor(Math.random() * 32767);
+      
+    $.get('/get_all_agentID', {}, function(data) {
+      parameters.agentID = data[Math.floor(Math.random() * data.length)].agentID;
+      $.get('/post_property', parameters, function(data) {
+        $.get('/post_fr', parameters, function(data) {
+          $.get('/post_rr', parameters, function(data) {
+            $.get('/post_sale', parameters, function(data) {
+              Materialize.toast('now redirect to property page', 4000);
+            });
+          });
+        });
+      });
+    });      
+  });
 });
