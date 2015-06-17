@@ -43,7 +43,23 @@
 
 
   <div class="container">
-    <div class="section">
+    <div class="section ylog">
+      <table id="cs-ordered-price" class="bordered striped hoverable responsive-table">
+        <thead>
+          <tr>
+              <th data-field="city">City</th>
+              <th data-field="avg-price">Average Home Price (Thousands)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+      </table>
+    
+
+    </div>
+
+    <div class="section nlog" style="display: none;">
 
       <!--   Icon Section   -->
       <div class="row">

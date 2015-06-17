@@ -886,6 +886,19 @@ router.get('/login_info', function(req, res, next) {
   loginModule.get_logged_in(res);  
 });
 
+router.get('/cs_ordered_price', function(req, res, next) {
+  var queryString = "SELECT City, AVG(salePrice) as avgPrice "
+                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
+                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
+                  + "GROUP BY City " 
+                  + "ORDER BY avgPrice;";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
