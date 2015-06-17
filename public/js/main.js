@@ -376,7 +376,7 @@ $('#agent-update-submit').click(function(ev) {
                         password: $('#agent-update-password').val()};
           accountParameters = {login: login};
           console.log(parameters);  
-          $.get('/create_new_account', parameters, function(data) {
+          $.get('/update_account', parameters, function(data) {
             $.get('/create_new_agent', parameters, function (data) {});
               location.href = "/login";
           });
@@ -485,7 +485,7 @@ $('#delete-account').click(function(ev) {
   ev.preventDefault();
   parameters = {};
   accountParameters = {login: login};
-  $.get('/delete_account', parameters, function(data) {});
+  $.get('/delete_account', accountParameters, function(data) {});
   $.get('/logout', parameters, function(data) {});
   Materialize.toast('Successfully deleted account', 4000);
 });
