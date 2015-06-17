@@ -887,10 +887,10 @@ router.get('/login_info', function(req, res, next) {
 });
 
 router.get('/rs_ordered_price', function(req, res, next) {
-  var queryString = "SELECT City, AVG(salePrice) as avgPrice "
+  var queryString = "SELECT city, AVG(salePrice) as avgPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
-                  + "GROUP BY City " 
+                  + "GROUP BY city " 
                   + "ORDER BY avgPrice;";
 
   console.log(queryString);
@@ -901,11 +901,11 @@ router.get('/rs_ordered_price', function(req, res, next) {
 
 
 router.get('/rs_mm_price', function(req, res, next) {
-  var queryString = "SELECT City, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice "
+  var queryString = "SELECT city, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
-                  + "GROUP BY City " 
-                  + "ORDER BY City;";
+                  + "GROUP BY city " 
+                  + "ORDER BY city;";
 
   console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
@@ -917,13 +917,13 @@ router.get('/diverse_agencies', function(req, res, next) {
   var queryString = "SELECT a.name, a.agencyRating " +
                     "FROM Agency a " +
                     "WHERE NOT EXISTS (" +
-                      "SELECT City " +
+		      "SELECT City " +
                       "FROM Property_HasA_Location p2 " +
                       "WHERE NOT EXISTS "  +
                         "(SELECT City " +
-                        "FROM Agent_Represents g, Property_HasA_Location p, ForSale f " +
+                        "FROM Agent_Represents g, Property_HasA_Location p, PostSale f " +
                         "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
-                        "f.propertyID = p.propertyID AND p2.city = p.city));" + 
+                        "f.propertyID = p.propertyID AND p2.city = p.city));"; 
 
   console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
@@ -933,14 +933,14 @@ router.get('/diverse_agencies', function(req, res, next) {
 
 router.get('/popular_cities', function(req, res, next) {
   var queryString = "SELECT city, province, country " +
-                    "FROM Property_HasA_Location p " +
+                    "FROM Property_HasA_Location p1 " +
                     "WHERE NOT EXISTS (" +
-                      "SELECT agencyID " +
+                      "SELECT a2.agencyID " +
                       "FROM Agency a2 " +
-                      "WHERE NOT EXISTS "
-                          "(SELECT agencyID " +
-                          "FROM Agent_Represents g, Agency a, ForSale f, Property_HasA_Location p2 " +
-                          "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND f.propertyD = p2.propertyID AND "
+                      "WHERE NOT EXISTS " +
+                          "(SELECT a.agencyID " +
+                          "FROM Agent_Represents g, Agency a, PostSale f, Property_HasA_Location p2 " +
+                          "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND f.propertyID = p2.propertyID AND " + 
                           "p2.city = p1.city AND p2.province = p1.province AND p2.country = p1.country AND a2.agencyID = a.agencyID));";
 
   console.log(queryString);
