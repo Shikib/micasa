@@ -363,20 +363,24 @@ $('#login-submit').click(function(ev) {
 
 $('#cs-select').click(function(ev) {
   ev.preventDefault();
-  $('#select-type').hide(); 
+  $('#select-type').hide();
+  $('#commercial-sale').show(); 
 });
 
 
 $('#cr-select').click(function(ev) {
   ev.preventDefault();
-  $('#select-type').hide(); 
+  $('#select-type').hide();
+  $('#commercial-rent').show(); 
 });
 
 $('#rs-select').click(function(ev) {
   ev.preventDefault();
-  $('#select-type').hide(); 
+  $('#select-type').hide();
+  $('#residential-sale').show(); 
 });
 $('#rr-select').click(function(ev) {
   ev.preventDefault();
-  $('#select-type').hide(); 
+  $('#select-type').hide();
+  $('#residential-rent').show();
 });

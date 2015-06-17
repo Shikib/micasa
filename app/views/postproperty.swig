@@ -85,7 +85,7 @@
       </div>  
 
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cs-country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cs-age" type="text" class="validate">
           <label for="cs-age">Property Age</label>
         </div>
@@ -108,7 +108,7 @@
 
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cs-office" type="text" class="validate">
           <label for="cs-office">Office Count</label>
         </div>
@@ -150,7 +150,7 @@
       </div>  
 
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cr-country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
@@ -161,7 +161,7 @@
       </div>
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cr-age" type="text" class="validate">
           <label for="cr-age">Property Age</label>
         </div>
@@ -173,7 +173,7 @@
 
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="cr-office" type="text" class="validate">
           <label for="cr-office">Office Count</label>
         </div>
@@ -224,7 +224,7 @@
       </div>  
 
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="rs-country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
@@ -235,7 +235,7 @@
       </div>
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="rs-age" type="text" class="validate">
           <label for="rs-age">Property Age</label>
         </div>
@@ -296,7 +296,7 @@
       </div>  
 
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="rr-country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
@@ -307,7 +307,7 @@
       </div>
 
       <div class="row"> 
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="rr-age" type="text" class="validate">
           <label for="rr-age">Property Age</label>
         </div>
