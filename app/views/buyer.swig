@@ -38,6 +38,7 @@
 <br><br>
 
 
+
 <h5 align="left" class="header center teal-text">Your Purchase Offer</h5>
  <table id="purchaseoffer" class="bordered hoverable responsive-table">
         <thead>
@@ -77,10 +78,19 @@
       </table>
 
 
-<br><br><h5 align="left" class="header center teal-text">Your Appointment</h5>
+  <br><br><h5 class="header center teal-text">Delete an Appointment</h5>
+     <form id="delete-app-field">
+        <div class="input-field">
+          <input id="approve" type="search" placeholder="Input the appointmentID you want to delete" required>
+        </div>
+      </form> 
+
+
+<h5 align="left" class="header center teal-text">Your Appointments</h5>
  <table id="app" class="bordered hoverable responsive-table">
         <thead>
           <tr>
+              <th data-field="appointmentID">AppointmentID</th>
               <th data-field="propertyID">PropertyID</th>
               <th data-field="houseNumber">House Number</th>
               <th data-field="street">Street</th>

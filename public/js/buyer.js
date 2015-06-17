@@ -59,6 +59,7 @@ $(window).load(function() {
     $("#app> tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
+      rowString += "<td>" + data[i].appointmentID + "</td>";
       rowString += "<td>" + data[i].propertyID + "</td>";
       rowString += "<td>" + data[i].houseNumber + "</td>";
       rowString += "<td>" + data[i].street + "</td>";
