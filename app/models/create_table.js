@@ -26,9 +26,9 @@ exports.initialize_tables = function() {
     conn.query("delete from InterestedIn;");
 */
     // drop all tables
-    conn.query("drop database micasa; ");
-    conn.query("create database micasa;");
-    conn.query("use micasa;")
+    //conn.query("drop database micasa; ");
+   // conn.query("create database micasa;");
+    //conn.query("use micasa;")
     conn.query("drop table Property_HasA_Location cascade constraints;" +
                  "drop table Account cascade constraints;" +
                  "drop table Agency cascade constraints;" +

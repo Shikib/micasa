@@ -52,6 +52,15 @@
         </div>
 
         <div class="col s12 m4">
+          <div class="icon-block"><a href="editproperty">
+            <h2 class="center teal-text"><i class="mdi-editor-mode-edit"></i></h2></a>
+            <h5 class="center">Edit your property</h5>
+
+          </div>
+        </div>
+      </div>
+
+        <div class="col s12 m4">
           <div class="icon-block"><a href="rateagent">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
             <h5 class="center">Pleasant experience? Rate your agent!</h5>
@@ -59,6 +68,11 @@
           </div>
         </div>
       </div>
+
+  <body>
+
+      <div class="container">
+
 
 <br><h5 align="left" class="header center teal-text">Your Properties for Sale</h6>
  <table id="forsale" class="bordered striped hoverable responsive-table">

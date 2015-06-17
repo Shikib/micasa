@@ -109,6 +109,24 @@ router.get('/sellerloadRent', function (req, res, next) {
     }); 
    });
 
+router.get('/postpropertySale', function (req, res, next) {
+  res.render('postpropertySale', {
+    title: 'Micasa',
+  });
+});
+
+router.get('/postpropertyRent', function (req, res, next) {
+  res.render('postpropertyRent', {
+    title: 'Micasa',
+  });
+});
+
+router.get('/postproperty', function (req, res, next) {
+  res.render('postpropertySale', {
+    title: 'Micasa',
+  });
+});
+
 router.get('/buyerloadPurchase', function (req, res, next) {
     var bp = "6042223333"; 
     var bn = "Markus Lemonis";
