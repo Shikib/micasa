@@ -42,9 +42,47 @@
     </div>
   </div>
 
-
   <div class="container">
+    <div class="section ylog" style="display: none;">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="center col s12 m4 sellero">
+          <div class="icon-block"><a href="seller">
+            <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
+            <h5 class="center">I have a house for sale or rent</h5>
+
+            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p>
+          </div>
+        </div>
+
+        <div class="center col s12 m4 buyero">
+          <div class="icon-block"><a href="buyer">
+            <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
+            <h5 class="center">I want to buy a house or rent  </h5>
+
+            <p class="light">We can help you find your dream house and connect you with an agent to tour houses</p>
+          </div>
+        </div>
+
+        <div class="center col s12 m4 agento">
+          <div class="icon-block"><a href="agent">
+            <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
+            <h5 class="center">Im an agent </h5>
+
+            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <div class="section ylog">
+      <h3 class="center">Fun Facts About Cities and Agencies</h3>
+     
+      <br><br>
+       
+      <h5 class="center">List of Cities in Order of Most Expensive Average Residential Home Sale Price</h5>
       <table id="rs-ordered-price" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -59,6 +97,7 @@
     
       <br><br>       
 
+      <h5 class="center">List of Cities with Maximum Price, Minimum Price and Count for Residential Homes</h5>
       <table id="rs-mm-price" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -75,6 +114,7 @@
       
       <br><br>       
 
+      <h5 class="center">List of Agencies that are Selling Properties in All Cities</h5>
       <table id="diverse-agency-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -89,6 +129,7 @@
 
       <br><br>       
 
+      <h5 class="center">List of Cities that have Properties Being Sold by all Agencies</h5>
       <table id="popular-city-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -104,6 +145,7 @@
 
       <br><br>       
 
+      <h5 class="center">Best Agency in every City (based on properties selling)</h5>
       <table id="bw-agency-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -121,6 +163,7 @@
 
       <br><br>       
 
+      <h5 class="center">Best City for every Agency (based on properties selling)</h5>
       <table id="bw-city-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
