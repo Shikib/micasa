@@ -28,6 +28,7 @@
       <div class="container">
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
 
+<div class="ylog">
 <h4 class="header left teal-text">Rate an agent!</h4></left>
   <div class="row">
     <form class="col s12">
@@ -47,6 +48,7 @@
       </div>
     </form>
   </div>
+</div>
 
 <!--   Icon Section   -->
 
@@ -73,4 +75,6 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/rateagent.js"></script>
+  <script src="js/main.js"></script>
+  <script src="loginModule.js"></script>
 {% endblock %}

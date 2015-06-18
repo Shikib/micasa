@@ -27,6 +27,8 @@
   <body>
       <div class="container">
 
+<div class="ylog">
+
    <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Make Purchase Offer </h4></center>
   <div class="row">
@@ -72,6 +74,7 @@
       </div>
     </form>
   </div>
+</div>
         
 <a id ="purchase-offer-submit" class="btn" onclick="Materialize.toast('Your purchase offer has been submitted thanks!', 4000)">Submit</a>
 
@@ -81,6 +84,8 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/purchaseoffer.js"></script>
+  <script src="js/main.js"></script>
+  <script src="loginModule.js"></script>
 <br><br>
  </div>
     </body>

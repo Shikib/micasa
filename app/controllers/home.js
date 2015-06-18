@@ -20,6 +20,11 @@ router.get('/search', function (req, res, next) {
   });
 });
 
+router.get('/profile', function(req, res, next) {
+  res.render('profile', {
+    title: 'Profile',
+  });
+});
 
 router.get('/advanced_search', function (req, res, next) {
   res.render('advanced_search', {
@@ -78,8 +83,12 @@ router.get('/searching', function(req, res, next) {
 
 router.get('/sellerloadPurchase', function (req, res, next) {
 
-    var sp = "7783334444"; 
-    var sn = "Justin Timb";
+
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(snName);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fs.salePrice " + 
@@ -94,8 +103,11 @@ router.get('/sellerloadPurchase', function (req, res, next) {
 
 router.get('/sellerloadRent', function (req, res, next) {
 
-    var sp = "7784445555"; 
-    var sn = "Liam Neeson";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(sn);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice " + 
@@ -137,11 +149,12 @@ router.get('/residentialforsale', function (req, res, next) {
 
 
 router.get('/buyerloadPurchase', function (req, res, next) {
-    var bp = "6042223333"; 
-    var bn = "Markus Lemonis";
-
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.purchaseAmount " +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
@@ -153,11 +166,12 @@ router.get('/buyerloadPurchase', function (req, res, next) {
 
 router.get('/buyerloadRent', function (req, res, next) {
 
-    var bp = "6044445555"; 
-    var bn = "Brando Wison";
-
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, op.offerDate, o.rentAmount " +
+      mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.rentAmount,o.offerID " +
                               "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND o.buyerPhone = '" + bp+ "' AND o.buyerName='"+bn  +
@@ -168,18 +182,21 @@ router.get('/buyerloadRent', function (req, res, next) {
    });
 
 router.get('/buyerloadApp', function (req, res, next) {
-
-    var bp = "6042223333"; 
-    var bn = "Markus Lemonis";
-
-     mysqlModule.getConnection(function(err, conn) {
-       mysqlModule.query(conn, "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city, op.appointmentTime, op.appDuration " +
+var bp= req.query.login.buyerPhone;
+var bn= req.query.login.buyerName;
+console.log(bn);
+console.log(bp);
+    //var bp = "6042223333"; 
+    //var bn = "Markus Lemonis";
+var queryString = "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city,op.appointmentID, op.appointmentTime, op.appDuration " +
                               "FROM Buyer b, Property_HasA_Location p, appointment_view op " +
                               "WHERE b.buyerPhone = '" + bp+ "' AND b.buyerName='"+bn  +
                               "' AND op.buyerPhone = '" + bp+ "' AND op.buyerName='"+bn  +
-                              "' AND p.propertyID = op.propertyID ",
+                              "' AND p.propertyID = op.propertyID "
+     mysqlModule.getConnection(function(err, conn) {
+       mysqlModule.query(conn, queryString,
                        res);
-
+console.log(queryString);
     }); 
    });
 
@@ -502,8 +519,11 @@ router.get('/rateagentGet', function (req, res, next){
 
 router.get('/viewoffersSale', function (req, res, next) {
 
-    var sp = "7781112222"; 
-    var sn = "Mary Lamb";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(snName);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
@@ -520,9 +540,12 @@ router.get('/viewoffersSale', function (req, res, next) {
 
 router.get('/viewoffersRent', function (req, res, next) {
 
-    var sp = "7784445555"; 
-    var sn = "Liam Neeson";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
 
+    console.log(sp);
+    console.log(snName);
+    
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
                               "FROM Property_HasA_Location p, ForRent fr, RentalOffer_Makes rom, Offer o, PostSale ps, Seller s, Buyer b " +
@@ -569,6 +592,16 @@ router.get('/check_uname_availability', function(req, res, next) {
   });
 });
 
+router.get('/check_update_uname_availability', function(req, res, next) {
+  var queryString = "SELECT * " +
+                    "FROM Account " +
+                    "WHERE uname = '" + req.query.uname + "' " +
+                    "AND uname<>'" + req.query.login.uname + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
 
 router.get('/get_all_agentID', function(req, res, next) {
   var queryString = "SELECT agentID " +
@@ -616,6 +649,19 @@ router.get('/create_new_account', function(req, res, next) {
   });
 });
 
+router.get('/update_account', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var accountQueryString = "UPDATE Account " + 
+                           "SET uname='" + req.query.uname + "', " +
+                           "password='" + req.query.password + "' " +
+                           "WHERE uname='" + uName + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, accountQueryString, res);
+  });
+});
+
 router.get('/create_new_agent', function(req, res, next) {
   var agentQueryString = "INSERT INTO Agent_Represents " +
                     "VALUES (" + req.query.agentID + ", " 
@@ -632,6 +678,22 @@ router.get('/create_new_agent', function(req, res, next) {
   });
 });
 
+router.get('/update_agent', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var agentQueryString = "UPDATE Agent_Represents " +
+                         "SET agentName='" + req.query.name + "', " +
+                         "agentPhone='" + req.query.phone + "', " +
+                         "agentEmail='" + req.query.email + "', " +
+                         "agencyID='" + req.query.agency + ", " +
+                         "uname=''" + req.query.uname + "' " +
+                         "WHERE uname='" + uName + "';";
+  
+  console.log(agentQueryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, agentQueryString, res);
+  });
+});
 
 router.get('/create_new_seller', function(req, res, next) {
   var sellerQueryString = "INSERT INTO Seller " +
@@ -640,7 +702,21 @@ router.get('/create_new_seller', function(req, res, next) {
                                 + "'" + req.query.name + "', "
                                 + "'" + req.query.uname + "');";
   
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, sellerQueryString, res);
+  });
+});
 
+router.get('/update_seller', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var sellerQueryString = "UPDATE Seller " +
+                          "SET sellerEmail='" + req.query.email + "', " +
+                          "sellerPhone='" + req.query.phone + "', " +
+                          "sellerName='" + req.query.name + "', " +
+                          "uname=''" + req.query.uname + "' " +
+                          "WHERE uname='" + uName + "';";
+  
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, sellerQueryString, res);
   });
@@ -654,12 +730,37 @@ router.get('/create_new_buyer', function(req, res, next) {
                                + "'" + req.query.name + "', "
                                + "'" + req.query.uname + "');";
   
-
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, buyerQueryString, res);
   });
 });
 
+router.get('/update_buyer', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var buyerQueryString = "UPDATE Buyer " +
+                          "SET buyerEmail='" + req.query.email + "', " +
+                          "buyerPhone='" + req.query.phone + "', " +
+                          "buyerName='" + req.query.name + "', " +
+                          "uname=''" + req.query.uname + "' " +
+                          "WHERE uname='" + uName + "';";
+  
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, buyerQueryString, res);
+  });
+});
+
+router.get('/delete_account', function(req, res, next) {
+  var uName = req.query.login.uname;
+
+  var deleteQueryString = "DELETE " +
+                         "FROM Account " +
+                         "WHERE uname='" + uName + "';";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, deleteQueryString, res);
+  });
+});
 
 router.get('/check_login', function(req, res, next) {
   var queryString = "SELECT * " +
@@ -720,6 +821,108 @@ router.get('/create_new_rental_offer', function(req, res, next){
 console.log(rentQueryString);
 mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, rentQueryString, res);
+  });
+});
+
+router.get('/create_new_purchase_offer', function(req, res, next){
+  var rentQueryString = "INSERT INTO  purchaseOffer_Makes"+
+                            " VALUES (" + req.query.offerID+","+
+                                          req.query.amount+","+
+                                          req.query.propertyID+","+
+                                    "'"+ req.query.buyerphone+"',"+
+                                    "'"+ req.query.buyername +"');";
+
+console.log(rentQueryString);
+mysqlModule.getConnection(function(err,conn){
+    mysqlModule.query(conn, rentQueryString, res);
+  });
+});
+
+router.get('/get_all_for_sale', function(req, res, next) {
+  var queryString = "(select propertyID from CommercialProperty_ForSale) union (select propertyID from ResidentialProperty_ForSale);";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+
+});
+
+router.get('/get_all_for_rent', function(req, res, next) {
+  var queryString = "(select propertyID from CommercialProperty_ForRent) union (select propertyID from ResidentialProperty_ForRent);";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+});
+
+router.get('/get_all_propertyID', function(req, res, next) {
+  var queryString = "(select propertyID from Property_HasA_Location;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });             
+});
+
+router.get('/check_rent_propertyID', function(req, res, next) {
+  var queryString =  "(select propertyID from CommercialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_purchase_propertyID', function(req, res, next) {
+  var queryString =  "(select propertyID from CommercialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ");";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_propertyID', function(req, res, next) {
+  var queryString =  "select propertyID from Property_HasA_Location WHERE propertyID = " + req.query.propertyID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_offerID', function(req, res, next) {
+  var queryString =  "select offerID from offer WHERE offerID = " + req.query.offerID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_appointmentID', function(req, res, next) {
+  var queryString =  "select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/delete_from_offer', function(req, res, next) {
+  var queryString =  "delete from offer WHERE offerID= " + req.query.offerID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/delete_from_ Appointment_View', function(req, res, next) {
+  var queryString =  "delete from offer WHERE offerID= " + req.query.appID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
   });
 });
 
@@ -872,6 +1075,7 @@ router.get('/post_sale', function(req, res, next) {
     mysqlModule.query(conn, queryString, res);
   });
 });
+
 
 
 router.get('/login_user', function(req, res, next) {

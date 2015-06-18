@@ -91,7 +91,7 @@
 </div> 
 
 
-<div id="default-signup" class="row" style="display: none;">
+<div id="default-signup" class="row">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
@@ -137,6 +137,10 @@
     </button>
   </form>
 </div> 
+
+
+
+<br><br><br><br><br>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

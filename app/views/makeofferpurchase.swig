@@ -57,8 +57,8 @@
         </div>
         <div class="input-field col s6">
           <i class ="mdi-action-perm-contact-cal prefix"></i>
-          <input id="offerdate" type="date" class="datepicker">
-          <label for="offerdate">Offer Date</label>
+          <input id="offerdate" type="text" class="validate">
+          <label for="offerdate">Offer Date please enter as yyy/mm/dd</label>
         </div>
 
         <div class="row">
@@ -73,7 +73,9 @@
     </form>
   </div>
         
-<a id ="purchase-offer-submit" class="btn" onclick="Materialize.toast('Your purchase offer has been submitted thanks!', 4000)">Submit</a>
+<button id= "purchase-offer-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="mdi-content-send right"></i>
+  </button>
 
 
   <!--  Scripts-->

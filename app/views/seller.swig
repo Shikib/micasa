@@ -29,10 +29,13 @@
 
       <div class="container">
 
+
+
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
 
+<div class="ylog">
 <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
@@ -67,13 +70,14 @@
 
           </div>
         </div>
-      </div>
+        </div>
+      
 
   <body>
 
       <div class="container">
 
-
+<div class="ylog">
 <br><h5 align="left" class="header center teal-text">Your Properties for Sale</h6>
  <table id="forsale" class="bordered striped hoverable responsive-table">
         <thead>
@@ -114,9 +118,14 @@
         </tbody>
       </table>
 
+    </div>
+  </div>
+
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/seller.js"></script>
+  <script src="js/main.js"></script>
+  <script src="loginModule.js"></script>
 {% endblock %}

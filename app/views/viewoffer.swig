@@ -30,6 +30,7 @@
   <h4 class="header center orange-text">Welcome Seller!</h4></center>
 <br><br>
 
+<div class="ylog">
   <h4 class="header left teal-text">    Type in an offerID to accept it</h4></left>
   <div class="row">
     <form class="col s12">
@@ -80,6 +81,7 @@
         <tbody>
         </tbody>
       </table>
+    </div>
 
 
 
@@ -88,4 +90,6 @@
   <script src="materialize/js/materialize.js"></script>
   <script src="materialize/js/init.js"></script>
   <script src="js/viewoffer.js"></script>
+  <script src="js/main.js"></script>
+  <script src="loginModule.js"></script>
 {% endblock %}
