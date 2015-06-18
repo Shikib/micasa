@@ -217,7 +217,14 @@ exports.initialize_tables = function() {
                "(8234, 'Y', 0, 7234, 47, 500, '6234', 'Highland Blvd', 'Canadia', 'Vancouveria', 'BC')," +
                "(8345, 'N', 97, 7345, NULL, 10000, '6345', 'Sunrise Lane', 'Amurnica', 'Portlandia', 'OR')," +  
                "(8456, 'N', 10, 7456, 396, 1000, '6456','Highland Blvd', 'Canadia', 'Vancouveria', 'BC')," +
-               "(8567, NULL, NULL, 7567, NULL, 5000, '6567', 'Mansion Way', 'Amurnica', 'Seattlilia', 'WA');");
+               "(8567, NULL, NULL, 7567, NULL, 5000, '6567', 'Mansion Way', 'Amurnica', 'Seattlilia', 'WA')," +
+               "(8678, 'Y', 5, 7678, NULL, 5000, '6678', 'Mansion Way', 'Amurnica', 'Seattlilia', 'WA')," +
+               "(8789, 'N', 1, 7789, NULL, 1500, '6789', 'Hillcrest Ave', 'Amurnica', 'Portlandia', 'OR')," +
+               "(8890, NULL, 0, 7890, NULL, 10000, '6890', 'Algorithm Ave', 'Amurnica', 'Portlandia', 'OR')," +
+               "(8910, 'N', 5, 7910, NULL, 7000, '6910', 'Math Drive', 'Amurnica', 'Portlandia', 'OR')," +
+               "(8911, 'Y', 22, 7911, NULL, 9000, '6911', 'Database Ln', 'Amurnica', 'Portlandia', 'OR')," +
+               "(8913, 'Y', 57, 7913, NULL, 3000, '6913', 'Lauren Ln', 'Canadia', 'Vancouveria', 'BC')," +
+               "(8912, 'N', 3, 7912, NULL, 5000, '6912', 'Ardor St', 'Amurnica', 'Portlandia', 'OR');");
 
     conn.query("INSERT INTO Account VALUES ('ahuang', 'rarestpepes69')," +
                "('katherinelab', 'katherineisbeautiful')," +
@@ -297,26 +304,46 @@ exports.initialize_tables = function() {
 
     // Property ID starts with an 8
     conn.query("INSERT INTO ForRent VALUES (1000, 8456, 'Y')," +
-               "(1600, 8567, 'N');");
+               "(1600, 8567, 'N')," +
+               "(5500, 8911, 'Y')," +
+               "(7000, 8913, 'N')," +
+               "(800, 8912, 'N');");
 
     conn.query("INSERT INTO ForSale VALUES (500000, 8123)," +
                "(1000000, 8234)," +
-               "(2500000, 8345);");
+               "(2500000, 8345)," +
+               "(3000000, 8678)," +
+               "(500000, 8789),"+
+               "(1790000, 8890);");
 
-    conn.query("INSERT INTO ResidentialProperty_ForRent VALUES (8456, 'Y', 'Y');");
+    conn.query("INSERT INTO ResidentialProperty_ForRent VALUES (8456, 'Y', 'Y')," +
+              "(8912, 'N', 'N');");
 
     conn.query("INSERT INTO ResidentialProperty_ForSale VALUES (8123, 'N', 'Y')," +
-               "(8234, 'N', 'Y');");
+               "(8234, 'N', 'Y')," +
+               "(8678, 'Y', 'Y')," +
+               "(8890, 'Y', 'N');");
 
-    conn.query("INSERT INTO CommercialProperty_ForRent VALUES (8567, 10, 10);");
+    conn.query("INSERT INTO CommercialProperty_ForRent VALUES (8567, 10, 10), " +
+              "(8913, 50, 50), " +
+              "(8911, 20, 20);");
 
-    conn.query("INSERT INTO CommercialProperty_ForSale VALUES (8345, 50, 50);");
+    conn.query("INSERT INTO CommercialProperty_ForSale VALUES (8345, 50, 50)," +
+              "(8789, 20, 20)," +
+              "(8910, 10, 5);");
 
     conn.query("INSERT INTO PostSale VALUES (8123, 'Mary Lamb', '7781112222', 1123)," +
                "(8234, 'Bill Jones', '7782223333', 1234)," +
                "(8345, 'Justin Timb', '7783334444', 1345)," +
                "(8456, 'Liam Neeson', '7784445555', 1456)," +
-               "(8567, 'Bob Jones', '7785556666', 1567);");
+               "(8567, 'Bob Jones', '7785556666', 1567)," +
+               "(8678, 'Liam Neeson', '7784445555', 1123)," +
+               "(8789, 'Liam Neeson', '7784445555', 1123)," +
+               "(8890, 'Bob Jones', '7785556666', 1234)," +
+               "(8910, 'Bob Jones', '7785556666', 1345)," +
+               "(8911, 'Bob Jones', '7785556666', 1456)," +
+               "(8913, 'Mary Lamb', '7781112222', 1567)," +
+               "(8912, 'Bob Jones', '7785556666', 1567);");
 
     conn.query("INSERT INTO InterestedIn VALUES (8123, 'Pinkman Jones', '6041112222', 'What a beautiful property, I want to buy this REAL QUICK')," +
                "(8234, 'Markus Lemonis', '6042223333','This house will soon be MINE!!!');");

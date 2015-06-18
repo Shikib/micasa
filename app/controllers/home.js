@@ -1417,7 +1417,7 @@ router.get('/diverse_agencies', function(req, res, next) {
 });
 
 router.get('/popular_cities', function(req, res, next) {
-  var queryString = "SELECT city, province, country " +
+  var queryString = "SELECT distinct city, province, country " +
                     "FROM Property_HasA_Location p1 " +
                     "WHERE NOT EXISTS (" +
                       "SELECT a2.agencyID " +
