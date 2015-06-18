@@ -15,9 +15,7 @@ $(document).ready(function() {
 
 function foo() {
  var parameters = {login: login};
-  console.log(login);
   $.get('/sellerloadPurchase', parameters, function(data) {
-  	console.log(data);
   	$("#forsale > tbody").html("");
   	for (var i in data) {
   	  var rowString = "<tr>";
@@ -38,7 +36,6 @@ function foo() {
 function bar() {
   var parameters = {login: login};
   $.get('/sellerloadRent', parameters, function(data) {
-    console.log(data);
     $("#forrent > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";

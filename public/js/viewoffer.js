@@ -16,9 +16,7 @@ $(document).ready(function() {
 
 function zoo() {
   var parameters = {login: login};
-  console.log(login);
   $.get('/viewoffersSale', parameters, function(data) {
-    console.log(data);
     $("#viewforsale > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -38,9 +36,7 @@ function zoo() {
 
 function zot() {
   var parameters = {login: login};
-  console.log(login);
   $.get('/viewoffersRent', parameters, function(data) {
-    console.log(data);
     $("#viewforrent > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";

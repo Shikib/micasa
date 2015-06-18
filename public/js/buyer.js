@@ -5,7 +5,6 @@ $(document).ready(function() {
       logged_in = data.logged_in;
       logged_in_type = data.type;
       login = data.info;
-      console.log(login)
       if (!logged_in && logged_in_type=="2") {
         $('.nlog').show();
         $('.ylog').hide();
@@ -21,7 +20,6 @@ $(document).ready(function() {
 function loadpage(){
 
   var parameters = {login: login};
-  console.log("purchase runs");
   $.get('/buyerloadPurchase', parameters, function(data) {
     $("#purchaseoffer > tbody").html("");
     for (var i in data) {
@@ -43,7 +41,6 @@ function loadpage(){
 
 function loadpage2() {
   var parameters = {login: login};
-  console.log("rent runs");
   $.get('/buyerloadRent', parameters, function(data) {
     $("#rentoffer > tbody").html("");
     for (var i in data) {
@@ -67,7 +64,6 @@ function loadpage2() {
 
 function loadpage3() {
   var parameters = {login: login};
-  console.log("app runs");
   $.get('/buyerloadApp', parameters, function(data) {
     $("#app> tbody").html("");
     for (var i in data) {
@@ -94,7 +90,6 @@ $('#offer-submit').click(function(ev) {
       Materialize.toast('The offer ID you submitted is not a valid', 4000);
     }else {
       parameters = {offerID: $('#delete-offerID').val()};
-      console.log(parameters);   
       $.get('/delete_from_offer', parameters, function(data){});
       $('#offer-submit').hide();
       $('#delete-offer-field').hide();

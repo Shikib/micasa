@@ -34,12 +34,7 @@ router.get('/advanced_search', function (req, res, next) {
 
 router.get('/searching', function(req, res, next) {
   var val = req.query.search;
-  
-  console.log(val);
 
-  console.log(val.split(',').length);
-
-    
   // split up into multiple variables to query appropriately
   var split_location = val.split(',');
   
@@ -87,9 +82,6 @@ router.get('/sellerloadPurchase', function (req, res, next) {
     var sp = req.query.login.sellerPhone;
     var sn = req.query.login.sellerName;
 
-    console.log(sp);
-    console.log(snName);
-
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fs.salePrice " + 
                               "FROM Seller s, Property_HasA_Location p, Agent_Represents ar, ForSale fs, PostSale ps " +
@@ -105,9 +97,6 @@ router.get('/sellerloadRent', function (req, res, next) {
 
     var sp = req.query.login.sellerPhone;
     var sn = req.query.login.sellerName;
-
-    console.log(sp);
-    console.log(sn);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice " + 
@@ -151,8 +140,6 @@ router.get('/residentialforsale', function (req, res, next) {
 router.get('/buyerloadPurchase', function (req, res, next) {
 var bp= req.query.login.buyerPhone;
 var bn= req.query.login.buyerName;
-console.log(bn);
-console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.purchaseAmount " +
                               "FROM Buyer b, PurchaseOffer_Makes o, Property_HasA_Location p, Offer op " +
@@ -168,8 +155,6 @@ router.get('/buyerloadRent', function (req, res, next) {
 
 var bp= req.query.login.buyerPhone;
 var bn= req.query.login.buyerName;
-console.log(bn);
-console.log(bp);
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished,o.offerID, op.offerDate, o.rentAmount,o.offerID " +
                               "FROM Buyer b, RentalOffer_Makes o, Property_HasA_Location p, Offer op " +
@@ -184,8 +169,6 @@ console.log(bp);
 router.get('/buyerloadApp', function (req, res, next) {
 var bp= req.query.login.buyerPhone;
 var bn= req.query.login.buyerName;
-console.log(bn);
-console.log(bp);
     //var bp = "6042223333"; 
     //var bn = "Markus Lemonis";
 var queryString = "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.street, p.city,op.appointmentID, op.appointmentTime, op.appDuration " +
@@ -196,7 +179,6 @@ var queryString = "SELECT op.appointmentID, p.propertyID, p.houseNumber, p.stree
      mysqlModule.getConnection(function(err, conn) {
        mysqlModule.query(conn, queryString,
                        res);
-console.log(queryString);
     }); 
    });
 
@@ -220,7 +202,6 @@ router.get('/agent_offers', function (req, res, next) {
 
 router.get('/agent_purchaseoffers_get', function (req, res, next) {
     var agentID = req.query.login.agentID;
-    console.log(agentID);
 
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
@@ -292,9 +273,6 @@ router.get('/agent_not_approved_appointments_get', function (req, res, next) {
 
 router.get('/agent_approved_appointments_get', function (req, res, next) {
     var agentID = req.query.login.agentID;
-
-    console.log("!!!!" + agentID);
-
     mysqlModule.getConnection(function(err,conn) {
       mysqlModule.query(conn, "SELECT * " +
                               "FROM Approves a, Appointment_View v " +
@@ -319,9 +297,6 @@ router.get('/buyer_not_approved_appointmentID', function(req, res, next) {
 
 router.get('/buyer_appointment_approve', function(req, res, next) {
   var val = req.query.appID;
-
-  console.log(val);
-
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, "DELETE FROM Offer WHERE offerID =" + val +");",  
                       res);
@@ -436,7 +411,7 @@ router.get('/advanced_search_cs', function(req, res, next) {
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
                     " AND c.offices >= " + req.query.min_office + " AND c.offices <= " + req.query.max_office + 
                     " AND c.storage >= " + req.query.min_storage + " AND c.storage <= " + req.query.max_storage; 
-  console.log(queryString);
+
   if (req.query.furnishing != 'D') {
     queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
   }
@@ -651,8 +626,6 @@ router.get('/advanced_search_rs', function(req, res, next) {
   
 });
 
-
-
 router.get('/advanced_search_rr', function(req, res, next) {
   var isFirst = 1;
   var queryString = "SELECT ";
@@ -824,7 +797,7 @@ router.get('/rateagent_Rates', function(req, res, next) {
                                    "" + req.query.agentID + ", " + 
                                    "'" + req.query.sellerPhone+ "',"+
                                    "'" + req.query.sellerName + "');";
-console.log (ratesQueryString)
+
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, ratesQueryString, res);
   });
@@ -834,9 +807,6 @@ router.get('/viewoffersSale', function (req, res, next) {
 
     var sp = req.query.login.sellerPhone;
     var sn = req.query.login.sellerName;
-
-    console.log(sp);
-    console.log(sn);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
@@ -856,9 +826,6 @@ router.get('/viewoffersRent', function (req, res, next) {
     var sp = req.query.login.sellerPhone;
     var sn = req.query.login.sellerName;
 
-    console.log(sp);
-    console.log(sn);
-    
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
                               "FROM Property_HasA_Location p, ForRent fr, RentalOffer_Makes rom, Offer o, PostSale ps, Seller s, Buyer b " +
@@ -985,7 +952,6 @@ router.get('/create_new_agent', function(req, res, next) {
                                + "null, " 
                          + "'" + req.query.uname + "');";
   
-  console.log(agentQueryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, agentQueryString, res);
   });
@@ -1002,7 +968,6 @@ router.get('/update_agent', function(req, res, next) {
                          "uname=''" + req.query.uname + "' " +
                          "WHERE uname='" + uName + "';";
   
-  console.log(agentQueryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, agentQueryString, res);
   });
@@ -1093,7 +1058,7 @@ router.get('/create_new_app', function(req, res, next){
                                     req.query.propertyID+","+
                                     "'"+ req.query.buyerphone+"',"+
                                     "'"+ req.query.buyername+"');";
-console.log(appQueryString);
+
   mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, appQueryString, res);
   });
@@ -1105,7 +1070,7 @@ router.get('/create_new_interestedIn', function(req, res, next){
                                     "'"+ req.query.buyername+"',"+
                                     "'"+ req.query.buyerphone+"',"+
                                     "'"+ req.query.message+"');";
-  console.log(msgQueryString);
+
   mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, msgQueryString, res);
   });
@@ -1117,7 +1082,6 @@ var offerQueryString = "INSERT INTO Offer"+
                                      "'"+ req.query.message+"',"+
                                      "'"+ req.query.offerdate+"');";
 
-console.log(offerQueryString);
 mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, offerQueryString, res);
   });
@@ -1131,7 +1095,6 @@ router.get('/create_new_rental_offer', function(req, res, next){
                                     "'"+ req.query.buyerphone+"',"+
                                     "'"+ req.query.buyername +"');";
 
-console.log(rentQueryString);
 mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, rentQueryString, res);
   });
@@ -1145,7 +1108,6 @@ router.get('/create_new_purchase_offer', function(req, res, next){
                                     "'"+ req.query.buyerphone+"',"+
                                     "'"+ req.query.buyername +"');";
 
-console.log(rentQueryString);
 mysqlModule.getConnection(function(err,conn){
     mysqlModule.query(conn, rentQueryString, res);
   });
@@ -1179,7 +1141,6 @@ router.get('/get_all_propertyID', function(req, res, next) {
 router.get('/check_rent_propertyID', function(req, res, next) {
   var queryString =  "(select propertyID from CommercialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForRent WHERE propertyID = " + req.query.propertyID + ");";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1188,7 +1149,6 @@ console.log(queryString);
 router.get('/check_purchase_propertyID', function(req, res, next) {
   var queryString =  "(select propertyID from CommercialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ") union (select propertyID from ResidentialProperty_ForSale WHERE propertyID = " + req.query.propertyID + ");";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1197,7 +1157,6 @@ console.log(queryString);
 router.get('/check_propertyID', function(req, res, next) {
   var queryString =  "select propertyID from Property_HasA_Location WHERE propertyID = " + req.query.propertyID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1206,7 +1165,6 @@ console.log(queryString);
 router.get('/check_offerID', function(req, res, next) {
   var queryString =  "select offerID from offer WHERE offerID = " + req.query.offerID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1215,7 +1173,6 @@ console.log(queryString);
 router.get('/check_appointmentID', function(req, res, next) {
   var queryString =  "select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1224,7 +1181,6 @@ console.log(queryString);
 router.get('/check_agentID', function(req, res, next) {
   var queryString =  "select agentID from Agent_Represents WHERE agentID= " + req.query.agentID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1233,7 +1189,6 @@ console.log(queryString);
 router.get('/delete_from_offer', function(req, res, next) {
   var queryString =  "delete from offer WHERE offerID= " + req.query.offerID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1242,7 +1197,6 @@ console.log(queryString);
 router.get('/delete_from_Appointment_View', function(req, res, next) {
   var queryString =  "delete from Appointment_View WHERE appointmentID= " + req.query.appID +";";
  
-console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1401,7 +1355,6 @@ router.get('/post_sale', function(req, res, next) {
               "'" + req.query.sellerPhone + "', " 
                   + req.query.agentID + ");";
 
-  console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1422,18 +1375,13 @@ router.get('/login_info', function(req, res, next) {
 });
 
 router.get('/rs_ordered_price', function(req, res, next) {
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   var queryString = "SELECT city, AVG(salePrice) as avgPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
                   + "GROUP BY city " 
                   + "ORDER BY avgPrice;";
 
-  console.log(queryString);
-  console.log(111111111111111111111111111111111111111111111111111111111);
-  console.log(mysqlModule);
   mysqlModule.getConnection(function(err, conn) {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     mysqlModule.query(conn, queryString, res);
   });
 });
@@ -1446,7 +1394,6 @@ router.get('/rs_mm_price', function(req, res, next) {
                   + "GROUP BY city " 
                   + "ORDER BY city;";
 
-  console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1464,7 +1411,6 @@ router.get('/diverse_agencies', function(req, res, next) {
                         "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
                         "f.propertyID = p.propertyID AND p2.city = p.city));"; 
 
-  console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1482,7 +1428,6 @@ router.get('/popular_cities', function(req, res, next) {
                           "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND f.propertyID = p2.propertyID AND " + 
                           "p2.city = p1.city AND p2.province = p1.province AND p2.country = p1.country AND a2.agencyID = a.agencyID));";
 
-  console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, queryString, res);
   });
@@ -1504,7 +1449,6 @@ router.get('/bw_cities', function(req, res, next) {
                   "GROUP BY agencyID;";
 
   mysqlModule.getConnection(function(err, conn) {
-    console.log(queryString);
     mysqlModule.query(conn, queryString, res);
   });
 });
@@ -1525,7 +1469,6 @@ router.get('/bw_agencies', function(req, res, next) {
                    "GROUP BY agencyID, city, province, country) as Temp " +
                   "GROUP BY city, province, country;";
   mysqlModule.getConnection(function(err, conn) {
-    console.log(queryString);
     mysqlModule.query(conn, queryString, res);
   });
 });

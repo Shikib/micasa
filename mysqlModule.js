@@ -12,7 +12,6 @@ exports.getConnection = function(callback) {
     if (err) {
       throw err;
     }
-    console.log("YYYYYYYYYYYYYYY");
 
     callback(err, conn);
   });
@@ -26,7 +25,6 @@ exports.query = function(conn, queryString, res) {
       return rows;
     }
 
-    console.log("ZZZZZZZZZZZZZzz");
     res.send(rows);     
   });
 };

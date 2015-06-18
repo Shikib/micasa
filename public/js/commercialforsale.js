@@ -6,7 +6,6 @@ $(document).ready(function() {
 $(window).load(function() {
   var parameters = {};
   $.get('/sellerloadPurchase', parameters, function(data) {
-  	console.log(data);
   	$("#forsale > tbody").html("");
   	for (var i in data) {
   	  var rowString = "<tr>";
@@ -27,7 +26,6 @@ $(window).load(function() {
 $(window).load(function() {
   var parameters = {};
   $.get('/sellerloadRent', parameters, function(data) {
-    console.log(data);
     $("#forrent > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
