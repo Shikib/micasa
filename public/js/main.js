@@ -9,6 +9,12 @@ $(document).ready(function() {
         $('.nlog').show();
         $('.ylog').hide();
       }
+<<<<<<< HEAD
+      else if (logged_in) {
+        $('.ylog').show();
+        $('.nlog').hide(); 
+      }
+=======
       if (logged_in) {
         $('.ylog').show();
         $('.nlog').hide();
@@ -31,8 +37,11 @@ $(document).ready(function() {
         $('.sellero').hide();
         $('.buyero').show();
       }  
+>>>>>>> feature/buyer
     });
 });
+
+
 
 $('#search-field').submit(function(ev) {
   ev.preventDefault();
@@ -49,6 +58,7 @@ $('#search-field').submit(function(ev) {
       rowString += "<td>" + data[i].age + "</td>";
       rowString += "<td>" + data[i].area + "</td>";
       rowString += "<td>" + data[i].isFurnished + "</td>";
+      rowString += "</tr>";
       $("#results > tbody").append(rowString);
     }
 

@@ -1090,6 +1090,115 @@ router.get('/login_info', function(req, res, next) {
   loginModule.get_logged_in(res);  
 });
 
+router.get('/rs_ordered_price', function(req, res, next) {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  var queryString = "SELECT city, AVG(salePrice) as avgPrice "
+                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
+                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
+                  + "GROUP BY city " 
+                  + "ORDER BY avgPrice;";
+
+  console.log(queryString);
+  console.log(111111111111111111111111111111111111111111111111111111111);
+  console.log(mysqlModule);
+  mysqlModule.getConnection(function(err, conn) {
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/rs_mm_price', function(req, res, next) {
+  var queryString = "SELECT city, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice "
+                  + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
+                  + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
+                  + "GROUP BY city " 
+                  + "ORDER BY city;";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/diverse_agencies', function(req, res, next) {
+  var queryString = "SELECT a.name, a.agencyRating " +
+                    "FROM Agency a " +
+                    "WHERE NOT EXISTS (" +
+		      "SELECT City " +
+                      "FROM Property_HasA_Location p2 " +
+                      "WHERE NOT EXISTS "  +
+                        "(SELECT City " +
+                        "FROM Agent_Represents g, Property_HasA_Location p, PostSale f " +
+                        "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                        "f.propertyID = p.propertyID AND p2.city = p.city));"; 
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/popular_cities', function(req, res, next) {
+  var queryString = "SELECT city, province, country " +
+                    "FROM Property_HasA_Location p1 " +
+                    "WHERE NOT EXISTS (" +
+                      "SELECT a2.agencyID " +
+                      "FROM Agency a2 " +
+                      "WHERE NOT EXISTS " +
+                          "(SELECT a.agencyID " +
+                          "FROM Agent_Represents g, Agency a, PostSale f, Property_HasA_Location p2 " +
+                          "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND f.propertyID = p2.propertyID AND " + 
+                          "p2.city = p1.city AND p2.province = p1.province AND p2.country = p1.country AND a2.agencyID = a.agencyID));";
+
+  console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/bw_cities', function(req, res, next) {
+  var queryString = "SELECT name, city, province, country, ";
+  if (req.query.best)
+    queryString += "MAX(count) as count ";
+  else
+    queryString += "MIN(count) as count ";
+
+  queryString += "FROM " +
+                   "(SELECT name, a.agencyID, city, province, country, COUNT(*) as count " +
+                   "FROM Agency a, Agent_Represents g, PostSale f, Property_HasA_Location p " +
+                   "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                   "f.propertyID = p.propertyID " +
+                   "GROUP BY agencyID, city, province, country) as Temp " +
+                  "GROUP BY agencyID;";
+
+  mysqlModule.getConnection(function(err, conn) {
+    console.log(queryString);
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+
+router.get('/bw_agencies', function(req, res, next) {
+  var queryString = "SELECT name, city, province, country, ";
+  if (req.query.best)
+    queryString += "MAX(count) as count ";
+  else
+    queryString += "MIN(count) as count ";
+
+  queryString += "FROM " +
+                   "(SELECT name, a.agencyID, city, province, country, COUNT(*) as count " +
+                   "FROM Agency a, Agent_Represents g, PostSale f, Property_HasA_Location p " +
+                   "WHERE a.agencyID = g.agencyID AND g.agentID = f.agentID AND " +
+                   "f.propertyID = p.propertyID " +
+                   "GROUP BY agencyID, city, province, country) as Temp " +
+                  "GROUP BY city, province, country;";
+  mysqlModule.getConnection(function(err, conn) {
+    console.log(queryString);
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 function test(){
 	q("#button-page button").button().on("tap", logEvent("tap"));
 var menu = q("#menu").addClass("qx-menu").appendTo(document.body).hide();
