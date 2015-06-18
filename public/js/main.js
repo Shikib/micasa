@@ -528,7 +528,7 @@ $('#adv-results-rr > thead').html("");
     for (var i in data) {
       var rowString = "<tr>";
       if($("#checkbox-rr1").is(':checked')) {
-        rowString += "<td>" + data[i].salePrice + "</td>";
+        rowString += "<td>" + data[i].rentPrice + "</td>";
       }
       if($("#checkbox-rr2").is(':checked')) {
         rowString += "<td>" + data[i].aptNumber + "</td>";
