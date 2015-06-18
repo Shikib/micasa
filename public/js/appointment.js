@@ -1,4 +1,21 @@
-$('#app-submit').click(function(ev) {
+$(document).ready(function() {
+  $('select').material_select();
+    $(".dropdown-button").dropdown();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      console.log(login)
+      if (!logged_in && logged_in_type=="2") {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+      loadpage(); 
+    });
+});
+
+function loadpage(){
+  $('#app-submit').click(function(ev) {
   var parID = {propertyID: $('#propertyID').val()};
   $.get('/check_propertyID', parID, function(data) {
     if (data.length == 0) {
@@ -6,14 +23,14 @@ $('#app-submit').click(function(ev) {
     }else {
       ev.preventDefault();
 
-      var appID = Math.floor(Math.random() * 32);
+      var appID = Math.floor(Math.random() * 32763);
       $.get('/get_all_appID', {}, function(data) {
         while (data.indexOf(appID) > -1)
-          appID = Math.floor(Math.random() * 32);
+          appID = Math.floor(Math.random() * 32763);
       });
 
-      parameters = { buyername: $('#buyername').val(),
-      buyerphone:  $('#buyerphone').val(),
+      parameters = {  buyername: login.buyerName,
+      buyerphone:  login.buyerPhone,
       propertyID:  $('#propertyID').val(),
       appdate:  $('#appdate').val(),
       appduration:  $('#appduration').val(),
@@ -27,4 +44,5 @@ $('#app-submit').click(function(ev) {
     }
   });
 })
+}
 

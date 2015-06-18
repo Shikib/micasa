@@ -26,8 +26,6 @@
 </nav>
 <body>
   <div class="container">
-    <body>
-      <div class="container">
 
        <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
        <h4 class="header center orange-text">Appointment</h4></center>
