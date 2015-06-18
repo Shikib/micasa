@@ -963,6 +963,15 @@ router.get('/login_agent', function(req, res, next) {
 
 });
 
+router.get('/agency_list', function(req, res, next) {
+  var queryString = "SELECT * " + 
+                    "FROM Agency;"
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
 router.get('/post_property', function(req, res, next) {
   var queryString = "INSERT INTO Property_HasA_Location VALUES ( "
                   + req.query.propertyID + ", " +

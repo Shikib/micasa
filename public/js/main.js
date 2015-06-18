@@ -272,14 +272,16 @@ $('#agent-button').click(function() {
 
 });
 
-$('agent-update').load(function() {
+$(document).ready(function() {
+  console.log("test");
   $.get('/agency_list', {}, function(data) {
+    console.log("test2");
     for (var i in data) {
       var optionString = "<option value='" + data[i].agencyID +
                          "'>" + data[i].name + "</option>";
-      $('#agency').append(optionString); 
+      $('#agency-update').append(optionString); 
     }
-    $('#agency').material_select();
+    $('#agency-update').material_select();
   });
 });
 
