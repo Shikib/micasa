@@ -1388,7 +1388,7 @@ router.get('/rs_ordered_price', function(req, res, next) {
 
 
 router.get('/rs_mm_price', function(req, res, next) {
-  var queryString = "SELECT city, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice "
+  var queryString = "SELECT city, MAX(salePrice) as maxPrice, MIN(salePrice) as minPrice, COUNT(*) as count "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
                   + "GROUP BY city " 
