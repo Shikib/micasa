@@ -1,10 +1,25 @@
 $(document).ready(function() {
-    $('select').material_select();
+  $('select').material_select();
     $(".dropdown-button").dropdown();
-  
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      console.log(login)
+      if (!logged_in && logged_in_type=="2") {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+      loadpage(); 
+      loadpage2();
+      loadpage3();
+      loadpage4();
+      loadpage5();
+    });
 });
 
-$(window).load(function() {
+function loadpage(){
+
   var parameters = {login: login};
   console.log("purchase runs");
   $.get('/buyerloadPurchase', parameters, function(data) {
@@ -24,9 +39,9 @@ $(window).load(function() {
      $("#purchaseoffer > tbody").append(rowString);
    }
  });
-});
+}
 
-$(window).load(function() {
+function loadpage2() {
   var parameters = {login: login};
   console.log("rent runs");
   $.get('/buyerloadRent', parameters, function(data) {
@@ -48,9 +63,9 @@ $(window).load(function() {
 
     }
   });
-});
+}
 
-$(window).load(function() {
+function loadpage3() {
   var parameters = {login: login};
   console.log("app runs");
   $.get('/buyerloadApp', parameters, function(data) {
@@ -70,8 +85,8 @@ $(window).load(function() {
 
     }
   });
-});
-
+}
+function loadpage4(){
 $('#offer-submit').click(function(ev) {
   var offerID = {offerID: $('#delete-offerID').val()};
   $.get('/check_offerID', offerID, function(data) {
@@ -88,6 +103,8 @@ $('#offer-submit').click(function(ev) {
   });
 })
 
+}
+function loadpage5(){
 $('#app-submit').click(function(ev) {
   var appID = {appID: $('#delete-appID').val()};
   console.log(appID)
@@ -104,3 +121,5 @@ $('#app-submit').click(function(ev) {
     }
   });
 })
+}
+

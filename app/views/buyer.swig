@@ -119,7 +119,6 @@
     <button id="app-submit" class="btn waves-effect waves-light" type="submit" name="action">Delete Appointment
       <i class="mdi-content-send right"></i>
     </button>
-  </form>
 </body>
 </div> 
 <!--  Scripts-->
