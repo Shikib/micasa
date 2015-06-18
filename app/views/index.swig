@@ -24,7 +24,7 @@
         <li class="nlog" style="display: none;"><a href="signup">Sign up</a></li>
         <li class="ylog" ><a href="/profile">Profile</a></li>
         <li class="ylog" ><a href="/" id="logout">Logout</a></li>
-        <li><a href="search">Serach</a></li>
+        <li><a href="search">Search</a></li>
       </ul>
     </div>
   </nav>
@@ -52,14 +52,14 @@
             <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
             <h5 class="center">I have a house for sale or rent</h5>
 
-            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p>
+            <p class="light">If you want to sell or rent a house, click on the icon above so we can connect you with buyers</p>
           </div>
         </div>
 
         <div class="center col s12 m4 buyero">
           <div class="icon-block"><a href="buyer">
             <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
-            <h5 class="center">I want to buy a house or rent  </h5>
+            <h5 class="center">I want to buy or rent a house</h5>
 
             <p class="light">We can help you find your dream house and connect you with an agent to tour houses</p>
           </div>
@@ -68,9 +68,9 @@
         <div class="center col s12 m4 agento">
           <div class="icon-block"><a href="agent">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">Im an agent </h5>
+            <h5 class="center">I am an agent </h5>
 
-            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</p>
+            <p class="light">Are you an agent? You can use our site to find potential buyers and sellers to create a great relationship</p>
           </div>
         </div>
       </div>
@@ -189,14 +189,14 @@
             <h2 class="center teal-text"><i class="mdi-action-home"></i></h2></a>
             <h5 class="center">I have a house for sale or rent</h5>
 
-            <p class="light">Do you want ot sell or rent a house, click on the icon above so we can connect you with .</p>
+            <p class="light">If you want to sell or rent a house, click on the icon above so we can connect you with buyers</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block"><a href="buyer">
             <h2 class="center teal-text"><i class="mdi-content-add-circle"></i></h2></a>
-            <h5 class="center">I want to buy a house or rent  </h5>
+            <h5 class="center">I want to buy or rent a house</h5>
 
             <p class="light">We can help you find your dream house and connect you with an agent to tour houses</p>
           </div>
@@ -205,9 +205,9 @@
         <div class="col s12 m4">
           <div class="icon-block"><a href="agent">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">Im an agent </h5>
+            <h5 class="center">I am an agent </h5>
 
-            <p class="light">Are you an agent? you can use our site to find potnetial buys and sellers to create a great relationship</p>
+            <p class="light">Are you an agent? You can use our site to find potential buyers and sellers to create a great relationship</p>
           </div>
         </div>
       </div>
