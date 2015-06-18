@@ -24,8 +24,10 @@
     <a href="#" class="brand-logo right">Micasa</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="/">Home</a></li>
-      <li><a href="login">Login</a></li>
-      <li><a href="signup">Sign up</a></li>
+        <li class="nlog" style="display: none;" ><a href="login">Login</a></li>
+        <li class="nlog" style="display: none;"><a href="signup">Sign up</a></li>
+        <li class="ylog" ><a href="/profile">Profile</a></li>
+        <li class="ylog" ><a href="/" id="logout">Logout</a></li>
       <li><a href="search">Search</a></li>
       <li><a class="dropdown-button" href="#!" data-activates="buyeractions">Buyer Actions<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
     </ul>
