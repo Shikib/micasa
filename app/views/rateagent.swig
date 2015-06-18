@@ -45,6 +45,10 @@
           <label for="agentrating">Rating</label>
         </div>
 
+      <button id="seller-rate-submit" class="btn waves-effect waves-light" type="submit" name="action">Update
+      <i class="mdi-content-send right"></i>
+    </button>
+
       </div>
     </form>
   </div>
@@ -58,11 +62,10 @@
         <thead>
           <tr>
               <th data-field="agentID">AgentID</th>
-              <th data-field="agentRating">Agent Rating</th>
+              <th data-field="sellerRating">Avg Agent Rating</th>
               <th data-field="agentName">Agent Name</th>
               <th data-field="agentPhone">Agent Phone</th>
               <th data-field="agentEmail">Agent Email</th>
-              <th data-field="agencyID">AgencyID</th>
           </tr>
         </thead>
 

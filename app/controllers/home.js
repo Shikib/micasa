@@ -500,22 +500,20 @@ router.get('/viewoffer', function (req, res, next) {
 //  });
 });
 
-router.get('/rateagent', function (req, res, next) {
-//  db.Article.findAll().then(function (articles) {
-    res.render('rateagent', {
-      title: 'rateagent',
-//      articles: articles
-    });
-//  });
+
+router.get('/rateagentRates', function(req, res, next) {
+  var sn = req.query.login.sellerName;
+  var sp = req.query.login.sellerPhone;
+  var ratesQueryString = "INSERT INTO Rates " + 
+                           "VALUES ('" + req.query.rating + "', " +
+                                   "'" + req.query.agentid + "', " + 
+                                   "'" + sp + "',"+
+                                   "'" + sn + "');";
+
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, ratesQueryString, res);
+  });
 });
-
-router.get('/rateagentGet', function (req, res, next){
-     mysqlModule.getConnection(function(err, conn) {
-      mysqlModule.query(conn, "SELECT * from Agent_Represents" ,
-                       res);
-
-    }); 
-   });
 
 router.get('/viewoffersSale', function (req, res, next) {
 
@@ -523,7 +521,7 @@ router.get('/viewoffersSale', function (req, res, next) {
     var sn = req.query.login.sellerName;
 
     console.log(sp);
-    console.log(snName);
+    console.log(sn);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
@@ -544,7 +542,7 @@ router.get('/viewoffersRent', function (req, res, next) {
     var sn = req.query.login.sellerName;
 
     console.log(sp);
-    console.log(snName);
+    console.log(sn);
     
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 

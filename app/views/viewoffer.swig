@@ -31,18 +31,6 @@
 <br><br>
 
 <div class="ylog">
-  <h4 class="header left teal-text">    Type in an offerID to accept it</h4></left>
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="mdi-action-account-circle prefix"></i>
-          <input id="offerid" type="text" class="validate">
-          <label for="offerid">Offer ID</label>
-        </div>
-      </div>
-    </form>
-  </div>
 
   <h5 align="left" class="header center teal-text">Offers on Your Properties for Sale</h6>
  <table id="viewforsale" class="bordered striped hoverable responsive-table">
@@ -91,5 +79,6 @@
   <script src="materialize/js/init.js"></script>
   <script src="js/viewoffer.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/seller.js"></script>
   <script src="loginModule.js"></script>
 {% endblock %}

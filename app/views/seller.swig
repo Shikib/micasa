@@ -55,18 +55,9 @@
         </div>
 
         <div class="col s12 m4">
-          <div class="icon-block"><a href="editproperty">
-            <h2 class="center teal-text"><i class="mdi-editor-mode-edit"></i></h2></a>
-            <h5 class="center">Edit your property</h5>
-
-          </div>
-        </div>
-      </div>
-
-        <div class="col s12 m4">
           <div class="icon-block"><a href="rateagent">
             <h2 class="center teal-text"><i class="mdi-action-assignment-ind"></i></h2></a>
-            <h5 class="center">Pleasant experience? Rate your agent!</h5>
+            <h5 class="center">Check out the agents!</h5>
 
           </div>
         </div>
