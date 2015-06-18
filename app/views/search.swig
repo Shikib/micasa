@@ -32,7 +32,7 @@
 
 <body>
  
- <nav class="light-blue lighten-1" role="navigation">
+ <nav class="white lighten-1" role="navigation">
     <div class="nav-wrapper container">
      <form id="search-field">
         <div class="input-field">
@@ -76,22 +76,6 @@
 
     </div>
   </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="grey-text text-lighten-4">We are a team of UBC students working on this project like it's our full time job. </p>
-
-
-       
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3">Micasa</a>
-      </div>
-    </div>
-  </footer>
 
 
   <!--  Scripts-->
