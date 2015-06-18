@@ -9,12 +9,6 @@ $(document).ready(function() {
         $('.nlog').show();
         $('.ylog').hide();
       }
-<<<<<<< HEAD
-      else if (logged_in) {
-        $('.ylog').show();
-        $('.nlog').hide(); 
-      }
-=======
       if (logged_in) {
         $('.ylog').show();
         $('.nlog').hide();
@@ -37,7 +31,7 @@ $(document).ready(function() {
         $('.sellero').hide();
         $('.buyero').show();
       }  
->>>>>>> feature/buyer
+
     });
 });
 
