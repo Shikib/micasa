@@ -79,6 +79,18 @@ $('#filter-sale').click(function() {
 
 $('#cs-submit').click(function(ev) {
   ev.preventDefault();
+  if (!($("#checkbox-cs1").is(':checked')) &&
+      !($("#checkbox-cs2").is(':checked')) &&
+      !($("#checkbox-cs3").is(':checked')) &&
+      !($("#checkbox-cs4").is(':checked')) &&
+      !($("#checkbox-cs5").is(':checked')) &&
+      !($("#checkbox-cs6").is(':checked')) &&
+      !($("#checkbox-cs7").is(':checked')) &&
+      !($("#checkbox-cs8").is(':checked')) &&
+      !($("#checkbox-cs9").is(':checked')) &&
+      !($("#checkbox-cs10").is(':checked'))) {
+    Materialize.toast('At least one field must be selected to display the result', 4000);
+  } else {
   $('#adv-results-cs > thead').html("");
   var headString = "<tr>";
   if($("#checkbox-cs1").is(':checked')) {
@@ -130,7 +142,17 @@ $('#cs-submit').click(function(ev) {
                     max_office: $('#cs-max-office').val(),
                     min_storage: $('#cs-min-storage').val(),
                     max_storage: $('#cs-max-storage').val(),
-                    furnishing:  $('#cs-furnishing').val() };
+                    furnishing:  $('#cs-furnishing').val(),
+                    checkbox_cs1: $('#checkbox-cs1').is(':checked'),
+                    checkbox_cs2: $('#checkbox-cs2').is(':checked'),
+                    checkbox_cs3: $('#checkbox-cs3').is(':checked'),
+                    checkbox_cs4: $('#checkbox-cs4').is(':checked'),
+                    checkbox_cs5: $('#checkbox-cs5').is(':checked'),
+                    checkbox_cs6: $('#checkbox-cs6').is(':checked'),
+                    checkbox_cs7: $('#checkbox-cs7').is(':checked'),
+                    checkbox_cs8: $('#checkbox-cs8').is(':checked'),
+                    checkbox_cs9: $('#checkbox-cs9').is(':checked'),
+                    checkbox_cs10: $('#checkbox-cs10').is(':checked') };
   $.get('/advanced_search_cs', parameters, function(data) {
     console.log(data);
     $('#commercial-sale').hide();
@@ -171,11 +193,24 @@ $('#cs-submit').click(function(ev) {
       $("#adv-results-cs > tbody").append(rowString);
     }
   });
+}
 });
 
 
 $('#cr-submit').click(function(ev) {
   ev.preventDefault();
+  if (!($("#checkbox-cr1").is(':checked')) &&
+      !($("#checkbox-cr2").is(':checked')) &&
+      !($("#checkbox-cr3").is(':checked')) &&
+      !($("#checkbox-cr4").is(':checked')) &&
+      !($("#checkbox-cr5").is(':checked')) &&
+      !($("#checkbox-cr6").is(':checked')) &&
+      !($("#checkbox-cr7").is(':checked')) &&
+      !($("#checkbox-cr8").is(':checked')) &&
+      !($("#checkbox-cr9").is(':checked')) &&
+      !($("#checkbox-cr10").is(':checked'))) {
+    Materialize.toast('At least one field must be selected to display the result', 4000);
+  } else {
   $('#adv-results-cr > thead').html("");
   var headString = "<tr>";
   if($("#checkbox-cr1").is(':checked')) {
@@ -231,7 +266,17 @@ $('#cr-submit').click(function(ev) {
                     min_storage: $('#cr-min-storage').val(),
                     max_storage: $('#cr-max-storage').val(),
                     furnishing:  $('#cr-furnishing').val(), 
-                    pets:        $('#cr-pets').val() };
+                    pets:        $('#cr-pets').val(),
+                    checkbox_cr1: $('#checkbox-cr1').is(':checked'),
+                    checkbox_cr2: $('#checkbox-cr2').is(':checked'),
+                    checkbox_cr3: $('#checkbox-cr3').is(':checked'),
+                    checkbox_cr4: $('#checkbox-cr4').is(':checked'),
+                    checkbox_cr5: $('#checkbox-cr5').is(':checked'),
+                    checkbox_cr6: $('#checkbox-cr6').is(':checked'),
+                    checkbox_cr7: $('#checkbox-cr7').is(':checked'),
+                    checkbox_cr8: $('#checkbox-cr8').is(':checked'),
+                    checkbox_cr9: $('#checkbox-cr9').is(':checked'),
+                    checkbox_cr10: $('#checkbox-cr10').is(':checked') };
   $.get('/advanced_search_cr', parameters, function(data) {
     console.log(data);
     $('#commercial-rent').hide();
@@ -276,11 +321,24 @@ $('#cr-submit').click(function(ev) {
       $("#adv-results-cr > tbody").append(rowString);
     }
   });
+}
 });
 
 
 $('#rs-submit').click(function(ev) {
   ev.preventDefault();
+  if (!($("#checkbox-rs1").is(':checked')) &&
+      !($("#checkbox-rs2").is(':checked')) &&
+      !($("#checkbox-rs3").is(':checked')) &&
+      !($("#checkbox-rs4").is(':checked')) &&
+      !($("#checkbox-rs5").is(':checked')) &&
+      !($("#checkbox-rs6").is(':checked')) &&
+      !($("#checkbox-rs7").is(':checked')) &&
+      !($("#checkbox-rs8").is(':checked')) &&
+      !($("#checkbox-rs9").is(':checked')) &&
+      !($("#checkbox-rs10").is(':checked'))) {
+    Materialize.toast('At least one field must be selected to display the result', 4000);
+  } else {
   $('#adv-results-rs > thead').html("");
   var headString = "<tr>";
   if($("#checkbox-rs1").is(':checked')) {
@@ -330,7 +388,17 @@ $('#rs-submit').click(function(ev) {
                     max_space: $('#rs-max-space').val(),
                     furnishing:  $('#rs-furnishing').val(),
                     garage:      $('#rs-garage').val(),
-                    garden:      $('#rs-garden').val() };
+                    garden:      $('#rs-garden').val(),
+                    checkbox_rs1: $('#checkbox-rs1').is(':checked'),
+                    checkbox_rs2: $('#checkbox-rs2').is(':checked'),
+                    checkbox_rs3: $('#checkbox-rs3').is(':checked'),
+                    checkbox_rs4: $('#checkbox-rs4').is(':checked'),
+                    checkbox_rs5: $('#checkbox-rs5').is(':checked'),
+                    checkbox_rs6: $('#checkbox-rs6').is(':checked'),
+                    checkbox_rs7: $('#checkbox-rs7').is(':checked'),
+                    checkbox_rs8: $('#checkbox-rs8').is(':checked'),
+                    checkbox_rs9: $('#checkbox-rs9').is(':checked'),
+                    checkbox_rs10: $('#checkbox-rs10').is(':checked') };
   $.get('/advanced_search_rs', parameters, function(data) {
     console.log(data);
     $('#residential-sale').hide();
@@ -371,10 +439,23 @@ $('#rs-submit').click(function(ev) {
       $("#adv-results-rs > tbody").append(rowString);
     }
   });
+}
 });
 
 $('#rr-submit').click(function(ev) {
   ev.preventDefault();
+  if (!($("#checkbox-rr1").is(':checked')) &&
+      !($("#checkbox-rr2").is(':checked')) &&
+      !($("#checkbox-rr3").is(':checked')) &&
+      !($("#checkbox-rr4").is(':checked')) &&
+      !($("#checkbox-rr5").is(':checked')) &&
+      !($("#checkbox-rr6").is(':checked')) &&
+      !($("#checkbox-rr7").is(':checked')) &&
+      !($("#checkbox-rr8").is(':checked')) &&
+      !($("#checkbox-rr9").is(':checked')) &&
+      !($("#checkbox-rr10").is(':checked'))) {
+    Materialize.toast('At least one field must be selected to display the result', 4000);
+  } else {
 $('#adv-results-rr > thead').html("");
   var headString = "<tr>";
   if($("#checkbox-rr1").is(':checked')) {
@@ -428,7 +509,17 @@ $('#adv-results-rr > thead').html("");
                     furnishing:  $('#rr-furnishing').val(), 
                     garage:      $('#rr-garage').val(),
                     garden:      $('#rr-garden').val(), 
-                    pets:        $('#rr-pets').val() };
+                    pets:        $('#rr-pets').val(),
+                    checkbox_rr1: $('#checkbox-rr1').is(':checked'),
+                    checkbox_rr2: $('#checkbox-rr2').is(':checked'),
+                    checkbox_rr3: $('#checkbox-rr3').is(':checked'),
+                    checkbox_rr4: $('#checkbox-rr4').is(':checked'),
+                    checkbox_rr5: $('#checkbox-rr5').is(':checked'),
+                    checkbox_rr6: $('#checkbox-rr6').is(':checked'),
+                    checkbox_rr7: $('#checkbox-rr7').is(':checked'),
+                    checkbox_rr8: $('#checkbox-rr8').is(':checked'),
+                    checkbox_rr9: $('#checkbox-rr9').is(':checked'),
+                    checkbox_rr10: $('#checkbox-rr10').is(':checked') };
   $.get('/advanced_search_rr', parameters, function(data) {
     console.log(data);
     $('#residential-rent').hide();
@@ -472,4 +563,5 @@ $('#adv-results-rr > thead').html("");
       $("#adv-results-rr > tbody").append(rowString);
     }
   });
+}
 });

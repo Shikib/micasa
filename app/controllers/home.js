@@ -121,8 +121,76 @@ router.get('/signup', function (req, res, next) {
 
 
 router.get('/advanced_search_cs', function(req, res, next) {
-  var queryString = "SELECT * " +
-                    "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
+  var isFirst = 1;
+  var queryString = "SELECT ";
+  if (req.query.checkbox_cs1 && isFirst == 1) {
+    queryString += "s.salePrice ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs2 && isFirst == 0) {
+    queryString += ", p.aptNumber ";
+  }
+  if (req.query.checkbox_cs2 && isFirst == 1) {
+    queryString += "p.aptNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs3 && isFirst == 0) {
+    queryString += ", p.houseNumber ";
+  }
+  if (req.query.checkbox_cs3 && isFirst == 1) {
+    queryString += "p.houseNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs4 && isFirst == 0) {
+    queryString += ", p.street ";
+  }
+  if (req.query.checkbox_cs4 && isFirst == 1) {
+    queryString += "p.street ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs5 && isFirst == 0) {
+    queryString += ", p.city ";
+  }
+  if (req.query.checkbox_cs5 && isFirst == 1) {
+    queryString += "p.city ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs6 && isFirst == 0) {
+    queryString += ", p.age ";
+  }
+  if (req.query.checkbox_cs6 && isFirst == 1) {
+    queryString += "p.age ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs7 && isFirst == 0) {
+    queryString += ", p.area ";
+  }
+  if (req.query.checkbox_cs7 && isFirst == 1) {
+    queryString += "p.area ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs8 && isFirst == 0) {
+    queryString += ", c.offices ";
+  }
+  if (req.query.checkbox_cs8 && isFirst == 1) {
+    queryString += "c.offices ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs9 && isFirst == 0) {
+    queryString += ", c.storage ";
+  }
+  if (req.query.checkbox_cs9 && isFirst == 1) {
+    queryString += "c.storage ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs10 && isFirst == 0) {
+    queryString += ", p.isFurnished ";
+  }
+  if (req.query.checkbox_cs10 && isFirst == 1) {
+    queryString += "p.isFurnished ";
+    isFirst = 0;
+  }
+  queryString +=    "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
                     "WHERE p.propertyID = c.propertyID AND s.propertyID = p.propertyID" +
                     " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
                     "' AND p.country = '" + req.query.country + "'" +
@@ -131,7 +199,7 @@ router.get('/advanced_search_cs', function(req, res, next) {
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
                     " AND c.offices >= " + req.query.min_office + " AND c.offices <= " + req.query.max_office + 
                     " AND c.storage >= " + req.query.min_storage + " AND c.storage <= " + req.query.max_storage; 
-
+  console.log(queryString);
   if (req.query.furnishing != 'D') {
     queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
   }
