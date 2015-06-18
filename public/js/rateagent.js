@@ -11,12 +11,12 @@ $(window).load(function() {
   	for (var i in data) {
   	  var rowString = "<tr>";
       rowString += "<td>" + data[i].agentID + "</td>";
-      rowString += "<td>" + data[i].agentRating + "</td>";
+      rowString += "<td>" + data[i].avgSellerRating + "</td>";
       rowString += "<td>" + data[i].agentName + "</td>";
       rowString += "<td>" + data[i].agentPhone + "</td>";
       rowString += "<td>" + data[i].agentEmail + "</td>";
-      rowString += "<td>" + data[i].agencyID + "</td>";
       $("#agents > tbody").append(rowString);
     }
   });
 });
+
