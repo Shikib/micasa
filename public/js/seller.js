@@ -1,10 +1,21 @@
-
 $(document).ready(function() {
     $('select').material_select();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      if (!logged_in && logged_in_type=="1") {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+      foo();
+      bar();
+    });  
 });
 
-$(window).load(function() {
-  var parameters = {};
+function foo() {
+ var parameters = {login: login};
+  console.log(login);
   $.get('/sellerloadPurchase', parameters, function(data) {
   	console.log(data);
   	$("#forsale > tbody").html("");
@@ -22,10 +33,10 @@ $(window).load(function() {
       $("#forsale > tbody").append(rowString);
     }
   });
-});
+}
 
-$(window).load(function() {
-  var parameters = {};
+function bar() {
+  var parameters = {login: login};
   $.get('/sellerloadRent', parameters, function(data) {
     console.log(data);
     $("#forrent > tbody").html("");
@@ -43,4 +54,4 @@ $(window).load(function() {
       $("#forrent > tbody").append(rowString);
     }
   });
-});
+}
