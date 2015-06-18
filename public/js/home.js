@@ -79,3 +79,59 @@ $(document).ready(function() {
  
   });
 });
+
+var cities_best = true;
+var agencies_best = true;
+
+$('#switch-city-list').click(function (ev) {
+  ev.preventDefault();
+  cities_best = !cities_best;
+  if (cities_best)
+    $('#switch-city-list').text("Best");
+  else
+    $('#switch-city-list').text("Worst");
+  
+  $.get('/bw_cities', {best: cities_best}, function(data) {
+    console.log("test");
+    console.log(data);
+    $('#bw-city-list > tbody').html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].name + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].province + "</td>";
+      rowString += "<td>" + data[i].country + "</td>";
+      rowString += "<td>" + data[i].count + "</td>";	
+      rowString += "</tr>";
+      $('#bw-city-list > tbody').append(rowString);
+    }
+ 
+  });
+});
+
+
+$('#switch-agency-list').click(function (ev) {
+  ev.preventDefault();
+  agencies_best = !agencies_best;
+  if (agencies_best)
+    $('#switch-agency-list').text("Best");
+  else
+    $('#switch-agency-list').text("Worst");
+  
+  $.get('/bw_cities', {best: agencies_best}, function(data) {
+    console.log("test");
+    console.log(data);
+    $('#bw-city-list > tbody').html("");
+    for (var i in data) {
+      var rowString = "<tr>";
+      rowString += "<td>" + data[i].name + "</td>";
+      rowString += "<td>" + data[i].city + "</td>";
+      rowString += "<td>" + data[i].province + "</td>";
+      rowString += "<td>" + data[i].country + "</td>";
+      rowString += "<td>" + data[i].count + "</td>";	
+      rowString += "</tr>";
+      $('#bw-city-list > tbody').append(rowString);
+    }
+ 
+  });
+});

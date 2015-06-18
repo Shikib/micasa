@@ -145,7 +145,7 @@
 
       <br><br>       
 
-      <h5 class="center">Best Agency in every City (based on properties selling)</h5>
+      <h5 class="center"><a href="#" id="switch-agency-list">Best</a> Agency in every City (based on properties selling)</h5>
       <table id="bw-agency-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
@@ -163,7 +163,7 @@
 
       <br><br>       
 
-      <h5 class="center">Best City for every Agency (based on properties selling)</h5>
+      <h5 class="center"><a href="#" id="switch-city-list">Best</a> City for every Agency (based on properties selling)</h5>
       <table id="bw-city-list" class="bordered striped hoverable responsive-table">
         <thead>
           <tr>
