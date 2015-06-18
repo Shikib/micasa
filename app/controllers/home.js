@@ -887,6 +887,7 @@ router.get('/login_info', function(req, res, next) {
 });
 
 router.get('/rs_ordered_price', function(req, res, next) {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   var queryString = "SELECT city, AVG(salePrice) as avgPrice "
                   + "FROM Property_HasA_Location p, ForSale f, ResidentialProperty_ForSale r "
                   + "WHERE p.propertyID = f.propertyID AND p.propertyID = r.propertyID " 
@@ -894,7 +895,10 @@ router.get('/rs_ordered_price', function(req, res, next) {
                   + "ORDER BY avgPrice;";
 
   console.log(queryString);
+  console.log(111111111111111111111111111111111111111111111111111111111);
+  console.log(mysqlModule);
   mysqlModule.getConnection(function(err, conn) {
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     mysqlModule.query(conn, queryString, res);
   });
 });

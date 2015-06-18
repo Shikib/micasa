@@ -10,8 +10,10 @@ var pool = mysql.createPool({
 exports.getConnection = function(callback) {
   pool.getConnection(function(err, conn) {
     if (err) {
-      return callback(err);
+      throw err;
     }
+    console.log("YYYYYYYYYYYYYYY");
+
     callback(err, conn);
   });
 };
@@ -23,6 +25,8 @@ exports.query = function(conn, queryString, res) {
     if (res === undefined) { 
       return rows;
     }
+
+    console.log("ZZZZZZZZZZZZZzz");
     res.send(rows);     
   });
 };

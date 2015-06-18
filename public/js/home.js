@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+  console.log('ayy');
   $.get('/rs_ordered_price', {}, function(data) {
     $('#rs-ordered-price > tbody').html("");
     for (var i in data) {
@@ -10,10 +11,6 @@ $(document).ready(function() {
       $('#rs-ordered-price > tbody').append(rowString);
     }
   });
-});
-
-
-$(document).ready(function() {
   $.get('/rs_mm_price', {}, function(data) {
     $('#rs-mm-price > tbody').html("");
     for (var i in data) {
@@ -26,9 +23,6 @@ $(document).ready(function() {
       $('#rs-mm-price > tbody').append(rowString);
     }
   });
-});
-
-$(document).ready(function() {
   $.get('/diverse_agencies', {}, function(data) {
     console.log(data);
     $('#diverse-agency-list > tbody').html("");
@@ -41,9 +35,6 @@ $(document).ready(function() {
     }
  
   });
-});
-
-$(document).ready(function() {
   $.get('/popular_cities', {}, function(data) {
     console.log(data);
     $('#popular-city-list > tbody').html("");
@@ -56,9 +47,6 @@ $(document).ready(function() {
       $('#popular-city-list > tbody').append(rowString);
     } 
   });
-});
-
-$(document).ready(function() {
   $.get('/bw_agencies', {best: true}, function(data) {
     console.log(data);
     $('#bw-agency-list > tbody').html("");
@@ -74,10 +62,6 @@ $(document).ready(function() {
     }
  
   });
-});
-
-
-$(document).ready(function() {
   $.get('/bw_cities', {best: true}, function(data) {
     console.log("test");
     console.log(data);
