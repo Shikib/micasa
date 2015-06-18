@@ -824,6 +824,18 @@ $('#delete-account').click(function(ev) {
   });
 });
 
+
+$('#logout').click(function(ev) {
+  ev.preventDefault();  
+  parameters = {};
+  accountParameters = {login: login};
+  $.get('/logout', parameters, function(data) {
+    logged_in = false;
+    login = undefined;
+    location.href = "/";
+  });
+});
+
 var logged_in = false;
 // 0 for agent, 1 for seller, 2 for buyer
 var logged_in_type;
