@@ -1,22 +1,38 @@
 
 $(document).ready(function() {
-    $('select').material_select();
+  $('select').material_select();
+    $(".dropdown-button").dropdown();
+    $.get('login_info', {}, function (data) {
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      console.log(login)
+      if (!logged_in && logged_in_type=="1") {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+      loadpage(); 
+    });
 });
 
-$(window).load(function() {
-  var parameters = {};
-  $.get('/rateagentGet', parameters, function(data) {
-  	console.log(data);
-  	$("#agents > tbody").html("");
-  	for (var i in data) {
-  	  var rowString = "<tr>";
-      rowString += "<td>" + data[i].agentID + "</td>";
-      rowString += "<td>" + data[i].agentRating + "</td>";
-      rowString += "<td>" + data[i].agentName + "</td>";
-      rowString += "<td>" + data[i].agentPhone + "</td>";
-      rowString += "<td>" + data[i].agentEmail + "</td>";
-      rowString += "<td>" + data[i].agencyID + "</td>";
-      $("#agents > tbody").append(rowString);
+function loadpage(){
+$('#in-submit').click(function(ev) {
+ var parID = {agentID: $('#agentID').val()};
+ $.get('/check_agentID', parID, function(data) {
+  if (data.length == 0) {
+    Materialize.toast('The agent ID you submitted is not a valid agent', 4000);
+  }else {
+    ev.preventDefault();
+    parameters = { sellerName: login.sellerName,
+    sellerPhone:  login.sellerPhone,
+    agentID:  $('#agentID').val(),
+    sellerRating:  $('#sellerRating').val()};
+    console.log(parameters);  
+    $.get('/rateagent_Rates', parameters, function(data){});
+     $('#in-submit').hide();
+     $('#form').hide();
+      Materialize.toast('Agent rating added', 4000);
     }
   });
-});
+})
+}

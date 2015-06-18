@@ -13,10 +13,27 @@
 {% endblock %}
 
 {% block content %}
+
+<nav>
+    <div class="nav-wrapper teal">
+      <a href="#" class="brand-logo right">Micasa</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="signup">Sign up</a></li>
+        <li><a href="advanced_search">Advanced Search</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <body>
+
+      <div class="container">
+
 <body>
  
  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="images/micasa.png" style = "width:50px;height:50x;"></a>
+    <div class="nav-wrapper container">
      <form id="search-field">
         <div class="input-field">
           <input id="search" type="search" placeholder="Enter the city that you are interested in..." required>
