@@ -52,18 +52,6 @@
 
         <table id="adv-results-cs" class="bordered striped hoverable responsive-table">
           <thead>
-            <tr>
-              <th data-field="price">Price (Thousands)</th>
-              <th data-field="aptNumber">Apartment Number</th>
-              <th data-field="houseNumber">Building Number</th>
-              <th data-field="street">Street</th>
-              <th data-field="city">City</th>
-              <th data-field="age">Age (years)</th>
-              <th data-field="area">Area (sq. metres)</th>
-              <th data-field="offices">Office Count</th>
-              <th data-field="storage">Storage Space (sq. metres)</th>
-              <th data-field="isFurnished">Is Furnished?</th>
-            </tr>
           </thead>
 
           <tbody>
@@ -78,19 +66,6 @@
 
         <table id="adv-results-cr" class="bordered striped hoverable responsive-table">
           <thead>
-            <tr>
-              <th data-field="price">Monthly Rent</th>
-              <th data-field="aptNumber">Apartment Number</th>
-              <th data-field="houseNumber">Building Number</th>
-              <th data-field="street">Street</th>
-              <th data-field="city">City</th>
-              <th data-field="age">Age (years)</th>
-              <th data-field="area">Area (sq. metres)</th>
-              <th data-field="offices">Office Count</th>
-              <th data-field="storage">Storage Space (sq. metres)</th>
-              <th data-field="isFurnished">Is Furnished?</th>
-              <th data-field="petsAllowed">Pets Allowed?</th>
-            </tr>
           </thead>
 
           <tbody>
@@ -105,18 +80,6 @@
 
         <table id="adv-results-rs" class="bordered striped hoverable responsive-table">
           <thead>
-            <tr>
-              <th data-field="price">Price (Thousands)</th>
-              <th data-field="aptNumber">Apartment Number</th>
-              <th data-field="houseNumber">Building Number</th>
-              <th data-field="street">Street</th>
-              <th data-field="city">City</th>
-              <th data-field="age">Age (years)</th>
-              <th data-field="area">Area (sq. metres)</th>
-              <th data-field="isFurnished">Is Furnished?</th>
-              <th data-field="hasGarage">Has Garage?</th>
-              <th data-field="hasGarden">Has Garden?</th>
-            </tr>
           </thead>
 
           <tbody>
@@ -130,19 +93,6 @@
 
         <table id="adv-results-rr" class="bordered striped hoverable responsive-table">
           <thead>
-            <tr>
-              <th data-field="price">Monthly Rent</th>
-              <th data-field="aptNumber">Apartment Number</th>
-              <th data-field="houseNumber">Building Number</th>
-              <th data-field="street">Street</th>
-              <th data-field="city">City</th>
-              <th data-field="age">Age (years)</th>
-              <th data-field="area">Area (sq. metres)</th>
-              <th data-field="isFurnished">Is Furnished?</th>
-              <th data-field="hasGarage">Has Garage?</th>
-              <th data-field="hasGarden">Has Garden?</th>
-              <th data-field="petsAllowed">Pets Allowed?</th>
-            </tr>
           </thead>
 
           <tbody>
@@ -154,6 +104,58 @@
     <div class="row" id="commercial-sale" style="display: none;">
     <form class="col s12">
       <div class="row">
+      <h5>Choose which fields to display in the result.</h5>    
+      <div id='checkbox-cs' class="section">
+        <table border="0" id="checkbox-table-cs" class="responsive-table" style="display: none">
+          <tbody>
+            <tr>
+              <th data-field="checkbox1">
+              <input type="checkbox" class="filled-in" id="checkbox-cs1" checked="checked" />
+              <label for="checkbox-cs1">Price</label>
+              </th>
+              <th data-field="checkbox2">
+              <input type="checkbox" class="filled-in" id="checkbox-cs2" checked="checked" />
+              <label for="checkbox-cs2">Apartment Number</label>
+              </th>
+              <th data-field="checkbox3">
+              <input type="checkbox" class="filled-in" id="checkbox-cs3" checked="checked" />
+              <label for="checkbox-cs3">Building Number</label>
+              </th>
+              <th data-field="checkbox4">
+              <input type="checkbox" class="filled-in" id="checkbox-cs4" checked="checked" />
+              <label for="checkbox-cs4">Street</label>
+              </th>
+              <th data-field="checkbox5">
+              <input type="checkbox" class="filled-in" id="checkbox-cs5" checked="checked" />
+              <label for="checkbox-cs5">City</label>
+              </th>
+            </tr>
+            <tr>
+              <th data-field="checkbox6">
+              <input type="checkbox" class="filled-in" id="checkbox-cs6" checked="checked" />
+              <label for="checkbox-cs6">Age (years)</label>
+              </th>
+              <th data-field="checkbox7">
+              <input type="checkbox" class="filled-in" id="checkbox-cs7" checked="checked" />
+              <label for="checkbox-cs7">Area (sq. meters)</label>
+              </th>
+              <th data-field="checkbox8">
+              <input type="checkbox" class="filled-in" id="checkbox-cs8" checked="checked" />
+              <label for="checkbox-cs8">Office Count</label>
+              </th>
+              <th data-field="checkbox9">
+              <input type="checkbox" class="filled-in" id="checkbox-cs9" checked="checked" />
+              <label for="checkbox-cs9">Storage Space (sq. meters)</label>
+              </th>
+              <th data-field="checkbox10">
+              <input type="checkbox" class="filled-in" id="checkbox-cs10" checked="checked" />
+              <label for="checkbox-cs10">Is Furnished?</label>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
         <h5>Location </h5>
         <div class="input-field col s6">
           <input id="cs-city" type="text" class="validate">
@@ -272,6 +274,62 @@
     <div class="row" id="commercial-rent" style="display: none;">
     <form class="col s12">
       <div class="row">
+      <h5>Choose which fields to display in the result.</h5>
+        <div id='checkbox-cr' class="section">
+        <table border="0" id="checkbox-table-cr" class="responsive-table" style="display: none">
+          <tbody>
+            <tr>
+              <th data-field="checkbox1">
+              <input type="checkbox" class="filled-in" id="checkbox-cr1" checked="checked" />
+              <label for="checkbox-cr1">Price</label>
+              </th>
+              <th data-field="checkbox2">
+              <input type="checkbox" class="filled-in" id="checkbox-cr2" checked="checked" />
+              <label for="checkbox-cr2">Apartment Number</label>
+              </th>
+              <th data-field="checkbox3">
+              <input type="checkbox" class="filled-in" id="checkbox-cr3" checked="checked" />
+              <label for="checkbox-cr3">Building Number</label>
+              </th>
+              <th data-field="checkbox4">
+              <input type="checkbox" class="filled-in" id="checkbox-cr4" checked="checked" />
+              <label for="checkbox-cr4">Street</label>
+              </th>
+              <th data-field="checkbox5">
+              <input type="checkbox" class="filled-in" id="checkbox-cr5" checked="checked" />
+              <label for="checkbox-cr5">City</label>
+              </th>
+            </tr>
+            <tr>
+              <th data-field="checkbox6">
+              <input type="checkbox" class="filled-in" id="checkbox-cr6" checked="checked" />
+              <label for="checkbox-cr6">Age (years)</label>
+              </th>
+              <th data-field="checkbox7">
+              <input type="checkbox" class="filled-in" id="checkbox-cr7" checked="checked" />
+              <label for="checkbox-cr7">Area (sq. meters)</label>
+              </th>
+              <th data-field="checkbox8">
+              <input type="checkbox" class="filled-in" id="checkbox-cr8" checked="checked" />
+              <label for="checkbox-cr8">Office Count</label>
+              </th>
+              <th data-field="checkbox9">
+              <input type="checkbox" class="filled-in" id="checkbox-cr9" checked="checked" />
+              <label for="checkbox-cr9">Storage Space (sq. meters)</label>
+              </th>
+              <th data-field="checkbox10">
+              <input type="checkbox" class="filled-in" id="checkbox-cr10" checked="checked" />
+              <label for="checkbox-cr10">Is Furnished?</label>
+              </th>
+              <th data-field="checkbox11">
+              <input type="checkbox" class="filled-in" id="checkbox-cr11" checked="checked" />
+              <label for="checkbox-cr11">Pets Allowed?</label>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
         <h5>Location </h5>
         <div class="input-field col s6">
           <input id="cr-city" type="text" class="validate">
@@ -400,6 +458,59 @@
     <div class="row" id="residential-sale" style="display: none;">
     <form class="col s12">
       <div class="row">
+      <h5>Choose which fields to display in the result.</h5>
+        <div id='checkbox-rs' class="section">
+        <table border="0" id="checkbox-table-rs" class="responsive-table" style="display: none">
+          <tbody>
+            <tr>
+              <th data-field="checkbox1">
+              <input type="checkbox" class="filled-in" id="checkbox-rs1" checked="checked" />
+              <label for="checkbox-rs1">Price</label>
+              </th>
+              <th data-field="checkbox2">
+              <input type="checkbox" class="filled-in" id="checkbox-rs2" checked="checked" />
+              <label for="checkbox-rs2">Apartment Number</label>
+              </th>
+              <th data-field="checkbox3">
+              <input type="checkbox" class="filled-in" id="checkbox-rs3" checked="checked" />
+              <label for="checkbox-rs3">Building Number</label>
+              </th>
+              <th data-field="checkbox4">
+              <input type="checkbox" class="filled-in" id="checkbox-rs4" checked="checked" />
+              <label for="checkbox-rs4">Street</label>
+              </th>
+              <th data-field="checkbox5">
+              <input type="checkbox" class="filled-in" id="checkbox-rs5" checked="checked" />
+              <label for="checkbox-rs5">City</label>
+              </th>
+            </tr>
+            <tr>
+              <th data-field="checkbox6">
+              <input type="checkbox" class="filled-in" id="checkbox-rs6" checked="checked" />
+              <label for="checkbox-rs6">Age (years)</label>
+              </th>
+              <th data-field="checkbox7">
+              <input type="checkbox" class="filled-in" id="checkbox-rs7" checked="checked" />
+              <label for="checkbox-rs7">Area (sq. meters)</label>
+              </th>
+              <th data-field="checkbox8">
+              <input type="checkbox" class="filled-in" id="checkbox-rs8" checked="checked" />
+              <label for="checkbox-rs8">Is Furnished?</label>
+              </th>
+              <th data-field="checkbox9">
+              <input type="checkbox" class="filled-in" id="checkbox-rs9" checked="checked" />
+              <label for="checkbox-rs9">Has Garage?</label>
+              </th>
+              <th data-field="checkbox10">
+              <input type="checkbox" class="filled-in" id="checkbox-rs10" checked="checked" />
+              <label for="checkbox-rs10">Has Garden?</label>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
         <h5>Location </h5>
         <div class="input-field col s6">
           <input id="rs-city" type="text" class="validate">
@@ -502,12 +613,67 @@
         <i class="mdi-content-send right"></i>
       </button>
     </form>
-  </div> 
-
+  </div>
 
     <div class="row" id="residential-rent" style="display: none;">
     <form class="col s12">
       <div class="row">
+      <h5>Choose which fields to display in the result.</h5>
+        <div id='checkbox-rr' class="section">
+        <table border="0" id="checkbox-table-rr" class="responsive-table" style="display: none">
+          <tbody>
+            <tr>
+              <th data-field="checkbox1">
+              <input type="checkbox" class="filled-in" id="checkbox-rr1" checked="checked" />
+              <label for="checkbox-rr1">Price</label>
+              </th>
+              <th data-field="checkbox2">
+              <input type="checkbox" class="filled-in" id="checkbox-rr2" checked="checked" />
+              <label for="checkbox-rr2">Apartment Number</label>
+              </th>
+              <th data-field="checkbox3">
+              <input type="checkbox" class="filled-in" id="checkbox-rr3" checked="checked" />
+              <label for="checkbox-rr3">Building Number</label>
+              </th>
+              <th data-field="checkbox4">
+              <input type="checkbox" class="filled-in" id="checkbox-rr4" checked="checked" />
+              <label for="checkbox-rr4">Street</label>
+              </th>
+              <th data-field="checkbox5">
+              <input type="checkbox" class="filled-in" id="checkbox-rr5" checked="checked" />
+              <label for="checkbox-rr5">City</label>
+              </th>
+            </tr>
+            <tr>
+              <th data-field="checkbox6">
+              <input type="checkbox" class="filled-in" id="checkbox-rr6" checked="checked" />
+              <label for="checkbox-rr6">Age (years)</label>
+              </th>
+              <th data-field="checkbox7">
+              <input type="checkbox" class="filled-in" id="checkbox-rr7" checked="checked" />
+              <label for="checkbox-rr7">Area (sq. meters)</label>
+              </th>
+              <th data-field="checkbox8">
+              <input type="checkbox" class="filled-in" id="checkbox-rr8" checked="checked" />
+              <label for="checkbox-rr8">Is Furnished?</label>
+              </th>
+              <th data-field="checkbox9">
+              <input type="checkbox" class="filled-in" id="checkbox-rr9" checked="checked" />
+              <label for="checkbox-rr9">Has Garage?</label>
+              </th>
+              <th data-field="checkbox10">
+              <input type="checkbox" class="filled-in" id="checkbox-rr10" checked="checked" />
+              <label for="checkbox-rr10">Has Garden?</label>
+              </th>
+              <th data-field="checkbox11">
+              <input type="checkbox" class="filled-in" id="checkbox-rr11" checked="checked" />
+              <label for="checkbox-rr11">Pets Allowed?</label>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
         <h5>Location </h5>
         <div class="input-field col s6">
           <input id="rr-city" type="text" class="validate">

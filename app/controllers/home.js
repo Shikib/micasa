@@ -339,8 +339,76 @@ router.get('/agent_appointment_approve', function(req, res, next) {
 });
 
 router.get('/advanced_search_cs', function(req, res, next) {
-  var queryString = "SELECT * " +
-                    "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
+  var isFirst = 1;
+  var queryString = "SELECT ";
+  if (req.query.checkbox_cs1 && isFirst == 1) {
+    queryString += "s.salePrice ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs2 && isFirst == 0) {
+    queryString += ", p.aptNumber ";
+  }
+  if (req.query.checkbox_cs2 && isFirst == 1) {
+    queryString += "p.aptNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs3 && isFirst == 0) {
+    queryString += ", p.houseNumber ";
+  }
+  if (req.query.checkbox_cs3 && isFirst == 1) {
+    queryString += "p.houseNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs4 && isFirst == 0) {
+    queryString += ", p.street ";
+  }
+  if (req.query.checkbox_cs4 && isFirst == 1) {
+    queryString += "p.street ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs5 && isFirst == 0) {
+    queryString += ", p.city ";
+  }
+  if (req.query.checkbox_cs5 && isFirst == 1) {
+    queryString += "p.city ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs6 && isFirst == 0) {
+    queryString += ", p.age ";
+  }
+  if (req.query.checkbox_cs6 && isFirst == 1) {
+    queryString += "p.age ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs7 && isFirst == 0) {
+    queryString += ", p.area ";
+  }
+  if (req.query.checkbox_cs7 && isFirst == 1) {
+    queryString += "p.area ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs8 && isFirst == 0) {
+    queryString += ", c.offices ";
+  }
+  if (req.query.checkbox_cs8 && isFirst == 1) {
+    queryString += "c.offices ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs9 && isFirst == 0) {
+    queryString += ", c.storage ";
+  }
+  if (req.query.checkbox_cs9 && isFirst == 1) {
+    queryString += "c.storage ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cs10 && isFirst == 0) {
+    queryString += ", p.isFurnished ";
+  }
+  if (req.query.checkbox_cs10 && isFirst == 1) {
+    queryString += "p.isFurnished ";
+    isFirst = 0;
+  }
+  queryString +=    "FROM CommercialProperty_ForSale c, ForSale s, Property_HasA_Location p " +
                     "WHERE p.propertyID = c.propertyID AND s.propertyID = p.propertyID" +
                     " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
                     "' AND p.country = '" + req.query.country + "'" +
@@ -349,7 +417,7 @@ router.get('/advanced_search_cs', function(req, res, next) {
                     " AND p.area >= " + req.query.min_space + " AND p.area <= " + req.query.max_space +
                     " AND c.offices >= " + req.query.min_office + " AND c.offices <= " + req.query.max_office + 
                     " AND c.storage >= " + req.query.min_storage + " AND c.storage <= " + req.query.max_storage; 
-
+  console.log(queryString);
   if (req.query.furnishing != 'D') {
     queryString += " AND p.isFurnished = '" + req.query.furnishing + "'";
   }
@@ -364,8 +432,83 @@ router.get('/advanced_search_cs', function(req, res, next) {
 
 
 router.get('/advanced_search_cr', function(req, res, next) {
-  var queryString = "SELECT * " +
-                    "FROM CommercialProperty_ForRent c, ForRent r, Property_HasA_Location p " +
+  var isFirst = 1;
+  var queryString = "SELECT ";
+  if (req.query.checkbox_cr1 && isFirst == 1) {
+    queryString += "r.rentPrice ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr2 && isFirst == 0) {
+    queryString += ", p.aptNumber ";
+  }
+  if (req.query.checkbox_cr2 && isFirst == 1) {
+    queryString += "p.aptNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr3 && isFirst == 0) {
+    queryString += ", p.houseNumber ";
+  }
+  if (req.query.checkbox_cr3 && isFirst == 1) {
+    queryString += "p.houseNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr4 && isFirst == 0) {
+    queryString += ", p.street ";
+  }
+  if (req.query.checkbox_cr4 && isFirst == 1) {
+    queryString += "p.street ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr5 && isFirst == 0) {
+    queryString += ", p.city ";
+  }
+  if (req.query.checkbox_cr5 && isFirst == 1) {
+    queryString += "p.city ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr6 && isFirst == 0) {
+    queryString += ", p.age ";
+  }
+  if (req.query.checkbox_cr6 && isFirst == 1) {
+    queryString += "p.age ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr7 && isFirst == 0) {
+    queryString += ", p.area ";
+  }
+  if (req.query.checkbox_cr7 && isFirst == 1) {
+    queryString += "p.area ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr8 && isFirst == 0) {
+    queryString += ", c.offices ";
+  }
+  if (req.query.checkbox_cr8 && isFirst == 1) {
+    queryString += "c.offices ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr9 && isFirst == 0) {
+    queryString += ", c.storage ";
+  }
+  if (req.query.checkbox_cr9 && isFirst == 1) {
+    queryString += "c.storage ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr10 && isFirst == 0) {
+    queryString += ", p.isFurnished ";
+  }
+  if (req.query.checkbox_cr10 && isFirst == 1) {
+    queryString += "p.isFurnished ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_cr11 && isFirst == 0) {
+    queryString += ", r.petsAllowed ";
+  }
+  if (req.query.checkbox_cr11 && isFirst == 1) {
+    queryString += "r.petsAllowed ";
+    isFirst = 0;
+  }
+  queryString +=    "FROM CommercialProperty_ForRent c, ForRent r, Property_HasA_Location p " +
                     "WHERE p.propertyID = c.propertyID AND r.propertyID = p.propertyID" +
                     " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
                     "' AND p.country = '" + req.query.country + "'" +
@@ -392,8 +535,76 @@ router.get('/advanced_search_cr', function(req, res, next) {
 });
 
 router.get('/advanced_search_rs', function(req, res, next) {
-  var queryString = "SELECT * " +
-                    "FROM ResidentialProperty_ForSale r, ForSale s, Property_HasA_Location p " +
+  var isFirst = 1;
+  var queryString = "SELECT ";
+  if (req.query.checkbox_rs1 && isFirst == 1) {
+    queryString += "s.salePrice ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs2 && isFirst == 0) {
+    queryString += ", p.aptNumber ";
+  }
+  if (req.query.checkbox_rs2 && isFirst == 1) {
+    queryString += "p.aptNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs3 && isFirst == 0) {
+    queryString += ", p.houseNumber ";
+  }
+  if (req.query.checkbox_rs3 && isFirst == 1) {
+    queryString += "p.houseNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs4 && isFirst == 0) {
+    queryString += ", p.street ";
+  }
+  if (req.query.checkbox_rs4 && isFirst == 1) {
+    queryString += "p.street ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs5 && isFirst == 0) {
+    queryString += ", p.city ";
+  }
+  if (req.query.checkbox_rs5 && isFirst == 1) {
+    queryString += "p.city ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs6 && isFirst == 0) {
+    queryString += ", p.age ";
+  }
+  if (req.query.checkbox_rs6 && isFirst == 1) {
+    queryString += "p.age ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs7 && isFirst == 0) {
+    queryString += ", p.area ";
+  }
+  if (req.query.checkbox_rs7 && isFirst == 1) {
+    queryString += "p.area ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs8 && isFirst == 0) {
+    queryString += ", p.isFurnished ";
+  }
+  if (req.query.checkbox_rs8 && isFirst == 1) {
+    queryString += "p.isFurnished ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs9 && isFirst == 0) {
+    queryString += ", r.hasGarage ";
+  }
+  if (req.query.checkbox_rs9 && isFirst == 1) {
+    queryString += "r.hasGarage ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rs10 && isFirst == 0) {
+    queryString += ", r.hasGarden ";
+  }
+  if (req.query.checkbox_rs10 && isFirst == 1) {
+    queryString += "r.hasGarden ";
+    isFirst = 0;
+  }
+  queryString +=    "FROM ResidentialProperty_ForSale r, ForSale s, Property_HasA_Location p " +
                     "WHERE p.propertyID = r.propertyID AND r.propertyID = s.propertyID" +
                     " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
                     "' AND p.country = '" + req.query.country + "'" +
@@ -424,8 +635,83 @@ router.get('/advanced_search_rs', function(req, res, next) {
 
 
 router.get('/advanced_search_rr', function(req, res, next) {
-  var queryString = "SELECT * " +
-                    "FROM ResidentialProperty_ForRent f, ForRent r, Property_HasA_Location p " +
+  var isFirst = 1;
+  var queryString = "SELECT ";
+  if (req.query.checkbox_rr1 && isFirst == 1) {
+    queryString += "r.rentPrice ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr2 && isFirst == 0) {
+    queryString += ", p.aptNumber ";
+  }
+  if (req.query.checkbox_rr2 && isFirst == 1) {
+    queryString += "p.aptNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr3 && isFirst == 0) {
+    queryString += ", p.houseNumber ";
+  }
+  if (req.query.checkbox_rr3 && isFirst == 1) {
+    queryString += "p.houseNumber ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr4 && isFirst == 0) {
+    queryString += ", p.street ";
+  }
+  if (req.query.checkbox_rr4 && isFirst == 1) {
+    queryString += "p.street ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr5 && isFirst == 0) {
+    queryString += ", p.city ";
+  }
+  if (req.query.checkbox_rr5 && isFirst == 1) {
+    queryString += "p.city ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr6 && isFirst == 0) {
+    queryString += ", p.age ";
+  }
+  if (req.query.checkbox_rr6 && isFirst == 1) {
+    queryString += "p.age ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr7 && isFirst == 0) {
+    queryString += ", p.area ";
+  }
+  if (req.query.checkbox_rr7 && isFirst == 1) {
+    queryString += "p.area ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr8 && isFirst == 0) {
+    queryString += ", p.isFurnished ";
+  }
+  if (req.query.checkbox_rr8 && isFirst == 1) {
+    queryString += "p.isFurnished ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr9 && isFirst == 0) {
+    queryString += ", f.hasGarage ";
+  }
+  if (req.query.checkbox_rr9 && isFirst == 1) {
+    queryString += "f.hasGarage ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr10 && isFirst == 0) {
+    queryString += ", f.hasGarden ";
+  }
+  if (req.query.checkbox_rr10 && isFirst == 1) {
+    queryString += "f.hasGarden ";
+    isFirst = 0;
+  }
+  if (req.query.checkbox_rr11 && isFirst == 0) {
+    queryString += ", r.petsAllowed ";
+  }
+  if (req.query.checkbox_rr11 && isFirst == 1) {
+    queryString += "r.petsAllowed ";
+    isFirst = 0;
+  }
+  queryString +=    "FROM ResidentialProperty_ForRent f, ForRent r, Property_HasA_Location p " +
                     "WHERE p.propertyID = f.propertyID AND r.propertyID = p.propertyID" +
                     " AND p.city = '" + req.query.city + "' AND p.province = '" + req.query.province + 
                     "' AND p.country = '" + req.query.country + "'" +
