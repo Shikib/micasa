@@ -107,14 +107,12 @@ $('#offer-submit').click(function(ev) {
 function loadpage5(){
 $('#app-submit').click(function(ev) {
   var appID = {appID: $('#delete-appID').val()};
-  console.log(appID)
   $.get('/check_appointmentID', appID, function(data) {
     if (data.length == 0) {
       Materialize.toast('The appointmentID you submitted is not a valid', 4000);
     }else {
-      parameters = {appID: $('#delete-appID').val()};
-      console.log(parameters);   
-      $.get('/delete_from_ Appointment_View', parameters, function(data){});
+      parameters = {appID: $('#delete-appID').val()};  
+      $.get('/delete_from_Appointment_View', parameters, function(data){});
       $('#app-submit').hide();
       $('#delete-app-field').hide();
       Materialize.toast('appointment deleted', 4000);

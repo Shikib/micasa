@@ -32,18 +32,6 @@
   <div class="row">
     <form id="form" class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <i class="mdi-action-account-circle prefix"></i>
-          <input id="buyername" type="text" class="validate">
-          <label for="buyername">Buyer name</label>
-        </div>
-
-        <div class="input-field col s6">
-          <i class="mdi-communication-phone prefix"></i>
-          <input id="buyerphone" type="tel" class="validate">
-          <label for="buyerphone">Telephone</label>
-        </div>
-
           <div class="input-field col s6">
           <i class="mdi-action-home prefix"></i>
           <input id="propertyID" type="text" class="validate">
