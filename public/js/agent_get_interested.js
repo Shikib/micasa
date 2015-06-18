@@ -6,7 +6,6 @@ $(document).ready(function() {
       login = data.info;
       var parameters = {login: login};
       $.get('/agent_interest_get', parameters, function(data) {
-      console.log(data);
       $("#results > tbody").html("");
       for (var i in data) {
       var rowString = "<tr>";

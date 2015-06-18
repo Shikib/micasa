@@ -6,7 +6,6 @@ $(document).ready(function() {
       login = data.info;
       var parameters = {login: login};
       $.get('/agent_not_approved_appointments_get', parameters, function(data) {
-      console.log(data);
       $("#notapproved > tbody").html("");
       for (var i in data) {
       var rowString = "<tr>";

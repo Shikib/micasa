@@ -20,7 +20,6 @@ $('#property-for-sale-submit').click(function(ev) {
                       city:  $('#city').val(),
                       province:  $('#province').val(),
                       
-        console.log(parameters);  
           $.get('/create_new_property_for_sale', parameters, function(data){});
  $('#form').hide();
   })

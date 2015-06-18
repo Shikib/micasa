@@ -41,7 +41,6 @@ $('#search-field').submit(function(ev) {
   ev.preventDefault();
   var parameters = {search: $('#search').val() };
   $.get('/searching', parameters, function(data) {
-    console.log(data);
     $("#results > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -161,8 +160,6 @@ $('#cs-submit').click(function(ev) {
   }
   headString += "</tr>";
 
-  console.log(headString);
-
   $('#adv-results-cs > thead').append(headString);
 
   var parameters = {city:      $('#cs-city').val(),
@@ -190,7 +187,6 @@ $('#cs-submit').click(function(ev) {
                     checkbox_cs9: $('#checkbox-cs9').is(':checked'),
                     checkbox_cs10: $('#checkbox-cs10').is(':checked') };
   $.get('/advanced_search_cs', parameters, function(data) {
-    console.log(data);
     $('#commercial-sale').hide();
     $('#results-table-cs').show();
     $("#adv-results-cs > tbody").html("");
@@ -284,8 +280,6 @@ $('#cr-submit').click(function(ev) {
   }
   headString += "</tr>";
 
-  console.log(headString);
-
   $('#adv-results-cr > thead').append(headString);
 
   var parameters = {city:      $('#cr-city').val(),
@@ -314,7 +308,6 @@ $('#cr-submit').click(function(ev) {
                     checkbox_cr9: $('#checkbox-cr9').is(':checked'),
                     checkbox_cr10: $('#checkbox-cr10').is(':checked') };
   $.get('/advanced_search_cr', parameters, function(data) {
-    console.log(data);
     $('#commercial-rent').hide();
     $('#results-table-cr').show();
     $("#adv-results-cr > tbody").html("");
@@ -409,8 +402,6 @@ $('#rs-submit').click(function(ev) {
   }
   headString += "</tr>";
 
-  console.log(headString);
-
   $('#adv-results-rs > thead').append(headString);
 
   var parameters = {city:      $('#rs-city').val(),
@@ -436,7 +427,6 @@ $('#rs-submit').click(function(ev) {
                     checkbox_rs9: $('#checkbox-rs9').is(':checked'),
                     checkbox_rs10: $('#checkbox-rs10').is(':checked') };
   $.get('/advanced_search_rs', parameters, function(data) {
-    console.log(data);
     $('#residential-sale').hide();
     $('#results-table-rs').show();
     $("#adv-results-rs > tbody").html("");
@@ -529,8 +519,6 @@ $('#adv-results-rr > thead').html("");
   }
   headString += "</tr>";
 
-  console.log(headString);
-
   $('#adv-results-rr > thead').append(headString);
 
   var parameters = {city:      $('#rr-city').val(),
@@ -557,7 +545,6 @@ $('#adv-results-rr > thead').html("");
                     checkbox_rr9: $('#checkbox-rr9').is(':checked'),
                     checkbox_rr10: $('#checkbox-rr10').is(':checked') };
   $.get('/advanced_search_rr', parameters, function(data) {
-    console.log(data);
     $('#residential-rent').hide();
     $('#results-table-rr').show();
     $("#adv-results-rr > tbody").html("");
@@ -619,9 +606,7 @@ $('#agent-button').click(function() {
 });
 
 $(document).ready(function() {
-  console.log("test");
   $.get('/agency_list', {}, function(data) {
-    console.log("test2");
     for (var i in data) {
       var optionString = "<option value='" + data[i].agencyID +
                          "'>" + data[i].name + "</option>";
@@ -681,7 +666,6 @@ $('#agent-signup-submit').click(function(ev) {
                         email:  $('#agent-email').val(),
                         phone:  $('#agent-phone').val(),
                         password: $('#agent-password').val()};
-          console.log(parameters);  
           $.get('/create_new_account', parameters, function(data) {
             $.get('/create_new_agent', parameters, function (data) {});
               location.href = "/login";
@@ -727,7 +711,6 @@ $('#agent-update-submit').click(function(ev) {
                         phone:  $('#agent-update-phone').val(),
                         password: $('#agent-update-password').val(),
                         login: login};
-          console.log(parameters);  
           $.get('/update_account', parameters, function(data) {
             $.get('/update_agent', parameters, function (data) {});
               location.href = "/login";
@@ -766,7 +749,6 @@ $('#signup-submit').click(function(ev) {
                       email:  $('#email').val(),
                       phone:  $('#phone').val(),
                       password: $('#password').val()};
-        console.log(parameters);  
         $.get('/create_new_account', parameters, function(data) {
           if (sellerPressed) {
             $.get('/create_new_seller', parameters, function(data) {
@@ -811,7 +793,6 @@ $('#update-submit').click(function(ev) {
                       phone:  $('#phone-update').val(),
                       password: $('#password-update').val(),
                       login: login};
-        console.log(parameters);  
         $.get('/update_account', parameters, function(data) {
           if (login.logged_in_type==1) {
             $.get('/update_seller', parameters, function(data) {
@@ -881,7 +862,6 @@ $('#login-submit').click(function(ev) {
         else {
           $.get('/login_seller', parameters, function(data) {
             if (data.length != 0) {
-              console.log(data);
               logged_in = true;
               logged_in_type = 1;
               login = data[0];

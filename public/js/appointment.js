@@ -5,7 +5,6 @@ $(document).ready(function() {
       logged_in = data.logged_in;
       logged_in_type = data.type;
       login = data.info;
-      console.log(login)
       if (!logged_in && logged_in_type=="2") {
         $('.nlog').show();
         $('.ylog').hide();
@@ -35,7 +34,6 @@ function loadpage(){
       appdate:  $('#appdate').val(),
       appduration:  $('#appduration').val(),
       appID: appID};
-      console.log(parameters);  
       $.get('/create_new_app', parameters, function(data){});
       $('#form').hide();
         $('#app-submit').hide();

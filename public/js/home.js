@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-  console.log('ayy');
   $.get('/rs_ordered_price', {}, function(data) {
     $('#rs-ordered-price > tbody').html("");
     for (var i in data) {
@@ -24,7 +23,6 @@ $(document).ready(function() {
     }
   });
   $.get('/diverse_agencies', {}, function(data) {
-    console.log(data);
     $('#diverse-agency-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -36,7 +34,6 @@ $(document).ready(function() {
  
   });
   $.get('/popular_cities', {}, function(data) {
-    console.log(data);
     $('#popular-city-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -48,7 +45,6 @@ $(document).ready(function() {
     } 
   });
   $.get('/bw_agencies', {best: true}, function(data) {
-    console.log(data);
     $('#bw-agency-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -63,8 +59,6 @@ $(document).ready(function() {
  
   });
   $.get('/bw_cities', {best: true}, function(data) {
-    console.log("test");
-    console.log(data);
     $('#bw-city-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -92,8 +86,6 @@ $('#switch-city-list').click(function (ev) {
     $('#switch-city-list').text("Worst");
   
   $.get('/bw_cities', {best: cities_best}, function(data) {
-    console.log("test");
-    console.log(data);
     $('#bw-city-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
@@ -119,8 +111,6 @@ $('#switch-agency-list').click(function (ev) {
     $('#switch-agency-list').text("Worst");
   
   $.get('/bw_cities', {best: agencies_best}, function(data) {
-    console.log("test");
-    console.log(data);
     $('#bw-city-list > tbody').html("");
     for (var i in data) {
       var rowString = "<tr>";
