@@ -47,10 +47,16 @@ $('#filter-rent').click(function() {
   for_rent = true;
   $('#filter-sale').hide();
   $('#filter-rent').hide();
-  if (commercial)
+  if (commercial) {
     $('#commercial-rent').show();
-  else
+    $('#checkbox-cr').show();
+    $('#checkbox-table-cr').show();
+  }
+  else {
     $('#residential-rent').show();
+    $('#checkbox-rr').show();
+    $('#checkbox-table-rr').show();
+  }
    
 });
 
@@ -58,15 +64,59 @@ $('#filter-sale').click(function() {
   for_rent = false;
   $('#filter-sale').hide();
   $('#filter-rent').hide();
-  if (commercial)
+  if (commercial) {
     $('#commercial-sale').show();
-  else
+    $('#checkbox-cs').show();
+    $('#checkbox-table-cs').show();
+  }
+  else {
     $('#residential-sale').show();
+    $('#checkbox-rs').show();
+    $('#checkbox-table-rs').show();
+  }
 });
 
 
 $('#cs-submit').click(function(ev) {
   ev.preventDefault();
+  $('#adv-results-cs > thead').html("");
+  var headString = "<tr>";
+  if($("#checkbox-cs1").is(':checked')) {
+    headString += "<th data-field=\"price\">Price (Thousands)</th>";
+  }
+  if($("#checkbox-cs2").is(':checked')) {
+    headString += "<th data-field=\"aptNumber\">Apartment Number</th>";
+  }
+  if($("#checkbox-cs3").is(':checked')) {
+    headString += "<th data-field=\"houseNumber\">Building Number</th>";
+  }
+  if($("#checkbox-cs4").is(':checked')) {
+    headString += "<th data-field=\"street\">Street</th>";
+  }
+  if($("#checkbox-cs5").is(':checked')) {
+    headString += "<th data-field=\"city\">City</th>";
+  }
+  if($("#checkbox-cs6").is(':checked')) {
+    headString += "<th data-field=\"age\">Age (years)</th>";
+  }
+  if($("#checkbox-cs7").is(':checked')) {
+    headString += "<th data-field=\"area\">Area (sq. metres)</th>";
+  }
+  if($("#checkbox-cs8").is(':checked')) {
+    headString += "<th data-field=\"offices\">Office Count</th>";
+  }
+  if($("#checkbox-cs9").is(':checked')) {
+     headString += "<th data-field=\"storage\">Storage Space (sq. metres)</th>";
+  }
+  if($("#checkbox-cs10").is(':checked')) {
+    headString += "<th data-field=\"isFurnished\">Is Furnished?</th>";
+  }
+  headString += "</tr>";
+
+  console.log(headString);
+
+  $('#adv-results-cs > thead').append(headString);
+
   var parameters = {city:      $('#cs-city').val(),
                     province:  $('#cs-province').val(),
                     country:   $('#cs-country').val(),
@@ -88,16 +138,36 @@ $('#cs-submit').click(function(ev) {
     $("#adv-results-cs > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].salePrice + "</td>";
-      rowString += "<td>" + data[i].aptNumber + "</td>";
-      rowString += "<td>" + data[i].houseNumber + "</td>";
-      rowString += "<td>" + data[i].street + "</td>";
-      rowString += "<td>" + data[i].city + "</td>";
-      rowString += "<td>" + data[i].age + "</td>";
-      rowString += "<td>" + data[i].area + "</td>";
-      rowString += "<td>" + data[i].offices + "</td>";
-      rowString += "<td>" + data[i].storage + "</td>";
-      rowString += "<td>" + data[i].isFurnished + "</td>";
+      if($("#checkbox-cs1").is(':checked')) {
+        rowString += "<td>" + data[i].salePrice + "</td>";
+      }
+      if($("#checkbox-cs2").is(':checked')) {
+        rowString += "<td>" + data[i].aptNumber + "</td>";
+      }
+      if($("#checkbox-cs3").is(':checked')) {
+        rowString += "<td>" + data[i].houseNumber + "</td>";
+      }
+      if($("#checkbox-cs4").is(':checked')) {
+        rowString += "<td>" + data[i].street + "</td>";
+      }
+      if($("#checkbox-cs5").is(':checked')) {
+        rowString += "<td>" + data[i].city + "</td>";
+      }
+      if($("#checkbox-cs6").is(':checked')) {
+        rowString += "<td>" + data[i].age + "</td>";
+      }
+      if($("#checkbox-cs7").is(':checked')) {
+        rowString += "<td>" + data[i].area + "</td>";
+      }
+      if($("#checkbox-cs8").is(':checked')) {
+        rowString += "<td>" + data[i].offices + "</td>";
+      }
+      if($("#checkbox-cs9").is(':checked')) {
+        rowString += "<td>" + data[i].storage + "</td>";
+      }
+      if($("#checkbox-cs10").is(':checked')) {
+        rowString += "<td>" + data[i].isFurnished + "</td>";
+      }
       $("#adv-results-cs > tbody").append(rowString);
     }
   });
@@ -106,6 +176,47 @@ $('#cs-submit').click(function(ev) {
 
 $('#cr-submit').click(function(ev) {
   ev.preventDefault();
+  $('#adv-results-cr > thead').html("");
+  var headString = "<tr>";
+  if($("#checkbox-cr1").is(':checked')) {
+    headString += "<th data-field=\"price\">Price (Thousands)</th>";
+  }
+  if($("#checkbox-cr2").is(':checked')) {
+    headString += "<th data-field=\"aptNumber\">Apartment Number</th>";
+  }
+  if($("#checkbox-cr3").is(':checked')) {
+    headString += "<th data-field=\"houseNumber\">Building Number</th>";
+  }
+  if($("#checkbox-cr4").is(':checked')) {
+    headString += "<th data-field=\"street\">Street</th>";
+  }
+  if($("#checkbox-cr5").is(':checked')) {
+    headString += "<th data-field=\"city\">City</th>";
+  }
+  if($("#checkbox-cr6").is(':checked')) {
+    headString += "<th data-field=\"age\">Age (years)</th>";
+  }
+  if($("#checkbox-cr7").is(':checked')) {
+    headString += "<th data-field=\"area\">Area (sq. metres)</th>";
+  }
+  if($("#checkbox-cr8").is(':checked')) {
+    headString += "<th data-field=\"offices\">Office Count</th>";
+  }
+  if($("#checkbox-cr9").is(':checked')) {
+     headString += "<th data-field=\"storage\">Storage Space (sq. metres)</th>";
+  }
+  if($("#checkbox-cr10").is(':checked')) {
+    headString += "<th data-field=\"isFurnished\">Is Furnished?</th>";
+  }
+  if($("#checkbox-cr11").is(':checked')) {
+    headString += "<th data-field=\"petsAllowed\">Pets Allowed?</th>";
+  }
+  headString += "</tr>";
+
+  console.log(headString);
+
+  $('#adv-results-cr > thead').append(headString);
+
   var parameters = {city:      $('#cr-city').val(),
                     province:  $('#cr-province').val(),
                     country:   $('#cr-country').val(),
@@ -128,17 +239,40 @@ $('#cr-submit').click(function(ev) {
     $("#adv-results-cr > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].rentPrice + "</td>";
-      rowString += "<td>" + data[i].aptNumber + "</td>";
-      rowString += "<td>" + data[i].houseNumber + "</td>";
-      rowString += "<td>" + data[i].street + "</td>";
-      rowString += "<td>" + data[i].city + "</td>";
-      rowString += "<td>" + data[i].age + "</td>";
-      rowString += "<td>" + data[i].area + "</td>";
-      rowString += "<td>" + data[i].offices + "</td>";
-      rowString += "<td>" + data[i].storage + "</td>";
-      rowString += "<td>" + data[i].isFurnished + "</td>";
-      rowString += "<td>" + data[i].petsAllowed + "</td>";
+
+      if($("#checkbox-cr1").is(':checked')) {
+        rowString += "<td>" + data[i].rentPrice + "</td>";
+      }
+      if($("#checkbox-cr2").is(':checked')) {
+        rowString += "<td>" + data[i].aptNumber + "</td>";
+      }
+      if($("#checkbox-cr3").is(':checked')) {
+        rowString += "<td>" + data[i].houseNumber + "</td>";
+      }
+      if($("#checkbox-cr4").is(':checked')) {
+        rowString += "<td>" + data[i].street + "</td>";
+      }
+      if($("#checkbox-cr5").is(':checked')) {
+        rowString += "<td>" + data[i].city + "</td>";
+      }
+      if($("#checkbox-cr6").is(':checked')) {
+        rowString += "<td>" + data[i].age + "</td>";
+      }
+      if($("#checkbox-cr7").is(':checked')) {
+        rowString += "<td>" + data[i].area + "</td>";
+      }
+      if($("#checkbox-cr8").is(':checked')) {
+        rowString += "<td>" + data[i].offices + "</td>";
+      }
+      if($("#checkbox-cr9").is(':checked')) {
+        rowString += "<td>" + data[i].storage + "</td>";
+      }
+      if($("#checkbox-cr10").is(':checked')) {
+        rowString += "<td>" + data[i].isFurnished + "</td>";
+      }
+      if($("#checkbox-cr11").is(':checked')) {
+        rowString += "<td>" + data[i].petsAllowed + "</td>";
+      }
       $("#adv-results-cr > tbody").append(rowString);
     }
   });
@@ -147,6 +281,44 @@ $('#cr-submit').click(function(ev) {
 
 $('#rs-submit').click(function(ev) {
   ev.preventDefault();
+  $('#adv-results-rs > thead').html("");
+  var headString = "<tr>";
+  if($("#checkbox-rs1").is(':checked')) {
+    headString += "<th data-field=\"price\">Price (Thousands)</th>";
+  }
+  if($("#checkbox-rs2").is(':checked')) {
+    headString += "<th data-field=\"aptNumber\">Apartment Number</th>";
+  }
+  if($("#checkbox-rs3").is(':checked')) {
+    headString += "<th data-field=\"houseNumber\">Building Number</th>";
+  }
+  if($("#checkbox-rs4").is(':checked')) {
+    headString += "<th data-field=\"street\">Street</th>";
+  }
+  if($("#checkbox-rs5").is(':checked')) {
+    headString += "<th data-field=\"city\">City</th>";
+  }
+  if($("#checkbox-rs6").is(':checked')) {
+    headString += "<th data-field=\"age\">Age (years)</th>";
+  }
+  if($("#checkbox-rs7").is(':checked')) {
+    headString += "<th data-field=\"area\">Area (sq. metres)</th>";
+  }
+  if($("#checkbox-rs8").is(':checked')) {
+    headString += "<th data-field=\"isFurnished\">Is Furnished?</th>";
+  }
+  if($("#checkbox-rs9").is(':checked')) {
+     headString += "<th data-field=\"hasGarage\">Has Garage?</th>";
+  }
+  if($("#checkbox-rs10").is(':checked')) {
+    headString += "<th data-field=\"hasGarden\">Has Garden?</th>";
+  }
+  headString += "</tr>";
+
+  console.log(headString);
+
+  $('#adv-results-rs > thead').append(headString);
+
   var parameters = {city:      $('#rs-city').val(),
                     province:  $('#rs-province').val(),
                     country:   $('#rs-country').val(),
@@ -166,25 +338,84 @@ $('#rs-submit').click(function(ev) {
     $("#adv-results-rs > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].salePrice + "</td>";
-      rowString += "<td>" + data[i].aptNumber + "</td>";
-      rowString += "<td>" + data[i].houseNumber + "</td>";
-      rowString += "<td>" + data[i].street + "</td>";
-      rowString += "<td>" + data[i].city + "</td>";
-      rowString += "<td>" + data[i].age + "</td>";
-      rowString += "<td>" + data[i].area + "</td>";
-      rowString += "<td>" + data[i].isFurnished + "</td>";
-      rowString += "<td>" + data[i].hasGarage + "</td>";
-      rowString += "<td>" + data[i].hasGarden + "</td>";
+      if($("#checkbox-rs1").is(':checked')) {
+        rowString += "<td>" + data[i].salePrice + "</td>";
+      }
+      if($("#checkbox-rs2").is(':checked')) {
+        rowString += "<td>" + data[i].aptNumber + "</td>";
+      }
+      if($("#checkbox-rs3").is(':checked')) {
+        rowString += "<td>" + data[i].houseNumber + "</td>";
+      }
+      if($("#checkbox-rs4").is(':checked')) {
+        rowString += "<td>" + data[i].street + "</td>";
+      }
+      if($("#checkbox-rs5").is(':checked')) {
+        rowString += "<td>" + data[i].city + "</td>";
+      }
+      if($("#checkbox-rs6").is(':checked')) {
+        rowString += "<td>" + data[i].age + "</td>";
+      }
+      if($("#checkbox-rs7").is(':checked')) {
+        rowString += "<td>" + data[i].area + "</td>";
+      }
+      if($("#checkbox-rs8").is(':checked')) {
+        rowString += "<td>" + data[i].isFurnished + "</td>";
+      }
+      if($("#checkbox-rs9").is(':checked')) {
+        rowString += "<td>" + data[i].hasGarage + "</td>";
+      }
+      if($("#checkbox-rs10").is(':checked')) {
+        rowString += "<td>" + data[i].hasGarden + "</td>";
+      }
       $("#adv-results-rs > tbody").append(rowString);
     }
   });
 });
 
-
-
 $('#rr-submit').click(function(ev) {
   ev.preventDefault();
+$('#adv-results-rr > thead').html("");
+  var headString = "<tr>";
+  if($("#checkbox-rr1").is(':checked')) {
+    headString += "<th data-field=\"price\">Price (Thousands)</th>";
+  }
+  if($("#checkbox-rr2").is(':checked')) {
+    headString += "<th data-field=\"aptNumber\">Apartment Number</th>";
+  }
+  if($("#checkbox-rr3").is(':checked')) {
+    headString += "<th data-field=\"houseNumber\">Building Number</th>";
+  }
+  if($("#checkbox-rr4").is(':checked')) {
+    headString += "<th data-field=\"street\">Street</th>";
+  }
+  if($("#checkbox-rr5").is(':checked')) {
+    headString += "<th data-field=\"city\">City</th>";
+  }
+  if($("#checkbox-rr6").is(':checked')) {
+    headString += "<th data-field=\"age\">Age (years)</th>";
+  }
+  if($("#checkbox-rr7").is(':checked')) {
+    headString += "<th data-field=\"area\">Area (sq. metres)</th>";
+  }
+  if($("#checkbox-rr8").is(':checked')) {
+    headString += "<th data-field=\"isFurnished\">Is Furnished?</th>";
+  }
+  if($("#checkbox-rr9").is(':checked')) {
+     headString += "<th data-field=\"hasGarage\">Has Garage?</th>";
+  }
+  if($("#checkbox-rr10").is(':checked')) {
+    headString += "<th data-field=\"hasGarden\">Has Garden</th>";
+  }
+  if($("#checkbox-rr11").is(':checked')) {
+    headString += "<th data-field=\"petsAllowed\">Pets Allowed?</th>";
+  }
+  headString += "</tr>";
+
+  console.log(headString);
+
+  $('#adv-results-cr > thead').append(headString);
+
   var parameters = {city:      $('#rr-city').val(),
                     province:  $('#rr-province').val(),
                     country:   $('#rr-country').val(),
@@ -205,21 +436,40 @@ $('#rr-submit').click(function(ev) {
     $("#adv-results-rr > tbody").html("");
     for (var i in data) {
       var rowString = "<tr>";
-      rowString += "<td>" + data[i].rentPrice + "</td>";
-      rowString += "<td>" + data[i].aptNumber + "</td>";
-      rowString += "<td>" + data[i].houseNumber + "</td>";
-      rowString += "<td>" + data[i].street + "</td>";
-      rowString += "<td>" + data[i].city + "</td>";
-      rowString += "<td>" + data[i].age + "</td>";
-      rowString += "<td>" + data[i].area + "</td>";
-      rowString += "<td>" + data[i].isFurnished + "</td>";
-      rowString += "<td>" + data[i].hasGarage + "</td>";
-      rowString += "<td>" + data[i].hasGarden + "</td>";
-      rowString += "<td>" + data[i].petsAllowed + "</td>";
+      if($("#checkbox-rr1").is(':checked')) {
+        rowString += "<td>" + data[i].salePrice + "</td>";
+      }
+      if($("#checkbox-rr2").is(':checked')) {
+        rowString += "<td>" + data[i].aptNumber + "</td>";
+      }
+      if($("#checkbox-rr3").is(':checked')) {
+        rowString += "<td>" + data[i].houseNumber + "</td>";
+      }
+      if($("#checkbox-rr4").is(':checked')) {
+        rowString += "<td>" + data[i].street + "</td>";
+      }
+      if($("#checkbox-rr5").is(':checked')) {
+        rowString += "<td>" + data[i].city + "</td>";
+      }
+      if($("#checkbox-rr6").is(':checked')) {
+        rowString += "<td>" + data[i].age + "</td>";
+      }
+      if($("#checkbox-rr7").is(':checked')) {
+        rowString += "<td>" + data[i].area + "</td>";
+      }
+      if($("#checkbox-rr8").is(':checked')) {
+        rowString += "<td>" + data[i].isFurnished + "</td>";
+      }
+      if($("#checkbox-rr9").is(':checked')) {
+        rowString += "<td>" + data[i].hasGarage + "</td>";
+      }
+      if($("#checkbox-rr10").is(':checked')) {
+        rowString += "<td>" + data[i].hasGarden + "</td>";
+      }
+      if($("#checkbox-rr11").is(':checked')) {
+        rowString += "<td>" + data[i].petsAllowed + "</td>";
+      }
       $("#adv-results-rr > tbody").append(rowString);
     }
   });
 });
-
-
-
