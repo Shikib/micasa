@@ -1,7 +1,8 @@
 {% extends 'layout.swig' %}
 
 {% block content%}
-<nav>
+  <body>
+  <nav>
     <div class="nav-wrapper teal">
       <a href="#" class="brand-logo right">Micasa</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -13,6 +14,7 @@
     </div>
   </nav>
 
+  <div class="ylog">
  <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"></center><br>
   <h4 class="header center orange-text">Welcome Agent! </h4>
 
@@ -59,6 +61,7 @@
 
     </div>
   </div>
+  </div>
 
     <div class="footer-copyright">
       <div class="container">
@@ -66,6 +69,14 @@
       </div>
     </div>
   </footer>
+</body>
 
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="materialize/js/materialize.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/agent.js"></script>
+  </body>
 {% endblock %}
+</html>

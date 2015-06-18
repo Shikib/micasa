@@ -98,6 +98,7 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="materialize/js/materialize.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/agent_get_purchaseoffers.js"></script>
   <script src="js/agent_get_rentaloffers.js"></script>
   </body>
