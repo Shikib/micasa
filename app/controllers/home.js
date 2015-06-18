@@ -83,8 +83,12 @@ router.get('/searching', function(req, res, next) {
 
 router.get('/sellerloadPurchase', function (req, res, next) {
 
-    var sp = "7783334444"; 
-    var sn = "Justin Timb";
+
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(snName);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fs.salePrice " + 
@@ -99,8 +103,11 @@ router.get('/sellerloadPurchase', function (req, res, next) {
 
 router.get('/sellerloadRent', function (req, res, next) {
 
-    var sp = "7784445555"; 
-    var sn = "Liam Neeson";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(sn);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT p.propertyID, p.houseNumber, p.street, p.city, p.age, p.area, p.isFurnished, ar.agentID, fr.rentPrice " + 
@@ -512,8 +519,11 @@ router.get('/rateagentGet', function (req, res, next){
 
 router.get('/viewoffersSale', function (req, res, next) {
 
-    var sp = "7781112222"; 
-    var sn = "Mary Lamb";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
+
+    console.log(sp);
+    console.log(snName);
 
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT pom.offerID, p.propertyID, fs.salePrice, pom.purchaseAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
@@ -530,9 +540,12 @@ router.get('/viewoffersSale', function (req, res, next) {
 
 router.get('/viewoffersRent', function (req, res, next) {
 
-    var sp = "7784445555"; 
-    var sn = "Liam Neeson";
+    var sp = req.query.login.sellerPhone;
+    var sn = req.query.login.sellerName;
 
+    console.log(sp);
+    console.log(snName);
+    
      mysqlModule.getConnection(function(err, conn) {
       mysqlModule.query(conn, "SELECT rom.offerID, p.propertyID, fr.rentPrice, rom.rentAmount, o.offerMessage, o.offerDate, b.buyerName, b.buyerPhone " + 
                               "FROM Property_HasA_Location p, ForRent fr, RentalOffer_Makes rom, Offer o, PostSale ps, Seller s, Buyer b " +
