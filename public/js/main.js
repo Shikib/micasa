@@ -414,7 +414,7 @@ $('#adv-results-rr > thead').html("");
 
   console.log(headString);
 
-  $('#adv-results-cr > thead').append(headString);
+  $('#adv-results-rr > thead').append(headString);
 
   var parameters = {city:      $('#rr-city').val(),
                     province:  $('#rr-province').val(),

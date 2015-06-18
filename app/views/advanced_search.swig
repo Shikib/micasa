@@ -100,12 +100,10 @@
 
       </div>
 
-      <h5>Choose which fields to display in the result.</h5>
-
     <div class="row" id="commercial-sale" style="display: none;">
     <form class="col s12">
       <div class="row">
-
+      <h5>Choose which fields to display in the result.</h5>    
       <div id='checkbox-cs' class="section">
         <table border="0" id="checkbox-table-cs" class="responsive-table" style="display: none">
           <tbody>
@@ -275,7 +273,7 @@
     <div class="row" id="commercial-rent" style="display: none;">
     <form class="col s12">
       <div class="row">
-
+      <h5>Choose which fields to display in the result.</h5>
         <div id='checkbox-cr' class="section">
         <table border="0" id="checkbox-table-cr" class="responsive-table" style="display: none">
           <tbody>
@@ -459,7 +457,7 @@
     <div class="row" id="residential-sale" style="display: none;">
     <form class="col s12">
       <div class="row">
-
+      <h5>Choose which fields to display in the result.</h5>
         <div id='checkbox-rs' class="section">
         <table border="0" id="checkbox-table-rs" class="responsive-table" style="display: none">
           <tbody>
@@ -619,7 +617,7 @@
     <div class="row" id="residential-rent" style="display: none;">
     <form class="col s12">
       <div class="row">
-
+      <h5>Choose which fields to display in the result.</h5>
         <div id='checkbox-rr' class="section">
         <table border="0" id="checkbox-table-rr" class="responsive-table" style="display: none">
           <tbody>
