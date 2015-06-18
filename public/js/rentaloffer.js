@@ -20,7 +20,7 @@ $('#rental-offer-submit').click(function(ev) {
   var offerID = Math.floor(Math.random() * 32763);
   $.get('/get_all_offerID', {}, function(data) {
     while (data.indexOf(offerID) > -1)
-      offerID = Math.floor(Math.random() * 3276);
+      offerID = Math.floor(Math.random() * 32763);
   });
 
   var parID = {propertyID: $('#propertyID').val()};

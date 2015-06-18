@@ -917,8 +917,8 @@ console.log(queryString);
   });
 });
 
-router.get('/delete_from_ Appointment_View', function(req, res, next) {
-  var queryString =  "delete from offer WHERE offerID= " + req.query.appID +";";
+router.get('/delete_from_Appointment_View', function(req, res, next) {
+  var queryString =  "delete from Appointment_View WHERE appointmentID= " + req.query.appID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
