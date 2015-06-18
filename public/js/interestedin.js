@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 function loadpage(){
 $('#in-submit').click(function(ev) {
-  var parameters = {login: login};
+ var parameters = {login: login};
  var parID = {propertyID: $('#propertyID').val()};
  $.get('/check_propertyID', parID, function(data) {
   if (data.length == 0) {

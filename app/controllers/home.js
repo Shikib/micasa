@@ -500,16 +500,26 @@ router.get('/viewoffer', function (req, res, next) {
 //  });
 });
 
+router.get('/rateagent', function (req, res, next) {
+//  db.Article.findAll().then(function (articles) {
+    res.render('rateagent', {
+      title: 'rateagent',
+//      articles: articles
+    });
+//  });
+});
 
-router.get('/rateagentRates', function(req, res, next) {
+
+
+router.get('/rateagent_Rates', function(req, res, next) {
   var sn = req.query.login.sellerName;
   var sp = req.query.login.sellerPhone;
   var ratesQueryString = "INSERT INTO Rates " + 
-                           "VALUES ('" + req.query.rating + "', " +
-                                   "'" + req.query.agentid + "', " + 
-                                   "'" + sp + "',"+
-                                   "'" + sn + "');";
-
+                           "VALUES (" + req.query.sellerRating + ", " +
+                                   "" + req.query.agentID + ", " + 
+                                   "'" + req.query.sellerPhone+ "',"+
+                                   "'" + req.query.sellerName + "');";
+console.log (ratesQueryString)
   mysqlModule.getConnection(function(err, conn) {
     mysqlModule.query(conn, ratesQueryString, res);
   });
@@ -899,6 +909,15 @@ console.log(queryString);
 
 router.get('/check_appointmentID', function(req, res, next) {
   var queryString =  "select appointmentID from Appointment_View WHERE appointmentID= " + req.query.appID +";";
+ 
+console.log(queryString);
+  mysqlModule.getConnection(function(err, conn) {
+    mysqlModule.query(conn, queryString, res);
+  });
+});
+
+router.get('/check_agentID', function(req, res, next) {
+  var queryString =  "select agentID from Agent_Represents WHERE agentID= " + req.query.agentID +";";
  
 console.log(queryString);
   mysqlModule.getConnection(function(err, conn) {
