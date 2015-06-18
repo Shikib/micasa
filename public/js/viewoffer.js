@@ -1,11 +1,22 @@
-
 $(document).ready(function() {
     $('select').material_select();
+    $.get('login_info', {}, function (data){
+      logged_in = data.logged_in;
+      logged_in_type = data.type;
+      login = data.info;
+      if (!logged_in && logged_in_type=="1") {
+        $('.nlog').show();
+        $('.ylog').hide();
+      }
+      zoo();
+      zot();
+    }); 
 });
 
 
-$(window).load(function() {
-  var parameters = {};
+function zoo() {
+  var parameters = {login: login};
+  console.log(login);
   $.get('/viewoffersSale', parameters, function(data) {
     console.log(data);
     $("#viewforsale > tbody").html("");
@@ -22,11 +33,12 @@ $(window).load(function() {
       $("#viewforsale > tbody").append(rowString);
     }
   });
-});
+}
 
 
-$(window).load(function() {
-  var parameters = {};
+function zot() {
+  var parameters = {login: login};
+  console.log(login);
   $.get('/viewoffersRent', parameters, function(data) {
     console.log(data);
     $("#viewforrent > tbody").html("");
@@ -43,4 +55,4 @@ $(window).load(function() {
       $("#viewforrent > tbody").append(rowString);
     }
   });
-});
+}

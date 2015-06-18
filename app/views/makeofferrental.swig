@@ -72,8 +72,10 @@
       </div>
     </form>
   </div>
-        
-<a id ="rental-offer-submit" class="btn" onclick="Materialize.toast('Your rental offer has been submitted thanks!', 4000)">Submit</a>
+
+  <button id= "rental-offer-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="mdi-content-send right"></i>
+  </button>
 
 
   <!--  Scripts-->

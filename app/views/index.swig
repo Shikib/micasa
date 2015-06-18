@@ -22,6 +22,7 @@
         <li><a href="/">Home</a></li>
         <li class="nlog" style="display: none;" ><a href="login">Login</a></li>
         <li class="nlog" style="display: none;"><a href="signup">Sign up</a></li>
+        <li class="ylog" ><a href="/profile">Profile</a></li>
         <li class="ylog" ><a href="/" id="logout">Logout</a></li>
         <li><a href="search">Serach</a></li>
       </ul>
