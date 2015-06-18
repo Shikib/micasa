@@ -965,7 +965,7 @@ $('#cs-post').click(function (ev) {
         $.get('/post_fs', parameters, function(data) {
           $.get('/post_cs', parameters, function(data) {
             $.get('/post_sale', parameters, function(data) {
-              Materialize.toast('now redirect to property page', 4000);
+              location.href = "/seller";
             });
           });
         });
@@ -1023,7 +1023,7 @@ $('#cr-post').click(function (ev) {
         $.get('/post_fr', parameters, function(data) {
           $.get('/post_cr', parameters, function(data) {
             $.get('/post_sale', parameters, function(data) {
-              Materialize.toast('now redirect to property page', 4000);
+              location.href = "/seller";
             });
           });
         });
@@ -1076,7 +1076,7 @@ $('#rs-post').click(function (ev) {
         $.get('/post_fs', parameters, function(data) {
           $.get('/post_rs', parameters, function(data) {
             $.get('/post_sale', parameters, function(data) {
-              Materialize.toast('now redirect to property page', 4000);
+              location.href = "/seller";
             });
           });
         });
@@ -1129,7 +1129,7 @@ $('#rr-post').click(function (ev) {
         $.get('/post_fr', parameters, function(data) {
           $.get('/post_rr', parameters, function(data) {
             $.get('/post_sale', parameters, function(data) {
-              Materialize.toast('now redirect to property page', 4000);
+              location.href = "/seller";
             });
           });
         });
