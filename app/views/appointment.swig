@@ -26,25 +26,11 @@
 </nav>
 <body>
   <div class="container">
-    <body>
-      <div class="container">
 
        <br><center><img src="images/micasa.png" style = "width:300px;height:300x;"><br>
        <h4 class="header center orange-text">Appointment</h4></center>
        <div class="row">
         <form  id= "form" class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="mdi-action-account-circle prefix"></i>
-              <input id="buyername" type="text" class="validate">
-              <label for="buyername">Buyer name</label>
-            </div>
-
-            <div class="input-field col s6">
-              <i class="mdi-communication-phone prefix"></i>
-              <input id="buyerphone" type="tel" class="validate">
-              <label for="buyerphone">Telephone</label>
-            </div>
 
             <div class="input-field col s6">
               <i class="mdi-action-home prefix"></i>
