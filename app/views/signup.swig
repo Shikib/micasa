@@ -91,7 +91,7 @@
 </div> 
 
 
-<div id="default-signup" class="row">
+<div id="default-signup" class="row" style="display: none;">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
